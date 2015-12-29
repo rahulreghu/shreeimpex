@@ -34,7 +34,7 @@
 	
 	<div class="container">
 		<?php if(isset($this->session->user)){?>
-		<h3 class="muted">Shree Impex</h3>
+		<h3 class="muted" id="logo"><img alt="shreeimpex" src="images/shreeimpex.jpg"></h3>
 		<div class="masthead">
 			
 			<div class="navbar">
@@ -56,6 +56,7 @@
 								</ul>
 							</li>
 							<li><a href="#">About</a></li>
+							<li><a href="#">Services</a></li>
 							<li><a href="#">Contact</a></li>
 							<li><a href="index/logout">Sign Out</a></li>
 						</ul>
@@ -72,7 +73,7 @@
 
 		<hr>
 		<?php }else{ ?>
-			<h3 class="muted">Shree Impex</h3>
+			<h3 class="muted"><img alt="shreeimpex" src="images/shreeimpex_logo_login.jpg"></h3>
 			<?php echo $this->layout()->content; ?>
 		
 		<?php }?>

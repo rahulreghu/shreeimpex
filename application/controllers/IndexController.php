@@ -10,12 +10,13 @@ class IndexController extends Zend_Controller_Action
     	$this->_session = $session;
     	$this->_helper->layout()->setLayout('layout');
     	$this->view->session = $session;
+    	
     }
 
     public function indexAction()
     {
     	if(isset($this->_session->user)){
-        	//$this->_redirect("home/");
+        	$this->_redirect("home/");
      	}
      	
      	if(isset($_POST['submit']) && $_POST['submit'] == "Sign In"){

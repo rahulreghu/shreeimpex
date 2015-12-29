@@ -9,6 +9,9 @@ class EPCGController extends Zend_Controller_Action
 		$this->_session = $session;
 		$this->_helper->layout()->setLayout('layout');
 		$this->view->session = $session;
+		if(!isset($this->_session->user)){
+			$this->_redirect('.');
+		}
 	}
 
 	public function indexAction()

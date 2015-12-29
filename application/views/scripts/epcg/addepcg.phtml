@@ -1,6 +1,403 @@
-<div>
-<table>
-<tr>1. Applicant Details</tr>
-<tr><td>IEC No</td><td>BRANCH CODE</td></tr>
-</table>
+<style>
+
+</style>
+<div >
+	<table class="table table-bordered" style="width: 950px">
+		<caption>
+			<p><strong>APPLICATION FORM FOR EPCG AUTHORISATION</strong></p>
+		</caption>
+		<tr>
+			<td colspan="4"><b>1. Applicant Details</b></td>
+		</tr>
+		<tr>
+			<td>IEC No</td>
+			<td><input class="input-block-level" type="text" placeholder="IEC No"></td>
+			<td>BRANCH CODE</td>
+			<td><input class="input-block-level" type="text"
+				placeholder="BRANCH CODE"></td>
+		</tr>
+		<tr>
+			<td>Address</td>
+			<td colspan="3"><textarea rows="3"></textarea></td>
+		</tr>
+		<tr>
+			<td>Telephone No</td>
+			<td colspan="3"><input class="input-xlarge" type="text"
+				placeholder="Telephone No"></td>
+		</tr>
+		<tr>
+			<td>Email id</td>
+			<td colspan="3"><input class="input-xlarge" type="text"
+				placeholder="Email id"></td>
+		</tr>
+	</table>
+	
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="2"><strong>2. Type of Exporter</strong></td>
+		</tr>
+		<tr>
+			<td width="275px">i. Merchant Exporter</td>
+			<td style="padding-left: 50px;"> <label class="checkbox"><input type="checkbox" name="exporter_type" value=""></label></td>
+		</tr>
+		<tr>
+			<td>ii. Manufacturer Exporter</td>
+			<td style="padding-left: 50px;"><label class="checkbox"><input type="checkbox" name="exporter_type" value=""></label></td>
+		</tr>
+		<tr>
+			<td>iii. Service Provider</td>
+			<td style="padding-left: 50px;"><label class="checkbox"><input type="checkbox" name="exporter_type" value=""></label></td>
+		</tr>
+		<tr>
+			<td>iv. Others( please specify)</td>
+			<td style="padding-left: 50px;"><label class="checkbox"><input type="checkbox" name="exporter_type" value=""></label></td>
+		</tr>
+		<tr>
+			<td>v. Merchant cum Manufacturer</td>
+			<td style="padding-left: 50px;"><label class="checkbox"><input type="checkbox" name="exporter_type" value=""></label></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="2"><strong>3. RCMC Details</strong></td>
+		</tr>
+		<tr>
+			<td width="275px">i.  RCMC Number</td>
+			<td> <input class="input-block-level" type="text" placeholder="RCMC Number"></td>
+		</tr>
+		<tr>
+			<td>ii. Date of Issue and valid upto</td>
+			<td><input class="input-block-level" type="text" placeholder="Date of Issue and valid upto"></td>
+		</tr>
+		<tr>
+			<td>iii. Issuing Authority</td>
+			<td><input class="input-block-level" type="text" placeholder="Issuing Authority"></td>
+		</tr>
+		<tr>
+			<td>iv. Products for which registered</td>
+			<td><input class="input-block-level" type="text" placeholder="Products for which registered"></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="2"><strong>4. Industrial Registration Details</strong></td>
+		</tr>
+		<tr>
+			<td width="275px">i. SSI / IEM/LOI or IL Registration Number</td>
+			<td> <input class="input-block-level" type="text" placeholder="Registration Number"></td>
+		</tr>
+		<tr>
+			<td>ii. Date of Issue</td>
+			<td><input class="input-block-level" type="text" placeholder="Date of Issue"></td>
+		</tr>
+		<tr>
+			<td>iii. Issuing Authority</td>
+			<td><input class="input-block-level" type="text" placeholder="Issuing Authority"></td>
+		</tr>
+		<tr>
+			<td>iv. Products for which registered</td>
+			<td><input class="input-block-level" type="text" placeholder="Products for which registered"></td>
+		</tr>
+	</table>
+		<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="2"><strong>5. Service Tax Registration Details ( In case of Service providers registered with Service Tax authorities)</strong></td>
+		</tr>
+		<tr>
+			<td width="275px">i. Service Tax Registration Number</td>
+			<td> <input class="input-block-level" type="text" placeholder="Registration Number"></td>
+		</tr>
+		<tr>
+			<td>ii. Issuing Authority</td>
+			<td><input class="input-block-level" type="text" placeholder="Issuing Authority"></td>
+		</tr>
+		<tr>
+			<td>iii. Services for which registered</td>
+			<td><input class="input-block-level" type="text" placeholder="Services for which registered"></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="2"><strong>6. Status House Details</strong></td>
+		</tr>
+		<tr>
+			<td width="275px">i. EH/SEH/TH/STH/PTH</td>
+			<td> <input class="input-block-level" type="text" placeholder="EH/SEH/TH/STH/PTH"></td>
+		</tr>
+		<tr>
+			<td>ii. Certificate Number</td>
+			<td><input class="input-block-level" type="text" placeholder="Certificate Number"></td>
+		</tr>
+		<tr>
+			<td>iv. Issuing Authority</td>
+			<td><input class="input-block-level" type="text" placeholder="Issuing Authority"></td>
+		</tr>
+	</table>
+		<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="2"><strong>7. Excise Details (For those registered with Central Excise Authority )</strong></td>
+		</tr>
+		<tr>
+			<td width="275px">i. Excise Registration Number</td>
+			<td> <input class="input-block-level" type="text" placeholder="Excise Registration Number"></td>
+		</tr>
+		<tr>
+			<td>ii. Date of Issue / Issuing Authority</td>
+			<td><input class="input-block-level" type="text" placeholder="Date of Issue / Issuing Authority"></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="2"><strong>8. Application Fee Details</strong></td>
+		</tr>
+		<tr>
+			<td width="275px">Amount (Rs)</td>
+			<td> <input class="input-block-level" type="text" placeholder="Amount"></td>
+		</tr>
+		<tr>
+			<td>Electronic Fund Transfer No.</td>
+			<td><input class="input-block-level" type="text" placeholder="Electronic Fund Transfer No."></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="2"><strong>9. Sector Classification of Capital Goods sought to be imported under the Scheme </strong></td>
+		</tr>
+		<tr>
+			<td width="275px">i. Industrial sector</td>
+			<td style="padding-left: 50px;"><label class="checkbox"><input type="checkbox" name="exporter_type" value=""></label></td>
+		</tr>
+		<tr>
+			<td>ii. Agricultural sector</td>
+			<td style="padding-left: 50px;"><label class="checkbox"><input type="checkbox" name="exporter_type" value=""></label></td>
+		</tr>
+		<tr>
+			<td>iii. Service sector</td>
+			<td style="padding-left: 50px;"><label class="checkbox"><input type="checkbox" name="exporter_type" value=""></label></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td><strong>10. Products to be exported/services to be rendered. </strong></td><td><strong>ITC HS CODE</strong></td>
+		</tr>
+		<tr>
+			<td width="450px"><input class="input-block-level" type="text" placeholder="Products to be exported/services to be rendered."></td>
+			<td ><input class="input-block-level" type="text" placeholder="ITC HS CODE"></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="6"><strong>11. Whether imports to be made are under Technological Upgradation Scheme  If Yes, give following details: </strong></td>
+			<td> <label class="radio"> <input type="radio" name="optionsRadios"
+					id="optionsRadios1" value="option1" checked> Yes
+			</label> <label class="radio"> <input type="radio"
+					name="optionsRadios" id="optionsRadios2" value="option2"> No
+			</label></td>
+		</tr>
+		<tr>
+			<td>Sr No</td>
+			<td>EPCG Authorisation No</td>
+			<td>EPCG Authorisation Date</td>
+			<td>CIF Value / duty saved</td>
+			<td>E.O. fixed in freely convertible currency</td>
+			<td>Percentage of E.O. fulfilled</td>
+			<td>Expiry date of E.O. period</td>
+		</tr>
+		<tr>
+			<td><input class="input-mini" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="3"><strong>12. Details of exports of same/similar product/services made in the preceding 3 licensing years (excluding exports against all pending EPCG Authorizations) </strong></td>
+		</tr>
+		<tr>
+			<td>Sl. No.</td>
+			<td>Financial Year</td>
+			<td>Total FOB Value of exports/ services rendered for the same/similar product /service(Rs)</td>
+		</tr>
+		<tr>
+			<td><input class="input-mini" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+		</tr>
+		<tr>
+			<td colspan="2">Total</td>
+			<td><input class="input-block-level" type="text" placeholder="Total"></td>
+		</tr>
+		<tr>
+			<td colspan="2">Average Export Performance</td>
+			<td><input class="input-block-level" type="text" placeholder="Average Export Performance"></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="9"><strong>13. Details of pending EPCG Authorizations already obtained </strong></td>
+		</tr>
+		<tr>
+			<td>Authorisation No and Date</td>
+			<td>RA which issued Authorisation</td>
+			<td>CIF/Duty Saved Value(Rs)</td>
+			<td>EO fixed on duty saved amount (in freely convertible currency) / INR</td>
+			<td>Specific EO fulfilled on duty saved amount (Rs)</td>
+			<td>Annual Average EO fixed (Rs.)</td>
+			<td>Average EO due till last financial year (Rs)</td>
+			<td>Average EO fulfilled till last financial year (Rs)</td>
+			<td>Expiry Date of EO period</td>
+		</tr>
+		<tr>
+			<td><input class="input-mini" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="6"><strong>14. Details of Freely Importable Capital Goods applied for import </strong></td>
+		</tr>
+		<tr>
+			<td>S No</td>
+			<td>Description of the items of import</td>
+			<td>ITC(HS) Code</td>
+			<td>Nature of Capital Goods sought to be imported +</td>
+			<td>Quantity (Nos)</td>
+			<td>Primary Use of Capital Goods sought to be imported ++</td>
+		</tr>
+		<tr>
+			<td><input class="input-mini" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="8"><strong>15. Details of Restricted Capital Goods applied for import</strong></td>
+		</tr>
+		<tr>
+			<td>S No</td>
+			<td>Description of the items of import</td>
+			<td>ITC(HS) Code</td>
+			<td>Nature of Capital Goods sought to be imported +</td>
+			<td>Primary Use of Capital Goods sought to be imported ++</td>
+			<td>Technical Specifications/Model No. etc</td>
+			<td>Quantity (Nos)</td>
+			<td>CIF Value in freely convertible currency(USD)</td>
+		</tr>
+		<tr>
+			<td><input class="input-mini" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+		</tr>
+	</table>
+	<div>
+		+ - whether Capital Goods / Spares / Tools /Jigs / Fixtures / Dies / Moulds /spare Refractories / Catalyst/ <br/>
+		++ - whether used for Pre Production activity/ Production activity/ Post Production activity/ for rendering Services <br/>
+		(From amongst col.14 and 15 above please fill up whichever is applicable. In case applicant desires to import both restricted and freely importable capital goods appropriate information should be given in both the cols.<br/><br/>
+	</div>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="5"><strong>16. Details of Duty Saved</strong></td>
+		</tr>
+		<tr>
+			<td>Total effective Customs duty on items to be Imported / deemed to be imported (in %) +</td>
+			<td>Duty to be levied under the Scheme (in %)</td>
+			<td>Duty Saved (in %)</td>
+			<td>CIF Value of Imports /deemed imports (in Rs)</td>
+			<td>Duty saved (in Rs</td>
+		</tr>
+		<tr>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+		</tr>
+	</table>
+	<div>
+	Note: <br/> <br/>
+	i. + In case of indigenous sourcing of CG, duty saved is to be calculated on notional Customs duties saved on FOR value of capital goods as per para 5.7 A of FTP. <br/>
+	ii. In case of EPCG Authorisation for Projects as per para 5.1B of Policy, the basic customs duty would be 7.5%. Wherever, CVD is paid in cash and not subsequently Cenvated, CVD would not be taken for computation of net duty saved. <br/> <br/>
+	</div>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="5" ><strong>17. Details of Export Obligation and Average Export Obligation to be imposed:</strong></td>
+		</tr>
+		<tr>
+			<td rowspan="4">Total duty saved (Rs.) as per column no.5 at .No.15.</td>
+		</tr>
+		<tr>
+			<td colspan="2">Export Obligation (as a multiple of duty saved) to be imposed</td>
+			<td rowspan="2" colspan="2">Average Export Obligation to be imposed </td>
+			<td colspan="2">Export obligation period to be imposed (in years) </td>
+		</tr>
+		<tr>
+			<td colspan="2">6 times ++</td>
+			<td>8 Years</td><td>12 years +++</td>
+		</tr>
+		<tr>
+			<td >(Rs.)</td><td >(USD)</td>
+			<td >(Rs.)</td><td >(USD)</td>
+			<td colspan="2">(indicate specifically)</td>
+		</tr>
+	
+		<tr>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td><input class="input-block-level" type="text" placeholder=""></td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder=""></td>
+		</tr>
+	</table>
+	<div>
+	++ 		In case of SSI units and technological upgradation scheme. <br/>
+	+++ i.  In case of agro units and units in cottage and tiny sector. <br/>
+    	ii. In respect of EPCG licenses with a duty saved of Rs.100 crore or more. <br/>
+	</div>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="2"><strong>18. Port of Registration (for the purpose of imports) : </strong></td><td><input class="input-block-level" type="text" placeholder=""></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="2"><strong>19. Address of the factory/premises of the applicant where the capital goods to be imported are proposed to be installed </strong></td>
+		</tr>
+		<tr>
+			<td><textarea rows="3"></textarea></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td colspan="5"><strong>20. In case the proposed CG sought to be imported are to be used by the supporting manufacturer, please furnish  </strong></td>
+		</tr>
+		<tr><td width="450px">i. Name of the supporting manufacturer</td><td><input class="input-block-level" type="text" placeholder=""></td></tr>
+		<tr><td>ii. Address of the supporting manufacturer</td><td><input class="input-block-level" type="text" placeholder=""></td></tr>
+		<tr><td>iii. SSI/LOI/IL regn. no. and date</td><td><input class="input-block-level" type="text" placeholder=""></td></tr>
+		<tr><td>iv. Products endorsed on SSI/IL/IEM</td><td><input class="input-block-level" type="text" placeholder=""></td></tr>
+		<tr><td>v.  Excise Registration No. and issuing authority. ( if applicable) :-</td><td><input class="input-block-level" type="text" placeholder=""></td></tr>
+	</table>
+	<div style="text-align: center;">
+		<button type="submit" class="btn btn-primary">Submit Form</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="button" class="btn">Cancel</button>
+	</div>
 </div>
