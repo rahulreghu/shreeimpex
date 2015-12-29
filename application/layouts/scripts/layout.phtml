@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shree Impex</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<base href="<?php echo $this->config['url']['base'];?>" />
+<!-- Le styles -->
+<link href="styles/bootstrap.css" rel="stylesheet">
+<link href="styles/style.css" rel="stylesheet">
+
+<link href="styles/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="scripts/html5shiv.js"></script>
+    <![endif]-->
+
+<!-- Fav and touch icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="ico/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="ico/favicon.png">
+</head>
+
+<body>
+	
+	<div class="container">
+		<?php if(isset($this->session->user)){?>
+		<h3 class="muted">Shree Impex</h3>
+		<div class="masthead">
+			
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<ul class="nav">
+							<li><a href="home">Home</a></li>
+							<!-- <li><a href="#">Projects</a></li> -->
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="#"> EPCG <b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu" role="menu"
+									aria-labelledby="dropdownMenu">
+									<li><a tabindex="-1" href="epcg">View EPCG</a></li>
+									<li><a tabindex="-1" href="epcg/addepcg">Add EPCG</a></li>
+									<!-- <li><a tabindex="-1" href="#">Something else here</a></li>
+									<li class="divider"></li>
+									<li><a tabindex="-1" href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Contact</a></li>
+							<li><a href="index/logout">Sign Out</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /.navbar -->
+		</div>
+
+		<div id="content">
+		<?php echo $this->layout()->content;?>
+		<br style="clear: both;">
+		</div>
+
+		<hr>
+		<?php }else{ ?>
+			<h3 class="muted">Shree Impex</h3>
+			<?php echo $this->layout()->content; ?>
+		
+		<?php }?>
+		<div class="footer">
+			<p>&copy; Shree Impex 2015</p>
+		</div>
+
+	</div>
+	
+	<!-- /container -->
+
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="scripts/jquery.js"></script>
+	<script src="scripts/bootstrap-transition.js"></script>
+	<script src="scripts/bootstrap-alert.js"></script>
+	<script src="scripts/bootstrap-modal.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/bootstrap-scrollspy.js"></script>
+	<script src="scripts/bootstrap-tab.js"></script>
+	<script src="scripts/bootstrap-tooltip.js"></script>
+	<script src="scripts/bootstrap-popover.js"></script>
+	<script src="scripts/bootstrap-button.js"></script>
+	<script src="scripts/bootstrap-collapse.js"></script>
+	<script src="scripts/bootstrap-carousel.js"></script>
+	<script src="scripts/bootstrap-typeahead.js"></script>
+
+</body>
+</html>
