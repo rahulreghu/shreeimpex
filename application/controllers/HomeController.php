@@ -24,4 +24,8 @@ class HomeController extends Zend_Controller_Action
 		//print_r($this->_session->user);
 		echo 'hai';
 	}
+	
+	public function contactusAction(){
+		
+	}
 }

@@ -7,20 +7,39 @@
 body {
 	background-color: #f5f5f5;
 }
+
+.signinLabel{
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+#signinCheckbox{
+	margin-top: 10px;
+}
+
+#forgotPassword{
+	color: #0091ea;
+}
 </style>
    
 <form class="form-signin" method="post" action="index" onsubmit='return validation();'>
-	<h3 class="form-signin-heading">Sign In</h3>
+	<h4 class="form-signin-heading" style="text-align: center;">SIGN IN</h4>
+	<hr>
 	<?php if (isset($this->errors)){?>
 		<div class="alert alert-error" id="login-form-error"><?php echo $this->errors['invalid_credentials'];?> </div>
 	<?php }?>
 	<div class="alert alert-error" id="login-form-error" style="display: none;"> </div>
+	<label for="username" class="signinLabel">USER NAME</label>
 	<input type="text" id="username" name="username" class="input-block-level" placeholder="Username"> 
+	<label for="password" class="signinLabel">PASSWORD</label>
 	<input type="password" id="password" name="password" class="input-block-level" placeholder="Password"> 
-	<label class="checkbox"> <input type="checkbox" value="remember-me">
+	<input class="btn btn-block btn-primary" type="submit" name="submit" value="Sign In">
+	<label class="checkbox" id="signinCheckbox"> <input type="checkbox" value="remember-me">
 		Remember me
 	</label>
-	<input class="btn btn-primary" type="submit" name="submit" value="Sign In">
+	<label id="forgotPassword" >Forgot Password?</label>
+	
 </form>
 <?php }?>
 

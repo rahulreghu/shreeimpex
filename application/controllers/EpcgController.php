@@ -1,5 +1,5 @@
 <?php
-class EPCGController extends Zend_Controller_Action
+class EpcgController extends Zend_Controller_Action
 {
 	protected $_session;
 
