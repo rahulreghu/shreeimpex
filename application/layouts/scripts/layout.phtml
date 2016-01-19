@@ -12,6 +12,7 @@
 <link href="styles/style.css" rel="stylesheet">
 
 <link href="styles/bootstrap-responsive.css" rel="stylesheet">
+<script src="scripts/jquery.js"></script>
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -31,12 +32,11 @@
 </head>
 
 <body>
-	
-	<div class="container">
+	<div class="container"> 
 		<?php if(isset($this->session->user)){?>
+		<div id="welcomeTag">Welcome <?php echo ucwords($this->session->user->user_firstname).' '.ucwords($this->session->user->user_lastname)?></div>
 		<h3 class="muted" id="logo"><img alt="shreeimpex" src="images/shreeimpex.jpg"></h3>
 		<div class="masthead">
-			
 			<div class="navbar">
 				<div class="navbar-inner">
 					<div class="container">
@@ -58,6 +58,9 @@
 							<li><a href="#">About</a></li>
 							<li><a href="#">Services</a></li>
 							<li><a href="home/contactus">Contact</a></li>
+							<?php if($this->session->user->user_role == 1){?>
+							<li><a href="settings">Settings</a></li>
+							<?php }?>
 							<li><a href="index/logout">Sign Out</a></li>
 						</ul>
 					</div>
@@ -65,7 +68,6 @@
 			</div>
 			<!-- /.navbar -->
 		</div>
-
 		<div id="content">
 		<?php echo $this->layout()->content;?>
 		<br style="clear: both;">
@@ -88,7 +90,6 @@
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="scripts/jquery.js"></script>
 	<script src="scripts/bootstrap-transition.js"></script>
 	<script src="scripts/bootstrap-alert.js"></script>
 	<script src="scripts/bootstrap-modal.js"></script>

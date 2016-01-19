@@ -1,0 +1,365 @@
+<?php 
+$active = "active";
+$inactive = "";
+$view_edit_users_class =  $inactive;
+$view_edit_users_tab = $inactive;
+$add_users_class = $inactive;
+$add_users_tab = $inactive;
+if(isset($this->activetab)){
+	switch ($this->activetab){
+		case 'add_user':
+		$add_users_class = 'class ='.$active;
+		$add_users_tab = $active;
+		break;
+		default:
+		$view_edit_users_class = $active;
+		$view_edit_users_tab = $active;
+	}
+}else{
+	$view_edit_users_class = 'class ='.$active;
+	$view_edit_users_tab = $active;
+}
+?>
+<div class="tabbable tabs-below">
+	<ul class="nav nav-tabs">
+		<li <?= $view_edit_users_class ?>><a href="#lA" data-toggle="tab">View Users</a></li>
+		<li <?= $add_users_class ?>><a href="#lB" data-toggle="tab">Add Users</a></li>
+	</ul>
+	<div class="tab-content" style="padding-top: 4px;">
+		<div class="tab-pane <?= $view_edit_users_tab ?>" id="lA">
+			<div id="view_users">
+			<table class="table table-bordered table-hover" >
+				<tr>
+					<th style="text-align: center;">User Name</th>
+					<th style="text-align: center;">First Name</th>
+					<th style="text-align: center;">Last Name</th>
+					<th style="text-align: center;">Role</th>
+					<th style="text-align: center;">Status</th>
+					<th style="text-align: center;">Last Access</th>
+					<th style="text-align: center;">Action</th>
+				</tr>
+				<?php foreach($this->allUsers as $users){?>
+				<tr>
+					<td style="text-align: center;"><?php echo $users['user_name']?></td>
+					<td style="text-align: center;"><?php echo $users['user_firstname']?></td>
+					<td style="text-align: center;"><?php echo $users['user_lastname']?></td>
+					<td style="text-align: center;"><?php echo $users['user_role'] == 1 ? 'Admin':'Users'?></td>
+					<td style="text-align: center;"><?php echo $users['user_status'] == 1 ? 'Active':'Inactive'?></td>
+					<td style="text-align: center;"><?php echo $users['user_last_login']?></td>
+					<td style="text-align: center;"> 
+						<button class="btn btn-info" type="button" id="edit_userid_<?php echo $users['user_id']?>" name="edit">Edit</button>
+						&nbsp;&nbsp;&nbsp; 
+						<?php
+						if ($users ['user_status'] == 1) {
+							$class = "btn btn-warning";
+							$name = "disable";
+							$html = "Disable";
+						} else {
+							$class = "btn btn-success";
+							$name = "enable";
+							$html = "Enable";
+						}
+						?>
+						<button class="<?php echo $class?>" type="button" id="<?php echo $name?>_userid_<?php echo $users['user_id']?>" name="<?php echo $name?>"><?php echo $html?></button>
+						&nbsp;&nbsp;&nbsp; 
+						<button class="btn btn-danger" type="button" id="delete_userid_<?php echo $users['user_id']?>" name="delete">Delete</button>
+					</td>
+				</tr>
+				<?php }?>
+			</table>
+			<div class="pagination pagination-centered" style="margin-bottom: 0px;">
+			  <ul>
+			    <li><a >Prev</a></li>
+			    <li><a >1</a></li>
+			    <li><a >Next</a></li>
+			  </ul>
+			</div>
+			</div>
+			<div id="edit_users" style="display: none;">
+				<table class="table table-bordered">
+				<tr>
+					<td>
+					<?php if($this->error){?>
+						<div id="error_message" class="alert alert-error"><?php echo $this->error;?></div>
+					<?php }?>
+					<?php if($this->success){?>
+						<div id="error_message" class="alert alert-success"><?php echo $this->success;?></div>
+					<?php }?>
+					<div id="error_message" class="alert alert-success" style="display: none;">
+					</div>
+						<form class="form-horizontal" action="settings/edit-user" method="post" onsubmit="return formValidateEdit();">
+							<div class="control-group" style="margin-top: 10px;">
+								<label class="control-label" for="edit_username">User Name</label>
+								<div class="controls">
+									<input type="text" id="edit_username" name="user_name" placeholder="User Name" readonly="readonly">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="edit_firstname">First Name</label>
+								<div class="controls">
+									<input type="text" id="edit_firstname" name="user_firstname"
+										placeholder="First Name">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="edit_lastname">Last Name</label>
+								<div class="controls">
+									<input type="text" id="edit_lastname" name="user_lastname"
+										placeholder="Last Name">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="edit_email">Email</label>
+								<div class="controls">
+									<input type="text" id="edit_email" name="user_email"
+										placeholder="Email">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="edit_password">Password</label>
+								<div class="controls">
+									<input type="password" id="edit_password" name="user_password"
+										placeholder="Password">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="edit_confirm_password">Confirm Password</label>
+								<div class="controls">
+									<input type="password" id="edit_confirm_password" name="user_confirm_password"
+										placeholder="Confirm Password">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="edit_user_role">Role</label>
+								<div class="controls">
+									<select name="user_role" id="edit_user_role">
+									  <option value="2">User</option>
+									  <option value="1">Admin</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="edit_user_status">User Status</label>
+								<div class="controls">
+									<select name="user_role" id="edit_user_status">
+									  <option value="1">Active</option>
+									  <option value="0">Inactive</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<button type="submit" class="btn" value="submit">Submit</button>
+									<span style="padding-right: 88px;"></span>
+									<button type="button" class="btn" value="back" onclick="backToView()">Back</button>
+								</div>
+							</div>
+						</form>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+		<div class="tab-pane <?= $add_users_tab ?>" id="lB">
+			<table class="table table-bordered">
+				<tr>
+					<td>
+					<?php if($this->error){?>
+						<div id="error_message" class="alert alert-error"><?php echo $this->error;?></div>
+					<?php }?>
+					<?php if($this->success){?>
+						<div id="error_message" class="alert alert-success"><?php echo $this->success;?></div>
+					<?php }?>
+					<div id="error_message" class="alert alert-success" style="display: none;">
+					</div>
+						<form class="form-horizontal" action="settings/add-user" method="post" onsubmit="return formValidate();">
+							<div class="control-group" style="margin-top: 10px;">
+								<label class="control-label" for="username">User Name</label>
+								<div class="controls">
+									<input type="text" id="username" name="user_name" placeholder="User Name">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="firstname">First Name</label>
+								<div class="controls">
+									<input type="text" id="firstname" name="user_firstname"
+										placeholder="First Name">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="lastname">Last Name</label>
+								<div class="controls">
+									<input type="text" id="lastname" name="user_lastname"
+										placeholder="Last Name">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="email">Email</label>
+								<div class="controls">
+									<input type="text" id="email" name="user_email"
+										placeholder="Email">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="password">Password</label>
+								<div class="controls">
+									<input type="password" id="password" name="user_password"
+										placeholder="Password">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="confirm_password">Confirm Password</label>
+								<div class="controls">
+									<input type="password" id="confirm_password" name="user_confirm_password"
+										placeholder="Confirm Password">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="user_role">Role</label>
+								<div class="controls">
+									<select name="user_role" id="user_role">
+									  <option value="2">User</option>
+									  <option value="1">Admin</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<button type="submit" class="btn" value="submit">Submit</button>
+								</div>
+							</div>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+	</div>
+</div>
+<script>
+	//view users
+	$("button[name = 'edit'], button[name = 'disable'], button[name = 'delete'], button[name = 'enable']").on("click", function() {
+		attrName = $(this).attr("id");
+		var res = attrName.split("_");
+		if(res[0] == 'delete' || res[0] == 'disable' || res[0] == 'enable'){
+			var proceed = false;
+			var r = confirm("Are you sure you want to "+res[0]+" this user?");
+			if (r == true) {
+				proceed = true;
+			} 
+			if(proceed){
+				$.ajax({
+				    url: '/public/settings/delete-user?id='+res[2]+'&execute='+res[0],
+				    type: 'GET',
+				    dataType: "json",
+				    success: function(result) {
+				    	//TO DO:
+				    }
+				});
+				//TO DO: 
+				if(res[0] == 'disable'){
+					$(this).attr('class', 'btn btn-success');
+					$(this).attr('name', 'enable');
+					$(this).attr('id', 'enable_userid_'+res[2]);
+					$(this).text('Enable');
+				}
+				if(res[0] == 'enable'){
+					$(this).attr('class', 'btn btn-warning');
+					$(this).attr('name', 'disable');
+					$(this).attr('id', 'disable_userid_'+res[2]);
+					$(this).text('Disable');
+				}
+				if(res[0] == 'delete'){
+					 $(this).parents('tr').remove();  
+				}
+			}
+		}else{
+			$.ajax({
+			    url: '/public/settings/edit-user?id='+res[2],
+			    type: 'GET',
+			    dataType: "json",
+			    success: function(result) {
+			    	if(result.status == 1){
+			    		$('#view_users').hide();
+			    		$('#edit_users').show();
+			    		$("#edit_username").val(result.message.user_name);
+			    		$("#edit_firstname").val(result.message.user_firstname);
+			    		$("#edit_lastname").val(result.message.user_lastname);
+			    		$("#edit_email").val(result.message.user_email);
+			    		$("#edit_password").val(result.message.user_password);
+			    		$("#edit_confirm_password").val(result.message.user_password);
+			    		if(result.message.user_status == 1){
+							var user_status = 'Active';
+					    }else{
+					    	var user_status = 'Inactive';
+						}
+			    		$("#edit_user_status").val(user_status);
+						//alert(result.message.user_email)
+			    	}
+			    }
+			});
+		}
+	});
+
+	// add users
+	function formValidate(){
+		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+		var response = true;
+		var error = "";
+		if($("#username").val() == ""){
+			error = "Username field cannot be empty"+'<br/>';
+			response = false;
+		}
+		if($("#firstname").val() == ""){
+			error += "First Name field cannot be empty"+'<br/>';
+			response = false;
+		}
+		if($("#lastname").val() == ""){
+			error += "Last Name field cannot be empty"+'<br/>';
+			response = false;
+		}
+		if($("#email").val() == ""){
+			error += "Email field cannot be empty"+'<br/>';
+			response = false;
+		}
+		if($("#email").val() != ""){
+			 if(!emailReg.test( $("#email").val() )){
+				error += "Please enter valid email address"+'<br/>';
+				response = false;
+			 }
+		}
+		if($("#password").val() == ""){
+			error += "Password field cannot be empty"+'<br/>';
+			response = false;
+		}
+		if($("#confirm_password").val() == ""){
+			error += "Confirm Password field cannot be empty"+'<br/>';
+			response = false;
+		}
+		if($("#password").val() != "" && $("#confirm_password").val() != ""){
+			if($("#password").val() !== $("#confirm_password").val()){
+				error += "Passwords do not match"+'<br/>';
+				response = false;
+			}
+		}
+		if(response){
+			$('#error_message').hide();
+			return true;
+		}else{
+			$("#error_message").attr('class', 'alert alert-error');
+			$('#error_message').show();
+			$("#error_message").html(error);
+			return false;
+		}
+	}
+
+	//back to View
+	function backToView(){
+		$('#view_users').show();
+    	$('#edit_users').hide();
+	}
+
+	function formValidateEdit(){
+		return false;
+	}
+</script>

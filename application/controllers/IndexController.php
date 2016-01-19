@@ -22,7 +22,7 @@ class IndexController extends Zend_Controller_Action
      	if(isset($_POST['submit']) && $_POST['submit'] == "Sign In"){
      		$login_data = $_POST;
      		$user = Model_Users::getByUserName($login_data['username']);
-     		if(!empty($user['user_name']) && $user['user_pass'] == $login_data['password'] ){
+     		if(!empty($user['user_name']) && $user['user_password'] == $login_data['password'] ){
      			Zend_Session::regenerateId();
      			$this->_session->user = $user;
      			$this->_redirect('home');

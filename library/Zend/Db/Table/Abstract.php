@@ -1574,7 +1574,6 @@ abstract class Zend_Db_Table_Abstract
      */
     protected function _fetch(Zend_Db_Table_Select $select)
     {
-    	echo $select;
         $stmt = $this->_db->query($select);
         $data = $stmt->fetchAll(Zend_Db::FETCH_ASSOC);
         return $data;

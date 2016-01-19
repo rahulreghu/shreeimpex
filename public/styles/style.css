@@ -113,3 +113,9 @@
       #logo{
       	color: #0088CC;
       }
+      
+      #welcomeTag{
+      	float: right;
+      	padding: 40px 20px 0px 0px; 
+      	font-weight: bold;
+      }
