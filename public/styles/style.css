@@ -2,6 +2,7 @@
       body {
         padding-top: 5px;
         padding-bottom: 10px;
+       
       }
 
       /* Custom container */
@@ -40,41 +41,63 @@
       }
 
 
-      /* Customize the navbar links to be fill the entire space of the .navbar */
-      .navbar .navbar-inner {
-        padding: 0;
-      }
-      .navbar .nav {
-        margin: 0;
-        display: table;
-        width: 100%;
-      }
-      .navbar .nav li {
-        display: table-cell;
-        width: 1%;
-        float: none;
-      }
-      .navbar .nav li a {
-        font-weight: bold;
-        text-align: center;
-        border-left: 1px solid rgba(255,255,255,.75);
+         /* CUSTOMIZE THE NAVBAR
+    -------------------------------------------------- */
+
+    /* Special class on .container surrounding .navbar, used for positioning it into place. */
+    .navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 20px;
+      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+    .navbar-wrapper .navbar {
+
+    }
+
+    /* Remove border and change up box shadow for more contrast */
+    .navbar .navbar-inner {
+      border: 0;
+      padding-left: 2px;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    /* Navbar links: increase padding for taller navbar */
+    .navbar .nav > li > a {
+      padding: 10px 20px;
+       border-left: 1px solid rgba(255,255,255,.75);
         border-right: 1px solid rgba(0,0,0,.1);
-      }
-      .navbar .nav li:first-child a {
-        border-left: 0;
-        border-radius: 3px 0 0 3px;
-      }
-      .navbar .nav li:last-child a {
-        border-right: 0;
-        border-radius: 0 3px 3px 0;
-      }
+         font-weight: bold;
+        text-align: center;
+        color: #626262;
+        
+    }
+
+    /* Offset the responsive button for proper vertical alignment */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
       
-        .form-signin {
+      .form-signin {
         max-width: 300px;
         padding: 19px 29px 29px;
         margin: 0 auto 20px;
         background-color: #fff;
-        border: 1px solid #e5e5e5;
+        border: 1px solid #7b7b7b;
         -webkit-border-radius: 5px;
            -moz-border-radius: 5px;
                 border-radius: 5px;
@@ -104,10 +127,14 @@
 	    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
         -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+         min-height: 600px;
       }
       
       .footer{
-      	 font-size: 12px;
+      	 font-size: 11px;
+      	 text-align: center;
+      	 font-weight: bold;
+      	 padding-top: 20px;
       }
       
       #logo{
@@ -115,7 +142,14 @@
       }
       
       #welcomeTag{
+      	padding: 0px 5px 0px 0px; 
       	float: right;
-      	padding: 40px 20px 0px 0px; 
       	font-weight: bold;
+      	color: #f2f2f2;
+      	font-size: 12px;
+      }
+      
+      #logout{
+      	text-decoration: none;
+      	color: #f2f2f2;
       }

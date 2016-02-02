@@ -9,6 +9,9 @@ class SettingsController extends Zend_Controller_Action
 		$this->_session = $session;
 		$this->view->session = $session;
 		$this->_helper->layout()->setLayout('layout');
+		if($this->_session->user->user_role != 1){
+			$this->_helper->redirector('index', 'index');
+		}
 	}
 	
 	public function indexAction()

@@ -79,14 +79,6 @@ if(isset($this->activetab)){
 				<table class="table table-bordered">
 				<tr>
 					<td>
-					<?php if($this->error){?>
-						<div id="error_message" class="alert alert-error"><?php echo $this->error;?></div>
-					<?php }?>
-					<?php if($this->success){?>
-						<div id="error_message" class="alert alert-success"><?php echo $this->success;?></div>
-					<?php }?>
-					<div id="error_message" class="alert alert-success" style="display: none;">
-					</div>
 						<form class="form-horizontal" action="settings/edit-user" method="post" onsubmit="return formValidateEdit();">
 							<div class="control-group" style="margin-top: 10px;">
 								<label class="control-label" for="edit_username">User Name</label>

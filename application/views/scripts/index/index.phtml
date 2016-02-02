@@ -4,9 +4,6 @@
 </script>
 <?php }else{?>
 <style type="text/css">
-body {
-	background-color: #f5f5f5;
-}
 
 .signinLabel{
 	font-size: 14px;
@@ -22,25 +19,27 @@ body {
 	color: #0091ea;
 }
 </style>
-   
-<form class="form-signin" method="post" action="index" onsubmit='return validation();'>
-	<h4 class="form-signin-heading" style="text-align: center;">SIGN IN</h4>
+<div style="margin-top: 65px;">
+	<form class="form-signin" method="post" action="index" onsubmit='return validation();'>
+	<div id="sign-in"><h4 class="form-signin-heading" style="text-align: center;">SIGN IN</h4></div>
 	<hr>
 	<?php if (isset($this->errors)){?>
 		<div class="alert alert-error" id="login-form-error"><?php echo $this->errors['invalid_credentials'];?> </div>
 	<?php }?>
 	<div class="alert alert-error" id="login-form-error" style="display: none;"> </div>
-	<label for="username" class="signinLabel">USER NAME</label>
+	<label for="username" class="signinLabel" style="text-align: center;">USER NAME</label>
 	<input type="text" id="username" name="username" class="input-block-level" placeholder="Username"> 
-	<label for="password" class="signinLabel">PASSWORD</label>
+	<label for="password" class="signinLabel"  style="text-align: center;">PASSWORD</label>
 	<input type="password" id="password" name="password" class="input-block-level" placeholder="Password"> 
-	<input class="btn btn-block btn-primary" type="submit" name="submit" value="Sign In">
-	<label class="checkbox" id="signinCheckbox"> <input type="checkbox" value="remember-me">
+	<div style="height: 15px">&nbsp;</div>
+	<input class="btn btn-block btn-primary" type="submit" name="submit" value="SIGN IN" style="height: 38px">
+	<!-- <label class="checkbox" id="signinCheckbox"> <input type="checkbox" value="remember-me">
 		Remember me
-	</label>
-	<label id="forgotPassword" >Forgot Password?</label>
+	</label> -->
+	<div style="text-align: center;padding-top: 18px;"><label id="forgotPassword" >Forgot Password?</label></div>
 	
 </form>
+</div>
 <?php }?>
 
 <script>

@@ -29,21 +29,31 @@
 <link rel="apple-touch-icon-precomposed"
 	href="ico/apple-touch-icon-57-precomposed.png">
 <link rel="shortcut icon" href="ico/favicon.png">
+<style>
+body {
+	background-color: #fff;
+	background-image: url("images/bg.png");
+	background-repeat: repeat-x;
+}
+</style>
 </head>
 
 <body>
 	<div class="container"> 
 		<?php if(isset($this->session->user)){?>
-		<div id="welcomeTag">Welcome <?php echo ucwords($this->session->user->user_firstname).' '.ucwords($this->session->user->user_lastname)?></div>
-		<h3 class="muted" id="logo"><img alt="shreeimpex" src="images/shreeimpex.jpg"></h3>
+		<div style="float: left;"><h3 class="muted" id="logo"><img alt="shreeimpex" src="images/shreeimpex.png"></h3></div>
+		<div id="welcomeTag">Welcome <?php echo ucwords($this->session->user->user_firstname).' '.ucwords($this->session->user->user_lastname)?> 
+		<span style=" border-left: 1px solid rgba(70,70,70,.75); padding-left: 4px;"></span><a id="logout" href="index/logout"> Log Out</a></div>
+		<div style="clear: both;"></div>
+		<div style="padding-top: 50px"></div>
 		<div class="masthead">
 			<div class="navbar">
 				<div class="navbar-inner">
 					<div class="container">
 						<ul class="nav">
 							<li><a href="home">Home</a></li>
-							<!-- <li><a href="#">Projects</a></li> -->
-							<li class="dropdown"><a class="dropdown-toggle"
+							<!-- <li><a href="#">Projects</a></li> 
+							<!-- <li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#"> EPCG <b class="caret"></b>
 								</a>
 								<ul class="dropdown-menu" role="menu"
@@ -52,16 +62,22 @@
 									<li><a tabindex="-1" href="epcg/addepcg">Add EPCG</a></li>
 									<!-- <li><a tabindex="-1" href="#">Something else here</a></li>
 									<li class="divider"></li>
-									<li><a tabindex="-1" href="#">Separated link</a></li> -->
+									<li><a tabindex="-1" href="#">Separated link</a></li> 
+								</ul>
+							</li>-->
+							<li><a href="#">About</a></li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Services <b class="caret"></b></a>
+								<ul class="dropdown-menu" >
+									<li><a href="epcg">EPCG</a></li>
+									<!--	<li><a href="epcg">EPCG</a></li>-->
 								</ul>
 							</li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Services</a></li>
-							<li><a href="home/contactus">Contact</a></li>
+							<li><a href="home/contactus">Contact Us</a></li>
 							<?php if($this->session->user->user_role == 1){?>
 							<li><a href="settings">Settings</a></li>
 							<?php }?>
-							<li><a href="index/logout">Sign Out</a></li>
+						 	<li><a href="index">Site Map</a></li>
 						</ul>
 					</div>
 				</div>
@@ -72,16 +88,17 @@
 		<?php echo $this->layout()->content;?>
 		<br style="clear: both;">
 		</div>
-
-		<hr>
-		<?php }else{ ?>
-			<h3 class="muted"><img alt="shreeimpex" src="images/shreeimpex_logo_login.jpg"></h3>
-			<?php echo $this->layout()->content; ?>
-		
-		<?php }?>
 		<div class="footer">
-			<p>&copy; Shree Impex 2015</p>
+			<p>&copy; Shree Impex 2015. All Rights Reserved.</p>
 		</div>
+		<?php }else{ ?>
+			<div style="padding-left: 375px;"><h3 class="muted"><img alt="shreeimpex" src="images/shreeimpex.png"></h3></div>
+			<?php echo $this->layout()->content; ?>
+		<div class="footer" style="color: #fff;">
+			<p>&copy; Shree Impex 2015. All Rights Reserved.</p>
+		</div>
+		<?php }?>
+		
 
 	</div>
 	

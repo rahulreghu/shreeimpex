@@ -19,7 +19,7 @@ class IndexController extends Zend_Controller_Action
         	$this->_redirect("home/");
      	}
      	
-     	if(isset($_POST['submit']) && $_POST['submit'] == "Sign In"){
+     	if(isset($_POST['submit']) && $_POST['submit'] == "SIGN IN"){
      		$login_data = $_POST;
      		$user = Model_Users::getByUserName($login_data['username']);
      		if(!empty($user['user_name']) && $user['user_password'] == $login_data['password'] ){

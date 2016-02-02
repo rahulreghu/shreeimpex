@@ -896,7 +896,7 @@ dd {
 hr {
   margin: 20px 0;
   border: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #ababab;
   border-bottom: 1px solid #ffffff;
 }
 
@@ -2927,6 +2927,7 @@ table th[class*="span"],
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
+          font-size: 12px;
 }
 
 .dropdown-menu.pull-right {
@@ -2952,6 +2953,9 @@ table th[class*="span"],
   line-height: 20px;
   color: #333333;
   white-space: nowrap;
+    font-weight: bold;
+        text-align: left;
+        font-size: 12px;
 }
 
 .dropdown-menu > li > a:hover,
@@ -2968,6 +2972,9 @@ table th[class*="span"],
   background-image: linear-gradient(to bottom, #0088cc, #0077b3);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+      font-weight: bold;
+        text-align: left;
+        font-size: 12px;
 }
 
 .dropdown-menu > .active > a,
