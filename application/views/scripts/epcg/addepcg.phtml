@@ -1,12 +1,8 @@
-<div>
+<form action="#" method="post" name="iec_form" id="iec_form"> 
 	<table class="table table-bordered" style="width: 950px">
-		<caption>
-			<p>
-				<strong>APPLICATION FORM FOR ISSUE/MODIFICATION IN IMPORTER EXPORTER
-					CODE (IEC) NUMBER</strong>
-			</p>
+		<caption style="height: 30px">
+				<strong>APPLICATION FORM FOR ISSUE/MODIFICATION IN IMPORTER EXPORTER CODE (IEC) NUMBER</strong>
 		</caption>
-		<caption>Part A</caption>
 		<tr>
 			<td>
 				<ul>
@@ -17,507 +13,513 @@
 						uploaded <br /> The documents should be uploaded in digital forma
 						- GIF, <br /> JPEG size not exceeding 5MB
 					</li>
-					<li>Ensure that the requisite dcumens are legible before uploading</li>
+					<li>Ensure that the requisite documents are legible before uploading</li>
 				</ul>
 			</td>
-			<td style="width: 100px">Digital Photograph of the Applicant (3x3cm)</td>
+			<td style="width: 150px; height: 140px;"><img src="user_images/image.png" class="img-polaroid"></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
-		<caption>
-			<p>
-				<strong>Applicant Details</strong>
-			</p>
+		<caption style="height: 30px">
+			<strong>Applicant Details</strong>
 		</caption>
-		<tr>
-			<td colspan="2">i. Name of enity in whose name IEC is required</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+		<tr class="info">
+			<td colspan="5">Part A:</td>
 		</tr>
 		<tr>
-			<td rowspan="4">ii. Address:</td>
-			<td colspan="2">Flat/Plo/Block No:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td colspan="2">i. Name of entity in whose name IEC is required</td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of entity" name="entity[name]" id="entity_name" ></td>
 		</tr>
 		<tr>
-			<td colspan="2">Street/Area/Locality:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td rowspan="4" width="225px">ii. Address:</td>
+			<td colspan="1" width="130px">Flat/Plot/Block No:</td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity[address1]" id="entity_address1" ></td>
+		</tr>
+		<tr>
+			<td colspan="1">Street/Area/Locality:</td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity[address2]" id="entity_address2" ></td>
 		</tr>
 		<tr>
 			<td>State:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td><input class="input-block-level" type="text" placeholder="State" name="entity[state]" id="entity_state" ></td>
 			<td>District:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td><input class="input-block-level" type="text" placeholder="District" name="entity[district]" id="entity_district" ></td>
 		</tr>
 		<tr>
 			<td>City:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td><input class="input-block-level" type="text" placeholder="City" name="entity[city]" id="entity_city"></td>
 			<td>Pincode:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity[pincode]" id="entity_pincode"></td>
 		</tr>
 		<tr>
-			<td colspan="2">iii. Landline telephone no., if any (wih area code)</td>
-			<td colspan="3"><input class="input-xlarge" type="text"
-				placeholder="Name of Company"></td>
+			<td colspan="2">iii. Landline telephone no., if any (wih area code):</td>
+			<td colspan="3"><input class="input-xlarge" type="text" placeholder="Landline" name="entity[landline]" id="entity_landline"></td>
 		</tr>
 		<tr>
 			<td rowspan="2" colspan="2">iv. Mobile No:</td>
 			<td>Primary Mobile No:</td>
-			<td colspan="2"><input class="input-xlarge" type="text"
-				placeholder="Name of Company"></td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Primary Mobile No" name="entity[mobile1]" id="entity_mobile1"></td>
 		</tr>
 		<tr>
-			<td>Other Mobile No, if any:</td>
-			<td colspan="2"><input class="input-xlarge" type="text"
-				placeholder="Name of Company"></td>
+			<td>Other Mobile No:, if any:</td>
+			<td colspan="2"><input class="input-block-level" type="text"	placeholder="Other Mobile No" name="entity[mobile2]" id="entity_mobile2"></td>
 		</tr>
 		<tr>
-			<td rowspan="2">v. Email ID/Website Address:</td>
-			<td>Primary Email ID</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td rowspan="3" colspan="2">v. Email ID/Website Address:</td>
+			<td>Primary Email ID:</td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Primary Email ID" name="entity[email1]" id="entity_email1"></td>
+		</tr>
+		<tr>
 			<td>Alternate Email ID:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Alternate Email ID" name="entity[email2]" id="entity_email2"></td>
 		</tr>
 		<tr>
 			<td>Website(if any):</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-			<td>FAX No:(if any, with area code)</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Website" name="entity[website]" id="entity_website"></td>
 		</tr>
 		<tr>
-			<td colspan="2">vi. Nature of concern/entity</td>
-			<td colspan="3"><label class="checkbox"><input type="checkbox"
-					name="exporter_type" value="">Proprietorship</label> <label
-				class="checkbox"><input type="checkbox" name="exporter_type"
-					value="">Partnership</label> <label class="checkbox"><input
-					type="checkbox" name="exporter_type" value="">Limited Liabiliy
-					Partnership</label> <label class="checkbox"><input type="checkbox"
-					name="exporter_type" value="">Private Limited</label> <label
-				class="checkbox"><input type="checkbox" name="exporter_type"
-					value="">Public Limited</label> <label class="checkbox"><input
-					type="checkbox" name="exporter_type" value="">Govt. undertaking</label>
-				<label class="checkbox"><input type="checkbox" name="exporter_type"
-					value="">Section 25 Company</label> <label class="checkbox"><input
-					type="checkbox" name="exporter_type" value="">Registered Society</label>
-				<label class="checkbox"><input type="checkbox" name="exporter_type"
-					value="">Trust</label></td>
+			<td colspan="2">FAX No:(if any, with area code)</td>
+			<td colspan="3"><input class="input-xlarge" type="text" placeholder="FAX No" name="entity[fax]" id="entity_fax"></td>
+		</tr>
+		<tr>
+			<td colspan="2">vi. Nature of concern/entity:</td>
+			<td colspan="3">
+				<?php foreach ($this->entity_categories as $categories){?>
+				<label class="radio"><input type="radio" name="entity[category]" value="firm_<?php echo $categories['classname']?>"><?php echo $categories['name']?></label> 
+				<?php }?>
+				<!-- <label class="radio"><input type="radio" name="entity_category" value="entity_partnership">Partnership</label> 
+				<label class="radio"><input type="radio" name="entity_category" value="entity_private">Limited Liabiliy Partnership</label> 
+				<label class="radio"><input type="radio" name="entity_category" value="entity_private">Private Limited</label> 
+				<label class="radio"><input type="radio" name="entity_category" value="entity_private">Public Limited</label>
+				<label class="radio"><input type="radio" name="entity_category" value="entity_private">Govt. undertaking</label> 
+				<label class="radio"><input type="radio" name="entity_category" value="entity_private">Section 25 Company</label>
+				<label class="radio"><input type="radio" name="entity_category" value="entity_society">Registered Society</label> 
+				<label class="radio"><input type="radio" name="entity_category" value="entity_society">Trust</label>
+				<label class="radio"><input type="radio" name="entity_category" value="entity_huf">HUF</label> -->
+			</td>
 		</tr>
 		<tr>
 			<td colspan="2">vii. (a) Preferred Activities:</td>
-			<td colspan="3"><label class="checkbox">Merchant Exporter<input
-					type="checkbox" name="exporter_type" value=""></label> <label
-				class="checkbox">Manufacturer Exporter<input type="checkbox"
-					name="exporter_type" value=""></label> <label class="checkbox">Service
-					Provider<input type="checkbox" name="exporter_type" value="">
-			</label></td>
+			<td colspan="3">
+				<?php foreach ($this->entity_activities as $activities){?>
+				<label class="checkbox"><?php echo $activities['name']?><input type="checkbox" name="entity[activities]" value="activity_<?php echo $activities['id']?>"></label> 
+				<?php }?>
+				<!--<label class="checkbox">Merchant Exporter<input	type="checkbox" name="exporter_type" value=""></label> 
+				<label class="checkbox">Manufacturer Exporter<input type="checkbox"	name="exporter_type" value=""></label> 
+				<label class="checkbox">Service Provider<input type="checkbox" name="exporter_type" value=""></label>-->
+			</td>
 		</tr>
 		<tr>
 			<td colspan="2">vii. (b) Others: (please specify)</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Others" name="entity[other_activities]" id="entity_fax"></td>
 		</tr>
 		<tr>
-			<td colspan="5">viii. Bank Account Details of the Applicant's entity</td>
+			<td colspan="5">viii. Bank Account Details of the Applicant's entity:</td>
 		</tr>
 		<tr>
-			<td colspan="2">1. Name of the account holder</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td colspan="2">1. Name of the account holder:</td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of the account holder" name="bank[account_name]" id="bank_account_name"></td>
 		</tr>
 		<tr>
-			<td colspan="2">2. Account Number</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td colspan="2">2. Account Number:</td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Account number" name="bank[account_number]" id="bank_account_number"></td>
 		</tr>
 		<tr>
-			<td colspan="2">3. Name of the Bank</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td colspan="2">3. Name of the Bank:</td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of the bank" name="bank[name]" id="bank_name"></td>
 		</tr>
 		<tr>
-			<td colspan="2">4. Branch address of the Bank</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td colspan="2">4. Branch address of the Bank:</td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Branch address of the bank" name="bank[address]" id="bank_address"></td>
 		</tr>
 		<tr>
-			<td colspan="2">5. IFS Code</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
+			<td colspan="2">5. IFS Code:</td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="IFS code" name="bank[ifsc]" id="bank_ifsc"></td>
 		</tr>
 	</table>
-	<div style="text-align: center;">
-		<button type="submit" class="btn btn-primary">Next</button>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td width="289px;">Enter Registration Code:</td>
+			<td><input class="input-block-level" type="text" placeholder="Registration code" name="registration[code]" id="registration_code"></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr class="info">
+			<td colspan="5">Part B: Branch Details:</td>
+		</tr>
+		<tr>
+			<td colspan="4">i. Enter number of Branches/Divisions/Units/Facories in India and abroad:</td>
+			
+			<td><input class="input-block-level" type="text" placeholder="Number of branches" name="branch[total]" id="branch_total" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box"></td>
+		</tr>
+		<tr>
+			<td  colspan="5">
+				<table class="table table-bordered">
+					<tr>
+						<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
+						<td colspan="1"  width="130px">Flat/Plot/Block No:</td>
+						<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch[address1]" id="branch_address1"></td>
+					</tr>
+					<tr>
+						<td colspan="1">Street/Area/Locality:</td>
+						<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch[address2]" id="branch_address2"></td>
+					</tr>
+					<tr>
+						<td>State:</td>
+						<td><input class="input-block-level" type="text" placeholder="State" name="branch[state]" id="branch_state"></td>
+						<td>District:</td>
+						<td><input class="input-block-level" type="text" placeholder="District" name="branch[district]" id="branch_district"></td>
+					</tr>
+					<tr>
+						<td>City:</td>
+						<td><input class="input-block-level" type="text" placeholder="City" name="branch[city]" id="branch_city"></td>
+						<td>Pincode:</td>
+						<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[pincode]" id="branch_pincode"></td>
+					</tr>
+				</table>
+				<div id="branch_details"></div>
+			</td>	
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr class="info">
+			<td>Part C: Please fill in the following details:</td>
+		</tr>
+	</table>
+	<div id="firm_proprietorship"> 
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Part C1: In case the entity is a Proprietor firm:</td>
+			</tr>
+			<tr>
+				<td colspan="2">1. a) Name of the Proprietor:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Name of the proprietor"></td>
+			</tr>
+			<tr>
+				<td rowspan="4" width="225px">b). Residential Address:</td>
+				<td colspan="1"  width="130px">Flat/Plot/Block No:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Flat/Plot/Block No"></td>
+			</tr>
+			<tr>
+				<td colspan="1">Street/Area/Locality:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Street/Area/Locality"></td>
+			</tr>
+			<tr>
+				<td>State:</td>
+				<td><input class="input-block-level" type="text"
+					placeholder="State"></td>
+				<td>District:</td>
+				<td><input class="input-block-level" type="text"
+					placeholder="District"></td>
+			</tr>
+			<tr>
+				<td>City:</td>
+				<td><input class="input-block-level" type="text"
+					placeholder="City"></td>
+				<td>Pincode:</td>
+				<td><input class="input-block-level" type="text"
+					placeholder="Pincode"></td>
+			</tr>
+			<tr>
+				<td colspan="2">c) Aadhaar Card Number, if available:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Aadhaar card number"></td>
+			</tr>
+		</table>
 	</div>
-</div>
-<div>
-	<table class="table table-bordered" style="width: 950px">
-		<tr>
-			<td colspan="3">Enter Registration Code</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="5">Part B: Branch Details</td>
-		</tr>
-		<tr>
-			<td colspan="4">i. Enter number of Branches/Divisions/Units/Facories
-				in India and abroad</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-
-		<tr>
-			<td rowspan="4">ii. Address of branches,<br /> divisions, units, <br />factories
-				located <br />in India and abroad:
-			</td>
-			<td colspan="2">Flat/Plo/Block No:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">Street/Area/Locality:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td>State:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-			<td>District:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td>City:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-			<td>Pincode:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="5">Part C: Please fill in the following details:</td>
-		</tr>
-		<tr>
-			<td colspan="5">Part C1: In case he enity is a Proprieor firm:</td>
-		</tr>
-		<tr>
-			<td colspan="2">1. a) Name of the Proprietor</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td rowspan="4">b). Residential Address
-			</td>
-			<td colspan="2">Flat/Plot/Block No:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">Street/Area/Locality:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td>State:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-			<td>District:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td>City:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-			<td>Pincode:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">c) Aadhaar Card Number, if available:</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="5">Part C2: In case he enity is a Partnership firm:</td>
-		</tr>
-		<tr>
-			<td colspan="1" rowspan="3">1. PAN details in the entity</td>
-			<td colspan="2">Name as in PAN</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">Date of Incorporation (DD/MM/YYYY)</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">PAN</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">2. Enter the number of parner in the Partnership Firm</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">3. Fill the following details for each partner: </td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">a. Name as in PAN </td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">b. Father's Name</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">c. Date of Birth (DD/MM/YYYY)</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td rowspan="4">d. Residential Address
-			</td>
-			<td colspan="2">Flat/Plot/Block No:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">Street/Area/Locality:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td>State:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-			<td>District:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td>City:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-			<td>Pincode:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">e. Mobile No</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">f. PAN</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">g. Aadhaar Card Number, if available</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="5">Part C3: In case the eniy i a Limied liability Partnership/Private/Public/Gov.Underaking/Secion 25 Company:</td>
-		</tr>
-		<tr>
-			<td rowspan="3">1. PAN deails of the firm</td>
-			<td colspan="2">Name as in PAN</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">Date of Incorporation(DD/MM/YYYY)</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">PAN</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">2. LLPIN/CIN(Whichever is applicable)</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">3. Registration cerification No</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">4. Enter the number of Partners/Director in the Firm/Company:</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">5. Fill in the following details for each Partner/Director:</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">a. Name</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">b. PAN</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">c. Director Identity Number</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">d. Aadhaar Card Number, if available</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="5">Part C4: In case the enity is a Registred Sociey/trust**</td>
-		</tr>
-		<tr>
-			<td rowspan="3">1. PAN deails of the firm</td>
-			<td colspan="2">Name as in PAN</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">Date of Incorporation(DD/MM/YYYY)</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">PAN</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">2. Registration Number:</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="5">3. Details of the Secretary/Cheif executive of the Society; or managing Trustee of the Trust</td>
-		</tr>
-		<tr>
-			<td colspan="2">a. Name as in PAN</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td rowspan="4">b. Residential Address
-			</td>
-			<td colspan="2">Flat/Plot/Block No:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">Street/Area/Locality:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td>State:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-			<td>District:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td>City:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-			<td>Pincode:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">c. Aadhar Card No(if available)</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="5">Part C5: In case the enity is a HUF</td>
-		</tr>
-		<tr>
-			<td rowspan="3">1. PAN deails of the Entity:</td>
-			<td colspan="2">Name as in PAN</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">Date of Incorporation(DD/MM/YYYY)</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">PAN</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">2. Details of Karta</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
+	<div id="firm_partnership">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Part C2: In case he entity is a Partnership firm:</td>
+			</tr>
 			<tr>
-			<td colspan="2">a. Name as in PAN</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td rowspan="3">b. Residential Address
-			</td>
-			<td colspan="2">Flat/Plot/Block No:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td colspan="2">Street/Area/Locality:</td>
-			<td colspan="2"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-		<tr>
-			<td>State:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-			<td>District:</td>
-			<td><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
+				<td colspan="1" rowspan="3">1. PAN details in the entity:</td>
+				<td colspan="2">Name as in PAN:</td>
+				<td colspan="2" width="300px;"><input class="input-block-level" type="text"
+					placeholder="Name as in PAN"></td>
+			</tr>
 			<tr>
-			<td colspan="2">3. Aadhaar Card Details, if available</td>
-			<td colspan="3"><input class="input-block-level" type="text"
-				placeholder="Name of Company"></td>
-		</tr>
-	</table>
+				<td colspan="2">Date of Incorporation (DD/MM/YYYY):</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Date of incorporation"></td>
+			</tr>
+			<tr>
+				<td colspan="2">PAN:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="PAN"></td>
+			</tr>
+			<tr>
+				<td colspan="2">2. Enter the number of partners in the Partnership Firm:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Number of partners"></td>
+			</tr>
+			<tr>
+				<td colspan="5">3. Fill the following details for each partner: </td>
+			</tr>
+			<tr>
+				<td  colspan="5">
+					<table class="table table-bordered" >
+						<tr>
+							<td colspan="2">a. Name as in PAN: </td>
+							<td colspan="3"><input class="input-block-level" type="text"
+								placeholder="Name as in PAN"></td>
+						</tr>
+						<tr>
+							<td colspan="2">b. Father's Name:</td>
+							<td colspan="3"><input class="input-block-level" type="text"
+								placeholder="Father's name"></td>
+						</tr>
+						<tr>
+							<td colspan="2">c. Date of Birth (DD/MM/YYYY):</td>
+							<td colspan="3"><input class="input-block-level" type="text"
+								placeholder="Date of birth"></td>
+						</tr>
+						<tr>
+							<td rowspan="4" width="225px">d. Residential Address:
+							</td>
+							<td colspan="1"  width="130px">Flat/Plot/Block No:</td>
+							<td colspan="3"><input class="input-block-level" type="text"
+								placeholder="Flat/Plot/Block No"></td>
+						</tr>
+						<tr>
+							<td colspan="1">Street/Area/Locality:</td>
+							<td colspan="3"><input class="input-block-level" type="text"
+								placeholder="Street/Area/Locality"></td>
+						</tr>
+						<tr>
+							<td>State:</td>
+							<td><input class="input-block-level" type="text"
+								placeholder="State"></td>
+							<td>District:</td>
+							<td><input class="input-block-level" type="text"
+								placeholder="District"></td>
+						</tr>
+						<tr>
+							<td>City:</td>
+							<td><input class="input-block-level" type="text"
+								placeholder="City"></td>
+							<td>Pincode:</td>
+							<td><input class="input-block-level" type="text"
+								placeholder="Pincode"></td>
+						</tr>
+						<tr>
+							<td colspan="2">e. Mobile No:</td>
+							<td colspan="3"><input class="input-block-level" type="text"
+								placeholder="Mobile no"></td>
+						</tr>
+						<tr>
+							<td colspan="2">f. PAN:</td>
+							<td colspan="3"><input class="input-block-level" type="text"
+								placeholder="PAN"></td>
+						</tr>
+						<tr>
+							<td colspan="2">g. Aadhaar Card Number, if available:</td>
+							<td colspan="3"><input class="input-block-level" type="text"
+								placeholder="Aadhaar card number"></td>
+						</tr>
+					</table>
+				</td>	
+			</tr>	
+		</table>
+	</div>
+	<div id="firm_private">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5" >Part C3: In case the entity is a Limited liability Partnership/Private/Public/Govt.Underaking/Secion 25 Company:</td>
+			</tr>
+			<tr>
+				<td rowspan="3">1. PAN details of the firm:</td>
+				<td colspan="2" >Name as in PAN:</td>
+				<td colspan="2" width="300px;"><input class="input-block-level" type="text"
+					placeholder="Name as in PAN"></td>
+			</tr>
+			<tr>
+				<td colspan="2">Date of Incorporation(DD/MM/YYYY):</td>
+				<td colspan="2"><input class="input-block-level" type="text"
+					placeholder="Date of incorporation"></td>
+			</tr>
+			<tr>
+				<td colspan="2">PAN:</td>
+				<td colspan="2"><input class="input-block-level" type="text"
+					placeholder="PAN"></td>
+			</tr>
+			<tr>
+				<td colspan="2">2. LLPIN/CIN(Whichever is applicable):</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="LLPIN/CIN"></td>
+			</tr>
+			<tr>
+				<td colspan="2">3. Registration Cerification No:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Registration cerification no"></td>
+			</tr>
+			<tr>
+				<td colspan="2">4. Enter the number of Partners/Director in the Firm/Company:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Number of partners"></td>
+			</tr>
+			<tr>
+				<td colspan="5">5. Fill in the following details for each Partner/Director:</td>
+			</tr>
+			<tr> 
+				<td colspan="5">
+					<table  class="table table-bordered">
+						<tr>
+							<td width="285px;">a. Name:</td>
+							<td><input class="input-block-level" type="text"
+								placeholder="Name of the partner"></td>
+						</tr>
+						<tr>
+							<td>b. PAN:</td>
+							<td><input class="input-block-level" type="text"
+								placeholder="PAN"></td>
+						</tr>
+						<tr>
+							<td>c. Director Identity Number:</td>
+							<td><input class="input-block-level" type="text"
+								placeholder="Director identity number"></td>
+						</tr>
+						<tr>
+							<td >d. Aadhaar Card Number, if available:</td>
+							<td ><input class="input-block-level" type="text"
+								placeholder="Aadhaar card number"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="firm_society">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Part C4: In case the enity is a Registred Society/Trust**:</td>
+			</tr>
+			<tr>
+				<td rowspan="3">1. PAN details of the <br/>Society/Trust:</td>
+				<td colspan="2">Name as in PAN:</td>
+				<td colspan="2" width="300px"><input class="input-block-level" type="text"
+					placeholder="Name as in PAN"></td>
+			</tr>
+			<tr>
+				<td colspan="2">Date of Incorporation(DD/MM/YYYY):</td>
+				<td colspan="2"><input class="input-block-level" type="text"
+					placeholder="Date of incorporation"></td>
+			</tr>
+			<tr>
+				<td colspan="2">PAN:</td>
+				<td colspan="2"><input class="input-block-level" type="text"
+					placeholder="PAN"></td>
+			</tr>
+			<tr>
+				<td colspan="2">2. Registration Number:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Registration number"></td>
+			</tr>
+			<tr>
+				<td colspan="5">3. Details of the Secretary/Cheif executive of the Society; or Managing Trustee of the Trust:</td>
+			</tr>
+			<tr>
+				<td colspan="2">a. Name as in PAN:</td>
+				<td colspan="3" ><input class="input-block-level" type="text"
+					placeholder="Name as in PAN"></td>
+			</tr>
+			<tr>
+				<td rowspan="4" width="225px">b. Residential Address:
+				</td>
+				<td colspan="1"  width="130px">Flat/Plot/Block No:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Flat/Plot/Block No"></td>
+			</tr>
+			<tr>
+				<td colspan="1">Street/Area/Locality:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Street/Area/Locality"></td>
+			</tr>
+			<tr>
+				<td>State:</td>
+				<td><input class="input-block-level" type="text"
+					placeholder="State"></td>
+				<td>District:</td>
+				<td><input class="input-block-level" type="text"
+					placeholder="District"></td>
+			</tr>
+			<tr>
+				<td>City:</td>
+				<td><input class="input-block-level" type="text"
+					placeholder="City"></td>
+				<td>Pincode:</td>
+				<td><input class="input-block-level" type="text"
+					placeholder="Pincode"></td>
+			</tr>
+			<tr>
+				<td colspan="2">c. Aadhar Card Number(if available):</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Aadhar card number"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="firm_huf">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Part C5: In case the enity is a HUF:</td>
+			</tr>
+			<tr>
+				<td rowspan="3">1. PAN deails of the Entity:</td>
+				<td colspan="2">Name as in PAN:</td>
+				<td colspan="2" width="300px"><input class="input-block-level" type="text"
+					placeholder="Name as in PAN"></td>
+			</tr>
+			<tr>
+				<td colspan="2">Date of Incorporation(DD/MM/YYYY):</td>
+				<td colspan="2"><input class="input-block-level" type="text"
+					placeholder="Date of incorporation"></td>
+			</tr>
+			<tr>
+				<td colspan="2">PAN:</td>
+				<td colspan="2"><input class="input-block-level" type="text"
+					placeholder="PAN"></td>
+			</tr>
+			<tr>
+				<td colspan="5">2. Details of Karta:</td>
+			</tr>
+				<tr>
+				<td colspan="2">a. Name as in PAN:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Name as in PAN"></td>
+			</tr>
+			<tr>
+				<td rowspan="3" width="225px">b. Residential Address
+				</td>
+				<td colspan="1"  width="130px">Flat/Plot/Block No:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Flat/Plot/Block No"></td>
+			</tr>
+			<tr>
+				<td colspan="1">Street/Area/Locality:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Street/Area/Locality"></td>
+			</tr>
+			<tr>
+				<td>State:</td>
+				<td><input class="input-block-level" type="text"
+					placeholder="State"></td>
+				<td>District:</td>
+				<td><input class="input-block-level" type="text"
+					placeholder="District"></td>
+			</tr>
+				<tr>
+				<td colspan="2">3. Aadhaar Card Details, if available:</td>
+				<td colspan="3"><input class="input-block-level" type="text"
+					placeholder="Aadhaar card details"></td>
+			</tr>
+		</table>
+	</div>
 	<table class="table table-bordered" style="width: 950px">
-		<tr>
-			<td colspan="2">Part D: Declaration/Undertaking</td>
+		<tr class="info">
+			<td colspan="2">Part D: Declaration/Undertaking:</td>
 		</tr>
 		<tr>
 			<td>1</td>
@@ -555,7 +557,7 @@
 		<tr>
 			<td>5</td>
 			<td>
-				I hereby certify that I am authorized t verify ans sign this declaration as per Paragraph 9.06 of the Foreign Trade policy
+				I hereby certify that I am authorized to verify ans sign this declaration as per Paragraph 9.06 of the Foreign Trade policy
 			</td>
 		</tr>
 	</table>
@@ -567,6 +569,78 @@
 		</tr>
 	</table>
 	<div style="text-align: center;">
-		<button type="submit" class="btn btn-primary">Submit Form</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="button" class="btn">Cancel</button>
+		<button type="submit" class="btn btn-primary">Submit Form</button> 
+		<span style="padding-right: 25px"></span>
+		<button type="reset" class="btn btn-danger">Reset</button>
+		<span style="padding-right: 25px"></span> 
+		<a href="epcg/index" type="button" class="btn btn-inverse">Back</a>
+		<!-- 
+		<span style="padding-right: 25px"></span> 
+		<a href="#" type="button" class="btn btn-warning">Print</a>
+		 -->
 	</div>
-</div>
+</form>
+<script>
+//initialize tooltip function
+$(document).ready(function() {
+	 $('[data-toggle=tooltip]').tooltip();
+});
+
+//show the form for selected category
+$(document).ready(function(){
+	$('input:radio[name="entity[category]"]').change(function(){
+		var id = this.value;
+		var idprefix = id.split("_");
+		$("[id^="+idprefix[0]+"]").hide();
+		$("#"+this.value).show();
+		
+	});
+});
+
+//generate the box for enterning branch details
+$(document).ready(function(){
+	$("#branch_total").on( "focusout", function() {
+		var count = this.value;  //#branch_details;
+		if(count > 1){
+			var branch = '';
+			for(i=1; i<count; i++){
+				branch += '<table  class="table table-bordered">' ;
+				branch += '<tr>';
+				branch += '<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>';
+				branch += '<td colspan="1"  width="130px">Flat/Plot/Block No:</td>';
+				branch += '<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch[address1_'+i+']" id="branch_address1_'+i+'"></td>';
+				branch += '</tr>';
+				branch += '<tr>'
+				branch += '<td colspan="1">Street/Area/Locality:</td>'
+				branch += '<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch[address2_'+i+']" id="branch_address2_'+i+'"></td>'
+				branch += '</tr>'
+				branch += '<tr>';
+				branch += '<td>State:</td>';
+				branch += '<td><input class="input-block-level" type="text" placeholder="State" name="branch[state_'+i+']" id="branch_state_'+i+'"></td>';
+				branch += '<td>District:</td>';
+				branch += '<td><input class="input-block-level" type="text" placeholder="District" name="branch[district_'+i+']" id="branch_district_'+i+'"></td>';
+				branch += '</tr>';
+				branch += '<tr>';
+				branch += '<td>City:</td>';
+				branch += '<td><input class="input-block-level" type="text" placeholder="City" name="branch[city_'+i+']" id="branch_city_'+i+'"></td>';
+				branch += '<td>Pincode:</td>';
+				branch += '<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[pincode_'+i+']" id="branch_pincode_'+i+'"></td>';
+				branch += '</tr>';
+				branch += '</table>';
+			}
+			$('#branch_details').html('');
+			$('#branch_details').append(branch);
+		}else{
+			$('#branch_details').html('');
+		}
+	});
+});
+
+//Prevent the form submission with enter key 
+$('#iec_form').find('.input').keypress(function(e){
+    if ( e.which == 13 ) // Enter key = keycode 13
+    {
+        return false;
+    }
+});
+</script>

@@ -22,7 +22,11 @@ class EpcgController extends Zend_Controller_Action
 	
 	public function addepcgAction()
 	{
-		//print_r($this->_session->user);
+		$entity_categories = Model_EntityCategories::getAllCategories();
+		$this->view->entity_categories = $entity_categories;
+		
+		$entity_categories = Model_EntityActivities::getAllActivities();
+		$this->view->entity_activities = $entity_categories;
 		
 	}
 }
