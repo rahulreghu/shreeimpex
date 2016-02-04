@@ -71,7 +71,6 @@ class SettingsController extends Zend_Controller_Action
 		}else{
 			
 		}
-		
 	}
 	
 	public function addUserAction(){

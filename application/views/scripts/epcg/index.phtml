@@ -1,13 +1,19 @@
-<div style="float: left;">
+<div style="height: 50px; text-align: center;">
+	<strong>LIST OF APPLICATION FORM FOR ISSUE/MODIFICATION OF IMPORTER EXPORTER CODE (IEC) NUMBER</strong>
+</div>
+<div style="float: left;height: 75px;">
+	<?php if(!empty($this->allentities)){?>
 	<form class="form-search">
 		<input type="text" class="input-medium search-query">
 		<button type="submit" class="btn">Search</button>
 	</form>
+	<?php }?>
 </div>
 <div style="float: right;">
 	<a href="epcg/addepcg" class="btn btn-success" type="button">Add New EPCG</a>
 </div>
 <div style="clear: both;"></div>
+
 <table class="table table-hover table-bordered table-striped ">
 	<tr>
 		<th width="40px">Sl No</th>	
@@ -16,6 +22,7 @@
 		<th width="70px">Status</th>	
 		<th width="75px">Action</th>	
 	</tr>
+	<?php if(!empty($this->allentities)){?>
 	<tr>
 		<td>1</td>
 		<td>Not Generated</td>
@@ -28,24 +35,17 @@
 		</select></td>
 		<td> <button class="btn btn-info" type="button">Edit</button></td>
 	</tr>
+	<?php }else{?>
 	<tr>
-		<td>2</td>	
-		<td>Not Generated</td>	
-		<td>ABC INDIA PVT.LTD</td>
-		<td><select>
-				<option>Initiated</option>
-				<option>In Progress</option>
-				<option>Submitted</option>
-				<option>Pending</option>
-		</select></td>
-		<td> <button class="btn btn-info" type="button">Edit</button></td>
+		<td colspan="5" style="text-align: center;"> No Details found, Please click Add New EPCG button to create a new application</td>
 	</tr>
+	<?php }?>
 </table>
+<!-- 
 <div class="pagination pagination-centered">
   <ul>
     <li><a href="#">Prev</a></li>
     <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
     <li><a href="#">Next</a></li>
   </ul>
-</div>
+</div> -->
