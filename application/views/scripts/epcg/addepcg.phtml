@@ -1,4 +1,4 @@
-<form action="epcg/addepcg" method="post" name="iec_form" id="iec_form"> 
+<form action="epcg/addepcg" method="post" name="epcg_form" id="epcg_form" onsubmit="return epcgValidaion();"> 
 	<table class="table table-bordered" style="width: 950px">
 		<caption style="height: 30px">
 				<strong>APPLICATION FORM FOR ISSUE/MODIFICATION IN IMPORTER EXPORTER CODE (IEC) NUMBER</strong>
@@ -607,7 +607,7 @@
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
 			<td>
-				<label class="checkbox"><input type="checkbox" name="entity[proof_of_accept]" value="" id="proof_of_accept">Tick the box as acceptance of declaraion/undertaking and fill in the deails below.</label>
+				<label class="checkbox"><input type="checkbox" name="entity[proof_of_accept]" value="1" id="proof_of_accept">Tick the box as acceptance of declaraion/undertaking and fill in the deails below.</label>
 			</td>
 		</tr>
 	</table>
@@ -623,4 +623,3 @@
 		 -->
 	</div>
 </form>
-<script src="scripts/custom/epcg.js"></script>

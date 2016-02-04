@@ -1,20 +1,12 @@
-<div style="height: 50px; text-align: center;">
-	<strong>LIST OF APPLICATION FORM FOR ISSUE/MODIFICATION OF IMPORTER EXPORTER CODE (IEC) NUMBER</strong>
-</div>
-<div style="float: left;height: 75px;">
-	<?php if(!empty($this->allentities)){?>
-	<form class="form-search">
-		<input type="text" class="input-medium search-query">
-		<button type="submit" class="btn">Search</button>
-	</form>
-	<?php }?>
-</div>
-<div style="float: right;">
+<div style="height: 50px; float: right;">
 	<a href="epcg/addepcg" class="btn btn-success" type="button">Add New EPCG</a>
 </div>
 <div style="clear: both;"></div>
-
-<table class="table table-hover table-bordered table-striped ">
+<div style="height: 45px; text-align: center;">
+	<strong>LIST OF APPLICATION FORM FOR ISSUE/MODIFICATION OF IMPORTER EXPORTER CODE (IEC) NUMBER</strong>
+</div>
+<table class="table table-hover table-bordered table-striped"  id="display">  
+<thead>
 	<tr>
 		<th width="40px">Sl No</th>	
 		<th width="200px">IEC No</th>	
@@ -22,30 +14,52 @@
 		<th width="70px">Status</th>	
 		<th width="75px">Action</th>	
 	</tr>
-	<?php if(!empty($this->allentities)){?>
+	 </thead>
+	  <tbody>
+	<?php if(!empty($this->allentities)){
+			$i = 1;
+			foreach ($this->allentities as $entity_details){
+		?>
+		
 	<tr>
-		<td>1</td>
-		<td>Not Generated</td>
-		<td>MOTELS &amp; INFRASTRUCTURE INDIA PVT.LTD</td>
-		<td><select>
-				<option>Initiated</option>
-				<option>In Progress</option>
-				<option>Submitted</option>
-				<option>Pending</option>
-		</select></td>
+		<td style="text-align: center;"><?php echo $i;?></td>
+		<td><?php echo empty($entity_details['iec_no'])? 'Not Generated' : $entity_details['iec_no']?></td>
+		<td><?php echo $entity_details['name'];?></td>
+		<td><select  name="entity_status" id="entity_status">
+				<?php foreach($this->allstatus as $status) {
+					$selected = "";
+					if($status['id'] == $entity_details['status'] )	{
+						$selected = 'selected=selected';
+					}			
+				?>
+				<option value="<?php echo $status['id'].'_'.$entity_details['id'];?>" <?php echo $selected;?>><?php echo $status['status'];?></option>
+				<?php }?>
+			</select>
+		</td>
 		<td> <button class="btn btn-info" type="button">Edit</button></td>
 	</tr>
-	<?php }else{?>
+	<?php $i++;
+			} ?> </tbody><?php }else{?>
 	<tr>
 		<td colspan="5" style="text-align: center;"> No Details found, Please click Add New EPCG button to create a new application</td>
 	</tr>
 	<?php }?>
 </table>
 <!-- 
-<div class="pagination pagination-centered">
+<div class="pagination pagination-centered" style="padding-top: 15px">
   <ul>
     <li><a href="#">Prev</a></li>
     <li><a href="#">1</a></li>
     <li><a href="#">Next</a></li>
   </ul>
-</div> -->
+</div> 
+ -->
+
+<link href="styles/jquery.dataTables.css" rel="stylesheet">
+<script src="scripts/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function() {
+	 $('table#display').DataTable();
+	 $("select[name='display_length']").attr('style', 'width: 70px');
+} );
+</script>

@@ -213,3 +213,31 @@ $('#branch_details,#partner_details').on("change",".district_dymselectbox",funct
     	$('#'+city).append(data);
     }
 });
+
+$('#entity_status').on("change",function() {
+	var sel_val = $(this).val();
+	var iec_id = sel_val.split("_");
+	var sel_text = $("#entity_status option:selected").text();
+	bootbox.confirm("Are you sure you want to change the status to "+sel_text+" ?",'No','Yes',function(result) {
+	    if (result) {
+	    	$.ajax({
+	            type:"GET",
+	            url : "/public/epcg/change-iec-status?id="+iec_id[1]+"&status_id="+iec_id[0],
+	            dataType : "json",  
+	            success : function(response) {
+	            	
+	            },
+	            error: function() {
+	                alert('Error occured');
+	            }
+	        });
+	    } else {
+	    	
+	    }
+	});
+});
+
+
+function epcgValidaion(){
+	return false;
+}
