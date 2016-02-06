@@ -154,6 +154,10 @@
       	color: #f2f2f2;
       }
       
+      .required{
+      	color: red;
+      }
+      
       /*for data tables*/
       div.dataTables_wrapper {
         margin-bottom: 3em;

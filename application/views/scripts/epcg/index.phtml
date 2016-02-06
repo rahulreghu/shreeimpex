@@ -1,4 +1,6 @@
 <div style="height: 50px; float: right;">
+	<a href="epcg/addepcg" class="btn btn-warning" type="button">Edit Saved EPCG</a>
+	<span style="padding-right: 15px"></span> 
 	<a href="epcg/addepcg" class="btn btn-success" type="button">Add New EPCG</a>
 </div>
 <div style="clear: both;"></div>
@@ -28,11 +30,11 @@
 		<td><select  name="entity_status" id="entity_status">
 				<?php foreach($this->allstatus as $status) {
 					$selected = "";
-					if($status['id'] == $entity_details['status'] )	{
+					if($status['option_id'] == $entity_details['status'] )	{
 						$selected = 'selected=selected';
 					}			
 				?>
-				<option value="<?php echo $status['id'].'_'.$entity_details['id'];?>" <?php echo $selected;?>><?php echo $status['status'];?></option>
+				<option value="<?php echo $status['option_id'].'_'.$entity_details['id'];?>" <?php echo $selected;?>><?php echo $status['option_value'];?></option>
 				<?php }?>
 			</select>
 		</td>

@@ -17,7 +17,7 @@ class EpcgController extends Zend_Controller_Action
 	public function indexAction()
 	{
 		//print_r($this->_session->user);
-		$allstatus = Model_EntityIecStatus::getAllStatus();
+		$allstatus = Model_Options::getAllIecStatus();
 		$allentities = Model_EntityIecInfo::getAllEntities();
 		if($allentities){
 			$this->view->allentities = $allentities;
@@ -50,6 +50,7 @@ class EpcgController extends Zend_Controller_Action
 			if(!empty($_POST['entity']['activities'])){
 				$_POST['entity']['activities'] = implode(",", $_POST['entity']['activities']);
 			}
+			$_POST['entity']['proof_of_accept'] = 1;
 			$_POST['entity']['status'] = '1';
 			$_POST['entity']['created_on'] = date("Y-m-d H:i:s");
 			$_POST['entity']['created_by'] = $this->_session->user->user_id;
@@ -60,6 +61,7 @@ class EpcgController extends Zend_Controller_Action
 			print_r($bank_details);
 			print_r($branch_details);
 			echo $iec_id = Model_EntityIecInfo::addIecForm($entity_iec_info);
+			
 		}
 		
 	}
