@@ -18,4 +18,12 @@ class Model_EntityIecinfo{
 	public static function changeStatus($id,$statusId){
 		return self::getTableInstance()->changeStatus($id,$statusId);
 	}
+	
+	public static function getAllSavedEntities(){
+		return self::getTableInstance()->getAllSavedEntities();
+	}
+	
+	public static function updateImageInIecForm($id,$target_filename){
+		return self::getTableInstance()->updateImageInIecForm($id,$target_filename);
+	}
 }

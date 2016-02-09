@@ -7,4 +7,8 @@ class Model_EntityBankDetails{
 		if (!self::$_table) self::$_table = new Model_Table_EntityBankDetails();
 		return self::$_table;
 	}
+	
+	public static function addBankDetails($data){
+		return self::getTableInstance()->addBankDetails($data);
+	}
 }

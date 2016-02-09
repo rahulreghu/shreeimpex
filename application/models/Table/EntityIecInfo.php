@@ -17,4 +17,15 @@ class Model_Table_EntityIecInfo extends Zend_Db_Table_Abstract{
 	public function changeStatus($id,$statusId){
 		$this->update(array('status'=>$statusId),'id = '.$id);
 	}
+	
+	public function getAllSavedEntities(){
+		$sql = $this->select('id','iec_no','name','status');
+		$sql->where('status = 6');
+		$sql->order('created_on DESC');
+		return $this->fetchAll($sql)->toArray();;
+	}
+
+	public function updateImageInIecForm($id,$target_filename){
+		$this->update(array('image'=>$target_filename),'id = '.$id);
+	}
 }

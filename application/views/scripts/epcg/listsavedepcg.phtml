@@ -1,46 +1,35 @@
-
 <div style="height: 50px; float: right;">
-	<a href="epcg/listsavedepcg" class="btn btn-warning" type="button">Edit Saved EPCG</a>
+	<a href="epcg/index" class="btn btn-warning" type="button">View EPCG</a>
 	<span style="padding-right: 15px"></span> 
 	<a href="epcg/addepcg" class="btn btn-success" type="button">Add New EPCG</a>
 </div>
 <div style="clear: both;"></div>
 <div style="height: 45px; text-align: center;">
-	<strong>LIST OF APPLICATION FORM FOR ISSUE/MODIFICATION OF IMPORTER EXPORTER CODE (IEC) NUMBER</strong>
+	<strong>LIST OF SAVED EPCG FORM</strong>
 </div>
 <table class="table table-hover table-bordered table-striped"  id="display">  
 <thead>
 	<tr>
 		<th width="40px" style="text-align: center;">Sl No</th>	
-		<th width="200px" style="text-align: center;">IEC No</th>	
-		<th width="300px" style="text-align: center;">Entity Name</th>	
-		<th width="50px" style="text-align: center;">Status</th>	
-		<th width="57px" style="text-align: center;" >Action</th>	
+		<th width="250px" style="text-align: center;">Entity Name</th>	
+		<th width="200px" style="text-align: center;">Nature of Entity</th>	
+		<th width="100px" style="text-align: center;">Created By</th>	
+		<th width="51px" style="text-align: center;">Action</th>	
 	</tr>
 	 </thead>
-	  <tbody>
-	<?php if(!empty($this->allentities)){
-			$i = 1;
+	  
+	<?php if(!empty($this->allentities)){?>
+	<tbody>
+		<?php 	$i = 1;
 			foreach ($this->allentities as $entity_details){
 		?>
 		
 	<tr>
 		<td style="text-align: center;"><?php echo $i;?></td>
-		<td><?php echo empty($entity_details['iec_no'])? 'Not Generated' : $entity_details['iec_no']?></td>
 		<td><?php echo $entity_details['name'];?></td>
-		<td><select  name="entity_status" id="entity_status" style="width: 100px; margin: 0px 0px; padding:0px 4px; height: 22px;">
-				<?php foreach($this->allstatus as $status) {
-					$selected = "";
-					if($status['option_id'] == $entity_details['status'] )	{
-						$selected = 'selected=selected';
-						$option_value = $status['option_value'];
-					}			
-				?>
-				<option value="<?php echo $status['option_id'].'_'.$entity_details['id'];?>" <?php echo $selected;?>><?php echo $status['option_value'];?></option>
-				<?php }?>
-			</select>
-		</td>
-		<td> 
+		<td><?php echo $entity_details['category'];?></td>
+		<td><?php echo $entity_details['created_by'];?></td>
+		<td>
 			<a class="btn btn-mini btn-primary" type="button" href="epcg/editepcg?id=<?php echo $entity_details['id']?>">Edit</a>
 			<a class="btn btn-mini btn-danger" type="button" href="epcg/deleteepcg?id=<?php echo $entity_details['id']?>">Delete</a>
 		</td>
@@ -48,7 +37,7 @@
 	<?php $i++;
 			} ?> </tbody><?php }else{?>
 	<tr>
-		<td colspan="5" style="text-align: center;"> No Details found, Please click Add New EPCG button to create a new application</td>
+		<td colspan="5" style="text-align: center;"> No saved EPCG forms found, please click Add New EPCG button to create a new application</td>
 	</tr>
 	<?php }?>
 </table>
@@ -67,7 +56,7 @@
 <script>
 $(document).ready(function() {
 	 $('table#display').DataTable({
-			columnDefs: [{ orderable: false, targets: [3,4]}],
+			columnDefs: [{ orderable: false, targets: [4]}],
 	  });
 	 $("select[name='display_length']").attr('style', 'width: 70px');
 } );

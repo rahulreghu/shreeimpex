@@ -32,12 +32,12 @@ $(function(){
 			var branch = '';
 			for(i=1; i<count; i++){
 				branch += '<table class="table table-bordered"><tr><td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>';
-				branch += '<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch'+i+'[address1]" id="branch'+i+'_address1"></td></tr>';
-				branch += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch'+i+'[address2]" id="branch'+i+'_address2"></td></tr>';
-				branch += '<tr><td>State:<span class="required">*</span></td><td><select name="branch'+i+'[state]" id="branch'+i+'_state" class="state_dymselectbox">'+$('#branch0_state').html()+'</select></td>';
-				branch += '<td>District:<span class="required">*</span></td><td><select name="branch'+i+'[district]" id="branch'+i+'_district" class="district_dymselectbox"><option value="0">--Select--</option></select></td></tr>';
-				branch += '<tr><td>City:<span class="required">*</span></td><td><select name="branch'+i+'[city]" id="branch'+i+'_city" class="city_dymselectbox"><option value="0">--Select--</option></select></td>';
-				branch += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="branch'+i+'[pincode]" id="branch'+i+'_pincode"></td></tr></table>';
+				branch += '<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch['+i+'][address1]" id="branch'+i+'_address1"></td></tr>';
+				branch += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch['+i+'][address2]" id="branch'+i+'_address2"></td></tr>';
+				branch += '<tr><td>State:<span class="required">*</span></td><td><select name="branch['+i+'][state]" id="branch'+i+'_state" class="state_dymselectbox">'+$('#branch0_state').html()+'</select></td>';
+				branch += '<td>District:<span class="required">*</span></td><td><select name="branch['+i+'][district]" id="branch'+i+'_district" class="district_dymselectbox"><option value="0">--Select--</option></select></td></tr>';
+				branch += '<tr><td>City:<span class="required">*</span></td><td><select name="branch['+i+'][city]" id="branch'+i+'_city" class="city_dymselectbox"><option value="0">--Select--</option></select></td>';
+				branch += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="branch['+i+'][pincode]" id="branch'+i+'_pincode"></td></tr></table>';
 			}
 			$('#branch_details').empty();
 			$('#branch_details').append(branch);
@@ -55,18 +55,18 @@ $(function(){
 			var partner = '';
 			for(i=1; i<count; i++){
 				partner += '<table class="table table-bordered" >'
-				partner += '<tr><td colspan="2">a. Name as in PAN:<span class="required">*</span> </td><td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="partner'+i+'[name]" id="partner'+i+'_name"></td></tr>';
-				partner += '<tr><td colspan="2">b. Father\'s Name:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Father\'s name" name="partner'+i+'[surname]" id="partner'+i+'_surname"></td></tr>';
-				partner += '<tr><td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="partner'+i+'[dob]" id="partner'+i+'_dob"></td></tr>';
-				partner += '<tr><td rowspan="4" width="225px">d. Residential Address:</td><td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="partner'+i+'[address1]" id="partner'+i+'_address1"></td></tr>';
-				partner += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="partner'+i+'[address2]" id="partner'+i+'_address2"></td></tr>';
-				partner += '<tr><td>State:<span class="required">*</span></td><td><select name="partner'+i+'[state]" id="partner'+i+'_state" class="state_dymselectbox">'+$('#partner0_state').html()+'</select></td>';
-				partner += '<td>District:<span class="required">*</span></td><td><select name="partner'+i+'[district]" id="partner'+i+'_district" class="district_dymselectbox"><option value="0">--Select--</option></select></td></tr>';
-				partner += '<tr><td>City:<span class="required">*</span></td><td><select name="partner'+i+'[city]" id="partner'+i+'_city" class="city_dymselectbox"><option value="0">--Select--</option></select></td>';
-				partner += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="partner'+i+'[pincode]" id="partner'+i+'_pincode"></td></tr>';
-				partner += '<tr><td colspan="2">e. Mobile No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="partner'+i+'[mobile]" id="partner'+i+'_mobile"></td></tr>';
-				partner += '<tr><td colspan="2">f. PAN:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="partner'+i+'[pan]" id="partner'+i+'_pan"></td></tr>';
-				partner += '<tr><td colspan="2">g. Aadhaar Card Number, if available:</td><td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="partner'+i+'[aadhaar_number]" id="partner'+i+'_aadhaarno"></td></tr></table>'
+				partner += '<tr><td colspan="2">a. Name as in PAN:<span class="required">*</span> </td><td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners]['+i+'][name]" id="partner'+i+'_name"></td></tr>';
+				partner += '<tr><td colspan="2">b. Father\'s Name:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Father\'s name" name="entity_partnership[partners]['+i+'][surname]" id="partner'+i+'_surname"></td></tr>';
+				partner += '<tr><td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership[partners]['+i+'][dob]" id="partner'+i+'_dob"></td></tr>';
+				partner += '<tr><td rowspan="4" width="225px">d. Residential Address:</td><td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_partnership[partners]['+i+'][address1]" id="partner'+i+'_address1"></td></tr>';
+				partner += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_partnership[partners]['+i+'][address2]" id="partner'+i+'_address2"></td></tr>';
+				partner += '<tr><td>State:<span class="required">*</span></td><td><select name="entity_partnership[partners]['+i+'][state]" id="partner'+i+'_state" class="state_dymselectbox">'+$('#partner0_state').html()+'</select></td>';
+				partner += '<td>District:<span class="required">*</span></td><td><select name="entity_partnership[partners]['+i+'][district]" id="partner'+i+'_district" class="district_dymselectbox"><option value="0">--Select--</option></select></td></tr>';
+				partner += '<tr><td>City:<span class="required">*</span></td><td><select name="entity_partnership[partners]['+i+'][city]" id="partner'+i+'_city" class="city_dymselectbox"><option value="0">--Select--</option></select></td>';
+				partner += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership[partners]['+i+'][pincode]" id="partner'+i+'_pincode"></td></tr>';
+				partner += '<tr><td colspan="2">e. Mobile No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership[partners]['+i+'][mobile]" id="partner'+i+'_mobile"></td></tr>';
+				partner += '<tr><td colspan="2">f. PAN:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[partners]['+i+'][pan]" id="partner'+i+'_pan"></td></tr>';
+				partner += '<tr><td colspan="2">g. Aadhaar Card Number, if available:</td><td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners]['+i+'][aadhaar_number]" id="partner'+i+'_aadhaarno"></td></tr></table>'
 			}
 			$('#partner_details').empty();
 			$('#partner_details').append(partner);
@@ -83,10 +83,10 @@ $(function(){
 		if(count > 1){
 			var privateltd = '';
 			for(i=1; i<count; i++){
-				privateltd += '<table  class="table table-bordered"><tr><td width="285px;">a. Name:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="privateltd'+i+'[name]" id="privateltd'+i+'_name"></td></tr>';
-				privateltd += '<tr><tr><td>b. PAN:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="PAN" name="privateltd'+i+'[pan]" id="privateltd'+i+'_pan"></td></tr>';
-				privateltd += '<tr><td>c. Director Identity Number:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Director identity number"  name="privateltd'+i+'[director_id_number]" id="privateltd'+i+'_director_id"></td></tr>';
-				privateltd += '<tr><td >d. Aadhaar Card Number, if available:</td><td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="privateltd'+i+'[aadhaar_number]" id="privateltd'+i+'_aadhaarno"></td></tr></table>';		
+				privateltd += '<table  class="table table-bordered"><tr><td width="285px;">a. Name:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners]['+i+'][name]" id="privateltd'+i+'_name"></td></tr>';
+				privateltd += '<tr><tr><td>b. PAN:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners]['+i+'][pan]" id="privateltd'+i+'_pan"></td></tr>';
+				privateltd += '<tr><td>c. Director Identity Number:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners]['+i+'][director_id_number]" id="privateltd'+i+'_director_id"></td></tr>';
+				privateltd += '<tr><td >d. Aadhaar Card Number, if available:</td><td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners]['+i+'][aadhaar_number]" id="privateltd'+i+'_aadhaarno"></td></tr></table>';		
 			}
 			$('#privateltd_details').empty();
 			$('#privateltd_details').append(privateltd);
@@ -237,7 +237,7 @@ $('select[name="entity_status"]').on("change",function() {
 	});
 });
 
-
+//submit button validation
 function epcgValidaion(){
 	var response = true;
 	var error = "";
@@ -528,3 +528,129 @@ function validateCategories(category_classname){
 	return errorResponse;
 }
 
+//minimal vaidation
+function epcgMinimalValidaion(){
+	var response = true;
+	var error = "";
+	var category_classname = "";
+	var errorPartA = "";
+	var errorPartB = "";
+	var errorPartC1_C5 = "";
+	var phoneRegex = /[0-9 -()+]+$/;
+	var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+	if($("#entity_name").val() == ""){
+		errorPartA += "Entity name cannot be empty"+'<br/>';
+		response = false;
+	}
+	if($("#entity_telephone").val() != "" ){
+		if(($("#entity_telephone").val().length < 6) || (!phoneRegex.test($("#entity_telephone").val()))){
+			errorPartA += "Please enter valid landline number"+'<br/>';
+			response = false;
+		}
+	}
+	if($("#entity_mobile1").val() != "" ){
+		if(($("#entity_mobile1").val().length < 6) || (!phoneRegex.test($("#entity_mobile1").val()))){
+			errorPartA += "Please enter valid primary mobile number"+'<br/>';
+			response = false;
+		}
+	}
+	if($("#entity_mobile2").val() != "" ){
+		if(($("#entity_mobile2").val().length < 6) || (!phoneRegex.test($("#entity_mobile2").val()))){
+			errorPartA += "Please enter valid other mobile number"+'<br/>';
+			response = false;
+		}
+	}
+	if($("#entity_email1").val() != "" ){
+		if(!emailRegex.test($("#entity_email1").val())){
+			errorPartA += "Please enter valid primary email address"+'<br/>';
+			response = false;
+		}
+	}
+	if($("#entity_email2").val() != "" ){
+		if(!emailRegex.test($("#entity_email2").val())){
+			errorPartA += "Please enter valid alternate email address"+'<br/>';
+			response = false;
+		}
+	}
+	if($("#entity_fax").val() != "" ){
+		if(!phoneRegex.test($("#entity_fax").val())){
+			errorPartA += "Please enter valid FAX number"+'<br/>';
+			response = false;
+		}
+	}
+	if (!$('input[name="entity[category]"]:checked').val()) {
+		errorPartA += "Please select the nature of concern/entity"+'<br/>';
+		response = false;
+	}
+	if($("#branch_total").val() != '') {
+		if(!$.isNumeric($("#branch_total").val())){
+			errorPartB += "Please enter valid number for total branches"+'<br/>';
+			response = false;
+		}
+		
+	}
+	if(response){
+		$('#error_message').hide();
+		/*
+		bootbox.confirm("Are you sure you want only to SAVE this form?",'No','Yes',function(result) {
+		    if (result) {
+		    	alert('hai');
+		    	return true;
+		    } 
+		});*/
+		return true;
+	}else{
+		var show_target = $("#error_message").offset().top;
+		bootbox.alert("Form validaion failed, kindly check the error message before proceeding.",function() {
+			$("html, body").animate({ scrollTop: 100 }, "slow");
+		});
+		if(errorPartA){
+			error += "<b>Part A:</b><br/>"+errorPartA+"<br/>";
+		}
+		if(errorPartB){
+			error += "<b>Part B:</b><br/>"+errorPartB+"<br/>";
+		}
+		if(errorPartC1_C5){
+			error += errorPartC1_C5;
+		}
+		//$("#error_message").attr('class', 'alert alert-error');
+		$('#error_message').show();
+		$("#error_message").html(error);
+		return false;
+	}
+}
+
+//code snippet for image preview
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#user_images')
+                .attr('src', e.target.result)
+                .width(140)
+                .height(140);
+        };
+        reader.readAsDataURL(input.files[0]);
+  }
+}
+
+//submit button validaion
+//onsubmit="return epcgValidaion();"
+$( "#submit_epcgform" ).click(function() {
+	if(true === epcgValidaion()){
+		$('#epcg_form').attr('action', 'epcg/addepcg');
+		$("#epcg_form").submit();
+	}else{
+		return false;
+	}
+});
+	
+//save button validation
+$("#save_epcgform").click(function() {
+	if(true === epcgMinimalValidaion()){
+		$('#epcg_form').attr('action', 'epcg/addepcg');
+		$("#epcg_form").submit();
+	}else{
+		return false;
+	}
+});
