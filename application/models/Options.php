@@ -10,5 +10,9 @@ class Model_Options{
 	public static function getAllIecStatus(){
 		return self::getTableInstance()->getAllIecStatus();
 	}
+	
+	public static function getIecDeleteStatus(){
+		return self::getTableInstance()->getIecDeleteStatus();
+	}
 
 }

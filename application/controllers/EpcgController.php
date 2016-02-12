@@ -184,8 +184,16 @@ class EpcgController extends Zend_Controller_Action
 		$this->_helper->viewRenderer->setNoRender(true);
 		$this->_helper->layout->disableLayout();
 		if($this->getRequest()->getParam('id') != null){
-			
+			$iec_id = $this->getRequest()->getParam('id');
+			//$status_id = Model_Options::getIecDeleteStatus();
+			Model_EntityIecinfo::changeStatus($iec_id,7);
+			$response['status'] = 1;
+			$response['message'] = 'Successfully deleted';
+		}else{
+			$response['status'] = 0;
+			$response['message'] = 'No parameters passed';
 		}
+		echo json_encode($response);
 	}
 	
 	//ajax
@@ -203,11 +211,11 @@ class EpcgController extends Zend_Controller_Action
 				$response['status'] = 0;
 				$response['message'] = 'No details found';
 			}
-			echo json_encode($response);
 		}else{
 			$response['status'] = 0;
 			$response['message'] = 'No parameters passed';
 		}
+		echo json_encode($response);
 	}
 	
 	//ajax
@@ -225,11 +233,11 @@ class EpcgController extends Zend_Controller_Action
 				$response['status'] = 0;
 				$response['message'] = 'No details found';
 			}
-			echo json_encode($response);
 		}else{
 			$response['status'] = 0;
 			$response['message'] = 'No parameters passed';
 		}
+		echo json_encode($response);
 	}
 	
 	//ajax

@@ -5,7 +5,7 @@ class Model_Table_EntityIecInfo extends Zend_Db_Table_Abstract{
 	
 	public function getAllEntities(){
 		$sql = $this->select('id','iec_no','name','status');
-		$sql->where('status != 6');
+		$sql->where('status != 6 AND status != 7');
 		$sql->order('created_on DESC');
 		return $this->fetchAll($sql)->toArray();;
 	}

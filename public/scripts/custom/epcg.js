@@ -214,10 +214,14 @@ $('#branch_details,#partner_details').on("change",".district_dymselectbox",funct
     }
 });
 
-$('select[name="entity_status"]').on("change",function() {
+$('select[name="entity_status"]').on({
+	focus:function(){
+		cur_val = $(this).val();
+	},
+	change:function() {
 	var sel_val = $(this).val();
 	var iec_id = sel_val.split("_");
-	var sel_text = $("#entity_status option:selected").text();
+	var sel_text = $("#entity_status_"+iec_id[1]+" option:selected").text();
 	bootbox.confirm("Are you sure you want to change the status to "+sel_text+" ?",'No','Yes',function(result) {
 	    if (result) {
 	    	$.ajax({
@@ -225,16 +229,17 @@ $('select[name="entity_status"]').on("change",function() {
 	            url : "/public/epcg/change-iec-status?id="+iec_id[1]+"&status_id="+iec_id[0],
 	            dataType : "json",  
 	            success : function(response) {
-	            	
+	            	bootbox.alert("Status changed successfully.");
 	            },
 	            error: function() {
 	                alert('Error occured');
 	            }
 	        });
 	    } else {
-	    	
+	    	$("#entity_status_"+iec_id[1]).val(cur_val);
 	    }
 	});
+	}
 });
 
 //submit button validation
@@ -636,7 +641,7 @@ function readURL(input) {
 
 //submit button validaion
 //onsubmit="return epcgValidaion();"
-$( "#submit_epcgform" ).click(function() {
+$( "#submit_epcgform" ).on('click',function() {
 	if(true === epcgValidaion()){
 		$('#epcg_form').attr('action', 'epcg/addepcg');
 		$("#epcg_form").submit();
@@ -646,11 +651,35 @@ $( "#submit_epcgform" ).click(function() {
 });
 	
 //save button validation
-$("#save_epcgform").click(function() {
+$("#save_epcgform").on('click',function() {
 	if(true === epcgMinimalValidaion()){
 		$('#epcg_form').attr('action', 'epcg/addepcg');
 		$("#epcg_form").submit();
 	}else{
 		return false;
 	}
+});
+
+//delete epcg
+$( "[id^=deleteEpcg]" ).on('click',function() {
+	var id = $(this).val();
+	var table = $('table#displayEpcg').DataTable();
+	var trParent =  $(this).parents('tr');
+	bootbox.confirm("Are you sure you want to delete this form?",'No','Yes',function(result) {
+	   if (result) {
+	    	$.ajax({
+	            type:"GET",
+	            url : "/public/epcg/deleteepcg?id="+id,
+	            dataType : "json",  
+	            success : function(response) {
+	            	table.row(trParent ).node().remove();
+	            },
+	            error: function() {
+	                alert('Error occured');
+	            }
+	        });
+	    	
+	    }
+	});
+	return false;
 });

@@ -7,7 +7,7 @@
 <div style="height: 45px; text-align: center;">
 	<strong>LIST OF SAVED EPCG FORM</strong>
 </div>
-<table class="table table-hover table-bordered table-striped"  id="display">  
+<table class="table table-hover table-bordered table-striped" <?php echo !empty($this->allentities) ? " id='displayEpcg'" : ''; ?> >  
 <thead>
 	<tr>
 		<th width="40px" style="text-align: center;">Sl No</th>	
@@ -30,8 +30,8 @@
 		<td><?php echo $entity_details['category'];?></td>
 		<td><?php echo $entity_details['created_by'];?></td>
 		<td>
-			<a class="btn btn-mini btn-primary" type="button" href="epcg/editepcg?id=<?php echo $entity_details['id']?>">Edit</a>
-			<a class="btn btn-mini btn-danger" type="button" href="epcg/deleteepcg?id=<?php echo $entity_details['id']?>">Delete</a>
+			<button class="btn btn-mini btn-primary" type="button" id="editEpcg" value="<?php echo $entity_details['id']?>">Edit</button>
+			<button class="btn btn-mini btn-danger" type="button" id="deleteEpcg_<?php echo $entity_details['id']?>" value="<?php echo $entity_details['id']?>">Delete</button>
 		</td>
 	</tr>
 	<?php $i++;
@@ -55,9 +55,9 @@
 <script src="scripts/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready(function() {
-	 $('table#display').DataTable({
+	 $('table#displayEpcg').DataTable({
 			columnDefs: [{ orderable: false, targets: [4]}],
 	  });
-	 $("select[name='display_length']").attr('style', 'width: 70px');
+	 $("select[name='displayEpcg_length']").attr('style', 'width: 70px');
 } );
 </script>

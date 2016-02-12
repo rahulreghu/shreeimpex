@@ -10,4 +10,8 @@ class Model_Table_Options extends Zend_Db_Table_Abstract{
 		return $this->fetchAll($sql)->toArray();;
 	}
 	
+	public function getIecDeleteStatus(){
+		return $this->fetchRow("option_name = 'entity_iec_info' AND option_value = 'Deleted'");
+	}
+	
 }

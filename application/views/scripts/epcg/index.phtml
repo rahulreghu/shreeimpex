@@ -8,7 +8,7 @@
 <div style="height: 45px; text-align: center;">
 	<strong>LIST OF APPLICATION FORM FOR ISSUE/MODIFICATION OF IMPORTER EXPORTER CODE (IEC) NUMBER</strong>
 </div>
-<table class="table table-hover table-bordered table-striped"  id="display">  
+<table class="table table-hover table-bordered table-striped" <?php echo !empty($this->allentities) ? " id='displayEpcg'" : ''; ?>>  
 <thead>
 	<tr>
 		<th width="40px" style="text-align: center;">Sl No</th>	
@@ -28,7 +28,7 @@
 		<td style="text-align: center;"><?php echo $i;?></td>
 		<td><?php echo empty($entity_details['iec_no'])? 'Not Generated' : $entity_details['iec_no']?></td>
 		<td><?php echo $entity_details['name'];?></td>
-		<td><select  name="entity_status" id="entity_status" style="width: 100px; margin: 0px 0px; padding:0px 4px; height: 22px;">
+		<td><select  name="entity_status" id="entity_status_<?php echo $entity_details['id']?>" style="width: 100px; margin: 0px 0px; padding:0px 4px; height: 22px;">
 				<?php foreach($this->allstatus as $status) {
 					$selected = "";
 					if($status['option_id'] == $entity_details['status'] )	{
@@ -41,8 +41,8 @@
 			</select>
 		</td>
 		<td> 
-			<a class="btn btn-mini btn-primary" type="button" href="epcg/editepcg?id=<?php echo $entity_details['id']?>">Edit</a>
-			<a class="btn btn-mini btn-danger" type="button" href="epcg/deleteepcg?id=<?php echo $entity_details['id']?>">Delete</a>
+			<button class="btn btn-mini btn-primary" type="button" id="editEpcg" value="<?php echo $entity_details['id']?>">Edit</button>
+			<button class="btn btn-mini btn-danger" type="button" id="deleteEpcg_<?php echo $entity_details['id']?>" value="<?php echo $entity_details['id']?>">Delete</button>
 		</td>
 	</tr>
 	<?php $i++;
@@ -66,9 +66,9 @@
 <script src="scripts/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready(function() {
-	 $('table#display').DataTable({
+	 $('table#displayEpcg').DataTable({
 			columnDefs: [{ orderable: false, targets: [3,4]}],
 	  });
-	 $("select[name='display_length']").attr('style', 'width: 70px');
+	 $("select[name='displayEpcg_length']").attr('style', 'width: 70px');
 } );
 </script>
