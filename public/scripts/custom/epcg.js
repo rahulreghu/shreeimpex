@@ -631,9 +631,9 @@ function readURL(input) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $('#user_images')
-                .attr('src', e.target.result)
-                .width(140)
-                .height(140);
+                .attr('src', e.target.result);
+             /* .width(140)
+                .height(140);*/
         };
         reader.readAsDataURL(input.files[0]);
   }
@@ -682,4 +682,37 @@ $( "[id^=deleteEpcg]" ).on('click',function() {
 	    }
 	});
 	return false;
+});
+
+
+$(function() {
+	$("#displayEpcg").on('click','[id^=iecnumber_]',function() {
+		var idname =  $(this).attr('id');
+		var id = idname.split("_");
+		$(this).hide(); //hide text
+	    $('#iectextbox_'+id[1]).show().focus(); //show textbox
+	});
+	
+	$("#displayEpcg").on('blur',"[id^=iectextbox_]", function() {
+		var idname =  $(this).attr('id');
+		var id = idname.split("_");
+		$(this).hide(); //hide text
+		if($(this).val() != ""){
+			$('#iecnumber_'+id[1]).text($(this).val())
+		    	$.ajax({
+		            type:"GET",
+		            url : "/public/epcg/update-iec-number?id="+id[1]+"&iec_no="+$(this).val(),
+		            dataType : "json",  
+		            success : function(response) {
+		            	if(response.status == 1){
+		            		bootbox.alert("Updated successfully.");
+		            	}
+		            },
+		            error: function() {
+		                alert('Error occured');
+		            }
+		        });
+		};
+		$('#iecnumber_'+id[1]).show()
+	});
 });

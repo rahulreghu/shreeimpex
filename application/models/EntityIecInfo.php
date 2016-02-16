@@ -26,4 +26,12 @@ class Model_EntityIecinfo{
 	public static function updateImageInIecForm($id,$target_filename){
 		return self::getTableInstance()->updateImageInIecForm($id,$target_filename);
 	}
+	
+	public static function getEntityInfobyId($id){
+		return self::getTableInstance()->getEntityInfobyId($id);
+	}
+	
+	public static function updateIecNumber($id,$iec_no){
+		return self::getTableInstance()->updateIecNumber($id,$iec_no);
+	}
 }

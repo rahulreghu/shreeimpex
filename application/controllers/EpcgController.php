@@ -162,11 +162,37 @@ class EpcgController extends Zend_Controller_Action
 		$entity_categories = Model_EntityCategories::getAllCategories();
 		$this->view->entity_categories = $entity_categories;
 		
-		$entity_categories = Model_EntityActivities::getAllActivities();
-		$this->view->entity_activities = $entity_categories;
+		$entity_activities = Model_EntityActivities::getAllActivities();
+		$this->view->entity_activities = $entity_activities;
 		
 		$states = Model_States::getAllStates();
 		$this->view->states = $states;
+		
+		if(isset($_GET['id']) && !empty($_GET['id'])){
+			echo '<pre>';
+			$iec_info =  Model_EntityIecinfo::getEntityInfobyId($_GET['id'])->toArray();
+			print_r($iec_info);
+			$this->view->iec_info = $iec_info;
+			
+			$iec_bank_details =  Model_EntityBankDetails::getBankDetailsByIecId($_GET['id']);
+			if(!empty($iec_bank_details)){
+				$this->view->iec_bank_details = $iec_bank_details->toArray();
+				print_r($this->view->iec_bank_details);
+			}
+			
+			$iec_branch_details =  Model_EntityDetails::getBranchDetailsByIecId($_GET['id']);
+			if(!empty($iec_branch_details)){
+				$this->view->iec_branch_details = $iec_branch_details->toArray();
+				print_r($this->view->iec_branch_details);
+			}
+			
+			$districts = Model_Districts::getByStateId($iec_info['state']);
+			$this->view->districts = $districts;
+				
+			$cities = Model_Cities::getByDistrictId($iec_info['district']);
+			$this->view->cities = $cities;
+		}
+		
 	}
 	
 	public function listsavedepcgAction()
@@ -249,6 +275,24 @@ class EpcgController extends Zend_Controller_Action
 			$id = $this->getRequest()->getParam('id');
 			$status_id = $this->getRequest()->getParam('status_id');
 			Model_EntityIecInfo::changeStatus($id,$status_id);
+			$response['status'] = 1;
+			$response['message'] = "Status has been updated";
+		}else{
+			$response['status'] = 0;
+			$response['message'] = 'No parameters passed';
+		}
+		echo json_encode($response);
+	}
+	
+	//ajax
+	public function updateIecNumberAction(){
+		$response = array();
+		$this->_helper->viewRenderer->setNoRender(true);
+		$this->_helper->layout->disableLayout();
+		if($this->getRequest()->getParam('id') != null){
+			$id = $this->getRequest()->getParam('id');
+			$iec_no = $this->getRequest()->getParam('iec_no');
+			Model_EntityIecInfo::updateIecNumber($id,$iec_no);
 			$response['status'] = 1;
 			$response['message'] = "Status has been updated";
 		}else{

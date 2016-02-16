@@ -11,4 +11,8 @@ class Model_EntityBankDetails{
 	public static function addBankDetails($data){
 		return self::getTableInstance()->addBankDetails($data);
 	}
+	
+	public static function getBankDetailsByIecId($id){
+		return self::getTableInstance()->getBankDetailsByIecId($id);
+	}
 }

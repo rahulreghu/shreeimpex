@@ -28,4 +28,12 @@ class Model_Table_EntityIecInfo extends Zend_Db_Table_Abstract{
 	public function updateImageInIecForm($id,$target_filename){
 		$this->update(array('image'=>$target_filename),'id = '.$id);
 	}
+	
+	public function getEntityInfobyId($id){
+		return $this->fetchRow("status != 7 AND id = '".$id."'");
+	}
+	
+	public function updateIecNumber($id,$iec_no){
+		$this->update(array('iec_number'=>$iec_no),'id = '.$id);
+	}
 }

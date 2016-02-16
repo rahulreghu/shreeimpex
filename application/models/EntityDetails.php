@@ -8,14 +8,12 @@ class Model_EntityDetails{
 		return self::$_table;
 	}
 	
-	/*
-	public static function addBranchDetails($data,$id){
-		return self::getTableInstance()->addBranchDetails($data,$id);
-	}
-	*/
-	
 	public static function addEntityDetails($data,$cat_id,$id){
 		return self::getTableInstance()->addEntityDetails($data,$cat_id,$id);
 	}
 	
+	 public static function getBranchDetailsByIecId($id){
+	 	return self::getTableInstance()->getBranchDetailsByIecId($id);
+	 }
+	 
 }

@@ -6,4 +6,8 @@ class Model_Table_EntityBankDetails extends Zend_Db_Table_Abstract{
 	public function addBankDetails($data){
 		return $this->insert($data);
 	}
+	
+	public function getBankDetailsByIecId($id){
+		return $this->fetchRow("entity_iec_id = '".$id."'");
+	}
 }
