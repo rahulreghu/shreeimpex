@@ -171,19 +171,39 @@ class EpcgController extends Zend_Controller_Action
 		if(isset($_GET['id']) && !empty($_GET['id'])){
 			echo '<pre>';
 			$iec_info =  Model_EntityIecinfo::getEntityInfobyId($_GET['id'])->toArray();
+			echo 'IEC INFO';
 			print_r($iec_info);
 			$this->view->iec_info = $iec_info;
 			
 			$iec_bank_details =  Model_EntityBankDetails::getBankDetailsByIecId($_GET['id']);
 			if(!empty($iec_bank_details)){
 				$this->view->iec_bank_details = $iec_bank_details->toArray();
+				echo 'IEC BANK DETAILS';
 				print_r($this->view->iec_bank_details);
 			}
 			
 			$iec_branch_details =  Model_EntityDetails::getBranchDetailsByIecId($_GET['id']);
 			if(!empty($iec_branch_details)){
-				$this->view->iec_branch_details = $iec_branch_details->toArray();
-				print_r($this->view->iec_branch_details);
+				$iec_branches = array();
+				$iec_partners = array();
+				$iec_branch_details = $iec_branch_details->toArray();
+				foreach($iec_branch_details as $branch){
+					if($branch['entity_category_id'] == 0){
+						$iec_branches[] = $branch;
+					}else{
+						$iec_partners[] = $branch;
+					}
+				}
+				echo 'IEC ALL BRANCHES';
+				print_r($iec_branch_details);
+				$this->view->iec_branches = $iec_branches;
+				$this->view->iec_partners = $iec_partners;
+				
+				echo 'IEC BRANCHES';
+				print_r($this->view->iec_branches);
+				echo 'IEC PARTNERS';
+				print_r($this->view->iec_partners);
+				
 			}
 			
 			$districts = Model_Districts::getByStateId($iec_info['state']);
@@ -191,6 +211,8 @@ class EpcgController extends Zend_Controller_Action
 				
 			$cities = Model_Cities::getByDistrictId($iec_info['district']);
 			$this->view->cities = $cities;
+			
+			
 		}
 		
 	}

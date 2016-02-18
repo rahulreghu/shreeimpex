@@ -215,24 +215,72 @@
 		<tr>
 			<td colspan="4">i. Enter number of Branches/Divisions/Units/Facories in India and abroad:<span class="required">*</span></td>
 			
-			<td><input class="input-block-level" type="text" placeholder="Number of branches" name="entity[total_branches]" id="branch_total" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box"></td>
+			<td><input class="input-block-level" type="text" placeholder="Number of branches" name="entity[total_branches]" id="branch_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box"></td>
 		</tr>
 		<tr>
 			<td  colspan="5">
+		<?php if(!empty($this->iec_info['total_branches'])){
+				foreach($this->iec_branches as $id => $branch){
+			?>
 				<table class="table table-bordered">
 					<tr>
 						<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
 						<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-						<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch0[address1]" id="branch0_address1"></td>
+						<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch_[<?=$id?>[[address1]" id="branch<?=$id?>_address1" value="<?php echo !empty($branch['address1'])? $branch['address1'] : ""?>"></td>
 					</tr>
 					<tr>
 						<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-						<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch0[address2]" id="branch0_address2"></td>
+						<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch_[<?=$id?>][address2]" id="branch<?=$id?>_address2" value="<?php echo !empty($branch['address2'])? $branch['address2'] : ""?>"></td>
 					</tr>
 					<tr>
 						<td>State:<span class="required">*</span></td>
 						<td>
-							<select name="branch0[state]" id="branch0_state"  class="state_selectbox">
+							<select name="branch_[<?=$id?>][state]" id="branch<?=$id?>_state"  class="state_selectbox">
+								<option value="0">--Select--</option>
+								<?php foreach ($this->states as $state){
+									$state_selected.$id =  "";
+									if (!empty($branch['state']) && $branch['state'] == $state['id']){
+										$state_selected.$id =  "selected = selected";
+									}
+								?>
+							  	<option value="<?php echo $state['id']?>" <?php echo $state_selected.$id;?>><?php echo $state['name']?></option>
+							  	<?php }?>
+							</select>
+						</td>
+						<td>District:<span class="required">*</span></td>
+						<td>
+							<select name="branch_[<?=$id?>][district]" id="branch<?=$id?>_district" class="district_selectbox">
+								<option value="0">--Select--</option>
+							</select>
+						</td>	
+					</tr>
+					<tr>
+						<td>City:<span class="required">*</span></td>
+						<td>
+							<select name="branch_[<?=$id?>][city]" id="branch<?=$id?>_city" class="city_selectbox">
+								<option value="0">--Select--</option>
+							</select>
+						</td>
+						<td>Pincode:<span class="required">*</span></td>
+						<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch_[<?=$id?>][pincode]" id="branch<?=$id?>_pincode" value="<?php echo !empty($branch['pincode'])? $branch['pincode'] : ""?>"></td>
+					</tr>
+					<tr><td colspan="5" style="text-align: right;"><a class="btn btn-mini btn-danger" type="button" id="remove" href="">Remove</a></td></tr>
+				</table>
+		<?php }}else{?>
+				<table class="table table-bordered">
+					<tr>
+						<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
+						<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+						<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch[0][address1]" id="branch0_address1" ></td>
+					</tr>
+					<tr>
+						<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+						<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch[0][address2]" id="branch0_address2" ></td>
+					</tr>
+					<tr>
+						<td>State:<span class="required">*</span></td>
+						<td>
+							<select name="branch[0][state]" id="branch0_state"  class="state_selectbox">
 								<option value="0">--Select--</option>
 								<?php foreach ($this->states as $state){?>
 							  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
@@ -241,7 +289,7 @@
 						</td>
 						<td>District:<span class="required">*</span></td>
 						<td>
-							<select name="branch0[district]" id="branch0_district" class="district_selectbox">
+							<select name="branch[0][district]" id="branch0_district" class="district_selectbox">
 								<option value="0">--Select--</option>
 							</select>
 						</td>	
@@ -249,14 +297,15 @@
 					<tr>
 						<td>City:<span class="required">*</span></td>
 						<td>
-							<select name="branch0[city]" id="branch0_city" class="city_selectbox">
+							<select name="branch[0][city]" id="branch0_city" class="city_selectbox">
 								<option value="0">--Select--</option>
 							</select>
 						</td>
 						<td>Pincode:<span class="required">*</span></td>
-						<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch0[pincode]" id="branch0_pincode"></td>
+						<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[0][pincode]" id="branch0_pincode" ></td>
 					</tr>
 				</table>
+				<?php }?>
 				<div id="branch_details"></div>
 			</td>	
 		</tr>
