@@ -1,4 +1,4 @@
-<div id="error_message" class="alert alert-error" style="display: none;"></div>
+<div id="error_message" class="alert alert-error" <?php echo !empty($this->response['status']) && $this->response['status'] == 0 ? "" : "style='display: none;'"?>></div>
 <form action="epcg/addepcg" method="post" name="epcg_form" id="epcg_form" enctype="multipart/form-data"> 
 	<table class="table table-bordered" style="width: 950px">
 		<caption style="height: 30px">
@@ -215,97 +215,121 @@
 		<tr>
 			<td colspan="4">i. Enter number of Branches/Divisions/Units/Facories in India and abroad:<span class="required">*</span></td>
 			
-			<td><input class="input-block-level" type="text" placeholder="Number of branches" name="entity[total_branches]" id="branch_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box"></td>
+			<td>
+				<input class="input-block-level" type="text" placeholder="Number of branches" name="entity[total_branches]" id="branch_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box">
+				<input class="input-block-level" type="hidden"  name="dummy_branch_total" id="dummy_branch_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" >
+			</td>
 		</tr>
 		<tr>
 			<td  colspan="5">
 		<?php if(!empty($this->iec_info['total_branches'])){
 				foreach($this->iec_branches as $id => $branch){
+					$select_id = $id;
+					$default_branch_display = "style='display:none'";
 			?>
-				<table class="table table-bordered">
-					<tr>
-						<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
-						<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-						<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch_[<?=$id?>[[address1]" id="branch<?=$id?>_address1" value="<?php echo !empty($branch['address1'])? $branch['address1'] : ""?>"></td>
-					</tr>
-					<tr>
-						<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-						<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch_[<?=$id?>][address2]" id="branch<?=$id?>_address2" value="<?php echo !empty($branch['address2'])? $branch['address2'] : ""?>"></td>
-					</tr>
-					<tr>
-						<td>State:<span class="required">*</span></td>
-						<td>
-							<select name="branch_[<?=$id?>][state]" id="branch<?=$id?>_state"  class="state_selectbox">
-								<option value="0">--Select--</option>
-								<?php foreach ($this->states as $state){
-									$state_selected.$id =  "";
-									if (!empty($branch['state']) && $branch['state'] == $state['id']){
-										$state_selected.$id =  "selected = selected";
-									}
-								?>
-							  	<option value="<?php echo $state['id']?>" <?php echo $state_selected.$id;?>><?php echo $state['name']?></option>
-							  	<?php }?>
-							</select>
-						</td>
-						<td>District:<span class="required">*</span></td>
-						<td>
-							<select name="branch_[<?=$id?>][district]" id="branch<?=$id?>_district" class="district_selectbox">
-								<option value="0">--Select--</option>
-							</select>
-						</td>	
-					</tr>
-					<tr>
-						<td>City:<span class="required">*</span></td>
-						<td>
-							<select name="branch_[<?=$id?>][city]" id="branch<?=$id?>_city" class="city_selectbox">
-								<option value="0">--Select--</option>
-							</select>
-						</td>
-						<td>Pincode:<span class="required">*</span></td>
-						<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch_[<?=$id?>][pincode]" id="branch<?=$id?>_pincode" value="<?php echo !empty($branch['pincode'])? $branch['pincode'] : ""?>"></td>
-					</tr>
-					<tr><td colspan="5" style="text-align: right;"><a class="btn btn-mini btn-danger" type="button" id="remove" href="">Remove</a></td></tr>
-				</table>
-		<?php }}else{?>
-				<table class="table table-bordered">
-					<tr>
-						<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
-						<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-						<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch[0][address1]" id="branch0_address1" ></td>
-					</tr>
-					<tr>
-						<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-						<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch[0][address2]" id="branch0_address2" ></td>
-					</tr>
-					<tr>
-						<td>State:<span class="required">*</span></td>
-						<td>
-							<select name="branch[0][state]" id="branch0_state"  class="state_selectbox">
-								<option value="0">--Select--</option>
-								<?php foreach ($this->states as $state){?>
-							  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
-							  	<?php }?>
-							</select>
-						</td>
-						<td>District:<span class="required">*</span></td>
-						<td>
-							<select name="branch[0][district]" id="branch0_district" class="district_selectbox">
-								<option value="0">--Select--</option>
-							</select>
-						</td>	
-					</tr>
-					<tr>
-						<td>City:<span class="required">*</span></td>
-						<td>
-							<select name="branch[0][city]" id="branch0_city" class="city_selectbox">
-								<option value="0">--Select--</option>
-							</select>
-						</td>
-						<td>Pincode:<span class="required">*</span></td>
-						<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[0][pincode]" id="branch0_pincode" ></td>
-					</tr>
-				</table>
-				<?php }?>
+				<div id="branch_container_<?=$id?>"> 
+					<table class="table table-bordered">
+						<tr>
+							<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
+							<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch_[<?=$id?>][address1]" id="branch_<?=$id?>_address1" value="<?php echo !empty($branch['address1'])? $branch['address1'] : ""?>"></td>
+						</tr>
+						<tr>
+							<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch_[<?=$id?>][address2]" id="branch_<?=$id?>_address2" value="<?php echo !empty($branch['address2'])? $branch['address2'] : ""?>"></td>
+						</tr>
+						<tr>
+							<td>State:<span class="required">*</span></td>
+							<td>
+								<select name="branch_[<?=$id?>][state]" id="branch_<?=$id?>_state"  class="state_selectbox">
+									<option value="0">--Select--</option>
+									<?php foreach ($this->states as $state){
+										$state_selected.$select_id =  "";
+										if (!empty($branch['state']) && $branch['state'] == $state['id']){
+											$state_selected.$select_id =  "selected = selected";
+										}
+									?>
+								  	<option value="<?php echo $state['id']?>" <?php echo $state_selected.$select_id;?>><?php echo $state['name']?></option>
+								  	<?php }?>
+								</select>
+							</td>
+							<td>District:<span class="required">*</span></td>
+							<td>
+								<select name="branch_[<?=$id?>][district]" id="branch_<?=$id?>_district" class="district_selectbox">
+									<option value="0">--Select--</option>
+									<?php foreach ($branch['districts'] as $district){
+											$district_selected.$select_id =  "";
+											if (!empty($branch['district']) && $branch['district'] == $district['id']){
+												$district_selected.$select_id =  "selected = selected";
+											}
+									?>
+									<option value="<?php echo $district['id']?>" <?php echo $district_selected.$select_id;?>><?php echo $district['name']?></option>
+									<?php }?>
+								</select>
+							</td>	
+						</tr>
+						<tr>
+							<td>City:<span class="required">*</span></td>
+							<td>
+								<select name="branch_[<?=$id?>][city]" id="branch_<?=$id?>_city" class="city_selectbox">
+									<option value="0">--Select--</option>
+									<?php foreach ($branch['cities'] as $city){
+											$city_selected.$select_id =  "";
+											if (!empty($branch['city']) && $branch['city'] == $city['id']){
+												$city_selected.$select_id =  "selected = selected";
+											}
+									?>
+									<option value="<?php echo $city['id']?>" <?php echo $city_selected.$select_id;?>><?php echo $city['name']?></option>
+									<?php }?>
+								</select>
+							</td>
+							<td>Pincode:<span class="required">*</span></td>
+							<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch_[<?=$id?>][pincode]" id="branch_<?=$id?>_pincode" value="<?php echo !empty($branch['pincode'])? $branch['pincode'] : ""?>"></td>
+						</tr>
+						<tr><td colspan="5" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_branch_<?=$id?>" >Remove</button></td></tr>
+					</table>
+				</div>
+		<?php }}?>
+				<div id="default_branch_container" <?php echo !empty($default_branch_display)? $default_branch_display : ""?>>
+					<table class="table table-bordered">
+						<tr>
+							<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
+							<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch[0][address1]" id="branch0_address1" ></td>
+						</tr>
+						<tr>
+							<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch[0][address2]" id="branch0_address2" ></td>
+						</tr>
+						<tr>
+							<td>State:<span class="required">*</span></td>
+							<td>
+								<select name="branch[0][state]" id="branch0_state"  class="state_selectbox">
+									<option value="0">--Select--</option>
+									<?php foreach ($this->states as $state){?>
+								  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+								  	<?php }?>
+								</select>
+							</td>
+							<td>District:<span class="required">*</span></td>
+							<td>
+								<select name="branch[0][district]" id="branch0_district" class="district_selectbox">
+									<option value="0">--Select--</option>
+								</select>
+							</td>	
+						</tr>
+						<tr>
+							<td>City:<span class="required">*</span></td>
+							<td>
+								<select name="branch[0][city]" id="branch0_city" class="city_selectbox">
+									<option value="0">--Select--</option>
+								</select>
+							</td>
+							<td>Pincode:<span class="required">*</span></td>
+							<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[0][pincode]" id="branch0_pincode" ></td>
+						</tr>
+					</table>
+				</div>
 				<div id="branch_details"></div>
 			</td>	
 		</tr>
@@ -322,24 +346,29 @@
 			</tr>
 			<tr>
 				<td colspan="2">1. a) Name of the Proprietor:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of the proprietor"  name="prop[name]" id="prop_name"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of the proprietor"  name="prop[name]" id="prop_name" value="<?php echo !empty($this->iec_category_details['proprietorship'][0]['name'])? $this->iec_category_details['proprietorship'][0]['name'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td rowspan="4" width="225px">b). Residential Address:</td>
 				<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="prop[address1]" id="prop_address1"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="prop[address1]" id="prop_address1" value="<?php echo !empty($this->iec_category_details['proprietorship'][0]['address1'])? $this->iec_category_details['proprietorship'][0]['address1'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="prop[address2]" id="prop_address2"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="prop[address2]" id="prop_address2" value="<?php echo !empty($this->iec_category_details['proprietorship'][0]['address2'])? $this->iec_category_details['proprietorship'][0]['address2'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td>State:<span class="required">*</span></td>
 				<td>
 					<select name="prop[state]" id="prop_state"  class="state_selectbox">
 						<option value="0">--Select--</option>
-						<?php foreach ($this->states as $state){?>
-					  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+						<?php foreach ($this->states as $state){
+							$state_selected_prop =  "";
+							if (!empty($this->iec_category_details['proprietorship'][0]['state']) && $this->iec_category_details['proprietorship'][0]['state'] == $state['id']){
+								$state_selected_prop =  "selected = selected";
+							}
+						?>
+					  	<option value="<?php echo $state['id']?>" <?php echo $state_selected_prop;?>><?php echo $state['name']?></option>
 					  	<?php }?>
 					</select>
 				</td>
@@ -347,6 +376,14 @@
 				<td>
 					<select name="prop[district]" id="prop_district" class="district_selectbox">
 						<option value="0">--Select--</option>
+						<?php foreach ($this->iec_category_details['proprietorship'][0]['districts'] as $district){
+								$district_selected_prop =  "";
+								if (!empty($this->iec_category_details['proprietorship'][0]['district']) && $this->iec_category_details['proprietorship'][0]['district'] == $district['id']){
+								$district_selected_prop =  "selected = selected";
+							}
+						?>
+						<option value="<?php echo $district['id']?>" <?php echo $district_selected_prop;?>><?php echo $district['name']?></option>
+						<?php }?>
 					</select>
 				</td>
 			</tr>
@@ -355,14 +392,22 @@
 				<td>
 					<select name="prop[city]" id="prop_city" class="city_selectbox">
 						<option value="0">--Select--</option>
+						<?php foreach ($this->iec_category_details['proprietorship'][0]['cities'] as $city){
+								$city_selected_prop =  "";
+								if (!empty($this->iec_category_details['proprietorship'][0]['city']) && $this->iec_category_details['proprietorship'][0]['city'] == $city['id']){
+								$city_selected_prop =  "selected = selected";
+							}
+						?>
+						<option value="<?php echo $city['id']?>" <?php echo $city_selected_prop;?>><?php echo $city['name']?></option>
+						<?php }?>
 					</select>
 				</td>
 				<td>Pincode:<span class="required">*</span></td>
-				<td><input class="input-block-level" type="text" placeholder="Pincode" name="prop[pincode]" id="prop_pincode"></td>
+				<td><input class="input-block-level" type="text" placeholder="Pincode" name="prop[pincode]" id="prop_pincode" value="<?php echo !empty($this->iec_category_details['proprietorship'][0]['pincode'])? $this->iec_category_details['proprietorship'][0]['pincode'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">c) Aadhaar Card Number, if available:</td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="prop[aadhaar_number]" id="prop_aadharno"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="prop[aadhaar_number]" id="prop_aadharno" value="<?php echo !empty($this->iec_category_details['proprietorship'][0]['aadhaar_number'])? $this->iec_category_details['proprietorship'][0]['aadhaar_number'] : ""?>"></td>
 			</tr>
 		</table>
 	</div>
@@ -374,88 +419,186 @@
 			<tr>
 				<td colspan="1" rowspan="3">1. PAN details in the entity:</td>
 				<td colspan="2">Name as in PAN:<span class="required">*</span></td>
-				<td colspan="2" width="300px;"><input class="input-block-level" type="text"	placeholder="Name as in PAN" name="entity_partnership[pan_name_entity]" id="partner_pan_name_entity"></td>
+				<td colspan="2" width="300px;"><input class="input-block-level" type="text"	placeholder="Name as in PAN" name="entity_partnership[pan_name_entity]" id="partner_pan_name_entity" value="<?php echo !empty($this->iec_info['pan_name_entity'])? $this->iec_info['pan_name_entity'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">Date of Incorporation (DD/MM/YYYY):<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of incorporation" name="entity_partnership[incorporation_date]" id="partner_incorporation_date"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of incorporation" name="entity_partnership[incorporation_date]" id="partner_incorporation_date" value="<?php echo !empty($this->iec_info['incorporation_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['incorporation_date']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">PAN:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[pan_entity]" id="partner_pan_entity"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[pan_entity]" id="partner_pan_entity" value="<?php echo !empty($this->iec_info['pan_entity'])? $this->iec_info['pan_entity'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">2. Enter the number of partners in the Partnership Firm:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Number of partners" name="entity_partnership[total_partners]" id="partner_total" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box"></td>
+				<td colspan="3">
+					<input class="input-block-level" type="text" placeholder="Number of partners" name="entity_partnership[total_partners]" value="<?php echo !empty($this->iec_info['total_partners'])? $this->iec_info['total_partners'] : ""?>" id="partner_total" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box">
+					<input class="input-block-level" type="hidden"  name="dummy_partner_total" id="dummy_partner_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" >
+				</td>	
 			</tr>
 			<tr>
 				<td colspan="5">3. Fill the following details for each partner: </td>
 			</tr>
 			<tr>
 				<td  colspan="5">
-					<table class="table table-bordered" >
-						<tr>
-							<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="partner0[name]" id="partner0_name"></td>
-						</tr>
-						<tr>
-							<td colspan="2">b. Father's Name:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Father's name" name="partner0[surname]" id="partner0_surname"></td>
-						</tr>
-						<tr>
-							<td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="partner0[dob]" id="partner0_dob"></td>
-						</tr>
-						<tr>
-							<td rowspan="4" width="225px">d. Residential Address:
-							</td>
-							<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="partner0[address1]" id="partner0_address1"></td>
-						</tr>
-						<tr>
-							<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="partner0[address2]" id="partner0_address2"></td>
-						</tr>
-						<tr>
-							<td>State:<span class="required">*</span></td>
-							<td>
-								<select name="partner0[state]" id="partner0_state"  class="state_selectbox">
-									<option value="0">--Select--</option>
-									<?php foreach ($this->states as $state){?>
-								  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
-								  	<?php }?>
-								</select>
-							</td>
-							<td>District:<span class="required">*</span></td>
-							<td>
-								<select name="partner0[district]" id="partner0_district" class="district_selectbox">
-									<option value="0">--Select--</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>City:<span class="required">*</span></td>
-							<td>
-								<select name="partner0[city]" id="partner0_city" class="city_selectbox">
-									<option value="0">--Select--</option>
-								</select>
-							</td>
-							<td>Pincode:<span class="required">*</span></td>
-							<td><input class="input-block-level" type="text" placeholder="Pincode" name="partner0[pincode]" id="partner0_pincode"></td>
-						</tr>
-						<tr>
-							<td colspan="2">e. Mobile No:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="partner0[mobile]" id="partner0_mobile"></td>
-						</tr>
-						<tr>
-							<td colspan="2">f. PAN:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="partner0[pan]" id="partner0_pan"></td>
-						</tr>
-						<tr>
-							<td colspan="2">g. Aadhaar Card Number, if available:</td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="partner0[aadhaar_number]" id="partner0_aadhaarno"></td>
-						</tr>
-					</table>
+				<?php if(!empty($this->iec_info['total_partners'])){
+				foreach($this->iec_category_details['partnership'] as $id => $partner){
+					$select_id = $id;
+					$default_partner_display = "style='display:none'";
+				?>
+					<div id="partner_container_<?=$id?>"> 
+						<table class="table table-bordered" >
+							<tr>
+								<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership_[partners][<?=$id?>][name]" id="partner_<?=$id?>_name" value="<?php echo !empty($partner['name'])? $partner['name'] : ""?>"></td>
+							</tr>
+							<tr>
+								<td colspan="2">b. Father's Name:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Father's name" name="entity_partnership_[partners][<?=$id?>][surname]" id="partner_<?=$id?>_surname" value="<?php echo !empty($partner['surname'])? $partner['surname'] : ""?>"></td>
+							</tr>
+							<tr>
+								<td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership_[partners][<?=$id?>][dob]" id="partner_<?=$id?>_dob" value="<?php echo !empty($partner['dob'])? DateTime::createFromFormat("Y-m-d", "{$partner['dob']}")->format('d/m/Y') : ""?>"></td>
+							</tr>
+							<tr>
+								<td rowspan="4" width="225px">d. Residential Address:
+								</td>
+								<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_partnership_[partners][<?=$id?>][address1]" id="partner_<?=$id?>_address1" value="<?php echo !empty($partner['address1'])? $partner['address1']: ""?>"></td>
+							</tr>
+							<tr>
+								<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_partnership_[partners][<?=$id?>][address2]" id="partner_<?=$id?>_address2" value="<?php echo !empty($partner['address2'])? $partner['address2']: ""?>"></td>
+							</tr>
+							<tr>
+								<td>State:<span class="required">*</span></td>
+								<td>
+									<select name="entity_partnership_[partners][<?=$id?>][state]" id="partner_<?=$id?>_state"  class="state_selectbox">
+										<option value="0">--Select--</option>
+										<?php foreach ($this->states as $state){
+											$state_selected_partner.$select_id =  "";
+											if (!empty($partner['state']) && $partner['state'] == $state['id']){
+												$state_selected_partner.$select_id =  "selected = selected";
+											}
+										?>
+									  	<option value="<?php echo $state['id']?>" <?php echo $state_selected_partner.$select_id;?>><?php echo $state['name']?></option>
+									  	<?php }?>
+									</select>
+								</td>
+								<td>District:<span class="required">*</span></td>
+								<td>
+									<select name="entity_partnership_[partners][<?=$id?>][district]" id="partner_<?=$id?>_district" class="district_selectbox">
+										<option value="0">--Select--</option>
+										<?php foreach ($partner['districts'] as $district){
+												$district_selected_partner.$select_id =  "";
+												if (!empty($partner['district']) && $partner['district'] == $district['id']){
+													$district_selected_partner.$select_id =  "selected = selected";
+												}
+										?>
+										<option value="<?php echo $district['id']?>" <?php echo $district_selected_partner.$select_id;?>><?php echo $district['name']?></option>
+										<?php }?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>City:<span class="required">*</span></td>
+								<td>
+									<select name="entity_partnership_[partners][<?=$id?>][city]" id="partner_<?=$id?>_city" class="city_selectbox">
+										<option value="0">--Select--</option>
+										<?php foreach ($partner['cities'] as $city){
+												$district_selected_partner.$select_id =  "";
+												if (!empty($partner['city']) && $partner['city'] == $city['id']){
+													$district_selected_partner.$select_id =  "selected = selected";
+												}
+										?>
+										<option value="<?php echo $city['id']?>" <?php echo $district_selected_partner.$select_id;?>><?php echo $city['name']?></option>
+										<?php }?>
+									</select>
+								</td>
+								<td>Pincode:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership_[partners][<?=$id?>][pincode]" id="partner_<?=$id?>_pincode" value="<?php echo !empty($partner['pincode'])? $partner['pincode']: ""?>"></td>
+							</tr>
+							<tr>
+								<td colspan="2">e. Mobile No:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership_[partners][<?=$id?>][mobile]" id="partner_<?=$id?>_mobile" value="<?php echo !empty($partner['mobile'])? $partner['mobile']: ""?>"></td>
+							</tr>
+							<tr>
+								<td colspan="2">f. PAN:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership_[partners][<?=$id?>][pan]" id="partner_<?=$id?>_pan" value="<?php echo !empty($partner['pan'])? $partner['pan']: ""?>"></td>
+							</tr>
+							<tr>
+								<td colspan="2">g. Aadhaar Card Number, if available:</td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership_[partners][<?=$id?>][aadhaar_number]" id="partner_<?=$id?>_aadhaarno" value="<?php echo !empty($partner['aadhaar_number'])? $partner['aadhaar_number']: ""?>"></td>
+							</tr>
+							<tr><td colspan="5" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_partner_<?=$id?>" >Remove</button></td></tr>
+						</table>
+					</div>
+					<?php }}?>
+					<div id="default_partner_container" <?php echo !empty($default_partner_display)? $default_partner_display : ""?>>
+						<table class="table table-bordered" >
+							<tr>
+								<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners][0][name]" id="partner0_name"></td>
+							</tr>
+							<tr>
+								<td colspan="2">b. Father's Name:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Father's name" name="entity_partnership[partners][0][surname]" id="partner0_surname"></td>
+							</tr>
+							<tr>
+								<td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership[partners][0][dob]" id="partner0_dob"></td>
+							</tr>
+							<tr>
+								<td rowspan="4" width="225px">d. Residential Address:
+								</td>
+								<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_partnership[partners][0][address1]" id="partner0_address1"></td>
+							</tr>
+							<tr>
+								<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_partnership[partners][0][address2]" id="partner0_address2"></td>
+							</tr>
+							<tr>
+								<td>State:<span class="required">*</span></td>
+								<td>
+								<select name="entity_partnership[partners][0][state]" id="partner0_state"  class="state_selectbox">
+										<option value="0">--Select--</option>
+										<?php foreach ($this->states as $state){?>
+									  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+									  	<?php }?>
+									</select>
+								</td>
+								<td>District:<span class="required">*</span></td>
+								<td>
+								<select name="entity_partnership[partners][0][district]" id="partner0_district" class="district_selectbox">
+										<option value="0">--Select--</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>City:<span class="required">*</span></td>
+								<td>
+								<select name="entity_partnership[partners][0][city]" id="partner0_city" class="city_selectbox">
+										<option value="0">--Select--</option>
+									</select>
+								</td>
+								<td>Pincode:<span class="required">*</span></td>
+							<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership[partners][0][pincode]" id="partner0_pincode"></td>
+							</tr>
+							<tr>
+								<td colspan="2">e. Mobile No:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership[partners][0][mobile]" id="partner0_mobile"></td>
+							</tr>
+							<tr>
+								<td colspan="2">f. PAN:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[partners][0][pan]" id="partner0_pan"></td>
+							</tr>
+							<tr>
+								<td colspan="2">g. Aadhaar Card Number, if available:</td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners][0][aadhaar_number]" id="partner0_aadhaarno"></td>
+							</tr>
+						</table>
+					</div>
 					<div id="partner_details"></div>
 				</td>	
 			</tr>	
@@ -469,51 +612,83 @@
 			<tr>
 				<td rowspan="3">1. PAN details of the firm:</td>
 				<td colspan="2" >Name as in PAN:<span class="required">*</span></td>
-				<td colspan="2" width="300px;"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_privateltd[pan_name_entity]" id="privateltd_pan_name_entity"></td>
+				<td colspan="2" width="300px;"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_privateltd[pan_name_entity]" id="privateltd_pan_name_entity" value="<?php echo !empty($this->iec_info['pan_name_entity'])? $this->iec_info['pan_name_entity'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">Date of Incorporation(DD/MM/YYYY):<span class="required">*</span></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Date of incorporation"  name="entity_privateltd[incorporation_date]" id="privateltd_incorporation_date"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Date of incorporation"  name="entity_privateltd[incorporation_date]" id="privateltd_incorporation_date" value="<?php echo !empty($this->iec_info['incorporation_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['incorporation_date']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">PAN:<span class="required">*</span></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[pan_entity]" id="privateltd_pan_entity"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[pan_entity]" id="privateltd_pan_entity" value="<?php echo !empty($this->iec_info['pan_entity'])? $this->iec_info['pan_entity'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">2. LLPIN/CIN(Whichever is applicable):</td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="LLPIN/CIN" name="entity_privateltd[llpin_cin]" id="privateltd_llpin_cin"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="LLPIN/CIN" name="entity_privateltd[llpin_cin]" id="privateltd_llpin_cin" value="<?php echo !empty($this->iec_info['llpin_cin'])? $this->iec_info['llpin_cin'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">3. Registration Cerification No:</td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Registration cerification no" name="entity_privateltd[registration_cert_number]" id="privateltd_registration_cert_number"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Registration cerification no" name="entity_privateltd[registration_cert_number]" id="privateltd_registration_cert_number" value="<?php echo !empty($this->iec_info['registration_cert_number'])? $this->iec_info['registration_cert_number'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">4. Enter the number of Partners/Director in the Firm/Company:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Number of partners" name="entity_privateltd[total_partners]" id="privateltd_partner_total"></td>
+				<td colspan="3">
+					<input class="input-block-level" type="text" placeholder="Number of partners" name="entity_privateltd[total_partners]" id="privateltd_total" value="<?php echo !empty($this->iec_info['total_partners'])? $this->iec_info['total_partners'] : ""?>">
+					<input class="input-block-level" type="hidden"  name="dummy_privateltd_total" id="dummy_privateltd_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" >
+				</td>
 			</tr>
 			<tr>
 				<td colspan="5">5. Fill in the following details for each Partner/Director:</td>
 			</tr>
 			<tr> 
 				<td colspan="5">
-					<table  class="table table-bordered">
-						<tr>
-							<td width="285px;">a. Name:<span class="required">*</span></td>
-							<td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="privateltd0[name]" id="privateltd0_name"></td>
-						</tr>
-						<tr>
-							<td>b. PAN:<span class="required">*</span></td>
-							<td><input class="input-block-level" type="text" placeholder="PAN" name="privateltd0[pan]" id="privateltd0_pan"></td>
-						</tr>
-						<tr>
-							<td>c. Director Identity Number:<span class="required">*</span></td>
-							<td><input class="input-block-level" type="text" placeholder="Director identity number"  name="privateltd0[director_id_number]" id="privateltd0_director_id"></td>
-						</tr>
-						<tr>
-							<td >d. Aadhaar Card Number, if available:</td>
-							<td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="privateltd0[aadhaar_number]" id="privateltd0_aadhaarno"></td>
-						</tr>
-					</table>
+					<?php if(!empty($this->iec_info['total_partners'])){
+							foreach($this->iec_category_details['privateltd'] as $id => $privateltd){
+								$select_id = $id;
+								$default_privateltd_display = "style='display:none'";
+					?>
+					<div id="privateltd_container_<?=$id?>"> 
+						<table  class="table table-bordered">
+							<tr>
+								<td width="285px;">a. Name:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners][<?=$id?>][name]" id="privateltd_<?=$id?>_name" value="<?php echo !empty($privateltd['name'])? $privateltd['name'] : ""?>"></td>
+							</tr>
+							<tr>
+								<td>b. PAN:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners][<?=$id?>][pan]" id="privateltd_<?=$id?>_pan" value="<?php echo !empty($privateltd['pan'])? $privateltd['pan'] : ""?>"></td>
+							</tr>
+							<tr>
+								<td>c. Director Identity Number:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners][<?=$id?>][director_id_number]" id="privateltd_<?=$id?>_director_id" value="<?php echo !empty($privateltd['director_id_number'])? $privateltd['director_id_number'] : ""?>"></td>
+							</tr>
+							<tr>
+								<td >d. Aadhaar Card Number, if available:</td>
+								<td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners][<?=$id?>][aadhaar_number]" id="privateltd_<?=$id?>_aadhaarno" value="<?php echo !empty($privateltd['aadhaar_number'])? $privateltd['aadhaar_number'] : ""?>"></td>
+							</tr>
+							<tr><td colspan="5" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_privateltd_<?=$id?>" >Remove</button></td></tr>
+						</table>
+					</div>
+					<?php }}?>
+					<div id="default_privateltd_container" <?php echo !empty($default_privateltd_display)? $default_privateltd_display : ""?>>
+						<table  class="table table-bordered">
+							<tr>
+								<td width="285px;">a. Name:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners][0][name]" id="privateltd0_name" ></td>
+							</tr>
+							<tr>
+								<td>b. PAN:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners][0][pan]" id="privateltd0_pan" ></td>
+							</tr>
+							<tr>
+								<td>c. Director Identity Number:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners][0][director_id_number]" id="privateltd0_director_id" ></td>
+							</tr>
+							<tr>
+								<td >d. Aadhaar Card Number, if available:</td>
+								<td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners][0][aadhaar_number]" id="privateltd0_aadhaarno" ></td>
+							</tr>
+						</table>
+					</div>
 					<div id="privateltd_details"></div>
 				</td>
 			</tr>
@@ -527,67 +702,88 @@
 			<tr>
 				<td rowspan="3">1. PAN details of the <br/>Society/Trust:</td>
 				<td colspan="2">Name as in PAN:<span class="required">*</span></td>
-				<td colspan="2" width="300px"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_society[pan_name_entity]" id="society_pan_name_entity"></td>
+				<td colspan="2" width="300px"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_society[pan_name_entity]" id="society_pan_name_entity" value="<?php echo !empty($this->iec_info['pan_name_entity'])? $this->iec_info['pan_name_entity'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">Date of Incorporation(DD/MM/YYYY):<span class="required">*</span></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Date of incorporation" name="entity_society[incorporation_date]" id="society_incorporation_date"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Date of incorporation" name="entity_society[incorporation_date]" id="society_incorporation_date" value="<?php echo !empty($this->iec_info['incorporation_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['incorporation_date']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">PAN:<span class="required">*</span></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="PAN" name="entity_society[pan]" id="society_pan_entity"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="PAN" name="entity_society[pan_entity]" id="society_pan_entity" value="<?php echo !empty($this->iec_info['pan_entity'])? $this->iec_info['pan_entity'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">2. Registration Number:</td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Registration number" name="entity_society[registration_cert_number]" id="society_registration_number"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Registration number" name="entity_society[registration_cert_number]" id="society_registration_number" value="<?php echo !empty($this->iec_info['registration_cert_number'])? $this->iec_info['registration_cert_number'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="5">3. Details of the Secretary/Cheif executive of the Society; or Managing Trustee of the Trust:</td>
 			</tr>
 			<tr>
 				<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
-				<td colspan="3" ><input class="input-block-level" type="text" placeholder="Name as in PAN" name="society[name]" id="society_name"></td>
+				<td colspan="3" ><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_society[trustee][name]" id="society_name" value="<?php echo !empty($this->iec_category_details['society'][0]['name'])? $this->iec_category_details['society'][0]['name'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td rowspan="4" width="225px">b. Residential Address:
 				</td>
 				<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="society[address1]" id="society_address1"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_society[trustee][address1]" id="society_address1" value="<?php echo !empty($this->iec_category_details['society'][0]['address1'])? $this->iec_category_details['society'][0]['address1'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="society[address2]" id="society_address2"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_society[trustee][address2]" id="society_address2" value="<?php echo !empty($this->iec_category_details['society'][0]['address2'])? $this->iec_category_details['society'][0]['address2'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td>State:<span class="required">*</span></td>
 				<td>
-					<select name="society[state]" id="society_state"  class="state_selectbox">
+					<select name="entity_society[trustee][state]" id="society_state"  class="state_selectbox">
 						<option value="0">--Select--</option>
-						<?php foreach ($this->states as $state){?>
-					  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+					  	<?php foreach ($this->states as $state){
+							$state_selected_society =  "";
+							if (!empty($this->iec_category_details['society'][0]['state']) && $this->iec_category_details['society'][0]['state'] == $state['id']){
+								$state_selected_society =  "selected = selected";
+							}
+						?>
+					  	<option value="<?php echo $state['id']?>" <?php echo $state_selected_society;?>><?php echo $state['name']?></option>
 					  	<?php }?>
 					</select>
 				</td>
 				<td>District:<span class="required">*</span></td>
 				<td>
-					<select name="society[district]" id="society_district" class="district_selectbox">
+					<select name="entity_society[trustee][district]" id="society_district" class="district_selectbox">
 						<option value="0">--Select--</option>
+						<?php foreach ($this->iec_category_details['society'][0]['districts'] as $district){
+								$district_selected_society =  "";
+								if (!empty($this->iec_category_details['society'][0]['district']) && $this->iec_category_details['society'][0]['district'] == $district['id']){
+									$district_selected_society =  "selected = selected";
+								}
+						?>
+						<option value="<?php echo $district['id']?>" <?php echo $district_selected_society;?>><?php echo $district['name']?></option>
+						<?php }?>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>City:<span class="required">*</span></td>
 				<td>
-					<select name="society[city]" id="society_city" class="city_selectbox">
+					<select name="entity_society[trustee][city]" id="society_city" class="city_selectbox">
 						<option value="0">--Select--</option>
+						<?php foreach ($this->iec_category_details['society'][0]['cities'] as $city){
+								$city_selected_society =  "";
+								if (!empty($this->iec_category_details['society'][0]['city']) && $this->iec_category_details['society'][0]['city'] == $city['id']){
+								$city_selected_society =  "selected = selected";
+							}
+						?>
+						<option value="<?php echo $city['id']?>" <?php echo $city_selected_society;?>><?php echo $city['name']?></option>
+						<?php }?>
 					</select>
 				</td>
 				<td>Pincode:<span class="required">*</span></td>
-				<td><input class="input-block-level" type="text" placeholder="Pincode" name="society[pincode]" id="society_pincode"></td>
+				<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_society[trustee][pincode]" id="society_pincode" value="<?php echo !empty($this->iec_category_details['society'][0]['pincode'])? $this->iec_category_details['society'][0]['pincode'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">c. Aadhar Card Number(if available):</td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhar card number" name="society[aadhaar_number]" id="society_aadhaarno"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhar card number" name="entity_society[trustee][aadhaar_number]" id="society_aadhaarno" value="<?php echo !empty($this->iec_category_details['society'][0]['aadhaar_number'])? $this->iec_category_details['society'][0]['aadhaar_number'] : ""?>"></td>
 			</tr>
 		</table>
 	</div>
@@ -599,63 +795,84 @@
 			<tr>
 				<td rowspan="3">1. PAN deails of the Entity:</td>
 				<td colspan="2">Name as in PAN:<span class="required">*</span></td>
-				<td colspan="2" width="300px"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_huf[pan_name_entity]" id="huf_pan_name_entity"></td>
+				<td colspan="2" width="300px"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_huf[pan_name_entity]" id="huf_pan_name_entity" value="<?php echo !empty($this->iec_info['pan_name_entity'])? $this->iec_info['pan_name_entity'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">Date of Incorporation(DD/MM/YYYY):<span class="required">*</span></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Date of incorporation" name="entity_huf[incorporation_date]" id="huf_incorporation_date"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Date of incorporation" name="entity_huf[incorporation_date]" id="huf_incorporation_date" value="<?php echo !empty($this->iec_info['incorporation_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['incorporation_date']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">PAN:<span class="required">*</span></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="PAN" name="entity_huf[pan_entity]" id="huf_pan_entity"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="PAN" name="entity_huf[pan_entity]" id="huf_pan_entity" value="<?php echo !empty($this->iec_info['pan_entity'])? $this->iec_info['pan_entity'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="5">2. Details of Karta:</td>
 			</tr>
 				<tr>
 				<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="huf[name]" id="huf_name"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_huf[karta][name]" id="huf_name" value="<?php echo !empty($this->iec_category_details['huf'][0]['name'])? $this->iec_category_details['huf'][0]['name'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td rowspan="4" width="225px">b. Residential Address
 				</td>
 				<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="huf[address1]" id="huf_address1"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_huf[karta][address1]" id="huf_address1" value="<?php echo !empty($this->iec_category_details['huf'][0]['address1'])? $this->iec_category_details['huf'][0]['address1'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="huf[address2]" id="huf_address2"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_huf[karta][address2]" id="huf_address2" value="<?php echo !empty($this->iec_category_details['huf'][0]['address2'])? $this->iec_category_details['huf'][0]['address2'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td>State:<span class="required">*</span></td>
 				<td>
-					<select name="huf[state]" id="huf_state"  class="state_selectbox">
+					<select name="entity_huf[karta][state]" id="huf_state"  class="state_selectbox">
 						<option value="0">--Select--</option>
-						<?php foreach ($this->states as $state){?>
-					  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+						<?php foreach ($this->states as $state){
+							$state_selected_huf =  "";
+							if (!empty($this->iec_category_details['huf'][0]['state']) && $this->iec_category_details['huf'][0]['state'] == $state['id']){
+								$state_selected_huf =  "selected = selected";
+							}
+						?>
+					  	<option value="<?php echo $state['id']?>" <?php echo $state_selected_huf;?>><?php echo $state['name']?></option>
 					  	<?php }?>
 					</select>
 				</td>
 				<td>District:<span class="required">*</span></td>
 				<td>
-					<select name="huf[district]" id="huf_district" class="district_selectbox">
+					<select name="entity_huf[karta][district]" id="huf_district" class="district_selectbox">
 						<option value="0">--Select--</option>
+						<?php foreach ($this->iec_category_details['huf'][0]['districts'] as $district){
+								$district_selected_huf =  "";
+								if (!empty($this->iec_category_details['huf'][0]['district']) && $this->iec_category_details['huf'][0]['district'] == $district['id']){
+									$district_selected_huf =  "selected = selected";
+								}
+						?>
+						<option value="<?php echo $district['id']?>" <?php echo $district_selected_huf;?>><?php echo $district['name']?></option>
+						<?php }?>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>City:<span class="required">*</span></td>
 				<td>
-					<select name="huf[city]" id="huf_city" class="city_selectbox">
+					<select name="entity_huf[karta][city]" id="huf_city" class="city_selectbox">
 						<option value="0">--Select--</option>
+						<?php foreach ($this->iec_category_details['huf'][0]['cities'] as $city){
+								$city_selected_huf =  "";
+								if (!empty($this->iec_category_details['huf'][0]['city']) && $this->iec_category_details['huf'][0]['city'] == $city['id']){
+								$city_selected_huf =  "selected = selected";
+							}
+						?>
+						<option value="<?php echo $city['id']?>" <?php echo $city_selected_huf;?>><?php echo $city['name']?></option>
+						<?php }?>
 					</select>
 				</td>
 				<td>Pincode:<span class="required">*</span></td>
-				<td><input class="input-block-level" type="text" placeholder="Pincode" name="huf[pincode]" id="huf_pincode"></td>
+				<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_huf[karta][pincode]" id="huf_pincode" value="<?php echo !empty($this->iec_category_details['huf'][0]['pincode'])? $this->iec_category_details['huf'][0]['pincode'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">3. Aadhaar Card Details, if available:</td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card details"></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card details" name="entity_huf[karta][aadhaar_number]" id="huf_aadhaar_number" value="<?php echo !empty($this->iec_category_details['huf'][0]['aadhaar_number'])? $this->iec_category_details['huf'][0]['aadhaar_number'] : ""?>"></td>
 			</tr>
 		</table>
 	</div>

@@ -10,4 +10,8 @@ class Model_EntityCategories{
 	public static function getAllCategories(){
 		return self::getTableInstance()->getAllCategories();
 	}
+	
+	public static function getCategoryById($id){
+		return self::getTableInstance()->getCategoryById($id);
+	}
 }

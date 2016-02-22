@@ -153,8 +153,14 @@ class EpcgController extends Zend_Controller_Action
 				$response['status'] = 1;
 				$response['message'] = 'Success';
 			}
+			if($response['status']){
+				//$this->renderScript('epcg/index.phtml');
+				$this->view->response = $response;
+				$this->_redirect('/epcg/index');
+			}
+			$this->view->response = $response;
 		}
-		$this->view->response = $response;
+		
 	}
 	
 	public function editepcgAction()
@@ -169,40 +175,50 @@ class EpcgController extends Zend_Controller_Action
 		$this->view->states = $states;
 		
 		if(isset($_GET['id']) && !empty($_GET['id'])){
-			echo '<pre>';
 			$iec_info =  Model_EntityIecinfo::getEntityInfobyId($_GET['id'])->toArray();
-			echo 'IEC INFO';
-			print_r($iec_info);
-			$this->view->iec_info = $iec_info;
-			
+			$category = Model_EntityCategories::getCategoryById($iec_info['category'])->toArray();
 			$iec_bank_details =  Model_EntityBankDetails::getBankDetailsByIecId($_GET['id']);
 			if(!empty($iec_bank_details)){
 				$this->view->iec_bank_details = $iec_bank_details->toArray();
-				echo 'IEC BANK DETAILS';
-				print_r($this->view->iec_bank_details);
 			}
-			
-			$iec_branch_details =  Model_EntityDetails::getBranchDetailsByIecId($_GET['id']);
-			if(!empty($iec_branch_details)){
+			$iec_details =  Model_EntityDetails::getIecDetailsByIecId($_GET['id']);
+			if(!empty($iec_details)){
 				$iec_branches = array();
-				$iec_partners = array();
-				$iec_branch_details = $iec_branch_details->toArray();
-				foreach($iec_branch_details as $branch){
-					if($branch['entity_category_id'] == 0){
-						$iec_branches[] = $branch;
+				$iec_category_details = array();
+				$iec_details_array = $iec_details->toArray();
+				$i = 0; $j=0;
+				foreach($iec_details_array as $iec_detail){
+					if($iec_detail['entity_category_id'] == 0){
+						$iec_branches[$i] = $iec_detail;
+						if(!empty($iec_detail['state'])){
+							$iec_branches[$i]['districts'] = Model_Districts::getByStateId($iec_detail['state'])->toArray();
+							$iec_branches[$i]['cities'] = Model_Cities::getByDistrictId($iec_detail['district'])->toArray();
+						}
+						$i++;
 					}else{
-						$iec_partners[] = $branch;
+						$iec_category_details[$category['classname']][$j] = $iec_detail;
+						if(!empty($iec_detail['state'])){
+							$iec_category_details[$category['classname']][$j]['districts'] = Model_Districts::getByStateId($iec_detail['state'])->toArray();
+							$iec_category_details[$category['classname']][$j]['cities'] = Model_Cities::getByDistrictId($iec_detail['district'])->toArray();
+						}
+						$j++;
 					}
 				}
-				echo 'IEC ALL BRANCHES';
-				print_r($iec_branch_details);
+				//echo 'IEC ALL BRANCHES';
+				//print_r($iec_branch_details);
+				$this->view->iec_info = $iec_info;
 				$this->view->iec_branches = $iec_branches;
-				$this->view->iec_partners = $iec_partners;
-				
-				echo 'IEC BRANCHES';
+				$this->view->iec_category_details = $iec_category_details;
+				echo '<pre>';
+				echo 'IEC INFO<br/>';
+				print_r($iec_info);
+				echo 'IEC BANK DETAILS<br/>';
+				print_r($this->view->iec_bank_details);
+				echo 'IEC BRANCHES<br/>';
 				print_r($this->view->iec_branches);
-				echo 'IEC PARTNERS';
-				print_r($this->view->iec_partners);
+				echo 'IEC PARTNERS<br/>';
+				print_r($this->view->iec_category_details);
+				print_r($category);
 				
 			}
 			

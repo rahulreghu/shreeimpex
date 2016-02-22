@@ -12,8 +12,8 @@ class Model_EntityDetails{
 		return self::getTableInstance()->addEntityDetails($data,$cat_id,$id);
 	}
 	
-	 public static function getBranchDetailsByIecId($id){
-	 	return self::getTableInstance()->getBranchDetailsByIecId($id);
+	 public static function getIecDetailsByIecId($id){
+	 	return self::getTableInstance()->getIecDetailsByIecId($id);
 	 }
 	 
 }

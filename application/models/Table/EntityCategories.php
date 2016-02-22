@@ -8,4 +8,8 @@ class Model_Table_EntityCategories extends Zend_Db_Table_Abstract{
 		$sql->order('id ASC');
 		return $this->fetchAll($sql)->toArray();
 	}
+	
+	public function getCategoryById($id){
+		return $this->fetchRow("id = '".$id."'");
+	}
 }

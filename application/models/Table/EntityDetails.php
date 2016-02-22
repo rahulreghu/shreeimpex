@@ -25,7 +25,7 @@ class Model_Table_EntityDetails extends Zend_Db_Table_Abstract{
 		return $affectedRows;
 	}
 	
-	public function getBranchDetailsByIecId($id){
+	public function getIecDetailsByIecId($id){
 		return $this->fetchAll("entity_iec_id = '".$id."'");
 	}
 }

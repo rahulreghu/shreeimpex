@@ -16,8 +16,8 @@ $(function(){
 	});
 });
 
-//Prevent the form submission with enter key 
-$('#iec_form').find('.input').keypress(function(e){
+//prevent the form submission with enter key 
+$('#epcg_form').find('.input').keypress(function(e){
     if ( e.which == 13 ) // Enter key = keycode 13
     {
         return false;
@@ -27,22 +27,21 @@ $('#iec_form').find('.input').keypress(function(e){
 //generate the box for enterning branch details
 $(function(){
 	$("#branch_total").on( "focusout", function() {
-		var count = this.value;  //#branch_details;
-		if(count > 1){
-			var branch = '';
-			for(i=1; i<count; i++){
-				branch += '<table class="table table-bordered"><tr><td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>';
-				branch += '<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch['+i+'][address1]" id="branch'+i+'_address1"></td></tr>';
-				branch += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch['+i+'][address2]" id="branch'+i+'_address2"></td></tr>';
-				branch += '<tr><td>State:<span class="required">*</span></td><td><select name="branch['+i+'][state]" id="branch'+i+'_state" class="state_dymselectbox">'+$('#branch0_state').html()+'</select></td>';
-				branch += '<td>District:<span class="required">*</span></td><td><select name="branch['+i+'][district]" id="branch'+i+'_district" class="district_dymselectbox"><option value="0">--Select--</option></select></td></tr>';
-				branch += '<tr><td>City:<span class="required">*</span></td><td><select name="branch['+i+'][city]" id="branch'+i+'_city" class="city_dymselectbox"><option value="0">--Select--</option></select></td>';
-				branch += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="branch['+i+'][pincode]" id="branch'+i+'_pincode"></td></tr></table>';
+		if(this.value >=1){
+			var type = 'branch';
+			if($("#dummy_branch_total").val()){
+				var dummyValue = $("#dummy_branch_total").val();
+				var count = (this.value - dummyValue);
+			}else{
+				var count = this.value - 1;
 			}
-			$('#branch_details').empty();
-			$('#branch_details').append(branch);
-		}else{
-			$('#branch_details').empty();
+			if(count >= 1){
+				var branch = generateRequiredBox(count,type);
+				$('#branch_details').empty();
+				$('#branch_details').append(branch);
+			}else{
+				$('#branch_details').empty();
+			}
 		}
 	});
 });
@@ -50,24 +49,16 @@ $(function(){
 //generate the box for enterning partner details
 $(function(){
 	$("#partner_total").on( "focusout", function() {
-		var count = this.value;  //#branch_details;
-		if(count > 1){
-			var partner = '';
-			for(i=1; i<count; i++){
-				partner += '<table class="table table-bordered" >'
-				partner += '<tr><td colspan="2">a. Name as in PAN:<span class="required">*</span> </td><td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners]['+i+'][name]" id="partner'+i+'_name"></td></tr>';
-				partner += '<tr><td colspan="2">b. Father\'s Name:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Father\'s name" name="entity_partnership[partners]['+i+'][surname]" id="partner'+i+'_surname"></td></tr>';
-				partner += '<tr><td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership[partners]['+i+'][dob]" id="partner'+i+'_dob"></td></tr>';
-				partner += '<tr><td rowspan="4" width="225px">d. Residential Address:</td><td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_partnership[partners]['+i+'][address1]" id="partner'+i+'_address1"></td></tr>';
-				partner += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_partnership[partners]['+i+'][address2]" id="partner'+i+'_address2"></td></tr>';
-				partner += '<tr><td>State:<span class="required">*</span></td><td><select name="entity_partnership[partners]['+i+'][state]" id="partner'+i+'_state" class="state_dymselectbox">'+$('#partner0_state').html()+'</select></td>';
-				partner += '<td>District:<span class="required">*</span></td><td><select name="entity_partnership[partners]['+i+'][district]" id="partner'+i+'_district" class="district_dymselectbox"><option value="0">--Select--</option></select></td></tr>';
-				partner += '<tr><td>City:<span class="required">*</span></td><td><select name="entity_partnership[partners]['+i+'][city]" id="partner'+i+'_city" class="city_dymselectbox"><option value="0">--Select--</option></select></td>';
-				partner += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership[partners]['+i+'][pincode]" id="partner'+i+'_pincode"></td></tr>';
-				partner += '<tr><td colspan="2">e. Mobile No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership[partners]['+i+'][mobile]" id="partner'+i+'_mobile"></td></tr>';
-				partner += '<tr><td colspan="2">f. PAN:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[partners]['+i+'][pan]" id="partner'+i+'_pan"></td></tr>';
-				partner += '<tr><td colspan="2">g. Aadhaar Card Number, if available:</td><td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners]['+i+'][aadhaar_number]" id="partner'+i+'_aadhaarno"></td></tr></table>'
-			}
+		var count = this.value;
+		var type = 'partner';
+		if($("#dummy_partner_total").val()){
+			var dummyValue = $("#dummy_partner_total").val();
+			var count = (this.value - dummyValue);
+		}else{
+			var count = this.value - 1;
+		}
+		if(count >= 1){
+			var partner = generateRequiredBox(count,type);
 			$('#partner_details').empty();
 			$('#partner_details').append(partner);
 		}else{
@@ -78,16 +69,17 @@ $(function(){
 
 //generate the box for enterning private partner details
 $(function(){
-	$("#privateltd_partner_total").on( "focusout", function() {
-		var count = this.value;  //#branch_details;
+	$("#privateltd_total").on( "focusout", function() {
+		var count = this.value;
+		var type = 'privateltd';
+		if($("#dummy_privateltd_total").val()){
+			var dummyValue = $("#dummy_privateltd_total").val();
+			var count = (this.value - dummyValue);
+		}else{
+			var count = this.value - 1;
+		}
 		if(count > 1){
-			var privateltd = '';
-			for(i=1; i<count; i++){
-				privateltd += '<table  class="table table-bordered"><tr><td width="285px;">a. Name:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners]['+i+'][name]" id="privateltd'+i+'_name"></td></tr>';
-				privateltd += '<tr><tr><td>b. PAN:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners]['+i+'][pan]" id="privateltd'+i+'_pan"></td></tr>';
-				privateltd += '<tr><td>c. Director Identity Number:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners]['+i+'][director_id_number]" id="privateltd'+i+'_director_id"></td></tr>';
-				privateltd += '<tr><td >d. Aadhaar Card Number, if available:</td><td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners]['+i+'][aadhaar_number]" id="privateltd'+i+'_aadhaarno"></td></tr></table>';		
-			}
+			var privateltd = generateRequiredBox(count,type);
 			$('#privateltd_details').empty();
 			$('#privateltd_details').append(privateltd);
 		}else{
@@ -95,6 +87,48 @@ $(function(){
 		}
 	});
 });
+
+//function for generating required box
+function generateRequiredBox(count,type){
+	var box = "";
+	if(type == 'branch'){
+		for(i=1; i<=count; i++){
+			box += '<table class="table table-bordered"><tr><td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>';
+			box += '<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch['+i+'][address1]" id="branch'+i+'_address1"></td></tr>';
+			box += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch['+i+'][address2]" id="branch'+i+'_address2"></td></tr>';
+			box += '<tr><td>State:<span class="required">*</span></td><td><select name="branch['+i+'][state]" id="branch'+i+'_state" class="state_dymselectbox">'+$('#branch0_state').html()+'</select></td>';
+			box += '<td>District:<span class="required">*</span></td><td><select name="branch['+i+'][district]" id="branch'+i+'_district" class="district_dymselectbox"><option value="0">--Select--</option></select></td></tr>';
+			box += '<tr><td>City:<span class="required">*</span></td><td><select name="branch['+i+'][city]" id="branch'+i+'_city" class="city_dymselectbox"><option value="0">--Select--</option></select></td>';
+			box += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="branch['+i+'][pincode]" id="branch'+i+'_pincode"></td></tr></table>';
+		}
+	}
+	if(type == 'partner'){
+		for(i=1; i<=count; i++){
+			box += '<table class="table table-bordered">'
+			box += '<tr><td colspan="2">a. Name as in PAN:<span class="required">*</span> </td><td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners]['+i+'][name]" id="partner'+i+'_name"></td></tr>';
+			box += '<tr><td colspan="2">b. Father\'s Name:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Father\'s name" name="entity_partnership[partners]['+i+'][surname]" id="partner'+i+'_surname"></td></tr>';
+			box += '<tr><td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership[partners]['+i+'][dob]" id="partner'+i+'_dob"></td></tr>';
+			box += '<tr><td rowspan="4" width="225px">d. Residential Address:</td><td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_partnership[partners]['+i+'][address1]" id="partner'+i+'_address1"></td></tr>';
+			box += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_partnership[partners]['+i+'][address2]" id="partner'+i+'_address2"></td></tr>';
+			box += '<tr><td>State:<span class="required">*</span></td><td><select name="entity_partnership[partners]['+i+'][state]" id="partner'+i+'_state" class="state_dymselectbox">'+$('#partner0_state').html()+'</select></td>';
+			box += '<td>District:<span class="required">*</span></td><td><select name="entity_partnership[partners]['+i+'][district]" id="partner'+i+'_district" class="district_dymselectbox"><option value="0">--Select--</option></select></td></tr>';
+			box += '<tr><td>City:<span class="required">*</span></td><td><select name="entity_partnership[partners]['+i+'][city]" id="partner'+i+'_city" class="city_dymselectbox"><option value="0">--Select--</option></select></td>';
+			box += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership[partners]['+i+'][pincode]" id="partner'+i+'_pincode"></td></tr>';
+			box += '<tr><td colspan="2">e. Mobile No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership[partners]['+i+'][mobile]" id="partner'+i+'_mobile"></td></tr>';
+			box += '<tr><td colspan="2">f. PAN:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[partners]['+i+'][pan]" id="partner'+i+'_pan"></td></tr>';
+			box += '<tr><td colspan="2">g. Aadhaar Card Number, if available:</td><td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners]['+i+'][aadhaar_number]" id="partner'+i+'_aadhaarno"></td></tr></table>'
+		}
+	}
+	if(type == 'privateltd'){
+		for(i=1; i<count; i++){
+			box += '<table  class="table table-bordered"><tr><td width="285px;">a. Name:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners]['+i+'][name]" id="privateltd'+i+'_name"></td></tr>';
+			box += '<tr><tr><td>b. PAN:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners]['+i+'][pan]" id="privateltd'+i+'_pan"></td></tr>';
+			box += '<tr><td>c. Director Identity Number:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners]['+i+'][director_id_number]" id="privateltd'+i+'_director_id"></td></tr>';
+			box += '<tr><td >d. Aadhaar Card Number, if available:</td><td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners]['+i+'][aadhaar_number]" id="privateltd'+i+'_aadhaarno"></td></tr></table>';		
+		}
+	}
+	return box;
+}
 
 //get the district when state is selected
 $('.state_selectbox').on("change",function() {
@@ -214,6 +248,7 @@ $('#branch_details,#partner_details').on("change",".district_dymselectbox",funct
     }
 });
 
+//change the status
 $('select[name="entity_status"]').on({
 	focus:function(){
 		cur_val = $(this).val();
@@ -465,10 +500,10 @@ function validateCategories(category_classname){
 		if($("#privateltd_pan_name_entity").val() == "" || $("#privateltd_incorporation_date").val() == "" || $("#privateltd_pan_entity").val() == ""){
 			errorCategory += "PAN details of the entity cannot be empty"+'<br/>';
 		}	
-		if($("#privateltd_partner_total").val() == ""){
+		if($("#privateltd_total").val() == ""){
 			errorCategory += "Please enter total partners/directors"+'<br/>';
-		}else if($("#privateltd_partner_total").val() != null && $.isNumeric($("#privateltd_partner_total").val())){
-			var count = $("#privateltd_partner_total").val();
+		}else if($("#privateltd_total").val() != null && $.isNumeric($("#privateltd_total").val())){
+			var count = $("#privateltd_total").val();
 			var privateltd_partner_name = privateltd_partner_pan = privateltd_partner_director_id = "";
 			for(i=0; i<count; i++){
 				if($("#privateltd"+i+"_name").val() == ""){
@@ -533,7 +568,7 @@ function validateCategories(category_classname){
 	return errorResponse;
 }
 
-//minimal vaidation
+//minimal vaidation for saving
 function epcgMinimalValidaion(){
 	var response = true;
 	var error = "";
@@ -631,9 +666,9 @@ function readURL(input) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $('#user_images')
-                .attr('src', e.target.result);
-             /* .width(140)
-                .height(140);*/
+                .attr('src', e.target.result)
+            	.width(140)
+                .height(140);
         };
         reader.readAsDataURL(input.files[0]);
   }
@@ -643,7 +678,7 @@ function readURL(input) {
 //onsubmit="return epcgValidaion();"
 $( "#submit_epcgform" ).on('click',function() {
 	if(true === epcgValidaion()){
-		$('#epcg_form').attr('action', 'epcg/addepcg');
+		//$('#epcg_form').attr('action', 'epcg/addepcg');
 		$("#epcg_form").submit();
 	}else{
 		return false;
@@ -653,7 +688,7 @@ $( "#submit_epcgform" ).on('click',function() {
 //save button validation
 $("#save_epcgform").on('click',function() {
 	if(true === epcgMinimalValidaion()){
-		$('#epcg_form').attr('action', 'epcg/addepcg');
+		//$('#epcg_form').attr('action', 'epcg/addepcg');
 		$("#epcg_form").submit();
 	}else{
 		return false;
@@ -684,7 +719,7 @@ $( "[id^=deleteEpcg]" ).on('click',function() {
 	return false;
 });
 
-
+//update iec number
 $(function() {
 	$("#displayEpcg").on('click','[id^=iecnumber_]',function() {
 		var idname =  $(this).attr('id');
@@ -715,4 +750,25 @@ $(function() {
 		};
 		$('#iecnumber_'+id[1]).show()
 	});
+});
+
+//remove button on edit epcg
+$( "[id^=remove_]" ).on('click',function(){
+	var idname =  $(this).attr('id');
+	var id = idname.split("_");
+	var total_branches = $('#'+id[1]+'_total').val();
+	var dummy_total_branches = $('#dummy_'+id[1]+'_total').val();
+	var parent_div = id[1]+'_container_'+id[2];
+	bootbox.confirm("Are you sure you want to delete?",'No','Yes',function(result) {
+		if (result) {  
+			$("#"+parent_div).remove();
+			$('#dummy_'+id[1]+'_total').val(dummy_total_branches-1);
+			if(total_branches > 1){
+				$('#'+id[1]+'_total').val(total_branches-1);
+			}else{
+				$('#default_'+id[1]+'_container').show();
+			}
+		}
+	});
+	return false;
 });
