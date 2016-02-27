@@ -1,5 +1,5 @@
 <div id="error_message" class="alert alert-error" <?php echo !empty($this->response['status']) && $this->response['status'] == 0 ? "" : "style='display: none;'"?>></div>
-<form action="epcg/addepcg" method="post" name="epcg_form" id="epcg_form" enctype="multipart/form-data"> 
+<form action="epcg/editepcg" method="post" name="epcg_form" id="epcg_form" enctype="multipart/form-data"> 
 	<table class="table table-bordered" style="width: 950px">
 		<caption style="height: 30px">
 				<strong>APPLICATION FORM FOR ISSUE/MODIFICATION IN IMPORTER EXPORTER CODE (IEC) NUMBER</strong>
@@ -224,10 +224,10 @@
 			<td  colspan="5">
 		<?php if(!empty($this->iec_info['total_branches'])){
 				foreach($this->iec_branches as $id => $branch){
-					$select_id = $id;
+					$select_branch_id = $id;
 					$default_branch_display = "style='display:none'";
 			?>
-				<div id="branch_container_<?=$id?>"> 
+				<div id="branch_container_<?=$branch_id?>"> 
 					<table class="table table-bordered">
 						<tr>
 							<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
@@ -244,12 +244,12 @@
 								<select name="branch_[<?=$id?>][state]" id="branch_<?=$id?>_state"  class="state_selectbox">
 									<option value="0">--Select--</option>
 									<?php foreach ($this->states as $state){
-										$state_selected.$select_id =  "";
+										$state_selected.$select_branch_id =  "";
 										if (!empty($branch['state']) && $branch['state'] == $state['id']){
-											$state_selected.$select_id =  "selected = selected";
+											$state_selected.$select_branch_id =  "selected = selected";
 										}
 									?>
-								  	<option value="<?php echo $state['id']?>" <?php echo $state_selected.$select_id;?>><?php echo $state['name']?></option>
+								  	<option value="<?php echo $state['id']?>" <?php echo $state_selected.$select_branch_id;?>><?php echo $state['name']?></option>
 								  	<?php }?>
 								</select>
 							</td>
@@ -258,12 +258,12 @@
 								<select name="branch_[<?=$id?>][district]" id="branch_<?=$id?>_district" class="district_selectbox">
 									<option value="0">--Select--</option>
 									<?php foreach ($branch['districts'] as $district){
-											$district_selected.$select_id =  "";
+											$district_selected.$select_branch_id =  "";
 											if (!empty($branch['district']) && $branch['district'] == $district['id']){
-												$district_selected.$select_id =  "selected = selected";
+												$district_selected.$select_branch_id =  "selected = selected";
 											}
 									?>
-									<option value="<?php echo $district['id']?>" <?php echo $district_selected.$select_id;?>><?php echo $district['name']?></option>
+									<option value="<?php echo $district['id']?>" <?php echo $district_selected.$select_branch_id;?>><?php echo $district['name']?></option>
 									<?php }?>
 								</select>
 							</td>	
@@ -274,12 +274,12 @@
 								<select name="branch_[<?=$id?>][city]" id="branch_<?=$id?>_city" class="city_selectbox">
 									<option value="0">--Select--</option>
 									<?php foreach ($branch['cities'] as $city){
-											$city_selected.$select_id =  "";
+											$city_selected.$select_branch_id =  "";
 											if (!empty($branch['city']) && $branch['city'] == $city['id']){
-												$city_selected.$select_id =  "selected = selected";
+												$city_selected.$select_branch_id =  "selected = selected";
 											}
 									?>
-									<option value="<?php echo $city['id']?>" <?php echo $city_selected.$select_id;?>><?php echo $city['name']?></option>
+									<option value="<?php echo $city['id']?>" <?php echo $city_selected.$select_branch_id;?>><?php echo $city['name']?></option>
 									<?php }?>
 								</select>
 							</td>
@@ -289,7 +289,7 @@
 						<tr><td colspan="5" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_branch_<?=$id?>" >Remove</button></td></tr>
 					</table>
 				</div>
-		<?php }}?>
+		<?php  }}?>
 				<div id="default_branch_container" <?php echo !empty($default_branch_display)? $default_branch_display : ""?>>
 					<table class="table table-bordered">
 						<tr>

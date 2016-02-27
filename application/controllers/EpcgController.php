@@ -204,22 +204,9 @@ class EpcgController extends Zend_Controller_Action
 						$j++;
 					}
 				}
-				//echo 'IEC ALL BRANCHES';
-				//print_r($iec_branch_details);
 				$this->view->iec_info = $iec_info;
 				$this->view->iec_branches = $iec_branches;
 				$this->view->iec_category_details = $iec_category_details;
-				echo '<pre>';
-				echo 'IEC INFO<br/>';
-				print_r($iec_info);
-				echo 'IEC BANK DETAILS<br/>';
-				print_r($this->view->iec_bank_details);
-				echo 'IEC BRANCHES<br/>';
-				print_r($this->view->iec_branches);
-				echo 'IEC PARTNERS<br/>';
-				print_r($this->view->iec_category_details);
-				print_r($category);
-				
 			}
 			
 			$districts = Model_Districts::getByStateId($iec_info['state']);
@@ -228,7 +215,11 @@ class EpcgController extends Zend_Controller_Action
 			$cities = Model_Cities::getByDistrictId($iec_info['district']);
 			$this->view->cities = $cities;
 			
-			
+		}
+		
+		if((isset($_POST['submitform']) && $_POST['submitform'] == 'Submit Form') || ( isset($_POST['saveform']) && $_POST['saveform'] == 'Save Form')){
+			echo '<pre>';
+			print_r($_POST);
 		}
 		
 	}

@@ -365,7 +365,24 @@ function epcgValidaion(){
 		response = false;
 	}else if($("#branch_total").val() != null && $.isNumeric($("#branch_total").val())){
 		var count = $("#branch_total").val();
+		var count_edit = $("#dummy_branch_total").val();
 		var branch_address=branch_state=branch_pincode = '';
+		if (typeof count_edit !== 'undefined' && count_edit > 0) {
+			for(j=0; j<count_edit; j++){
+				if($("#branch_"+j+"_address1").val() == "" || $("#branch_"+j+"_address2").val() == ""){
+					branch_address = "Address fields cannot be empty"+'<br/>';
+					response = false;
+				}
+				if($("#branch_"+j+"_state").val() == 0 || $("#branch_"+j+"_district").val() == 0 || $("#branch_"+j+"_city").val() == 0){
+					branch_state = "State/District/City not selected"+'<br/>';
+					response = false;
+				}
+				if($("#branch_"+j+"_pincode").val() == ""){
+					branch_pincode = "Pincode cannot be empty"+'<br/>';
+					response = false;
+				}
+			}
+		}
 		for(i=0; i<count; i++){
 			if($("#branch"+i+"_address1").val() == "" || $("#branch"+i+"_address2").val() == ""){
 				branch_address = "Address fields cannot be empty"+'<br/>';
