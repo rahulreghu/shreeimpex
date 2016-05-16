@@ -8,53 +8,57 @@
 <div style="height: 45px; text-align: center;">
 	<strong>LIST OF APPLICATION FORM FOR ISSUE/MODIFICATION OF IMPORTER EXPORTER CODE (IEC) NUMBER</strong>
 </div>
-<table class="table table-hover table-bordered table-striped" <?php echo !empty($this->allentities) ? " id='displayEpcg'" : ''; ?>>  
-	<thead>
+<div id="iec_lists">
+	<table class="table table-hover table-bordered table-striped" <?php echo !empty($this->allentities) ? " id='displayEpcg'" : ''; ?>>  
+		<thead>
+			<tr>
+				<th width="10px" style="text-align: center;">&nbsp;</th>	
+				<th width="40px" style="text-align: center;">Sl No</th>	
+				<th width="230px" style="text-align: center;">IEC Number</th>	
+				<th width="240px" style="text-align: center;">Entity Name</th>	
+				<th width="50px" style="text-align: center;">Status</th>	
+				<th width="57px" style="text-align: center;" >Action</th>	
+			</tr>
+		</thead>
+		<tbody>
+		<?php if(!empty($this->allentities)){
+				$i = 1;
+				foreach ($this->allentities as $entity_details){
+			?>
+			
 		<tr>
-			<th width="40px" style="text-align: center;">Sl No</th>	
-			<th width="250px" style="text-align: center;">IEC Number</th>	
-			<th width="250px" style="text-align: center;">Entity Name</th>	
-			<th width="50px" style="text-align: center;">Status</th>	
-			<th width="57px" style="text-align: center;" >Action</th>	
+			<td style="text-align: center;"><label class="checkbox"><input type="checkbox" class="check_iec" name="select_iec[]" id="select_iec_<?php echo $entity_details['id']?>" value="<?php echo $entity_details['id']?>"></label></td>
+			<td style="text-align: center;"><?php echo $i;?></td>
+			<td >
+			 	<div style="max-width: 291px;word-wrap:break-word" id="iecnumber_<?php echo $entity_details['id']?>"><?php echo empty($entity_details['iec_number'])? 'Not Generated' : $entity_details['iec_number']?></div>
+				<input class="input-block-level-sm" id="iectextbox_<?php echo $entity_details['id']?>" type="text" style="display:none; margin: 0px 0px; padding: 4px 5px; height: 12px; width: 279px;" />
+			</td>
+			<td><?php echo $entity_details['name'];?></td>
+			<td><select  name="entity_status" id="entity_status_<?php echo $entity_details['id']?>" style="width: 100px; margin: 0px 0px; padding:0px 4px; height: 22px;">
+					<?php foreach($this->allstatus as $status) {
+						$selected = "";
+						if($status['option_id'] == $entity_details['status'] )	{
+							$selected = 'selected=selected';
+							$option_value = $status['option_value'];
+						}			
+					?>
+					<option value="<?php echo $status['option_id'].'_'.$entity_details['id'];?>" <?php echo $selected;?>><?php echo $status['option_value'];?></option>
+					<?php }?>
+				</select>
+			</td>
+			<td> 
+				<a class="btn btn-mini btn-primary" type="button" id="editEpcg_<?php echo $entity_details['id']?>" href="epcg/editepcg?id=<?php echo $entity_details['id']?>">Edit</a>
+				<button class="btn btn-mini btn-danger" type="button" id="deleteEpcg_<?php echo $entity_details['id']?>" value="<?php echo $entity_details['id']?>">Delete</button>
+			</td>
 		</tr>
-	</thead>
-	<tbody>
-	<?php if(!empty($this->allentities)){
-			$i = 1;
-			foreach ($this->allentities as $entity_details){
-		?>
-		
-	<tr>
-		<td style="text-align: center;"><?php echo $i;?></td>
-		<td >
-		 	<div style="max-width: 291px;word-wrap:break-word" id="iecnumber_<?php echo $entity_details['id']?>"><?php echo empty($entity_details['iec_number'])? 'Not Generated' : $entity_details['iec_number']?></div>
-			<input class="input-block-level-sm" id="iectextbox_<?php echo $entity_details['id']?>" type="text" style="display:none; margin: 0px 0px; padding: 4px 5px; height: 12px; width: 279px;" />
-		</td>
-		<td><?php echo $entity_details['name'];?></td>
-		<td><select  name="entity_status" id="entity_status_<?php echo $entity_details['id']?>" style="width: 100px; margin: 0px 0px; padding:0px 4px; height: 22px;">
-				<?php foreach($this->allstatus as $status) {
-					$selected = "";
-					if($status['option_id'] == $entity_details['status'] )	{
-						$selected = 'selected=selected';
-						$option_value = $status['option_value'];
-					}			
-				?>
-				<option value="<?php echo $status['option_id'].'_'.$entity_details['id'];?>" <?php echo $selected;?>><?php echo $status['option_value'];?></option>
-				<?php }?>
-			</select>
-		</td>
-		<td> 
-			<a class="btn btn-mini btn-primary" type="button" id="editEpcg_<?php echo $entity_details['id']?>" href="epcg/editepcg?id=<?php echo $entity_details['id']?>">Edit</a>
-			<button class="btn btn-mini btn-danger" type="button" id="deleteEpcg_<?php echo $entity_details['id']?>" value="<?php echo $entity_details['id']?>">Delete</button>
-		</td>
-	</tr>
-	<?php $i++;
-			} ?> </tbody><?php }else{?>
-	<tr>
-		<td colspan="5" style="text-align: center;"> No Details found, Please click Add New EPCG button to create a new application</td>
-	</tr>
-	<?php }?>
-</table>
+		<?php $i++;
+				} ?> </tbody><?php }else{?>
+		<tr>
+			<td colspan="5" style="text-align: center;"> No Details found, Please click Add New EPCG button to create a new application</td>
+		</tr>
+		<?php }?>
+	</table>
+</div>
 <!-- 
 <div class="pagination pagination-centered" style="padding-top: 15px">
   <ul>
@@ -64,14 +68,39 @@
   </ul>
 </div> 
  -->
+<div id="emailcategory" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<h5 id="myModalLabel">Select Email Category</h5>
+	</div>
+	<div class="modal-body">
+		<?php echo $this->allemailcategories; ?>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		<button class="btn btn-primary" id="sendemailnotification">Send Email</button>
+	</div>
+</div>
 <div class="muted"><small>*Click on the IEC Number cell to update the IEC Number</small></div>
+<div style="padding-top: 10px;" id="sendmail"><a href="#emailcategory" role="button" class="btn btn-warning" data-toggle="modal" >Send Mail</a></div>
 <link href="styles/jquery.dataTables.css" rel="stylesheet">
 <script src="scripts/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready(function() {
 	 $('table#displayEpcg').DataTable({
-			columnDefs: [{ orderable: false, targets: [3,4]}],
+			columnDefs: [{ orderable: false, targets: [4,5]}],
 	  });
 	 $("select[name='displayEpcg_length']").attr('style', 'width: 70px');
+
+	// show send mail button only id check box is checked
+	// var sendmail = $("#sendmail").hide(),
+	// checkboxselect = $("#displayEpcg").on("click","input[type=checkbox]",function() {
+     	//checkboxselect = $("#displayEpcg").on('click',function() {
+        // 	sendmail.toggle( checkboxselect.is(":checked") );
+         //	sendmail.toggle(!checkboxselect.is(":checked"));
+         //	  sendmail.toggle(checkboxselect.checked);
+   //  });
+	  
 } );
+
+
 </script>

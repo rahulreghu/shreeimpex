@@ -1,4 +1,12 @@
 <div id="error_message" class="alert alert-error" <?php echo !empty($this->response['status']) && $this->response['status'] == 0 ? "" : "style='display: none;'"?>></div>
+<div style="display: none;">
+	<select name="state" id="state_template" >
+		<option value="0">--Select--</option>
+		<?php foreach ($this->states as $state){?>
+	  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+	  	<?php }?>
+	</select>
+</div>
 <form action="epcg/addepcg" method="post" name="epcg_form" id="epcg_form" enctype="multipart/form-data"> 
 	<table class="table table-bordered" style="width: 950px">
 		<caption style="height: 30px">
@@ -178,44 +186,46 @@
 		</tr>
 		<tr>
 			<td  colspan="5">
-				<table class="table table-bordered">
-					<tr>
-						<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
-						<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-						<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch[0][address1]" id="branch0_address1"></td>
-					</tr>
-					<tr>
-						<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-						<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch[0][address2]" id="branch0_address2"></td>
-					</tr>
-					<tr>
-						<td>State:<span class="required">*</span></td>
-						<td>
-							<select name="branch[0][state]" id="branch0_state"  class="state_selectbox">
-								<option value="0">--Select--</option>
-								<?php foreach ($this->states as $state){?>
-							  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
-							  	<?php }?>
-							</select>
-						</td>
-						<td>District:<span class="required">*</span></td>
-						<td>
-							<select name="branch[0][district]" id="branch0_district" class="district_selectbox">
-								<option value="0">--Select--</option>
-							</select>
-						</td>	
-					</tr>
-					<tr>
-						<td>City:<span class="required">*</span></td>
-						<td>
-							<select name="branch[0][city]" id="branch0_city" class="city_selectbox">
-								<option value="0">--Select--</option>
-							</select>
-						</td>
-						<td>Pincode:<span class="required">*</span></td>
-						<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[0][pincode]" id="branch0_pincode"></td>
-					</tr>
-				</table>
+				<div id="branch_container0"> 
+					<table class="table table-bordered">
+						<tr>
+							<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
+							<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch[0][address1]" id="branch0_address1"></td>
+						</tr>
+						<tr>
+							<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch[0][address2]" id="branch0_address2"></td>
+						</tr>
+						<tr>
+							<td>State:<span class="required">*</span></td>
+							<td>
+								<select name="branch[0][state]" id="branch0_state"  class="state_selectbox">
+									<option value="0">--Select--</option>
+									<?php foreach ($this->states as $state){?>
+								  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+								  	<?php }?>
+								</select>
+							</td>
+							<td>District:<span class="required">*</span></td>
+							<td>
+								<select name="branch[0][district]" id="branch0_district" class="district_selectbox">
+									<option value="0">--Select--</option>
+								</select>
+							</td>	
+						</tr>
+						<tr>
+							<td>City:<span class="required">*</span></td>
+							<td>
+								<select name="branch[0][city]" id="branch0_city" class="city_selectbox">
+									<option value="0">--Select--</option>
+								</select>
+							</td>
+							<td>Pincode:<span class="required">*</span></td>
+							<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[0][pincode]" id="branch0_pincode"></td>
+						</tr>
+					</table>
+				</div>	
 				<div id="branch_details"></div>
 			</td>	
 		</tr>
@@ -303,69 +313,71 @@
 			</tr>
 			<tr>
 				<td  colspan="5">
-					<table class="table table-bordered" >
-						<tr>
-							<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners][0][name]" id="partner0_name"></td>
-						</tr>
-						<tr>
-							<td colspan="2">b. Father's Name:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Father's name" name="entity_partnership[partners][0][surname]" id="partner0_surname"></td>
-						</tr>
-						<tr>
-							<td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership[partners][0][dob]" id="partner0_dob"></td>
-						</tr>
-						<tr>
-							<td rowspan="4" width="225px">d. Residential Address:
-							</td>
-							<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_partnership[partners][0][address1]" id="partner0_address1"></td>
-						</tr>
-						<tr>
-							<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_partnership[partners][0][address2]" id="partner0_address2"></td>
-						</tr>
-						<tr>
-							<td>State:<span class="required">*</span></td>
-							<td>
-								<select name="entity_partnership[partners][0][state]" id="partner0_state"  class="state_selectbox">
-									<option value="0">--Select--</option>
-									<?php foreach ($this->states as $state){?>
-								  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
-								  	<?php }?>
-								</select>
-							</td>
-							<td>District:<span class="required">*</span></td>
-							<td>
-								<select name="entity_partnership[partners][0][district]" id="partner0_district" class="district_selectbox">
-									<option value="0">--Select--</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>City:<span class="required">*</span></td>
-							<td>
-								<select name="entity_partnership[partners][0][city]" id="partner0_city" class="city_selectbox">
-									<option value="0">--Select--</option>
-								</select>
-							</td>
-							<td>Pincode:<span class="required">*</span></td>
-							<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership[partners][0][pincode]" id="partner0_pincode"></td>
-						</tr>
-						<tr>
-							<td colspan="2">e. Mobile No:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership[partners][0][mobile]" id="partner0_mobile"></td>
-						</tr>
-						<tr>
-							<td colspan="2">f. PAN:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[partners][0][pan]" id="partner0_pan"></td>
-						</tr>
-						<tr>
-							<td colspan="2">g. Aadhaar Card Number, if available:</td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners][0][aadhaar_number]" id="partner0_aadhaarno"></td>
-						</tr>
-					</table>
+					<div id="partner_container0"> 
+						<table class="table table-bordered" >
+							<tr>
+								<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners][0][name]" id="partner0_name"></td>
+							</tr>
+							<tr>
+								<td colspan="2">b. Father's Name:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Father's name" name="entity_partnership[partners][0][surname]" id="partner0_surname"></td>
+							</tr>
+							<tr>
+								<td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership[partners][0][dob]" id="partner0_dob"></td>
+							</tr>
+							<tr>
+								<td rowspan="4" width="225px">d. Residential Address:
+								</td>
+								<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_partnership[partners][0][address1]" id="partner0_address1"></td>
+							</tr>
+							<tr>
+								<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_partnership[partners][0][address2]" id="partner0_address2"></td>
+							</tr>
+							<tr>
+								<td>State:<span class="required">*</span></td>
+								<td>
+									<select name="entity_partnership[partners][0][state]" id="partner0_state"  class="state_selectbox">
+										<option value="0">--Select--</option>
+										<?php foreach ($this->states as $state){?>
+									  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+									  	<?php }?>
+									</select>
+								</td>
+								<td>District:<span class="required">*</span></td>
+								<td>
+									<select name="entity_partnership[partners][0][district]" id="partner0_district" class="district_selectbox">
+										<option value="0">--Select--</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>City:<span class="required">*</span></td>
+								<td>
+									<select name="entity_partnership[partners][0][city]" id="partner0_city" class="city_selectbox">
+										<option value="0">--Select--</option>
+									</select>
+								</td>
+								<td>Pincode:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership[partners][0][pincode]" id="partner0_pincode"></td>
+							</tr>
+							<tr>
+								<td colspan="2">e. Mobile No:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership[partners][0][mobile]" id="partner0_mobile"></td>
+							</tr>
+							<tr>
+								<td colspan="2">f. PAN:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[partners][0][pan]" id="partner0_pan"></td>
+							</tr>
+							<tr>
+								<td colspan="2">g. Aadhaar Card Number, if available:</td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners][0][aadhaar_number]" id="partner0_aadhaarno"></td>
+							</tr>
+						</table>
+					</div>	
 					<div id="partner_details"></div>
 				</td>	
 			</tr>	
@@ -406,24 +418,26 @@
 			</tr>
 			<tr> 
 				<td colspan="5">
-					<table  class="table table-bordered">
-						<tr>
-							<td width="285px;">a. Name:<span class="required">*</span></td>
-							<td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners][0][name]" id="privateltd0_name"></td>
-						</tr>
-						<tr>
-							<td>b. PAN:<span class="required">*</span></td>
-							<td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners][0][pan]" id="privateltd0_pan"></td>
-						</tr>
-						<tr>
-							<td>c. Director Identity Number:<span class="required">*</span></td>
-							<td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners][0][director_id_number]" id="privateltd0_director_id"></td>
-						</tr>
-						<tr>
-							<td >d. Aadhaar Card Number, if available:</td>
-							<td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners][0][aadhaar_number]" id="privateltd0_aadhaarno"></td>
-						</tr>
-					</table>
+					<div id="privateltd_container0"> 
+						<table  class="table table-bordered">
+							<tr>
+								<td width="285px;">a. Name:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners][0][name]" id="privateltd0_name"></td>
+							</tr>
+							<tr>
+								<td>b. PAN:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners][0][pan]" id="privateltd0_pan"></td>
+							</tr>
+							<tr>
+								<td>c. Director Identity Number:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners][0][director_id_number]" id="privateltd0_director_id"></td>
+							</tr>
+							<tr>
+								<td >d. Aadhaar Card Number, if available:</td>
+								<td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners][0][aadhaar_number]" id="privateltd0_aadhaarno"></td>
+							</tr>
+						</table>
+					</div>
 					<div id="privateltd_details"></div>
 				</td>
 			</tr>

@@ -29,14 +29,16 @@ $(function(){
 	$("#branch_total").on( "focusout", function() {
 		if(this.value >=1){
 			var type = 'branch';
+			var branch_total = 0;
+			var count = 0;
 			if($("#dummy_branch_total").val()){
-				var dummyValue = $("#dummy_branch_total").val();
-				var count = (this.value - dummyValue);
+				branch_total = $("#dummy_branch_total").val();
+				count = (this.value - branch_total);
 			}else{
-				var count = this.value - 1;
+				count = this.value - 1;
 			}
 			if(count >= 1){
-				var branch = generateRequiredBox(count,type);
+				var branch = generateRequiredBox(count,type); 
 				$('#branch_details').empty();
 				$('#branch_details').append(branch);
 			}else{
@@ -49,20 +51,23 @@ $(function(){
 //generate the box for enterning partner details
 $(function(){
 	$("#partner_total").on( "focusout", function() {
-		var count = this.value;
-		var type = 'partner';
-		if($("#dummy_partner_total").val()){
-			var dummyValue = $("#dummy_partner_total").val();
-			var count = (this.value - dummyValue);
-		}else{
-			var count = this.value - 1;
-		}
-		if(count >= 1){
-			var partner = generateRequiredBox(count,type);
-			$('#partner_details').empty();
-			$('#partner_details').append(partner);
-		}else{
-			$('#partner_details').empty();
+		if(this.value >=1){
+			var type = 'partner';
+			var partner_total = 0;
+			var count = 0;
+			if($("#dummy_partner_total").val()){
+				partner_total = $("#dummy_partner_total").val();
+				count = (this.value - partner_total);
+			}else{
+				count = this.value - 1;
+			}
+			if(count >= 1){
+				var partner = generateRequiredBox(count,type); 
+				$('#partner_details').empty();
+				$('#partner_details').append(branch);
+			}else{
+				$('#partner_details').empty();
+			}
 		}
 	});
 });
@@ -70,40 +75,45 @@ $(function(){
 //generate the box for enterning private partner details
 $(function(){
 	$("#privateltd_total").on( "focusout", function() {
-		var count = this.value;
-		var type = 'privateltd';
-		if($("#dummy_privateltd_total").val()){
-			var dummyValue = $("#dummy_privateltd_total").val();
-			var count = (this.value - dummyValue);
-		}else{
-			var count = this.value - 1;
-		}
-		if(count > 1){
-			var privateltd = generateRequiredBox(count,type);
-			$('#privateltd_details').empty();
-			$('#privateltd_details').append(privateltd);
-		}else{
-			$('#privateltd_details').empty();
-		}
+		if(this.value >=1){
+			var type = 'privateltd';
+			var privateltd_total = 0;
+			var count = 0;
+			if($("#dummy_privateltd_total").val()){
+				privateltd_total = $("#dummy_privateltd_total").val();
+				count = (this.value - privateltd_total);
+			}else{
+				var count = this.value - 1;
+			}
+			if(count > 1){
+				var privateltd = generateRequiredBox(count,type);
+				$('#privateltd_details').empty();
+				$('#privateltd_details').append(privateltd);
+			}else{
+				$('#privateltd_details').empty();
+			}
+		}	
 	});
 });
 
 //function for generating required box
+//count =  no of sets, type = set type, set = the set numbering
 function generateRequiredBox(count,type){
+	alert("count: "+count+" type: "+type);
 	var box = "";
 	if(type == 'branch'){
 		for(i=1; i<=count; i++){
-			box += '<table class="table table-bordered"><tr><td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>';
+			box += '<div id="branch_container'+i+'"> <table class="table table-bordered"><tr><td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>';
 			box += '<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch['+i+'][address1]" id="branch'+i+'_address1"></td></tr>';
 			box += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch['+i+'][address2]" id="branch'+i+'_address2"></td></tr>';
-			box += '<tr><td>State:<span class="required">*</span></td><td><select name="branch['+i+'][state]" id="branch'+i+'_state" class="state_dymselectbox">'+$('#branch0_state').html()+'</select></td>';
+			box += '<tr><td>State:<span class="required">*</span></td><td><select name="branch['+i+'][state]" id="branch'+i+'_state" class="state_dymselectbox">'+$('#state_template').html()+'</select></td>';
 			box += '<td>District:<span class="required">*</span></td><td><select name="branch['+i+'][district]" id="branch'+i+'_district" class="district_dymselectbox"><option value="0">--Select--</option></select></td></tr>';
 			box += '<tr><td>City:<span class="required">*</span></td><td><select name="branch['+i+'][city]" id="branch'+i+'_city" class="city_dymselectbox"><option value="0">--Select--</option></select></td>';
-			box += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="branch['+i+'][pincode]" id="branch'+i+'_pincode"></td></tr></table>';
+			box += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="branch['+i+'][pincode]" id="branch'+i+'_pincode"></td></tr></table></div>';
 		}
 	}
 	if(type == 'partner'){
-		for(i=1; i<=count; i++){
+		for(i=set; i<=count; i++){
 			box += '<table class="table table-bordered">'
 			box += '<tr><td colspan="2">a. Name as in PAN:<span class="required">*</span> </td><td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners]['+i+'][name]" id="partner'+i+'_name"></td></tr>';
 			box += '<tr><td colspan="2">b. Father\'s Name:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Father\'s name" name="entity_partnership[partners]['+i+'][surname]" id="partner'+i+'_surname"></td></tr>';
@@ -120,7 +130,7 @@ function generateRequiredBox(count,type){
 		}
 	}
 	if(type == 'privateltd'){
-		for(i=1; i<count; i++){
+		for(i=set; i<count; i++){
 			box += '<table  class="table table-bordered"><tr><td width="285px;">a. Name:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners]['+i+'][name]" id="privateltd'+i+'_name"></td></tr>';
 			box += '<tr><tr><td>b. PAN:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners]['+i+'][pan]" id="privateltd'+i+'_pan"></td></tr>';
 			box += '<tr><td>c. Director Identity Number:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners]['+i+'][director_id_number]" id="privateltd'+i+'_director_id"></td></tr>';
@@ -365,36 +375,40 @@ function epcgValidaion(){
 		response = false;
 	}else if($("#branch_total").val() != null && $.isNumeric($("#branch_total").val())){
 		var count = $("#branch_total").val();
-		var count_edit = $("#dummy_branch_total").val();
 		var branch_address=branch_state=branch_pincode = '';
-		if (typeof count_edit !== 'undefined' && count_edit > 0) {
-			for(j=0; j<count_edit; j++){
-				if($("#branch_"+j+"_address1").val() == "" || $("#branch_"+j+"_address2").val() == ""){
-					branch_address = "Address fields cannot be empty"+'<br/>';
-					response = false;
-				}
-				if($("#branch_"+j+"_state").val() == 0 || $("#branch_"+j+"_district").val() == 0 || $("#branch_"+j+"_city").val() == 0){
-					branch_state = "State/District/City not selected"+'<br/>';
-					response = false;
-				}
-				if($("#branch_"+j+"_pincode").val() == ""){
-					branch_pincode = "Pincode cannot be empty"+'<br/>';
-					response = false;
+		var count_edit_branch = $("#edit_branch_total").val();
+		if(count_edit_branch > 0){
+			for(j=0; j<count_edit_branch; j++){
+				if($("#branch_container_"+j).length != 0){
+					if($("#branch_"+j+"_address1").val() == "" || $("#branch_"+j+"_address2").val() == ""){
+						branch_address = "Address fields cannot be empty"+'<br/>';
+						response = false;
+					}
+					if($("#branch_"+j+"_state").val() == 0 || $("#branch_"+j+"_district").val() == 0 || $("#branch_"+j+"_city").val() == 0){
+						branch_state = "State/District/City not selected"+'<br/>';
+						response = false;
+					}
+					if($("#branch_"+j+"_pincode").val() == ""){
+						branch_pincode = "Pincode cannot be empty"+'<br/>';
+						response = false;
+					}
 				}
 			}
 		}
 		for(i=0; i<count; i++){
-			if($("#branch"+i+"_address1").val() == "" || $("#branch"+i+"_address2").val() == ""){
-				branch_address = "Address fields cannot be empty"+'<br/>';
-				response = false;
-			}
-			if($("#branch"+i+"_state").val() == 0 || $("#branch"+i+"_district").val() == 0 || $("#branch"+i+"_city").val() == 0){
-				branch_state = "State/District/City not selected"+'<br/>';
-				response = false;
-			}
-			if($("#branch"+i+"_pincode").val() == ""){
-				branch_pincode = "Pincode cannot be empty"+'<br/>';
-				response = false;
+			if($("#branch_container"+i).length != 0){
+				if($("#branch"+i+"_address1").val() == "" || $("#branch"+i+"_address2").val() == ""){
+					branch_address = "Address fields cannot be empty"+'<br/>';
+					response = false;
+				}
+				if($("#branch"+i+"_state").val() == 0 || $("#branch"+i+"_district").val() == 0 || $("#branch"+i+"_city").val() == 0){
+					branch_state = "State/District/City not selected"+'<br/>';
+					response = false;
+				}
+				if($("#branch"+i+"_pincode").val() == ""){
+					branch_pincode = "Pincode cannot be empty"+'<br/>';
+					response = false;
+				}
 			}
 		}
 		errorPartB += branch_address+branch_state+branch_pincode;
@@ -470,39 +484,41 @@ function validateCategories(category_classname){
 			var count = $("#partner_total").val();
 			var partner_name = partner_surname = partner_dob = partner_address = partner_state = partner_pincode = partner_mobile = partner_pan = "";
 			for(i=0; i<count; i++){
-				if($("#partner"+i+"_name").val() == ""){
-					partner_name = "Name cannot be empty"+'<br/>';
-				}
-				if($("#partner"+i+"_surname").val() == ""){
-					partner_surname = "Father's name cannot be empty"+'<br/>';
-				}
-				if($("#partner"+i+"_dob").val() == ""){
-					partner_dob = "Date of birth cannot be empty"+'<br/>';
-				}else{
-					var data = $("#partner"+i+"_dob").val().split("/");
-				    if (isNaN(Date.parse(data[2] + "-" + data[1] + "-" + data[0]))) {
-				    	partner_dob = "Please enter valid Date of birth"+'<br/>';
-				    }
-				}
-				if($("#partner"+i+"_address1").val() == "" || $("#partner"+i+"_address2").val() == ""){
-					partner_address = "Address fields cannot be empty"+'<br/>';
-				}
-				if($("#partner"+i+"_state").val() == 0 || $("#partner"+i+"_district").val() == 0 || $("#partner"+i+"_city").val() == 0){
-					partner_state = "State/District/City not selected"+'<br/>';
-				}
-				if($("#partner"+i+"_pincode").val() == ""){
-					partner_pincode = "Pincode cannot be empty"+'<br/>';
-				}
-				if($("#partner"+i+"_mobile").val() == ""){
-					partner_mobile = "Mobile number cannot be empty"+'<br/>';
-				}else{
-					if(($("#partner"+i+"_mobile").val().length < 6) || (!phoneRegex.test($("#partner"+i+"_mobile").val()))){
-						errorPartA += "Please enter a valid mobile number"+'<br/>';
-						response = false;
+				if($("#partner_container"+i).length != 0){
+					if($("#partner"+i+"_name").val() == ""){
+						partner_name = "Name cannot be empty"+'<br/>';
 					}
-				}
-				if($("#partner"+i+"_pan").val() == ""){
-					partner_pan = "PAN cannot be empty"+'<br/>';
+					if($("#partner"+i+"_surname").val() == ""){
+						partner_surname = "Father's name cannot be empty"+'<br/>';
+					}
+					if($("#partner"+i+"_dob").val() == ""){
+						partner_dob = "Date of birth cannot be empty"+'<br/>';
+					}else{
+						var data = $("#partner"+i+"_dob").val().split("/");
+					    if (isNaN(Date.parse(data[2] + "-" + data[1] + "-" + data[0]))) {
+					    	partner_dob = "Please enter valid Date of birth"+'<br/>';
+					    }
+					}
+					if($("#partner"+i+"_address1").val() == "" || $("#partner"+i+"_address2").val() == ""){
+						partner_address = "Address fields cannot be empty"+'<br/>';
+					}
+					if($("#partner"+i+"_state").val() == 0 || $("#partner"+i+"_district").val() == 0 || $("#partner"+i+"_city").val() == 0){
+						partner_state = "State/District/City not selected"+'<br/>';
+					}
+					if($("#partner"+i+"_pincode").val() == ""){
+						partner_pincode = "Pincode cannot be empty"+'<br/>';
+					}
+					if($("#partner"+i+"_mobile").val() == ""){
+						partner_mobile = "Mobile number cannot be empty"+'<br/>';
+					}else{
+						if(($("#partner"+i+"_mobile").val().length < 6) || (!phoneRegex.test($("#partner"+i+"_mobile").val()))){
+							errorPartA += "Please enter a valid mobile number"+'<br/>';
+							response = false;
+						}
+					}
+					if($("#partner"+i+"_pan").val() == ""){
+						partner_pan = "PAN cannot be empty"+'<br/>';
+					}
 				}
 			}
 			errorCategory += partner_name+partner_surname+partner_dob+partner_address+partner_state+partner_pincode+partner_mobile+partner_pan;
@@ -523,14 +539,16 @@ function validateCategories(category_classname){
 			var count = $("#privateltd_total").val();
 			var privateltd_partner_name = privateltd_partner_pan = privateltd_partner_director_id = "";
 			for(i=0; i<count; i++){
-				if($("#privateltd"+i+"_name").val() == ""){
-					 privateltd_partner_name = "Name of the partner cannot be empty"+'<br/>';
-				}
-				if($("#privateltd"+i+"_pan").val() == ""){
-					 privateltd_partner_pan = "PAN cannot be empty"+'<br/>';
-				}
-				if($("#privateltd"+i+"_director_id").val() == ""){
-					 privateltd_partner_director_id = "Director identity number cannot be empty"+'<br/>';
+				if($("#privateltd_container"+i).length != 0){
+					if($("#privateltd"+i+"_name").val() == ""){
+						 privateltd_partner_name = "Name of the partner cannot be empty"+'<br/>';
+					}
+					if($("#privateltd"+i+"_pan").val() == ""){
+						 privateltd_partner_pan = "PAN cannot be empty"+'<br/>';
+					}
+					if($("#privateltd"+i+"_director_id").val() == ""){
+						 privateltd_partner_director_id = "Director identity number cannot be empty"+'<br/>';
+					}
 				}
 			}
 			errorCategory += privateltd_partner_name+privateltd_partner_pan+privateltd_partner_director_id;
@@ -777,15 +795,79 @@ $( "[id^=remove_]" ).on('click',function(){
 	var dummy_total_branches = $('#dummy_'+id[1]+'_total').val();
 	var parent_div = id[1]+'_container_'+id[2];
 	bootbox.confirm("Are you sure you want to delete?",'No','Yes',function(result) {
-		if (result) {  
+		if (result) { 
+			alert(parent_div);
 			$("#"+parent_div).remove();
 			$('#dummy_'+id[1]+'_total').val(dummy_total_branches-1);
 			if(total_branches > 1){
 				$('#'+id[1]+'_total').val(total_branches-1);
 			}else{
-				$('#default_'+id[1]+'_container').show();
+				//$('#default_'+id[1]+'_container').show();
+				$('#'+id[1]+'_total').val('');
 			}
 		}
 	});
 	return false;
 });
+
+//get the id of checkbox selected
+$( "#sendemailnotification" ).on('click',function(){
+	var selected = [];
+	$('#displayEpcg input[type=checkbox]').each(function() {
+	   if ($(this).is(":checked")) {
+	       selected.push($(this).attr('value'));
+	   }
+	})
+	var emailCategory = ($("#email_category" ).val());
+	$('#emailcategory').modal('hide');
+	if(selected != null){
+		$.ajax({
+            type:"GET",
+            url : "/public/epcg/get-email-category?id="+selected+"email_category="+emailCategory,
+            dataType : "json",  
+            success : function(response) {  
+            	bootbox.alert("The email has been sent");
+            },
+            error: function() {
+                alert('Error occured');
+            }
+        });
+	}
+	
+});
+/*
+$( "#sendemailnotification" ).on('click',function(){
+	var selected = [];
+	$('input[type=checkbox]').each(function() {
+	   if ($(this).is(":checked")) {
+	       selected.push($(this).attr('value'));
+	   }
+	})
+	if(selected != null){
+		$.ajax({
+            type:"GET",
+            url : "/public/epcg/get-email-category?id=all",
+            dataType : "json",  
+            success : function(response) {
+            	bootbox.dialog({
+            		title: "This is a form in a modal.",
+            		message: "hello",
+            		buttons: {
+                         success: {
+                             label: "Save",
+                             className: "btn-success",
+                             callback: function () {
+                              //   var name = $('#name').val();
+                             //    var answer = $("input[name='awesomeness']:checked").val()
+                             //    Example.show("Hello " + name + ". You've chosen <b>" + answer + "</b>");
+                             }
+                         }
+                     }
+            	});
+            },
+            error: function() {
+                alert('Error occured');
+            }
+        });
+	}
+});*/

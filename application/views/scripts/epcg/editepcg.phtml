@@ -1,4 +1,12 @@
 <div id="error_message" class="alert alert-error" <?php echo !empty($this->response['status']) && $this->response['status'] == 0 ? "" : "style='display: none;'"?>></div>
+<div style="display: none;">
+	<select name="state" id="state_template" >
+		<option value="0">--Select--</option>
+		<?php foreach ($this->states as $state){?>
+	  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+	  	<?php }?>
+	</select>
+</div>
 <form action="epcg/editepcg" method="post" name="epcg_form" id="epcg_form" enctype="multipart/form-data"> 
 	<table class="table table-bordered" style="width: 950px">
 		<caption style="height: 30px">
@@ -29,7 +37,7 @@
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<caption style="height: 30px">
-			<strong>Applicant Details</strong>
+			<strong>Applicant Details <input class="input-block-level" type="hidden"  name="iec_id" id="iec_id" value="<?php echo !empty($_GET['id'])? $_GET['id'] : ""?>" ></strong>
 		</caption>
 		<tr class="info">
 			<td colspan="5">Part A:</td>
@@ -218,16 +226,18 @@
 			<td>
 				<input class="input-block-level" type="text" placeholder="Number of branches" name="entity[total_branches]" id="branch_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box">
 				<input class="input-block-level" type="hidden"  name="dummy_branch_total" id="dummy_branch_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" >
+				<input class="input-block-level" type="hidden"  name="edit_branch_total" id="edit_branch_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" >
 			</td>
 		</tr>
 		<tr>
 			<td  colspan="5">
+				
 		<?php if(!empty($this->iec_info['total_branches'])){
 				foreach($this->iec_branches as $id => $branch){
 					$select_branch_id = $id;
 					$default_branch_display = "style='display:none'";
 			?>
-				<div id="branch_container_<?=$branch_id?>"> 
+				<div id="branch_container_<?=$id?>"> 
 					<table class="table table-bordered">
 						<tr>
 							<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
@@ -290,6 +300,7 @@
 					</table>
 				</div>
 		<?php  }}?>
+		<!-- 
 				<div id="default_branch_container" <?php echo !empty($default_branch_display)? $default_branch_display : ""?>>
 					<table class="table table-bordered">
 						<tr>
@@ -329,7 +340,7 @@
 							<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[0][pincode]" id="branch0_pincode" ></td>
 						</tr>
 					</table>
-				</div>
+				</div> -->
 				<div id="branch_details"></div>
 			</td>	
 		</tr>
@@ -534,7 +545,7 @@
 						</table>
 					</div>
 					<?php }}?>
-					<div id="default_partner_container" <?php echo !empty($default_partner_display)? $default_partner_display : ""?>>
+			   <!-- <div id="default_partner_container" <?php echo !empty($default_partner_display)? $default_partner_display : ""?>>
 						<table class="table table-bordered" >
 							<tr>
 								<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
@@ -598,7 +609,7 @@
 							<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners][0][aadhaar_number]" id="partner0_aadhaarno"></td>
 							</tr>
 						</table>
-					</div>
+					</div> -->
 					<div id="partner_details"></div>
 				</td>	
 			</tr>	
@@ -929,8 +940,10 @@
 	</table>
 	<div style="text-align: center;">
 		<button type="submit" class="btn btn-primary" name="submitform" value="Submit Form" id="submit_epcgform">Submit</button> 
+		<?php if(!empty($this->iec_info['status']) &&  $this->iec_info['status'] == '6'){?>
 		<span style="padding-right: 25px"></span>
 		<button type="submit" class="btn btn-warning" name="saveform" value="Save Form"  id="save_epcgform">Save</button>
+		<?php }?>
 		<span style="padding-right: 25px"></span> 
 		<button type="reset" class="btn btn-danger">Reset</button>
 		<span style="padding-right: 25px"></span> 

@@ -14,6 +14,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		}
 	}
 	
+	protected function _initEmailSettings()
+	{
+		// email settings
+		$mailSettings = $this->getOption('resources');
+		if($mailSettings) {
+			$transport = $mailSettings['mail']['transport']; //new Zend_Mail_Transport_Smtp($mailSettings['mail']['transport']['host'], $mailSettings['mail']['transport']);
+			Zend_Registry::set('emailConfig', $mailSettings['mail']);
+			return $transport;
+		}
+	}
+	
 	protected function _initView(){
 		// Initialize view
 		$view = new Zend_View();

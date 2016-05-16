@@ -19,9 +19,11 @@ class EpcgController extends Zend_Controller_Action
 		//print_r($this->_session->user);
 		$allstatus = Model_Options::getAllIecStatus();
 		$allentities = Model_EntityIecInfo::getAllEntities();
+		$allemailcategories = self::getAllEmailCategoriesAction();
 		if($allentities){
 			$this->view->allentities = $allentities;
 			$this->view->allstatus = $allstatus;
+			$this->view->allemailcategories = $allemailcategories;
 		}
 	}
 	
@@ -141,7 +143,7 @@ class EpcgController extends Zend_Controller_Action
 						}
 					}
 				}else{
-					$error .=  "Unknown error. IEC number not generated.<br/>";
+					$error .=  "Error !! Please try again.<br/>";
 				}
 			}catch (Exception $e){
 				$error .= $e->getMessage();
@@ -173,7 +175,7 @@ class EpcgController extends Zend_Controller_Action
 		
 		$states = Model_States::getAllStates();
 		$this->view->states = $states;
-		
+		//displays IEC details
 		if(isset($_GET['id']) && !empty($_GET['id'])){
 			$iec_info =  Model_EntityIecinfo::getEntityInfobyId($_GET['id'])->toArray();
 			$category = Model_EntityCategories::getCategoryById($iec_info['category'])->toArray();
@@ -216,10 +218,133 @@ class EpcgController extends Zend_Controller_Action
 			$this->view->cities = $cities;
 			
 		}
-		
+		//Update acion for IEC details
 		if((isset($_POST['submitform']) && $_POST['submitform'] == 'Submit Form') || ( isset($_POST['saveform']) && $_POST['saveform'] == 'Save Form')){
+			//$this->validationForm($_POST);
 			echo '<pre>';
 			print_r($_POST);
+			$iec_id = $_POST['iec_id'];
+			$entity_iec_info = array();
+			$bank_details = array();
+			$branch_details = array();
+			$entity_details = array();
+				
+			//arranging total branches
+			$total_branches = $_POST['entity']['total_branches'];
+			if($total_branches >= 1){
+				$branch_details = $_POST['branch_'];
+				if(!empty($_POST['branch'])){
+					$branch_details = array_merge($_POST['branch_'],$_POST['branch']);
+				}
+				/*for($i=0; $i<$total_branches; $i++){
+				 $entity_details[$i] = $_POST['branch'][$i];
+				 $entity_details[$i]['entity_category_id'] = 0;
+				 }*/
+			}
+			//entity activities
+			if(!empty($_POST['entity']['activities'])){
+				$_POST['entity']['activities'] = implode(",", $_POST['entity']['activities']);
+			}
+			//if entity is proprietor firm
+			if(isset($_POST['prop']) && !empty($_POST['prop'])){
+				$_POST['prop']['entity_category_id'] = $_POST['entity']['category'];
+				$entity_details[] = $_POST['prop'];
+			}
+			//if entity is partnership firm;
+			if(isset($_POST['entity_partnership']) && !empty($_POST['entity_partnership'])){
+				$_POST['entity']['pan_name_entity'] = $_POST['entity_partnership']['pan_name_entity'];
+				$_POST['entity']['incorporation_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity_partnership']['incorporation_date']}")->format('Y-m-d');
+				$_POST['entity']['pan_entity'] = $_POST['entity_partnership']['pan_entity'];
+				$_POST['entity']['total_partners'] = $_POST['entity_partnership']['total_partners'];
+				if($_POST['entity']['total_partners'] >= 1){
+					$entity_details = $_POST['entity_partnership']['partners'];
+				}
+			}
+			//if entity is private firm;
+			if(isset($_POST['entity_privateltd']) && !empty($_POST['entity_privateltd'])){
+				$_POST['entity']['pan_name_entity'] = $_POST['entity_privateltd']['pan_name_entity'];
+				$_POST['entity']['incorporation_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity_privateltd']['incorporation_date']}")->format('Y-m-d');
+				$_POST['entity']['pan_entity'] = $_POST['entity_privateltd']['pan_entity'];
+				$_POST['entity']['llpin_cin'] = $_POST['entity_privateltd']['llpin_cin'];
+				$_POST['entity']['registration_cert_number'] = $_POST['entity_privateltd']['registration_cert_number'];
+				$_POST['entity']['total_partners'] = $_POST['entity_privateltd']['total_partners'];
+				if($_POST['entity']['total_partners'] >= 1){
+					$entity_details = $_POST['entity_privateltd']['partners'];
+				}
+			}
+			//if entity is society
+			if(isset($_POST['entity_society']) && !empty($_POST['entity_society'])){
+				$_POST['entity']['pan_name_entity'] = $_POST['entity_society']['pan_name_entity'];
+				$_POST['entity']['incorporation_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity_society']['incorporation_date']}")->format('Y-m-d');
+				$_POST['entity']['pan_entity'] = $_POST['entity_society']['pan_entity'];
+				$_POST['entity']['registration_cert_number'] = $_POST['entity_society']['registration_cert_number'];
+				if(!empty($_POST['entity_society']['trustee'])){
+					$entity_details[] = $_POST['entity_society']['trustee'];
+				}
+			}
+			//if entity is huf
+			if(isset($_POST['entity_huf']) && !empty($_POST['entity_huf'])){
+				$_POST['entity']['pan_name_entity'] = $_POST['entity_huf']['pan_name_entity'];
+				$_POST['entity']['incorporation_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity_huf']['incorporation_date']}")->format('Y-m-d');
+				$_POST['entity']['pan_entity'] = $_POST['entity_huf']['pan_entity'];
+				if(!empty($_POST['entity_huf']['karta'])){
+					$entity_details[] = $_POST['entity_huf']['karta'];
+				}
+			}
+			//print_r($branch_details);
+			//print_r($entity_details);
+				
+			!empty($_POST['entity']['proof_of_accept']) && $_POST['entity']['proof_of_accept'] == 'on' ? $_POST['entity']['proof_of_accept'] = 1 : $_POST['entity']['proof_of_accept'] = 0;
+			$_POST['entity']['created_on'] = date("Y-m-d H:i:s");
+			$_POST['entity']['created_by'] = $this->_session->user->user_id;
+			if(isset($_POST['saveform']) && $_POST['saveform'] == 'Save Form'){
+				$_POST['entity']['status'] = '6';
+			}else{
+				$_POST['entity']['status'] = '1';
+			}
+			//print_r($_POST['entity']);
+		//	exit();
+			/*try{
+				//insert in entity_iec_info table
+				$iec_id = Model_EntityIecInfo::addIecForm($_POST['entity']);
+				if(!empty($iec_id)){
+					if(!empty($_POST['bank'])){
+						$_POST['bank']['entity_iec_id'] = $iec_id;
+						Model_EntityBankDetails::addBankDetails($_POST['bank']);
+					}
+					if(!empty($branch_details)){
+						Model_EntityDetails::addEntityDetails($branch_details,0,$iec_id);
+					}
+					if(!empty($entity_details)){
+						Model_EntityDetails::addEntityDetails($entity_details,$_POST['entity']['category'],$iec_id);
+					}
+					if(isset($_FILES['user_image_file']) && !empty($_FILES['user_image_file']['name'])){
+						$target_filename = $iec_id.basename($_FILES["user_image_file"]["name"]);
+						if (move_uploaded_file($_FILES["user_image_file"]["tmp_name"], "user_images/".$target_filename)) {
+							Model_EntityIecInfo::updateImageInIecForm($iec_id,$target_filename);
+						}else{
+							$error .=  "Sorry, there was an error uploading your file.<br/>";
+						}
+					}
+				}else{
+					$error .=  "Error !! Please try again. <br/>";
+				}
+			}catch (Exception $e){
+				$error .= $e->getMessage();
+			}
+			if($error){
+				$response['status'] = 0;
+				$response['message'] = $error;
+			}else{
+				$response['status'] = 1;
+				$response['message'] = 'Success';
+			}
+			if($response['status']){
+				//$this->renderScript('epcg/index.phtml');
+				$this->view->response = $response;
+				$this->_redirect('/epcg/index');
+			}
+			$this->view->response = $response;*/
 		}
 		
 	}
@@ -329,5 +454,49 @@ class EpcgController extends Zend_Controller_Action
 			$response['message'] = 'No parameters passed';
 		}
 		echo json_encode($response);
+	}
+	
+	public function getAllEmailCategoriesAction(){
+		$response = null;
+		$emailCategories = Model_EmailCategories::getAllEmailCategories();
+		$response = '<select name="emailCategory" id="email_category">';
+		foreach($emailCategories as $emailCategory)
+			$response .= '<option value="'.$emailCategory['id'].'">'.$emailCategory['email_category'].'</option>';
+		$response .= '</select>';
+		return $response;
+	}
+	
+	//ajax
+	public function getEmailCategoryAction(){
+		$response = array();
+		$this->_helper->viewRenderer->setNoRender(true);
+		$this->_helper->layout->disableLayout();
+		if($this->getRequest()->getParam('id') != null){
+			$iecIds = $this->getRequest()->getParam('id');
+			$id = $this->getRequest()->getParam('email_category');
+			$getEmailContent = Model_EmailCategories::getEmailCategoryById($id);
+			$getIECEmailsByIds = Model_EntityIecinfo::getEmailsByIds($iecIds);
+			$this->sendEmail('a','b');
+			$response['status'] = 1;
+			$response['message'] = "Status has been updated";
+		}else{
+			$response['status'] = 0;
+			$response['message'] = 'No parameters passed';
+		}
+		echo json_encode($response);
+	}
+	
+	public function sendEmailAction(){
+		$this->_helper->viewRenderer->setNoRender(true);
+		$this->_helper->layout->disableLayout();
+		/*$config = array('auth' => 'login',
+				'username' => 'myusername',
+				'password' => 'password');*/
+		
+	//	$transport = new Zend_Mail_Transport_Smtp('mail.server.com', $config);
+		
+	
+		//print_r($this->transport);
+		//$mail->send($this->transport);
 	}
 }
