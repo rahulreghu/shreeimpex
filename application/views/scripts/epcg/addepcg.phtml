@@ -515,6 +515,7 @@
 			</tr>
 		</table>
 	</div>
+	</div>
 	<div id="firm_huf">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
@@ -580,6 +581,115 @@
 			<tr>
 				<td colspan="2">3. Aadhaar Card Details, if available:</td>
 				<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card details" name="entity_huf[karta][aadhaar_number]" id="huf_aadhaar_number"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="ind_reg_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Industrial Registration Details</td>
+			</tr>
+			<tr>
+				<td colspan="1">1. SSI/IEM/LOI or IL Registration No/any other to prove a manufacturer status:</td>
+				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registration No" name="imr[reg_num]" id="imr_reg_num"></td>
+			</tr>
+			<tr>
+				<td rowspan="2">2. Date of issue and Validity / Issuing Authority</td>
+				<td colspan="2">
+				From:<span class="required">*</span>
+					<input class="input-block-level" type="text" placeholder="From Date" name="imr[doi]" id="imr_doi"></td>
+				<td colspan="2">To:<span class="required">*</span>
+					<input class="input-block-level" type="text" placeholder="To Date" name="imr[validity]" id="imr_validity"></td>
+			</tr>
+			<tr><td colspan="4"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="imr[ia]" id="imr_ia"></td></tr>
+				
+			</tr>
+			<tr>
+				<td colspan="1">3. Products for which registered</td>
+				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="imr[reg_prods]" id="imr_reg_prods"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="ser_tax_reg_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Service Tax Registration Details (in case of Service providers)</td>
+			</tr>
+			<tr>
+				<td colspan="1">1. Service Tax Registration No / Issuing Authority</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration No" name="str[reg_num]" id="str_reg_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="str[ia]" id="str_ia">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">2. Services for which registered</td>
+				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registered Services" name="str[reg_items]" id="str_reg_items"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="rcmc_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">RCMC Details</td>
+			</tr>
+			<tr>
+				<td colspan="1">1. RCMC No / Issuing Authority</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="RCMC No" name="rcmc[num]" id="rcmc_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="rcmc[ia]" id="rcmc_ia">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">2. Date of issue and Validity:</td>
+				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="rcmc[doi]" id="rcmc_doi"></td>
+				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="rcmc[validity]" id="rcmc_validity"></td>
+			</tr>
+			<tr>
+				<td colspan="1">3. Products for which registered</td>
+				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="rcmc[reg_prods]" id="rcmc_reg_prods"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="stat_house_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Status House Details(Please select)</td>
+			</tr>
+			<tr>
+				<td colspan="1">1. Certificate number / Issuing Authority:</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Certificate number" name="shd[cert_num]" id="shd_cert_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="shd[ia]" id="shd_ia">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">2. Date of issue and Validity:</td>
+				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="shd[doi]" id="shd_doi"></td>
+				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="shd[validity]" id="shd_validity"></td>
+			</tr>
+		</table>	
+	</div>
+	<div id="cent_exc_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Central Excise Registration Details</td>
+			</tr>
+			<tr>
+				<td colspan="1">Central Excise Registration No./ Issuing Authority</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="cer[reg_num]" id="cer_reg_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="cer[ia]" id="cer_ia">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="cent_exc_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">VAT Registration Details</td>
+			</tr>
+			<tr>
+				<td colspan="1">VAT Registration No./ Issuing Authority</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="vat[reg_num]" id="vat_reg_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="vat[ia]" id="vat_ia">
+				</td>
 			</tr>
 		</table>
 	</div>
@@ -662,5 +772,11 @@ $(function(){
             hasBeenTrigged = true;
         }
     });
+	
+	$('#imr_doi').datepicker({});
+	$('#imr_validity').datepicker({});
+	$('#shd_doi').datepicker({});
+	$('#shd_validity').datepicker({});
+	
 });
 </script>
