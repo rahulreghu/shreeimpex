@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta HTTP-EQUIV="REFRESH" content="0; url=http://shreeimpex.localhost/public/">
+<meta HTTP-EQUIV="REFRESH" content="0; url=http://localshreeimpex/public/">
 </head>
-<body></body>
+<body> Test </body>
 </html>
