@@ -603,7 +603,6 @@
 			</tr>
 			<tr><td colspan="4"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="imr[ia]" id="imr_ia"></td></tr>
 				
-			</tr>
 			<tr>
 				<td colspan="1">3. Products for which registered</td>
 				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="imr[reg_prods]" id="imr_reg_prods"></td>
@@ -652,7 +651,17 @@
 	<div id="stat_house_details">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
-				<td colspan="5">Status House Details(Please select)</td>
+				<td colspan="2">Status House Details(Please select)
+				<td colspan="2">
+				<input name="feedback" type="radio" value="" />
+				<div class="rating">
+					<input name="myrating" type="radio" value="5" /><span>&#9734;</span>
+					<input name="myrating" type="radio" value="4" /><span>&#9734;</span>
+					<input name="myrating" type="radio" value="3" /><span>&#9734;</span>
+					<input name="myrating" type="radio" value="2" /><span>&#9734;</span>
+					<input name="myrating" type="radio" value="1" /><span>&#9734;</span>
+				</div></td>
+				<td colspan="1"><input name="feedback" type="radio" value="" id="not_applicable"/>NA</td>
 			</tr>
 			<tr>
 				<td colspan="1">1. Certificate number / Issuing Authority:</td>
@@ -691,6 +700,27 @@
 				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="vat[ia]" id="vat_ia">
 				</td>
 			</tr>
+		</table>
+	</div>
+	<div id="financial_details">
+		<table class="table table-bordered" style="width: 950px" id="finance_data">
+			<tr class="info">
+				<td colspan="5">Turnover Details for the preceeding three final years: </td>
+			</tr>
+			<tr>
+				<td colspan="1">Financial Year</td>
+				<td colspan="2">Annual Domestic Turnover(Rs.Lakhs)</td>
+				<td colspan="2">Annual Export Turnover(Rs.Lakhs)</td>
+			</tr>
+			<tr id="rowCount1">
+				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[year]" id="financial_year"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="finance[domestic_turnover]" id="domestic_turnover"></td>
+				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[export_turnover]" id="export_turnover"></td>
+				<td colspan="1"><a href="javascript:void(0);" onclick="addMoreRows(this.form);">
+				Add More
+				</a></td>
+			</tr>
+			
 		</table>
 	</div>
 	<table class="table table-bordered" style="width: 950px">
@@ -779,6 +809,78 @@ $(function(){
 	$('#rcmc_validity').datepicker({});
 	$('#shd_doi').datepicker({});
 	$('#shd_validity').datepicker({});
-	
+
 });
+
+//Financial year
+var rowCount = 1;
+function addMoreRows(frm) {
+rowCount ++;
+var recRow = '<tr id="rowCount'+rowCount+'"><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[year]" id="financial_year"></td><td colspan="2"><input class="input-block-level" type="text" placeholder="" name="finance[domestic_turnover]" id="domestic_turnover"></td><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[export_turnover]" id="export_turnover"></td><td colspan="1"><a href="javascript:void(0);" onclick="removeRow('+rowCount+');">Delete</a></td></tr>';
+jQuery('#finance_data').append(recRow);
+}
+
+function removeRow(removeNum) {
+	jQuery('#rowCount'+removeNum).remove();
+	rowCount --;
+}
 </script>
+<style>
+body{
+		margin-top:50px;}
+	.menuBar{
+		width:100%;
+		height:50px;
+		display:block;
+		position:absolute;
+		top:0;
+		left:0;
+		}
+	.logo{
+		float:left;
+		}
+	.nav{
+		float:right;
+		margin-right:10px;}
+	.nav ul li{
+		list-style:none;
+		float:left;
+	}
+	
+	.rating {
+	  unicode-bidi: bidi-override;
+	  direction: rtl;
+	  text-align: center;
+	}
+	.rating > span {
+	  display: inline-block;
+	  position: relative;
+	  width: 1.1em;
+	  color: #000;
+	  
+	}
+	.rating > span:hover,
+	.rating > span:hover ~ span,
+	.rating:not(:hover) > input:checked ~ span {
+	  color: #00bfff;
+	}
+	.rating > span:hover:before,
+	.rating > span:hover ~ span:before,
+	.rating:not(:hover) > input:checked ~ span:before {
+	   content: "\2605";
+	   position: absolute;
+	   left: 0; 
+	   color: #00bfff;
+	}
+
+	.rating > input {
+	   margin-left:-1.1em;
+	   margin-right:0;
+	   top:3px;
+	   width:1.1em;
+	   height:1.1em;
+	   position:relative;
+	   z-index:2;
+	   opacity:0;
+	}
+</style>
