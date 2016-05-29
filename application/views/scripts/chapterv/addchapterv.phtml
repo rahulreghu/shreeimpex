@@ -91,7 +91,7 @@
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
 			<td width="20px">6.</td>
-			<td colspan="4">Application Fee Payment details</td>
+			<td colspan="4">Application Fee Payment details </td>
 		</tr>
 		<tr>
 			<td></td>
@@ -289,7 +289,7 @@
 		** whether used for Pre-production acitivity/Production activity/Post-production activity/for rendering services
 	</div>	
 	<div  style="padding-bottom: 20px">
-		13. Whether product to be imported is resriced for import - 
+		13. Whether product to be imported is restricted for import - 
 		<input type="radio" name="entity_category" value="entity_partnership">Yes
 		<input type="radio" name="entity_category" value="entity_partnership">No
 		<br/>
@@ -297,12 +297,12 @@
 	</div>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>14.</td>
-			<td colspan="5">Details of Retriced Capital Goods applied for import</td>
+			<td width="20px">14.</td>
+			<td colspan="5">Details of Restricted Capital Goods applied for import</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td>Sl.No.</td>
+			<td width="20px">Sl.No.</td>
 			<td>Description of the items of import</td>
 			<td>ITC(HS) Code</td>
 			<td>Nature of Capital Goods sought to be imported*</td>
@@ -310,47 +310,48 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>1</td>
+			<td><input class="input-block-level" type="text" placeholder="Items Description" name="import_goods_restricted[description][]" id="import_goods_restricted_description_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="ITC(HS) Code" name="import_goods_restricted[itc_code][]" id="import_goods_restricted_itc_code_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Goods Nature" name="import_goods_restricted[nature][]" id="import_goods_restricted_nature_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Primary Use" name="import_goods_restricted[primary_use][]" id="import_goods_restricted_primary_use_1" ></td>
 		</tr>
 	</table>
-	<div>
-		*whether Capital Goods/Spares/Tols/jigs/Fixures/Dies/Moulds/Spare refractories/Catalyst (specify if any other) <br/>
-		**whether used for Pre-production activity/Prduction activity/Ps-production activity/for rendering services <br/>
+	<div style="padding-bottom: 10px">
+		* whether Capital Goods/Spares/Tols/jigs/Fixures/Dies/Moulds/Spare refractories/Catalyst (specify if any other) <br/>
+		** whether used for Pre-production activity/Prduction activity/Ps-production activity/for rendering services <br/>
 		(From amongst column 13 and 14 above please fill up whichever is applicable. In case applican desires to import <br/>
 		both restricted and free importable capital goods appropriate information should be given in both the columns).
 	</div>
-	<div>
-		15. Whether product to be exported is restricted for export - Yes/No
+	<div style="padding-bottom: 15px">
+		15. Whether product to be exported is restricted for export - <input type="radio" name="entity_category" value="entity_partnership">Yes
+		<input type="radio" name="entity_category" value="entity_partnership">No<br/><br/>
 		(If yes, enclose copy of EFC apprval from DGF Hqrs.)
 	</div>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>16.</td>
+			<td width="20px">16.</td>
 			<td colspan="3">Details of Duty</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td>Total effecive Cusoms duty on items o be imported (in %)</td>
+			<td>Total effective Customs duty on items to be imported (in %)</td>
 			<td>CIF value of imports/deemed imports (in Rs.)</td>
-			<td>Duty saved amunt (in Rs.)</td>
+			<td>Duty saved amount (in Rs.)</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
+			<td  width="275px"><input class="input-block-level" type="text" placeholder="Total" name="total_effective_customs_duty" id="total_effective_customs_duty" ></td>
+			<td><input class="input-block-level" type="text" placeholder="CIF value" name="cif_value" id="cif_value" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Duty saved amount" name="duty_saved_amount" id="duty_saved_amount" ></td>
 		</tr>
 	</table>
-	<div>
-		Note: In case of indigenous sourcing of CG, duty saved is to be calculated on notional customs duty saved on FOR value f capial goods as per Para 5.07 of FTP.
+	<div style="padding-bottom: 15px">
+		Note: In case of indigenous sourcing of CG, duty saved is to be calculated on notional customs duty saved on FOR value f capial goods as per <br/>Para 5.07 of FTP.
 	</div>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>17.</td>
+			<td width="20px">17.</td>
 			<td colspan="4">Details of Duty in case of posr-expr EPCG duty credit scrip</td>
 		</tr>
 		<tr>
@@ -358,12 +359,19 @@
 			<td>Total effective Customs duty on items to be imported (in %)</td>
 			<td>Basic Customs duty</td>
 			<td>CIF value of imports/deemed imports (in Rs.)</td>
-			<td>Duy paid  (in Rs.)</td>
+			<td>Duty paid  (in Rs.)</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Total" name="total_effective_customs_duty" id="total_effective_customs_duty" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Basic Customs Duty" name="total_effective_customs_duty" id="total_effective_customs_duty" ></td>
+			<td><input class="input-block-level" type="text" placeholder="CIF Value" name="total_effective_customs_duty" id="total_effective_customs_duty" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Duty Paid" name="total_effective_customs_duty" id="total_effective_customs_duty" ></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>18.</td>
+			<td width="20px">18.</td>
 			<td colspan="4">Details of Export Obligation imposed</td>
 		</tr>
 		<tr>
@@ -379,10 +387,17 @@
 			<td>USD</td>
 			<td>Rs.</td>
 		</tr>
+		<tr>
+			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="" name="total_effective_customs_duty" id="total_effective_customs_duty" ></td>
+			<td><input class="input-block-level" type="text" placeholder="" name="total_effective_customs_duty" id="total_effective_customs_duty" ></td>
+			<td><input class="input-block-level" type="text" placeholder="" name="total_effective_customs_duty" id="total_effective_customs_duty" ></td>
+			<td><input class="input-block-level" type="text" placeholder="" name="total_effective_customs_duty" id="total_effective_customs_duty" ></td>
+		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>19.</td>
+			<td width="20px">19.</td>
 			<td>
 				Address of the factory/premises of the application or the supporting manufacurer where the capital goods to<br/>
 				be imported are proposed to be installed
@@ -390,64 +405,70 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="" name="Address" id="address"></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>20.</td>
+			<td width="20px">20.</td>
 			<td colspan="3">In case the prposed capital goods sought to be imported are to be used by the supporting manufacturer</td>	
 		</tr>
 		<tr>
 			<td></td>
-			<td>a.</td>
-			<td>Name</td>
-			<td></td>
+			<td width="20px">a.</td>
+			<td width="450px">Name</td>
+			<td><input class="input-block-level" type="text" placeholder="Name" name="name" id="address"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
 			<td>Address</td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Address" name="address" id="address"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>c.</td>
 			<td>MSME/IEM/LOI/IL Registration No. and date</td>
-			<td></td>
+			<td>
+				<input class="input-block-level" type="text" placeholder="MSME/IEM/LOI/IL Registration No" name="reg_num" id="address">
+				<input class="input-block-level" type="text" placeholder="Date" name="date" id="date">
+			</td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>d.</td>
 			<td>Products endorsed on MSME/LOI/IL/IEM</td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Products endorsed on MSME/LOI/IL/IEM" name="products_endorsed" id="address"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>e.</td>
 			<td>Excise Registration No. and issuing authoriy, (if applicable)</td>
-			<td></td>
+			<td>
+				<input class="input-block-level" type="text" placeholder="Registration Number" name="Address" id="address">
+				<input class="input-block-level" type="text" placeholder="Issuing Authority" name="Address" id="address">
+			</td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>21.</td>
+			<td width="20px">21.</td>
 			<td>
-				Postal address f the jurisdictional Central Excise Auhoriy in whose jurisdiction factory/premises of the<br/>
+				Postal address f the jurisdictional Central Excise Authoriy in whose jurisdiction factory/premises of the<br/>
 				applicant/supporting manufacurer where the capital goods to be imported are proposed to be installed.
 			
 			</td>	
 		</tr>
 		<tr>
 			<td></td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Address" name="address" id="address"></td>
 		</tr>
 	</table>
 	<div style="text-align: center;font-weight: bold;height: 30px;">DECLARATION/UNDERTAKING</div>
 	<div>
 		<ol>
 			<li>I / We hereby declare that the particulars and the statements made in this application are true and correct to the best of my/our knowledge and belief and nothing has been concealed or held there from and if found incorrect or false will render me/us liable for any penal action or other consequences as may be prescribed in law or otherwise warranted.</li>
-			<li>I / We undertake to abide by the provisions of the Foreign Trade (Development and Regulation) Act, 1992, the Rules and Orders framed there under, the Foreign Trade Policy, the Handbook of Procedures and the ITC(HS) Classification of Export & Import Items.</li>
+			<li>I / We undertake to abide by the provisions of the Foreign Trade (Development and Regulation) Act, 1992, the Rules and Orders framed there under, the Foreign Trade Policy, the Handbook of Procedures and the ITC(HS) Classification of Export &amp; Import Items.</li>
 			<li>I / We hereby certify that none of the Proprietor / Partner(s) / Director(s) / Karta / Trustee of the firm / company, as the case may be, is/are a Proprietor / Partner(s) / Director(s) / Karta / Trustee in any other firm / Company which has come to the adverse notice of DGFT.</li>
 			<li>I / We hereby certify that neither the Registered Office/Head Office of the firm/company nor any of its Branch Office(s) / Unit(s) / Division(s) has been declared a defaulter and has otherwise been made ineligible for undertaking import / export under any of the provisions of the Policy.</li>
 			<li>I / We hereby certify that our applicant firm/company is NOT currently availing any benefits under Technology Upgradation Fund Scheme (TUFS), administered by Ministry of Textiles, Government of India. (Applicable to zero duty EPCG scheme only)</li>

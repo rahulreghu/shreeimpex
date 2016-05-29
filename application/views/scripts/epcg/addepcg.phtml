@@ -716,9 +716,7 @@
 				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[year]" id="financial_year"></td>
 				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="finance[domestic_turnover]" id="domestic_turnover"></td>
 				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[export_turnover]" id="export_turnover"></td>
-				<td colspan="1"><a href="javascript:void(0);" onclick="addMoreRows(this.form);">
-				Add More
-				</a></td>
+				<td colspan="1"><a href="javascript:void(0);" onclick="addMoreRows(this.form);"><i class="icon-plus"></i></a></td>
 			</tr>
 			
 		</table>
@@ -816,7 +814,7 @@ $(function(){
 var rowCount = 1;
 function addMoreRows(frm) {
 rowCount ++;
-var recRow = '<tr id="rowCount'+rowCount+'"><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[year]" id="financial_year"></td><td colspan="2"><input class="input-block-level" type="text" placeholder="" name="finance[domestic_turnover]" id="domestic_turnover"></td><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[export_turnover]" id="export_turnover"></td><td colspan="1"><a href="javascript:void(0);" onclick="removeRow('+rowCount+');">Delete</a></td></tr>';
+var recRow = '<tr id="rowCount'+rowCount+'"><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[year]" id="financial_year"></td><td colspan="2"><input class="input-block-level" type="text" placeholder="" name="finance[domestic_turnover]" id="domestic_turnover"></td><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[export_turnover]" id="export_turnover"></td><td colspan="1"><a href="javascript:void(0);" onclick="removeRow('+rowCount+');"><i class="icon-minus"></i></a></td></tr>';
 jQuery('#finance_data').append(recRow);
 }
 
