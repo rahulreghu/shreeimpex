@@ -8,101 +8,105 @@
 	</div>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>1.</td>
+			<td width="20px">1.</td>
 			<td colspan="2">Application for</td>
-			<td>Please tick</td>
+			<td width="389px">Please tick</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td>a.</td>
+			<td width="20px">a.</td>
 			<td>EPCG Scheme</td>
-			<td></td>
+			<td><input type="checkbox"	name="epcg[app_scheme]" value="1"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
-			<td>Pos Export EPCG Scheme</td>
-			<td></td>
+			<td>Post Export EPCG Scheme</td>
+			<td><input type="checkbox"	name="epcg[app_scheme]" value="2"></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>2.</td>
+			<td width="20px">2.</td>
 			<td>IEC No.</td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="IEC No" name="iec_no" id="iec_no" ></td>
 			<td>Branch Code</td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Branch Code" name="branch_code" id="branch_code" ></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td colspan="2">Declaration: I/We have updated my/our profile in ANF - 1</td>
-			<td colspan="2"></td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Declaration" name="declaration" id="declaration" ></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>3.</td>
-			<td></td>
+			<td width="20px">3.</td>
 			<td>Address of the factory/premises of he applican where the capital goods to be imported are proposed to be installed</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td></td>
-			<td></td>
+			<td>	
+				<select name="factory_address" id="factory_address">
+					<option value="0">--Select--</option>
+				</select>
+			</td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>4.</td>
+			<td width="20px">4.</td>
 			<td colspan="3">Excise Registraion Details</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td>a.</td>
-			<td>Excise Registration Number</td>
-			<td></td>
+			<td width="20px">a.</td>
+			<td width="350px">Excise Registration Number</td>
+			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="excise[registration_num]" id="excise_registration_num]" ></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
 			<td>Date of registration</td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Date of Registration" name="excise[dor]" id="excise_dor" ></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>c.</td>
+			<td>Address of the Jurisdictional Central Excise Auhority<br/>(whether registered with central excise or not)</td>
+			<td><input class="input-block-level" type="text" placeholder="Address" name="excise[address]" id="excise_address" ></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td  width="20px">5.</td>
+			<td width="387px">Port of Registration (for the purpose of imports)</td>
 			<td>
-				Address of the Jurisdictional Central Excise Auhority<br/>
-				(whether registered with central excise or not)
+				<select name="registered_port" id="registered_port">
+					<option value="0">--Select--</option>
+				</select>
 			</td>
-			<td></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>5.</td>
-			<td>Port of Registration (for the purpose of imports)</td>
-		</tr>
-	</table>
-	<table class="table table-bordered" style="width: 950px">
-		<tr>
-			<td>6.</td>
-			<td colspan="3">Application Fee Payment details</td>
+			<td width="20px">6.</td>
+			<td colspan="4">Application Fee Payment details</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td>a.</td>
-			<td>Amount (in Rs.)</td>
-			<td></td>
+			<td width="20px">a.</td>
+			<td style="width: 350px">Amount (in Rs.)</td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Amount" name="app_fee[amount]" id="app_fee_amount" ></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
 			<td>
-				Mode of Payment
-			   	(TR Challan/Electronic Fund Transfer/Credit Cart)
+				Mode of Payment<br/>
+			   (TR Challan/Electronic Fund Transfer/Credit Cart)
 			</td>
-			<td></td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Mode of Payment" name="app_fee[payment_mode]" id="app_fee_payment_mode" ></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -110,144 +114,150 @@
 			<td>
 				Serial No. of TR challan/EFT no./credit card details and Date of Payment
 			</td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Payment Details" name="app_fee[payment_details]" id="app_fee_payment_details" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Date of Payment" name="app_fee[payment_date]" id="app_fee_payment_date" ></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>7.</td>
+			<td width="20px">7.</td>
 			<td colspan="3">Service Tax Registration Details (in case of Service Providers registered with Service Tax Authoities)</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td>a.</td>
-			<td>Service Tax Registration Number</td>
-			<td></td>
+			<td width="20px">a.</td>
+			<td style="width: 350px">Service Tax Registration Number</td>
+			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="service_tax[registraion_num]" id="service_tax_registration_num" ></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
 			<td>Date of registration</td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Date of Registration" name="service_tax[dor]" id="service_tax_dor" ></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>c.</td>
 			<td>Address of Jurisdictional Service Tax Authoriy</td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Address" name="service_tax[auth_address]" id="service_tax_auth_address" ></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>d.</td>
 			<td>Services for which registered</td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Registered Services" name="service_tax[reg_services]" id="service_tax_reg_services" ></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>8.</td>
+			<td width="20px">8.</td>
 			<td colspan="3">Sector Classification of Capital Gods sought to be imported under the Scheme</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td>a.</td>
-			<td>Industrial Sector</td>
-			<td></td>
+			<td width="20px">a.</td>
+			<td width="350px;">Industrial Sector</td>
+			<td><input type="checkbox"	name="sector" value="1"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
 			<td>Agricultural Sector</td>
-			<td></td>
+			<td><input type="checkbox"	name="sector" value="2"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>c.</td>
 			<td>Service Sector</td>
-			<td></td>
+			<td><input type="checkbox"	name="sector" value="3"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>d.</td>
 			<td>Green Technology Sector</td>
-			<td></td>
+			<td><input type="checkbox"	name="sector" value="4"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>e.</td>
-			<td>Units in North Eastern Region/Sikkim/J&K</td>
-			<td></td>
+			<td>Units in North Eastern Region/Sikkim/J&amp;K</td>
+			<td><input type="checkbox"	name="sector" value="5"></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>9.</td>
-			<td>Products o be exprted/services to be rendered</td>
+			<td width="20px">9.</td>
+			<td>Products to be exported/services to be rendered</td>
 			<td>ITC(HS) Code/Service Code</td>
 		</tr>	
 		<tr>
 			<td></td>
-			<td></td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Product List" name="product_list" id="product_list" ></td>
+			<td><input class="input-block-level" type="text" placeholder="ITC(HS)/Service Code" name="itc_code" id="itc_code" ></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>10.</td>
-			<td colspan="3">Details of exports of same/similar product/services made in the preceding hress licensing years (excluding exports which have been counted are being counted for fulfilling specific EO in respect of EPCG Authorizations within valid EO Period)</td>
+			<td width="20px">10.</td>
+			<td colspan="3">Details of exports of same/similar product/services made in the preceding three licensing years (excluding exports which have been counted are being counted for fulfilling specific EO in respect of EPCG Authorizations within valid EO Period)</td>
 		</tr>	
 		<tr>
 			<td></td>
-			<td>Sl. No.</td>
+			<td width="20px">Sl. No.</td>
 			<td>Financial Year</td>
 			<td>Total FOB Value of exports/services rendered for the same/similar product/services (Rs. in crores)</td>
 		</tr>	
 		<tr>
 			<td></td>
 			<td>1</td>
-			<td></td>
-			<td></td>
+			<td width="400px"><input class="input-block-level" type="text" placeholder="Financial Year" name="financial_year[]" id="financial_year_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Total Value" name="total_fob_value[]" id="total_fob_value_1" ></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td></td>
 			<td>Total</td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Total" name="total_value" id="total_value" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td></td>
 			<td>*Average export performance</td>
-			<td></td>
+			<td><input class="input-block-level" type="text" placeholder="Average export performance" name="avg_export_perf" id="avg_export_perf" readonly="readonly"></td>
 		</tr>
 	</table>
 	<div>* If the applicant has been in exisence for less then 3 years, the aggregate export will be divided by the number of years for thich the company has been in existence and not by 3 years</div>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
-			<td>11.</td>
+			<td width="20px">11.</td>
 			<td colspan="8">Details of EPCG Authorizations where EO is pending</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td>Sl.No.</td>
+			<td width="20px">Sl.No.</td>
 			<td>Authorizaion No. and Date</td>
 			<td>RA which issued the Authorization</td>
 			<td>Value of duty saved/duty paid 9 (in Rs.)</td>
 			<td>EO fixed on duty saved/duty paid (in freely convertible currency)/Rs.</td>
 			<td>Specific EO fulfilled</td>
 			<td>Annual Average EO fixed (in Rs.)</td>
-			<td>Expiry dae of EO period</td>
+			<td>Expiry date of EO period</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>1</td>
+			<td>
+				<input class="input-block-level" type="text" placeholder="Auth No" name="epcg_auth[num][]" id="epcg_auth_num_1" >
+				<input class="input-block-level" type="text" placeholder="Date" name="epcg_auth[date][]" id="epcg_auth_date_1" >
+			</td>
+			<td>
+				<input class="input-block-level" type="text" placeholder="RA Details" name="epcg_auth[ra_details][]" id="epcg_auth_ra_details_1" >
+			</td>
+			<td><input class="input-block-level" type="text" placeholder="Value" name="epcg_auth[duty_saved_paid][]" id="epcg_auth_duty_saved_paid_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Value" name="epcg_auth[eo_fixed][]" id="epcg_auth_ec_fixed_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Value" name="epcg_auth[eo_fullfilled][]" id="epcg_auth_eo_fullfilled_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Value" name="epcg_auth[eo_average][]" id="epcg_auth_eo_average_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Date" name="epcg_auth[eo_expiry_date][]" id="epcg_auth_eo_expiry_date_1" ></td>
 		</tr>
 	</table>	
 	<table class="table table-bordered" style="width: 950px">
@@ -257,20 +267,32 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td>Sl. No.</td>
-			<td>Description of he items of import</td>
+			<td  width="20px">Sl.No.</td>
+			<td>Description of the items of import</td>
 			<td>ITC(HS) Code</td>
 			<td>Nature of Captal Goods sought to be imported*</td>
 			<td>Quantity</td>
 			<td>Primary use of Capital Goods sought to be imported**</td>
 		</tr>
+		<tr>
+			<td></td>
+			<td>1</td>
+			<td><input class="input-block-level" type="text" placeholder="Items Description" name="import_goods[description][]" id="import_goods_description_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="ITC(HS) Code" name="import_goods[itc_code][]" id="import_goods_itc_code_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Goods Nature" name="import_goods[nature][]" id="import_goods_nature_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Quantity" name="import_goods[quantity][]" id="import_goods_quantity_1" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Primary Use" name="import_goods[primary_use][]" id="import_goods_primary_use_1" ></td>
+		</tr>
 	</table>
-	<div>
-		*whether Capial Goods/Spares/Tools/Jigs/Fixtures/Dies/Mouldes/Spare refractories/Catalyst(specify if any other)<br/>
+	<div style="padding-bottom: 10px">
+		* whether Capial Goods/Spares/Tools/Jigs/Fixtures/Dies/Mouldes/Spare refractories/Catalyst(specify if any other)<br/>
 		** whether used for Pre-production acitivity/Production activity/Post-production activity/for rendering services
 	</div>	
-	<div>
-		13. Whether produc to be imported is resriced for import - Yes/No <br/>
+	<div  style="padding-bottom: 20px">
+		13. Whether product to be imported is resriced for import - 
+		<input type="radio" name="entity_category" value="entity_partnership">Yes
+		<input type="radio" name="entity_category" value="entity_partnership">No
+		<br/>
 		(If yes, enclose copy of EFC approva from DGFT Hqrs.)
 	</div>
 	<table class="table table-bordered" style="width: 950px">
