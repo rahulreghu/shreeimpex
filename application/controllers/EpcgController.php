@@ -42,8 +42,8 @@ class EpcgController extends Zend_Controller_Action
 		
 		if((isset($_POST['submitform']) && $_POST['submitform'] == 'Submit Form') || ( isset($_POST['saveform']) && $_POST['saveform'] == 'Save Form')){
 			//$this->validationForm($_POST);
-			//echo '<pre>';
-			//print_r($_POST);
+			echo '<pre>';
+			print_r($_POST);
 			$entity_iec_info = array();
 			$bank_details = array();
 			$branch_details = array();
@@ -119,6 +119,13 @@ class EpcgController extends Zend_Controller_Action
 			}else{
 				$_POST['entity']['status'] = '1';
 			}
+			!empty($_POST['entity']['imr_doi']) ? $_POST['entity']['imr_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['imr_doi']}")->format('Y-m-d'):'0000-00-00';
+			!empty($_POST['entity']['imr_validity']) ? $_POST['entity']['imr_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['imr_validity']}")->format('Y-m-d'):'0000-00-00';
+			!empty($_POST['entity']['rcmc_doi']) ? $_POST['entity']['rcmc_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['rcmc_doi']}")->format('Y-m-d'):'0000-00-00';
+			!empty($_POST['entity']['rcmc_validity']) ? $_POST['entity']['rcmc_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['rcmc_validity']}")->format('Y-m-d'):'0000-00-00';
+			!empty($_POST['entity']['shd_doi']) ? $_POST['entity']['shd_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_doi']}")->format('Y-m-d'):'0000-00-00';
+			!empty($_POST['entity']['shd_validity']) ? $_POST['entity']['shd_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_validity']}")->format('Y-m-d'):'0000-00-00';
+			
 			//print_r($_POST['entity']);
 			try{
 				//insert in entity_iec_info table
@@ -155,6 +162,7 @@ class EpcgController extends Zend_Controller_Action
 				$response['status'] = 1;
 				$response['message'] = 'Success';
 			}
+			print_r($response);
 			if($response['status']){
 				//$this->renderScript('epcg/index.phtml');
 				$this->view->response = $response;
