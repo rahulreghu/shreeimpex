@@ -17,7 +17,7 @@ $(function(){
 });
 
 //prevent the form submission with enter key 
-$('#epcg_form').find('.input').keypress(function(e){
+$('#iec_form').find('.input').keypress(function(e){
     if ( e.which == 13 ) // Enter key = keycode 13
     {
         return false;
@@ -64,7 +64,7 @@ $(function(){
 			if(count >= 1){
 				var partner = generateRequiredBox(count,type); 
 				$('#partner_details').empty();
-				$('#partner_details').append(branch);
+				$('#partner_details').append(partner);
 			}else{
 				$('#partner_details').empty();
 			}
@@ -101,6 +101,7 @@ $(function(){
 function generateRequiredBox(count,type){
 	alert("count: "+count+" type: "+type);
 	var box = "";
+	var jsscript = "";
 	if(type == 'branch'){
 		for(i=1; i<=count; i++){
 			box += '<div id="branch_container'+i+'"> <table class="table table-bordered"><tr><td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>';
@@ -113,7 +114,7 @@ function generateRequiredBox(count,type){
 		}
 	}
 	if(type == 'partner'){
-		for(i=set; i<=count; i++){
+		for(i=1; i<=count; i++){
 			box += '<table class="table table-bordered">'
 			box += '<tr><td colspan="2">a. Name as in PAN:<span class="required">*</span> </td><td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners]['+i+'][name]" id="partner'+i+'_name"></td></tr>';
 			box += '<tr><td colspan="2">b. Father\'s Name:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Father\'s name" name="entity_partnership[partners]['+i+'][surname]" id="partner'+i+'_surname"></td></tr>';
@@ -126,11 +127,13 @@ function generateRequiredBox(count,type){
 			box += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership[partners]['+i+'][pincode]" id="partner'+i+'_pincode"></td></tr>';
 			box += '<tr><td colspan="2">e. Mobile No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership[partners]['+i+'][mobile]" id="partner'+i+'_mobile"></td></tr>';
 			box += '<tr><td colspan="2">f. PAN:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[partners]['+i+'][pan]" id="partner'+i+'_pan"></td></tr>';
-			box += '<tr><td colspan="2">g. Aadhaar Card Number, if available:</td><td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners]['+i+'][aadhaar_number]" id="partner'+i+'_aadhaarno"></td></tr></table>'
+			box += '<tr><td colspan="2">g. Aadhaar Card Number, if available:</td><td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners]['+i+'][aadhaar_number]" id="partner'+i+'_aadhaarno"></td></tr></table>';
+			jsscript += "$('#partner"+i+"_dob').datepicker({format: 'dd/mm/yyyy'});";
 		}
+		box += "<script>"+jsscript+"</script>";
 	}
 	if(type == 'privateltd'){
-		for(i=set; i<count; i++){
+		for(i=1; i<count; i++){
 			box += '<table  class="table table-bordered"><tr><td width="285px;">a. Name:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners]['+i+'][name]" id="privateltd'+i+'_name"></td></tr>';
 			box += '<tr><tr><td>b. PAN:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners]['+i+'][pan]" id="privateltd'+i+'_pan"></td></tr>';
 			box += '<tr><td>c. Director Identity Number:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners]['+i+'][director_id_number]" id="privateltd'+i+'_director_id"></td></tr>';
@@ -149,7 +152,7 @@ $('.state_selectbox').on("change",function() {
     if($(this).val() != '--Select--'){
     	$.ajax({
             type:"GET",
-            url : "/public/epcg/get-districts?id="+$(this).val(),
+            url : "/public/iec/get-districts?id="+$(this).val(),
             dataType : "json",  
             success : function(response) {
             	$.each(response.message, function(key,value){
@@ -180,7 +183,7 @@ $('.district_selectbox').on("change",function() {
     if($(this).val() != '--Select--'){
     	$.ajax({
             type:"GET",
-            url : "/public/epcg/get-cities?id="+$(this).val(),
+            url : "/public/iec/get-cities?id="+$(this).val(),
             dataType : "json",  
             success : function(response) {
             	$.each(response.message, function(key,value){
@@ -208,7 +211,7 @@ $('#branch_details,#partner_details').on("change",".state_dymselectbox",function
     if($(this).val() != '--Select--'){
     	$.ajax({
             type:"GET",
-            url : "/public/epcg/get-districts?id="+$(this).val(),
+            url : "/public/iec/get-districts?id="+$(this).val(),
             dataType : "json",  
             success : function(response) {
             	$.each(response.message, function(key,value){
@@ -239,7 +242,7 @@ $('#branch_details,#partner_details').on("change",".district_dymselectbox",funct
     if($(this).val() != '--Select--'){
     	$.ajax({
             type:"GET",
-            url : "/public/epcg/get-cities?id="+$(this).val(),
+            url : "/public/iec/get-cities?id="+$(this).val(),
             dataType : "json",  
             success : function(response) {
             	$.each(response.message, function(key,value){
@@ -271,7 +274,7 @@ $('select[name="entity_status"]').on({
 	    if (result) {
 	    	$.ajax({
 	            type:"GET",
-	            url : "/public/epcg/change-iec-status?id="+iec_id[1]+"&status_id="+iec_id[0],
+	            url : "/public/iec/change-iec-status?id="+iec_id[1]+"&status_id="+iec_id[0],
 	            dataType : "json",  
 	            success : function(response) {
 	            	bootbox.alert("Status changed successfully.");
@@ -288,7 +291,7 @@ $('select[name="entity_status"]').on({
 });
 
 //submit button validation
-function epcgValidaion(){
+function iecValidaion(){
 	var response = true;
 	var error = "";
 	var category_classname = "";
@@ -604,7 +607,7 @@ function validateCategories(category_classname){
 }
 
 //minimal vaidation for saving
-function epcgMinimalValidaion(){
+function iecMinimalValidaion(){
 	var response = true;
 	var error = "";
 	var category_classname = "";
@@ -710,36 +713,36 @@ function readURL(input) {
 }
 
 //submit button validaion
-//onsubmit="return epcgValidaion();"
-$( "#submit_epcgform" ).on('click',function() {
-	if(true === epcgValidaion()){
+//onsubmit="return iecValidaion();"
+$( "#submit_iecform" ).on('click',function() {
+	if(true === iecValidaion()){
 		//$('#epcg_form').attr('action', 'epcg/addepcg');
-		$("#epcg_form").submit();
+		$("#iec_form").submit();
 	}else{
 		return false;
 	}
 });
 	
 //save button validation
-$("#save_epcgform").on('click',function() {
-	if(true === epcgMinimalValidaion()){
+$("#save_iecform").on('click',function() {
+	if(true === iecMinimalValidaion()){
 		//$('#epcg_form').attr('action', 'epcg/addepcg');
-		$("#epcg_form").submit();
+		$("#iec_form").submit();
 	}else{
 		return false;
 	}
 });
 
 //delete epcg
-$( "[id^=deleteEpcg]" ).on('click',function() {
+$( "[id^=deleteIec]" ).on('click',function() {
 	var id = $(this).val();
-	var table = $('table#displayEpcg').DataTable();
+	var table = $('table#displayIec').DataTable();
 	var trParent =  $(this).parents('tr');
 	bootbox.confirm("Are you sure you want to delete this form?",'No','Yes',function(result) {
 	   if (result) {
 	    	$.ajax({
 	            type:"GET",
-	            url : "/public/epcg/deleteepcg?id="+id,
+	            url : "/public/iec/deleteiec?id="+id,
 	            dataType : "json",  
 	            success : function(response) {
 	            	table.row(trParent ).node().remove();
@@ -756,14 +759,14 @@ $( "[id^=deleteEpcg]" ).on('click',function() {
 
 //update iec number
 $(function() {
-	$("#displayEpcg").on('click','[id^=iecnumber_]',function() {
+	$("#displayIec").on('click','[id^=iecnumber_]',function() {
 		var idname =  $(this).attr('id');
 		var id = idname.split("_");
 		$(this).hide(); //hide text
 	    $('#iectextbox_'+id[1]).show().focus(); //show textbox
 	});
 	
-	$("#displayEpcg").on('blur',"[id^=iectextbox_]", function() {
+	$("#displayIec").on('blur',"[id^=iectextbox_]", function() {
 		var idname =  $(this).attr('id');
 		var id = idname.split("_");
 		$(this).hide(); //hide text
@@ -771,7 +774,7 @@ $(function() {
 			$('#iecnumber_'+id[1]).text($(this).val())
 		    	$.ajax({
 		            type:"GET",
-		            url : "/public/epcg/update-iec-number?id="+id[1]+"&iec_no="+$(this).val(),
+		            url : "/public/iec/update-iec-number?id="+id[1]+"&iec_no="+$(this).val(),
 		            dataType : "json",  
 		            success : function(response) {
 		            	if(response.status == 1){
@@ -787,7 +790,7 @@ $(function() {
 	});
 });
 
-//remove button on edit epcg
+//remove button on edit iec
 $( "[id^=remove_]" ).on('click',function(){
 	var idname =  $(this).attr('id');
 	var id = idname.split("_");
@@ -813,7 +816,7 @@ $( "[id^=remove_]" ).on('click',function(){
 //get the id of checkbox selected
 $( "#sendemailnotification" ).on('click',function(){
 	var selected = [];
-	$('#displayEpcg input[type=checkbox]').each(function() {
+	$('#displayIec input[type=checkbox]').each(function() {
 	   if ($(this).is(":checked")) {
 	       selected.push($(this).attr('value'));
 	   }
@@ -823,7 +826,7 @@ $( "#sendemailnotification" ).on('click',function(){
 	if(selected != null){
 		$.ajax({
             type:"GET",
-            url : "/public/epcg/get-email-category?id="+selected+"email_category="+emailCategory,
+            url : "/public/iec/get-email-category?id="+selected+"email_category="+emailCategory,
             dataType : "json",  
             success : function(response) {  
             	bootbox.alert("The email has been sent");
@@ -846,7 +849,7 @@ $( "#sendemailnotification" ).on('click',function(){
 	if(selected != null){
 		$.ajax({
             type:"GET",
-            url : "/public/epcg/get-email-category?id=all",
+            url : "/public/iec/get-email-category?id=all",
             dataType : "json",  
             success : function(response) {
             	bootbox.dialog({
@@ -871,3 +874,4 @@ $( "#sendemailnotification" ).on('click',function(){
         });
 	}
 });*/
+

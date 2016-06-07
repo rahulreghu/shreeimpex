@@ -7,7 +7,7 @@
 	  	<?php }?>
 	</select>
 </div>
-<form action="epcg/editepcg" method="post" name="epcg_form" id="epcg_form" enctype="multipart/form-data"> 
+<form action="iec/editiec" method="post" name="iec_form" id="iec_form" enctype="multipart/form-data"> 
 	<table class="table table-bordered" style="width: 950px">
 		<caption style="height: 30px">
 				<strong>APPLICATION FORM FOR ISSUE/MODIFICATION IN IMPORTER EXPORTER CODE (IEC) NUMBER</strong>
@@ -894,21 +894,21 @@
 			</tr>
 			<tr>
 				<td colspan="1">1. SSI/IEM/LOI or IL Registration No/any other to prove a manufacturer status:</td>
-				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registration No" name="imr[reg_num]" id="imr_reg_num"></td>
+				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registration No" name="entity[imr_reg_num]" id="imr_reg_num"></td>
 			</tr>
 			<tr>
 				<td rowspan="2">2. Date of issue and Validity / Issuing Authority</td>
 				<td colspan="2">
 				From:<span class="required">*</span>
-					<input class="input-block-level" type="text" placeholder="From Date" name="imr[doi]" id="imr_doi"></td>
+					<input class="input-block-level" type="text" placeholder="From Date" name="entity[imr_doi]" id="imr_doi"></td>
 				<td colspan="2">To:<span class="required">*</span>
-					<input class="input-block-level" type="text" placeholder="To Date" name="imr[validity]" id="imr_validity"></td>
+					<input class="input-block-level" type="text" placeholder="To Date" name="entity[imr_validity]" id="imr_validity"></td>
 			</tr>
-			<tr><td colspan="4"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="imr[ia]" id="imr_ia"></td></tr>
+			<tr><td colspan="4"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[imr_ia]" id="imr_ia"></td></tr>
 				
 			<tr>
 				<td colspan="1">3. Products for which registered</td>
-				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="imr[reg_prods]" id="imr_reg_prods"></td>
+				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="entity[imr_reg_prods]" id="imr_reg_prods"></td>
 			</tr>
 		</table>
 	</div>
@@ -919,13 +919,13 @@
 			</tr>
 			<tr>
 				<td colspan="1">1. Service Tax Registration No / Issuing Authority</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration No" name="str[reg_num]" id="str_reg_num"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="str[ia]" id="str_ia">
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration No" name="entity[str_reg_num]" id="str_reg_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[str_ia]" id="str_ia">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="1">2. Services for which registered</td>
-				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registered Services" name="str[reg_items]" id="str_reg_items"></td>
+				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registered Services" name="entity[str_reg_items]" id="str_reg_items"></td>
 			</tr>
 		</table>
 	</div>
@@ -936,18 +936,18 @@
 			</tr>
 			<tr>
 				<td colspan="1">1. RCMC No / Issuing Authority</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="RCMC No" name="rcmc[num]" id="rcmc_num"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="rcmc[ia]" id="rcmc_ia">
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="RCMC No" name="entity[rcmc_num]" id="rcmc_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[rcmc_ia]" id="rcmc_ia">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="1">2. Date of issue and Validity:</td>
-				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="rcmc[doi]" id="rcmc_doi"></td>
-				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="rcmc[validity]" id="rcmc_validity"></td>
+				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[rcmc_doi]" id="rcmc_doi"></td>
+				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[rcmc_validity]" id="rcmc_validity"></td>
 			</tr>
 			<tr>
 				<td colspan="1">3. Products for which registered</td>
-				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="rcmc[reg_prods]" id="rcmc_reg_prods"></td>
+				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="entity[rcmc_reg_prods]" id="rcmc_reg_prods"></td>
 			</tr>
 		</table>
 	</div>
@@ -955,27 +955,18 @@
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
 				<td colspan="2">Status House Details(Please select)
-				<td colspan="2">
-				<input name="feedback" type="radio" value="" />
-				<div class="rating">
-					<input name="myrating" type="radio" value="5" /><span>&#9734;</span>
-					<input name="myrating" type="radio" value="4" /><span>&#9734;</span>
-					<input name="myrating" type="radio" value="3" /><span>&#9734;</span>
-					<input name="myrating" type="radio" value="2" /><span>&#9734;</span>
-					<input name="myrating" type="radio" value="1" /><span>&#9734;</span>
-				</div></td>
-				<td colspan="1"><input name="feedback" type="radio" value="" id="not_applicable"/>NA</td>
+				<td colspan="3"><input type="text" class="rb-rating" name="entity[shd_rating]" id="shd_rating" value="0"></td>
 			</tr>
 			<tr>
 				<td colspan="1">1. Certificate number / Issuing Authority:</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Certificate number" name="shd[cert_num]" id="shd_cert_num"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="shd[ia]" id="shd_ia">
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Certificate number" name="entity[shd_cert_num]" id="shd_cert_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[shd_ia]" id="shd_ia">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="1">2. Date of issue and Validity:</td>
-				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="shd[doi]" id="shd_doi"></td>
-				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="shd[validity]" id="shd_validity"></td>
+				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[shd_doi]" id="shd_doi"></td>
+				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[shd_validity]" id="shd_validity"></td>
 			</tr>
 		</table>	
 	</div>
@@ -986,8 +977,8 @@
 			</tr>
 			<tr>
 				<td colspan="1">Central Excise Registration No./ Issuing Authority</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="cer[reg_num]" id="cer_reg_num"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="cer[ia]" id="cer_ia">
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="entity[cer_reg_num]" id="cer_reg_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[cer_ia]" id="cer_ia">
 				</td>
 			</tr>
 		</table>
@@ -999,8 +990,8 @@
 			</tr>
 			<tr>
 				<td colspan="1">VAT Registration No./ Issuing Authority</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="vat[reg_num]" id="vat_reg_num"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="vat[ia]" id="vat_ia">
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="entity[vat_reg_num]" id="vat_reg_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[vat_ia]" id="vat_ia">
 				</td>
 			</tr>
 		</table>
@@ -1016,12 +1007,11 @@
 				<td colspan="2">Annual Export Turnover(Rs.Lakhs)</td>
 			</tr>
 			<tr id="rowCount1">
-				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[year]" id="financial_year"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="finance[domestic_turnover]" id="domestic_turnover"></td>
-				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[export_turnover]" id="export_turnover"></td>
-				<td colspan="1"><a href="javascript:void(0);" onclick="addMoreRows(this.form);">
-				Add More
-				</a></td>
+				<td colspan="1"><select name="turnover_details[0][financial_year]" id="financial_year_0">
+				</select></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[0][domestic_turnover]" id="domestic_turnover_0"></td>
+				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="turnover_details[0][export_turnover]" id="export_turnover_0"></td>
+				<td colspan="1"><a href="javascript:void(0);" onclick="addMoreRows(this.form);"><i class="icon-plus"></i></a></td>
 			</tr>
 			
 		</table>
@@ -1078,15 +1068,15 @@
 		</tr>
 	</table>
 	<div style="text-align: center;">
-		<button type="submit" class="btn btn-primary" name="submitform" value="Submit Form" id="submit_epcgform">Submit</button> 
+		<button type="submit" class="btn btn-primary" name="submitform" value="Submit Form" id="submit_iecform">Submit</button> 
 		<?php if(!empty($this->iec_info['status']) &&  $this->iec_info['status'] == '6'){?>
 		<span style="padding-right: 25px"></span>
-		<button type="submit" class="btn btn-warning" name="saveform" value="Save Form"  id="save_epcgform">Save</button>
+		<button type="submit" class="btn btn-warning" name="saveform" value="Save Form"  id="save_iecform">Save</button>
 		<?php }?>
 		<span style="padding-right: 25px"></span> 
 		<button type="reset" class="btn btn-danger">Reset</button>
 		<span style="padding-right: 25px"></span> 
-		<a href="epcg/index" type="button" class="btn btn-inverse">Back</a>
+		<a href="iec/index" type="button" class="btn btn-inverse">Back</a>
 		<!-- 
 		<span style="padding-right: 25px"></span> 
 		<a href="#" type="button" class="btn btn-warning">Print</a>

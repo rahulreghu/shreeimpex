@@ -1,16 +1,16 @@
 <div style="height: 50px; float: right;">
-	<a href="epcg/index" class="btn btn-warning" type="button">View EPCG</a>
+	<a href="iec/index" class="btn btn-warning" type="button">View EPCG</a>
 	<span style="padding-right: 15px"></span> 
-	<a href="epcg/addepcg" class="btn btn-success" type="button">Add New EPCG</a>
+	<a href="iec/addepcg" class="btn btn-success" type="button">Add New EPCG</a>
 </div>
 <div style="clear: both;"></div>
 <div style="height: 45px; text-align: center;">
-	<strong>LIST OF SAVED EPCG FORM</strong>
+	<strong>LIST OF SAVED IEC FORM</strong>
 </div>
-<table class="table table-hover table-bordered table-striped" <?php echo !empty($this->allentities) ? " id='displayEpcg'" : ''; ?> >  
+<table class="table table-hover table-bordered table-striped" <?php echo !empty($this->allentities) ? " id='displayIec'" : ''; ?> >  
 <thead>
 	<tr>
-		<th width="40px" style="text-align: center;">Sl No</th>	
+		<!-- <th width="40px" style="text-align: center;">Sl No</th> -->	
 		<th width="250px" style="text-align: center;">Entity Name</th>	
 		<th width="200px" style="text-align: center;">Nature of Entity</th>	
 		<th width="100px" style="text-align: center;">Created By</th>	
@@ -25,19 +25,19 @@
 		?>
 		
 	<tr>
-		<td style="text-align: center;"><?php echo $i;?></td>
+		<!-- <td style="text-align: center;"><?php echo $i;?></td> -->
 		<td><?php echo $entity_details['name'];?></td>
 		<td><?php echo $entity_details['category'];?></td>
 		<td><?php echo $entity_details['created_by'];?></td>
 		<td>
-			<button class="btn btn-mini btn-primary" type="button" id="editEpcg" value="<?php echo $entity_details['id']?>">Edit</button>
-			<button class="btn btn-mini btn-danger" type="button" id="deleteEpcg_<?php echo $entity_details['id']?>" value="<?php echo $entity_details['id']?>">Delete</button>
+			<button class="btn btn-mini btn-primary" type="button" id="editIec" value="<?php echo $entity_details['id']?>">Edit</button>
+			<button class="btn btn-mini btn-danger" type="button" id="deleteIec_<?php echo $entity_details['id']?>" value="<?php echo $entity_details['id']?>">Delete</button>
 		</td>
 	</tr>
 	<?php $i++;
 			} ?> </tbody><?php }else{?>
 	<tr>
-		<td colspan="5" style="text-align: center;"> No saved EPCG forms found, please click Add New EPCG button to create a new application</td>
+		<td colspan="5" style="text-align: center;"> No saved IEC forms found, please click Add New IEC button to create a new application</td>
 	</tr>
 	<?php }?>
 </table>
@@ -55,9 +55,9 @@
 <script src="scripts/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready(function() {
-	 $('table#displayEpcg').DataTable({
+	 $('table#displayIec').DataTable({
 			columnDefs: [{ orderable: false, targets: [4]}],
 	  });
-	 $("select[name='displayEpcg_length']").attr('style', 'width: 70px');
+	 $("select[name='displayIec_length']").attr('style', 'width: 70px');
 } );
 </script>

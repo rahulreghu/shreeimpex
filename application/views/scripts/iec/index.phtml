@@ -1,12 +1,12 @@
 <div id="error_message" class="alert alert-error" style="display: none;" <?php echo !empty($this->response['status']) && $this->response['status'] == 1 ? "" : "style='display: none;'"?>>Successfully Created</div>
 <div style="height: 50px; float: right;">
-	<a href="iec/addepcg" class="btn btn-success" type="button">Add New IEC</a>
+	<a href="iec/addiec" class="btn btn-success" type="button">Add New IEC</a>
 	<span style="padding-right: 15px"></span> 
 	<!-- <a href="epcg/listsavedepcg" class="btn btn-warning" type="button">View Saved EPCG</a>
 	<span style="padding-right: 15px"></span> 
 	<a href="epcg/addepcg" class="btn btn-success" type="button">View Saved Chapter V</a>
 	<span style="padding-right: 15px"></span> --> 
-	<a href="iec/listsavediec" class="btn btn-warning" type="button">Add New EPCG</a>
+	<a href="epcg/addepcg" class="btn btn-warning" type="button">Add New EPCG</a>
 </div>
 <div style="clear: both;"></div>
 <div style="height: 45px; text-align: center;">
@@ -147,11 +147,17 @@ $(document).ready(function(){
 
 function getDetails(callback,rowId) {
 	$.ajax({
-        url: '/public/iec/get-all-chapterv?iec_id='+rowId,
+        url: '/public/epcg/get-all-epcg?iec_id='+rowId,
         dataType: "json",
-        complete: function (callback,response) {
-            var data = JSON.parse(response.responseText);
-            var tbody = '';
+        success: function (response) {
+        	//var data = JSON.parse(response.responseText);
+        	var thead = '';
+        	var tbody = '';
+        	alert(response.status);
+            if (response.status == 2){
+            	var tbody = '<tr><td>No EPCG Found</td><td><a href="epcg/addepcg" class="btn btn-warning" type="button">Add New EPCG</a></td></tr>';
+            }
+        /*  var tbody = '';
             $.each(data, function (i, d) {
                 for (var x = 0; x < d.length ; x++)
                 {
@@ -161,11 +167,12 @@ function getDetails(callback,rowId) {
         			'<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Print" class="btn btn-mini btn-info" type="button" id="editEpcg_" href="epcg/editepcg?id="><i class="icon-print"></i></a>'+
                     '</td></tr>';
                 }
-            });
-            callback($('<table class="table table-hover table-bordered table-striped"><tr><td colspan="2"><b>Chapter V</b></td></tr><tr><td><b>Sl No</b></td><td><b>Actions</b></td></tr>' + tbody + '</table>')).show();
+            });*/
+            callback($('<table class="table table-hover table-bordered table-striped">'+ thead  + tbody + '</table>')).show();
+          
         },
         error: function () {
-        	callback($('<table class="table table-hover table-bordered table-striped" style="margin: 0px;"><tr><td>There was an error getting the info!</td></tr></table>')).show();
+        	callback($('<table class="table table-hover table-bordered table-striped" style="margin: 0px;"><tr><td>There was an error getting the info! Please refresh and try again..</td></tr></table>')).show();
           //  $('#'+rowId).html('Bummer: there was an error!');
         }
 	});  

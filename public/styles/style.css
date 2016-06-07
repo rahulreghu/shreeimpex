@@ -349,3 +349,11 @@ div.dataTables_wrapper {
 	border-top: 6px solid #ffffff;
 	border-bottom: 0;
 }
+
+td.details-control {
+    background: url('../images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../images/details_close.png') no-repeat center center;
+}

@@ -12,6 +12,7 @@
 <link href="styles/style.css" rel="stylesheet">
 <link href="styles/bootstrap-responsive.css" rel="stylesheet">
 <link href="styles/datepicker.css" rel="stylesheet">
+<link href="styles/star-rating.css" rel="stylesheet">
 
 <!-- scripts -->
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -68,19 +69,19 @@ body {
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Services <b class="caret"></b></a>
 								<ul class="dropdown-menu" >
 									<li class="dropdown-submenu">
-										<a tabindex="-1" href="epcg">View EPCG</a>
+										<a tabindex="-1" href="iec">IEC</a>
 										<ul class="dropdown-subsubmenu">
+											<li><a tabindex="-1" href="iec/addiec">Add New IEC</a></li>
+											<li><a tabindex="-1" href="iec/listsavediec">View Saved IEC</a></li>
 											<li><a tabindex="-1" href="epcg/addepcg">Add New EPCG</a></li>
 											<li><a tabindex="-1" href="epcg/listsavedepcg">View Saved EPCG</a></li>
 										</ul>
 									</li>
-									<li class="dropdown-submenu">
+									<!-- <li class="dropdown-submenu">
 										<a tabindex="-1" href="epcg">Chapter V</a>
 										<ul class="dropdown-subsubmenu">
-											<li><a tabindex="-1" href="chapterv/addchapterv">Add New Chapter V</a></li>
-											<li><a tabindex="-1" href="epcg/listsavedepcg">View Saved Chapter V</a></li>
 										</ul>
-									</li>
+									</li> -->
 								</ul>
 							</li>
 							<li><a href="home/contactus">Contact Us</a></li>
@@ -119,11 +120,13 @@ body {
 	<script src="scripts/bootstrap-tab.js"></script>
 	<script src="scripts/bootstrap-dropdown.js"></script>
 	<script src="scripts/bootstrap-tooltip.js"></script>
-	<script src="scripts/custom/epcg.js"></script>
+	<script src="scripts/custom/iec.js"></script>
 	<script src="scripts/bootstrap-modal.js"></script>
 	
 	<script src="scripts/bootbox.js"></script>
 	<script src="scripts/bootstrap-datepicker.js"></script>
+	<script src="scripts/star-rating.js"></script>
+	
 <!-- <script src="scripts/bootstrap.min.js"></script>
 
 	<script src="scripts/bootstrap-alert.js"></script>

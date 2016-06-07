@@ -1,0 +1,855 @@
+<div id="error_message" class="alert alert-error" <?php echo !empty($this->response['status']) && $this->response['status'] == 0 ? "" : "style='display: none;'"?>></div>
+<div style="display: none;">
+	<select name="state" id="state_template" >
+		<option value="0">--Select--</option>
+		<?php foreach ($this->states as $state){?>
+	  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+	  	<?php }?>
+	</select>
+</div>
+<form action="iec/addiec" method="post" name="iec_form" id="iec_form" enctype="multipart/form-data"> 
+	<table class="table table-bordered" style="width: 950px">
+		<caption style="height: 30px">
+				<strong>APPLICATION FORM FOR ISSUE/MODIFICATION IN IMPORTER EXPORTER CODE (IEC) NUMBER</strong>
+		</caption>
+		<tr>
+			<td>
+				<ul>
+					<li>Please read the detailed guidelines befre filling up his form <br />
+						Click here to read the guidelines
+					</li>
+					<li>Click here for information about requisite documents to be
+						uploaded <br /> The documents should be uploaded in digital forma
+						- GIF, <br /> JPEG size not exceeding 5MB
+					</li>
+					<li>Ensure that the requisite documents are legible before uploading</li>
+				</ul>
+			</td>
+			<td style="width: 150px; height: 140px;">
+				 <div class="image-upload">
+				    <label for="user_image_file" style="margin: 0px 0px">
+				        <img id="user_images" src="user_images/image.png" class="img-polaroid">
+				    </label>
+				    <input id="user_image_file" name="user_image_file" type="file" accept="image/gif, image/jpeg, image/png" onchange="readURL(this);"/>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<caption style="height: 30px">
+			<strong>Applicant Details</strong>
+		</caption>
+		<tr class="info">
+			<td colspan="5">Part A:</td>
+		</tr>
+		<tr>
+			<td colspan="2">i. Name of entity in whose name IEC is required<span class="required">*</span></td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of entity" name="entity[name]" id="entity_name" ></td>
+		</tr>
+		<tr>
+			<td rowspan="4" width="225px">ii. Address:</td>
+			<td colspan="1" width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity[address1]" id="entity_address1" ></td>
+		</tr>
+		<tr>
+			<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity[address2]" id="entity_address2" ></td>
+		</tr>
+		<tr>
+			<td>State:<span class="required">*</span></td>
+			<td>
+				<select name="entity[state]" id="entity_state" class="state_selectbox">
+					<option value="0">--Select--</option>
+					<?php foreach ($this->states as $state){?>
+				  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+				  	<?php }?>
+				</select>
+			</td>
+			<td>District:<span class="required">*</span></td>
+			<td>
+				<select name="entity[district]" id="entity_district" class="district_selectbox">
+					<option value="0">--Select--</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>City:<span class="required">*</span></td>
+			<td>
+				<select name="entity[city]" id="entity_city" class="city_selectbox">
+					<option value="0">--Select--</option>
+				</select>
+			</td>
+			<td>Pincode:<span class="required">*</span></td>
+			<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity[pincode]" id="entity_pincode"></td>
+		</tr>
+		<tr>
+			<td colspan="2">iii. Landline telephone no., if any (wih area code):</td>
+			<td colspan="3"><input class="input-xlarge" type="text" placeholder="Landline" name="entity[telephone]" id="entity_telephone"></td>
+		</tr>
+		<tr>
+			<td rowspan="2" colspan="2">iv. Mobile No:</td>
+			<td>Primary Mobile No:<span class="required">*</span></td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Primary Mobile No" name="entity[mobile1]" id="entity_mobile1"></td>
+		</tr>
+		<tr>
+			<td>Other Mobile No:, if any:</td>
+			<td colspan="2"><input class="input-block-level" type="text"	placeholder="Other Mobile No" name="entity[mobile2]" id="entity_mobile2"></td>
+		</tr>
+		<tr>
+			<td rowspan="3" colspan="2">v. Email ID/Website Address:</td>
+			<td>Primary Email ID:<span class="required">*</span></td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Primary Email ID" name="entity[email1]" id="entity_email1"></td>
+		</tr>
+		<tr>
+			<td>Alternate Email ID:</td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Alternate Email ID" name="entity[email2]" id="entity_email2"></td>
+		</tr>
+		<tr>
+			<td>Website(if any):</td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Website" name="entity[website]" id="entity_website"></td>
+		</tr>
+		<tr>
+			<td colspan="2">FAX No:(if any, with area code)</td>
+			<td colspan="3"><input class="input-xlarge" type="text" placeholder="FAX No" name="entity[fax]" id="entity_fax"></td>
+		</tr>
+		<tr>
+			<td colspan="2">vi. Nature of concern/entity:<span class="required">*</span></td>
+			<td colspan="3">
+				<div id="categories_section_select_check"></div>
+				<?php foreach ($this->entity_categories as $categories){?>
+				<label class="radio"><input type="radio" name="entity[category]" value="<?php echo $categories['id']?>" class="firm_<?php echo $categories['classname']?>"><?php echo $categories['name']?></label> 
+				<?php }?>
+				<!-- <label class="radio"><input type="radio" name="entity_category" value="entity_partnership">Partnership</label> 
+				<label class="radio"><input type="radio" name="entity_category" value="entity_private">Limited Liabiliy Partnership</label> 
+				<label class="radio"><input type="radio" name="entity_category" value="entity_private">Private Limited</label> 
+				<label class="radio"><input type="radio" name="entity_category" value="entity_private">Public Limited</label>
+				<label class="radio"><input type="radio" name="entity_category" value="entity_private">Govt. undertaking</label> 
+				<label class="radio"><input type="radio" name="entity_category" value="entity_private">Section 25 Company</label>
+				<label class="radio"><input type="radio" name="entity_category" value="entity_society">Registered Society</label> 
+				<label class="radio"><input type="radio" name="entity_category" value="entity_society">Trust</label>
+				<label class="radio"><input type="radio" name="entity_category" value="entity_huf">HUF</label> -->
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">vii. (a) Preferred Activities:<span class="required">*</span></td>
+			<td colspan="3">
+				<?php foreach ($this->entity_activities as $activities){?>
+				<label class="checkbox"><?php echo $activities['name']?><input type="checkbox" name="entity[activities][]" value="<?php echo $activities['id']?>"></label> 
+				<?php }?>
+				<!--<label class="checkbox">Merchant Exporter<input	type="checkbox" name="exporter_type" value=""></label> 
+				<label class="checkbox">Manufacturer Exporter<input type="checkbox"	name="exporter_type" value=""></label> 
+				<label class="checkbox">Service Provider<input type="checkbox" name="exporter_type" value=""></label>-->
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">vii. (b) Others: (please specify)</td>
+			<td colspan="3"><input class="input-xlarge" type="text" placeholder="Others" name="entity[other_activities]" id="entity_other_activities"></td>
+		</tr>
+		<tr>
+			<td colspan="5">viii. Bank Account Details of the Applicant's entity:</td>
+		</tr>
+		<tr>
+			<td colspan="2">1. Name of the account holder:<span class="required">*</span></td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of the account holder" name="bank[account_name]" id="bank_account_name"></td>
+		</tr>
+		<tr>
+			<td colspan="2">2. Account Number:<span class="required">*</span></td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Account number" name="bank[account_number]" id="bank_account_number"></td>
+		</tr>
+		<tr>
+			<td colspan="2">3. Name of the Bank:<span class="required">*</span></td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of the bank" name="bank[name]" id="bank_name"></td>
+		</tr>
+		<tr>
+			<td colspan="2">4. Branch address of the Bank:<span class="required">*</span></td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Branch address of the bank" name="bank[address]" id="bank_address"></td>
+		</tr>
+		<tr>
+			<td colspan="2">5. IFS Code:<span class="required">*</span></td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="IFS code" name="bank[ifsc]" id="bank_ifsc"></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td width="375px;">Enter Registration Code:</td>
+			<td><input class="input-block-level" type="text" placeholder="Registration code" name="entity[registration_code]" id="registration_code"></td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr class="info">
+			<td colspan="5">Part B: Branch Details:</td>
+		</tr>
+		<tr>
+			<td colspan="4">i. Enter number of Branches/Divisions/Units/Facories in India and abroad:<span class="required">*</span></td>
+			
+			<td><input class="input-block-level" type="text" placeholder="Number of branches" name="entity[total_branches]" id="branch_total" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box"></td>
+		</tr>
+		<tr>
+			<td  colspan="5">
+				<div id="branch_container0"> 
+					<table class="table table-bordered">
+						<tr>
+							<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
+							<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch[0][address1]" id="branch0_address1"></td>
+						</tr>
+						<tr>
+							<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch[0][address2]" id="branch0_address2"></td>
+						</tr>
+						<tr>
+							<td>State:<span class="required">*</span></td>
+							<td>
+								<select name="branch[0][state]" id="branch0_state"  class="state_selectbox">
+									<option value="0">--Select--</option>
+									<?php foreach ($this->states as $state){?>
+								  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+								  	<?php }?>
+								</select>
+							</td>
+							<td>District:<span class="required">*</span></td>
+							<td>
+								<select name="branch[0][district]" id="branch0_district" class="district_selectbox">
+									<option value="0">--Select--</option>
+								</select>
+							</td>	
+						</tr>
+						<tr>
+							<td>City:<span class="required">*</span></td>
+							<td>
+								<select name="branch[0][city]" id="branch0_city" class="city_selectbox">
+									<option value="0">--Select--</option>
+								</select>
+							</td>
+							<td>Pincode:<span class="required">*</span></td>
+							<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[0][pincode]" id="branch0_pincode"></td>
+						</tr>
+					</table>
+				</div>	
+				<div id="branch_details"></div>
+			</td>	
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr class="info">
+			<td>Part C: Please fill in the following details:</td>
+		</tr>
+	</table>
+	<div id="firm_proprietorship"> 
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Part C1: In case the entity is a Proprietor firm:</td>
+			</tr>
+			<tr>
+				<td colspan="2">1. a) Name of the Proprietor:<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of the proprietor"  name="prop[name]" id="prop_name"></td>
+			</tr>
+			<tr>
+				<td rowspan="4" width="225px">b). Residential Address:</td>
+				<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="prop[address1]" id="prop_address1"></td>
+			</tr>
+			<tr>
+				<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="prop[address2]" id="prop_address2"></td>
+			</tr>
+			<tr>
+				<td>State:<span class="required">*</span></td>
+				<td>
+					<select name="prop[state]" id="prop_state"  class="state_selectbox">
+						<option value="0">--Select--</option>
+						<?php foreach ($this->states as $state){?>
+					  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+					  	<?php }?>
+					</select>
+				</td>
+				<td>District:<span class="required">*</span></td>
+				<td>
+					<select name="prop[district]" id="prop_district" class="district_selectbox">
+						<option value="0">--Select--</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>City:<span class="required">*</span></td>
+				<td>
+					<select name="prop[city]" id="prop_city" class="city_selectbox">
+						<option value="0">--Select--</option>
+					</select>
+				</td>
+				<td>Pincode:<span class="required">*</span></td>
+				<td><input class="input-block-level" type="text" placeholder="Pincode" name="prop[pincode]" id="prop_pincode"></td>
+			</tr>
+			<tr>
+				<td colspan="2">c) Aadhaar Card Number, if available:</td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="prop[aadhaar_number]" id="prop_aadharno"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="firm_partnership">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Part C2: In case he entity is a Partnership firm:</td>
+			</tr>
+			<tr>
+				<td colspan="1" rowspan="3">1. PAN details in the entity:</td>
+				<td colspan="2">Name as in PAN:<span class="required">*</span></td>
+				<td colspan="2" width="300px;"><input class="input-block-level" type="text"	placeholder="Name as in PAN" name="entity_partnership[pan_name_entity]" id="partner_pan_name_entity"></td>
+			</tr>
+			<tr>
+				<td colspan="2">Date of Incorporation (DD/MM/YYYY):<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of incorporation" name="entity_partnership[incorporation_date]" id="partner_incorporation_date"></td>
+			</tr>
+			<tr>
+				<td colspan="2">PAN:<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[pan_entity]" id="partner_pan_entity"></td>
+			</tr>
+			<tr>
+				<td colspan="2">2. Enter the number of partners in the Partnership Firm:<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Number of partners" name="entity_partnership[total_partners]" id="partner_total" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box"></td>
+			</tr>
+			<tr>
+				<td colspan="5">3. Fill the following details for each partner: </td>
+			</tr>
+			<tr>
+				<td  colspan="5">
+					<div id="partner_container0"> 
+						<table class="table table-bordered" >
+							<tr>
+								<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners][0][name]" id="partner0_name"></td>
+							</tr>
+							<tr>
+								<td colspan="2">b. Father's Name:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Father's name" name="entity_partnership[partners][0][surname]" id="partner0_surname"></td>
+							</tr>
+							<tr>
+								<td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership[partners][0][dob]" id="partner0_dob"></td>
+							</tr>
+							<tr>
+								<td rowspan="4" width="225px">d. Residential Address:
+								</td>
+								<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_partnership[partners][0][address1]" id="partner0_address1"></td>
+							</tr>
+							<tr>
+								<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_partnership[partners][0][address2]" id="partner0_address2"></td>
+							</tr>
+							<tr>
+								<td>State:<span class="required">*</span></td>
+								<td>
+									<select name="entity_partnership[partners][0][state]" id="partner0_state"  class="state_selectbox">
+										<option value="0">--Select--</option>
+										<?php foreach ($this->states as $state){?>
+									  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+									  	<?php }?>
+									</select>
+								</td>
+								<td>District:<span class="required">*</span></td>
+								<td>
+									<select name="entity_partnership[partners][0][district]" id="partner0_district" class="district_selectbox">
+										<option value="0">--Select--</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>City:<span class="required">*</span></td>
+								<td>
+									<select name="entity_partnership[partners][0][city]" id="partner0_city" class="city_selectbox">
+										<option value="0">--Select--</option>
+									</select>
+								</td>
+								<td>Pincode:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership[partners][0][pincode]" id="partner0_pincode"></td>
+							</tr>
+							<tr>
+								<td colspan="2">e. Mobile No:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership[partners][0][mobile]" id="partner0_mobile"></td>
+							</tr>
+							<tr>
+								<td colspan="2">f. PAN:<span class="required">*</span></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[partners][0][pan]" id="partner0_pan"></td>
+							</tr>
+							<tr>
+								<td colspan="2">g. Aadhaar Card Number, if available:</td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners][0][aadhaar_number]" id="partner0_aadhaarno"></td>
+							</tr>
+						</table>
+					</div>	
+					<div id="partner_details"></div>
+				</td>	
+			</tr>	
+		</table>
+	</div>
+	<div id="firm_privateltd">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5" >Part C3: In case the entity is a Limited liability Partnership/Private/Public/Govt.Underaking/Secion 25 Company:</td>
+			</tr>
+			<tr>
+				<td rowspan="3">1. PAN details of the firm:</td>
+				<td colspan="2" >Name as in PAN:<span class="required">*</span></td>
+				<td colspan="2" width="300px;"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_privateltd[pan_name_entity]" id="privateltd_pan_name_entity"></td>
+			</tr>
+			<tr>
+				<td colspan="2">Date of Incorporation(DD/MM/YYYY):<span class="required">*</span></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Date of incorporation"  name="entity_privateltd[incorporation_date]" id="privateltd_incorporation_date"></td>
+			</tr>
+			<tr>
+				<td colspan="2">PAN:<span class="required">*</span></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[pan_entity]" id="privateltd_pan_entity"></td>
+			</tr>
+			<tr>
+				<td colspan="2">2. LLPIN/CIN(Whichever is applicable):</td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="LLPIN/CIN" name="entity_privateltd[llpin_cin]" id="privateltd_llpin_cin"></td>
+			</tr>
+			<tr>
+				<td colspan="2">3. Registration Cerification No:</td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Registration cerification no" name="entity_privateltd[registration_cert_number]" id="privateltd_registration_cert_number"></td>
+			</tr>
+			<tr>
+				<td colspan="2">4. Enter the number of Partners/Director in the Firm/Company:<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Number of partners" name="entity_privateltd[total_partners]" id="privateltd_partner_total"></td>
+			</tr>
+			<tr>
+				<td colspan="5">5. Fill in the following details for each Partner/Director:</td>
+			</tr>
+			<tr> 
+				<td colspan="5">
+					<div id="privateltd_container0"> 
+						<table  class="table table-bordered">
+							<tr>
+								<td width="285px;">a. Name:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners][0][name]" id="privateltd0_name"></td>
+							</tr>
+							<tr>
+								<td>b. PAN:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners][0][pan]" id="privateltd0_pan"></td>
+							</tr>
+							<tr>
+								<td>c. Director Identity Number:<span class="required">*</span></td>
+								<td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners][0][director_id_number]" id="privateltd0_director_id"></td>
+							</tr>
+							<tr>
+								<td >d. Aadhaar Card Number, if available:</td>
+								<td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners][0][aadhaar_number]" id="privateltd0_aadhaarno"></td>
+							</tr>
+						</table>
+					</div>
+					<div id="privateltd_details"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="firm_society">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Part C4: In case the enity is a Registred Society/Trust**:</td>
+			</tr>
+			<tr>
+				<td rowspan="3">1. PAN details of the <br/>Society/Trust:</td>
+				<td colspan="2">Name as in PAN:<span class="required">*</span></td>
+				<td colspan="2" width="300px"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_society[pan_name_entity]" id="society_pan_name_entity"></td>
+			</tr>
+			<tr>
+				<td colspan="2">Date of Incorporation(DD/MM/YYYY):<span class="required">*</span></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Date of incorporation" name="entity_society[incorporation_date]" id="society_incorporation_date"></td>
+			</tr>
+			<tr>
+				<td colspan="2">PAN:<span class="required">*</span></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="PAN" name="entity_society[pan_entity]" id="society_pan_entity"></td>
+			</tr>
+			<tr>
+				<td colspan="2">2. Registration Number:</td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Registration number" name="entity_society[registration_cert_number]" id="society_registration_number"></td>
+			</tr>
+			<tr>
+				<td colspan="5">3. Details of the Secretary/Cheif executive of the Society; or Managing Trustee of the Trust:</td>
+			</tr>
+			<tr>
+				<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
+				<td colspan="3" ><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_society[trustee][name]" id="society_name"></td>
+			</tr>
+			<tr>
+				<td rowspan="4" width="225px">b. Residential Address:
+				</td>
+				<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_society[trustee][address1]" id="society_address1"></td>
+			</tr>
+			<tr>
+				<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_society[trustee][address2]" id="society_address2"></td>
+			</tr>
+			<tr>
+				<td>State:<span class="required">*</span></td>
+				<td>
+					<select name="entity_society[trustee][state]" id="society_state"  class="state_selectbox">
+						<option value="0">--Select--</option>
+						<?php foreach ($this->states as $state){?>
+					  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+					  	<?php }?>
+					</select>
+				</td>
+				<td>District:<span class="required">*</span></td>
+				<td>
+					<select name="entity_society[trustee][district]" id="society_district" class="district_selectbox">
+						<option value="0">--Select--</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>City:<span class="required">*</span></td>
+				<td>
+					<select name="entity_society[trustee][city]" id="society_city" class="city_selectbox">
+						<option value="0">--Select--</option>
+					</select>
+				</td>
+				<td>Pincode:<span class="required">*</span></td>
+				<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_society[trustee][pincode]" id="society_pincode"></td>
+			</tr>
+			<tr>
+				<td colspan="2">c. Aadhar Card Number(if available):</td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhar card number" name="entity_society[trustee][aadhaar_number]" id="society_aadhaarno"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="firm_huf">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Part C5: In case the enity is a HUF:</td>
+			</tr>
+			<tr>
+				<td rowspan="3">1. PAN deails of the Entity:</td>
+				<td colspan="2">Name as in PAN:<span class="required">*</span></td>
+				<td colspan="2" width="300px"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_huf[pan_name_entity]" id="huf_pan_name_entity"></td>
+			</tr>
+			<tr>
+				<td colspan="2">Date of Incorporation(DD/MM/YYYY):<span class="required">*</span></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Date of incorporation" name="entity_huf[incorporation_date]" id="huf_incorporation_date"></td>
+			</tr>
+			<tr>
+				<td colspan="2">PAN:<span class="required">*</span></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="PAN" name="entity_huf[pan_entity]" id="huf_pan_entity"></td>
+			</tr>
+			<tr>
+				<td colspan="5">2. Details of Karta:</td>
+			</tr>
+				<tr>
+				<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_huf[karta][name]" id="huf_name"></td>
+			</tr>
+			<tr>
+				<td rowspan="4" width="225px">b. Residential Address
+				</td>
+				<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_huf[karta][address1]" id="huf_address1"></td>
+			</tr>
+			<tr>
+				<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_huf[karta][address2]" id="huf_address2"></td>
+			</tr>
+			<tr>
+				<td>State:<span class="required">*</span></td>
+				<td>
+					<select name="entity_huf[karta][state]" id="huf_state"  class="state_selectbox">
+						<option value="0">--Select--</option>
+						<?php foreach ($this->states as $state){?>
+					  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
+					  	<?php }?>
+					</select>
+				</td>
+				<td>District:<span class="required">*</span></td>
+				<td>
+					<select name="entity_huf[karta][district]" id="huf_district" class="district_selectbox">
+						<option value="0">--Select--</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>City:<span class="required">*</span></td>
+				<td>
+					<select name="entity_huf[karta][city]" id="huf_city" class="city_selectbox">
+						<option value="0">--Select--</option>
+					</select>
+				</td>
+				<td>Pincode:<span class="required">*</span></td>
+				<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_huf[karta][pincode]" id="huf_pincode"></td>
+			</tr>
+			<tr>
+				<td colspan="2">3. Aadhaar Card Details, if available:</td>
+				<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card details" name="entity_huf[karta][aadhaar_number]" id="huf_aadhaar_number"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="ind_reg_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Industrial Registration Details</td>
+			</tr>
+			<tr>
+				<td colspan="1">1. SSI/IEM/LOI or IL Registration No/any other to prove a manufacturer status:</td>
+				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registration No" name="entity[imr_reg_num]" id="imr_reg_num"></td>
+			</tr>
+			<tr>
+				<td rowspan="2">2. Date of issue and Validity / Issuing Authority</td>
+				<td colspan="2">
+				From:<span class="required">*</span>
+					<input class="input-block-level" type="text" placeholder="From Date" name="entity[imr_doi]" id="imr_doi"></td>
+				<td colspan="2">To:<span class="required">*</span>
+					<input class="input-block-level" type="text" placeholder="To Date" name="entity[imr_validity]" id="imr_validity"></td>
+			</tr>
+			<tr><td colspan="4"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[imr_ia]" id="imr_ia"></td></tr>
+				
+			<tr>
+				<td colspan="1">3. Products for which registered</td>
+				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="entity[imr_reg_prods]" id="imr_reg_prods"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="ser_tax_reg_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Service Tax Registration Details (in case of Service providers)</td>
+			</tr>
+			<tr>
+				<td colspan="1">1. Service Tax Registration No / Issuing Authority</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration No" name="entity[str_reg_num]" id="str_reg_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[str_ia]" id="str_ia">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">2. Services for which registered</td>
+				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registered Services" name="entity[str_reg_items]" id="str_reg_items"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="rcmc_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">RCMC Details</td>
+			</tr>
+			<tr>
+				<td colspan="1">1. RCMC No / Issuing Authority</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="RCMC No" name="entity[rcmc_num]" id="rcmc_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[rcmc_ia]" id="rcmc_ia">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">2. Date of issue and Validity:</td>
+				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[rcmc_doi]" id="rcmc_doi"></td>
+				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[rcmc_validity]" id="rcmc_validity"></td>
+			</tr>
+			<tr>
+				<td colspan="1">3. Products for which registered</td>
+				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="entity[rcmc_reg_prods]" id="rcmc_reg_prods"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="stat_house_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="2">Status House Details(Please select)
+				<td colspan="3"><input type="text" class="rb-rating" name="entity[shd_rating]" id="shd_rating" value="0"></td>
+			</tr>
+			<tr>
+				<td colspan="1">1. Certificate number / Issuing Authority:</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Certificate number" name="entity[shd_cert_num]" id="shd_cert_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[shd_ia]" id="shd_ia">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">2. Date of issue and Validity:</td>
+				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[shd_doi]" id="shd_doi"></td>
+				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[shd_validity]" id="shd_validity"></td>
+			</tr>
+		</table>	
+	</div>
+	<div id="cent_exc_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">Central Excise Registration Details</td>
+			</tr>
+			<tr>
+				<td colspan="1">Central Excise Registration No./ Issuing Authority</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="entity[cer_reg_num]" id="cer_reg_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[cer_ia]" id="cer_ia">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="cent_exc_details">
+		<table class="table table-bordered" style="width: 950px">
+			<tr class="info">
+				<td colspan="5">VAT Registration Details</td>
+			</tr>
+			<tr>
+				<td colspan="1">VAT Registration No./ Issuing Authority</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="entity[vat_reg_num]" id="vat_reg_num"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[vat_ia]" id="vat_ia">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="financial_details">
+		<table class="table table-bordered" style="width: 950px" id="finance_data">
+			<tr class="info">
+				<td colspan="5">Turnover Details for the preceeding three final years: </td>
+			</tr>
+			<tr>
+				<td colspan="1">Financial Year</td>
+				<td colspan="2">Annual Domestic Turnover(Rs.Lakhs)</td>
+				<td colspan="2">Annual Export Turnover(Rs.Lakhs)</td>
+			</tr>
+			<tr id="rowCount1">
+				<td colspan="1"><select name="turnover_details[0][financial_year]" id="financial_year_0">
+				</select></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[0][domestic_turnover]" id="domestic_turnover_0"></td>
+				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="turnover_details[0][export_turnover]" id="export_turnover_0"></td>
+				<td colspan="1"><a href="javascript:void(0);" onclick="addMoreRows(this.form);"><i class="icon-plus"></i></a></td>
+			</tr>
+			
+		</table>
+	</div>
+	<table class="table table-bordered" style="width: 950px">
+		<tr class="info">
+			<td colspan="2">Part D: Declaration/Undertaking:</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>
+				I/We hereby certify that: <br/>
+				A. the entity for whom the appliction has been made have not been penalized under any of the following Acts (as amended from time to time):<br/>
+				(i)   The customes Act, 1962,<br/>
+				(ii)  The Central Excise Act 1944,<br/>
+				(iii) Foreign Trade (Development &amp; Regulation) Act 1992, and<br/>
+				(iv)  The Foreign Exchange Management Act, 1999 <br/>
+				(v)   The Conservaion of Foreign Exchange, Prevention of Smuggling Acivities Act, 1974<br/>
+				B. None of the Directors/Partners/Proprietor/Karta/Trustees of the company/firm/HUF/Trust, (as he case may be), is/are a Director(s)/Partner(s)/Proprietor/Karta/Trustee in any oher Company/firm/entity which is on the Denied Entity List<br/>
+				C. neither the Registered Office of the company/Head Office of the firm / nor any of its Branch Office(s)/Unit(s)/Division(s) has been declared a defaulter as has otherwise been made ineligible for undertaking import/export under any of the provisions of the policy <br/>
+				D. we have not obained not applied for issuance of an Importer Exporter Code Number in the name of our Registered/Head Office o any oher Licensing Authority
+			</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>
+				I/We undertake to abide by he provisions f the Foreign Trade (Development and Regulation) Ac, 1992, as amended from time to time, the Rule and Orders framed here under, the Foreign Trade Policy, the handbook of Procedured as the ITC(HS) Classificaion of Export &amp; Import Items<br/>
+			</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>
+				I/We fully undersand that if any information furnished in the applicaion is found incorrect or false will render me/us liable for any penal action or other consequences as many be prescribed in law or otherwise warrented.<br/>
+			</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>
+				I/We hereby declare that he particulars and the saements made in this application are true and correct to the best of my/our knowledge and belief and nothing has been concealed or withheld there from<br/>
+			</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>
+				I hereby certify that I am authorized to verify ans sign this declaration as per Paragraph 9.06 of the Foreign Trade policy
+			</td>
+		</tr>
+	</table>
+	<table class="table table-bordered" style="width: 950px">
+		<tr>
+			<td>
+				<label class="checkbox"><input type="checkbox" name="entity[proof_of_accept]"  id="proof_of_accept">Tick the box as acceptance of declaraion/undertaking.</label>
+			</td>
+		</tr>
+	</table>
+	<div style="text-align: center;">
+		<button type="submit" class="btn btn-primary" name="submitform" value="Submit Form" id="submit_iecform">Submit</button> 
+		<span style="padding-right: 25px"></span>
+		<button type="submit" class="btn btn-warning" name="saveform" value="Save Form"  id="save_iecform">Save</button>
+		<span style="padding-right: 25px"></span> 
+		<button type="reset" class="btn btn-danger">Reset</button>
+		<span style="padding-right: 25px"></span> 
+		<a href="iec/index" type="button" class="btn btn-inverse">Back</a>
+		<span style="padding-right: 25px"></span> 
+		<a href="#" type="button" class="btn btn-warning" onclick="return printpage();">Print</a>
+	</div>
+</form>
+<script>
+$(function(){
+    var hasBeenTrigged = false;
+    var target = $("#categories_section_select_check").offset().top;
+    $(window).scroll(function() {
+        if ($(this).scrollTop() >= target && !hasBeenTrigged) { // if scroll is greater/equal then 100 and hasBeenTrigged is set to false.
+        	if(!$('input[name="entity[category]"]:checked').val()){
+    			bootbox.alert("Please select the nature of concern/entity before proceeding.",function() {
+    				$("html, body").animate({ scrollTop: target }, "slow");
+    			});
+    		}
+            hasBeenTrigged = true;
+        }
+    });
+
+    $('#partner_incorporation_date').datepicker({format: "dd/mm/yyyy"});
+    $('#privateltd_incorporation_date').datepicker({format: "dd/mm/yyyy"});
+    $('#society_incorporation_date').datepicker({format: "dd/mm/yyyy"});
+    $('#huf_incorporation_date').datepicker({format: "dd/mm/yyyy"});
+	$('#imr_doi').datepicker({format: "dd/mm/yyyy"});
+	$('#imr_validity').datepicker({format: "dd/mm/yyyy"});
+	$('#rcmc_doi').datepicker({format: "dd/mm/yyyy"});
+	$('#rcmc_validity').datepicker({format: "dd/mm/yyyy"});
+	$('#shd_doi').datepicker({format: "dd/mm/yyyy"});
+	$('#shd_validity').datepicker({format: "dd/mm/yyyy"});
+
+	$('#partner0_dob').datepicker({format: "dd/mm/yyyy"});
+
+	//financial year
+	$("#financial_year_0").html(options);
+
+	//start rating
+	$('.rb-rating').rating({
+			'showCaption':false, 
+			'stars':'5', 
+			'min':'0', 
+			'max':'5', 
+			'step':'1',
+			'size':'xs'
+	});
+
+});
+
+//financial year
+var rowCount = 1;
+var count = 1; //for validation
+var start = new Date().getFullYear();
+var end = start-2;
+var options = "";
+for(var year = start ; year >=end; year--){
+	prvyr = year-1;
+	options += "<option>"+ prvyr + ' - '+ year +"</option>";
+}
+
+function addMoreRows(frm) {
+	if(count == 3)
+	{
+		alert("You can only select upto last three financial years");
+		return false;
+	}
+	rowCount ++;
+	count++;
+	
+	var recRow = '<tr id="rowCount'+rowCount+'"><td colspan="1"><select name="finance[year]" id="financial_year">'+options+'</select></td><td colspan="2"><input class="input-block-level" type="text" placeholder="" name="finance[domestic_turnover]" id="domestic_turnover"></td><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[export_turnover]" id="export_turnover"></td><td colspan="1"><a href="javascript:void(0);" onclick="removeRow('+rowCount+');"><i class="icon-minus"></i></a></td></tr>';
+	jQuery('#finance_data').append(recRow);
+}
+
+function removeRow(removeNum) {
+	jQuery('#rowCount'+removeNum).remove();
+	count--;
+}
+
+//To print
+function printpage()
+{
+    window.print();
+}
+</script>
