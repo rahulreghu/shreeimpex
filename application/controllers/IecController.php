@@ -508,4 +508,9 @@ class IecController extends Zend_Controller_Action
 		//print_r($this->transport);
 		//$mail->send($this->transport);
 	}
+
+	public function printiecAction()
+	{
+		$this->_helper->layout->disableLayout();
+	}
 }

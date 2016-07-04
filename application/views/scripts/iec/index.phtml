@@ -39,7 +39,7 @@
 			 	<div style="max-width: 291px;word-wrap:break-word" id="iecnumber_<?php echo $entity_details['id']?>"><?php echo empty($entity_details['iec_number'])? 'Not Generated' : $entity_details['iec_number']?></div>
 				<input class="input-block-level-sm" id="iectextbox_<?php echo $entity_details['id']?>" type="text" style="display:none; margin: 0px 0px; padding: 4px 5px; height: 12px; width: 250px;" />
 			</td>
-			<td><?php echo $entity_details['name'];?></td>
+			<td><?php echo mb_strimwidth($entity_details['name'], 0, 10, "...");?></td>
 			<td><select  name="entity_status" id="entity_status_<?php echo $entity_details['id']?>" style="width: 100px; margin: 0px 0px; padding:0px 4px; height: 22px;">
 					<?php foreach($this->allstatus as $status) {
 						$selected = "";
@@ -55,7 +55,9 @@
 			<td> 
 				<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-mini btn-primary" type="button" id="editIec_<?php echo $entity_details['id']?>" href="iec/editiec?id=<?php echo $entity_details['id']?>"><i class="icon-edit"></i> </a>
 				<button data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" class="btn btn-mini btn-danger" type="button" id="deleteIec_<?php echo $entity_details['id']?>" value="<?php echo $entity_details['id']?>"><i class="icon-trash"></i></button>
-				<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Print" class="btn btn-mini btn-info" type="button" id="editIec_<?php echo $entity_details['id']?>" href="iec/editiec?id=<?php echo $entity_details['id']?>"><i class="icon-print"></i></a>
+				<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Print" class="btn btn-mini btn-info" type="button" id="printIec_<?php echo $entity_details['id']?>" href="iec/printiec?id=<?php echo $entity_details['id']?>"><i class="icon-print"></i></a>
+				<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Send Email" class="btn btn-mini btn-warning" type="button" id="sendEmailIec_<?php echo $entity_details['id']?>" href="iec/sendemailiec?id=<?php echo $entity_details['id']?>"><i class="icon-envelope"></i></a>
+				<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Print" class="btn btn-mini btn-info" type="button" id="editIec_<?php echo $entity_details['id']?>" href="javascript:void(0);" onclick="return printPopup(<?php echo $entity_details['id']?>);"><i class="icon-print"></i></a>
 				<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Send Email" class="btn btn-mini btn-warning" type="button" id="editIec_<?php echo $entity_details['id']?>" href="iec/editiec?id=<?php echo $entity_details['id']?>"><i class="icon-envelope"></i></a>
 			</td>
 		</tr>
@@ -192,5 +194,11 @@ function getDetails(callback,rowId) {
 			'<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Print" class="btn btn-mini btn-info" type="button" id="editEpcg_" href="epcg/editepcg?id="><i class="icon-print"></i></a>'+'</td>'+
         '</tr>'+
     '</table>';*/
+}
+
+function printPopup(id)
+{
+    var url = 'iec/printiec?id='+id;
+    popupWindow = window.open(url,'popUpWindow','height=750,width=950,left=100,top=100,resizable=yes,scrollbars=yes');
 }
 </script>
