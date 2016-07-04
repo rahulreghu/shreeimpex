@@ -1,0 +1,42 @@
+@CHARSET "ISO-8859-1";
+body
+{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: verdana;
+    font-size: 14px;
+}
+
+div#heading1
+{
+	text-decoration: underline;
+	font-weight: bold;
+	text-align: center;
+}
+
+div#heading2
+{
+	text-decoration:underline;
+	text-align: center;
+}
+
+p#note
+{
+	margin: 0px auto;
+	text-align: center;
+	font-size: 11px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 700px;
+    margin-bottom: 15px;
+}
+
+td {
+	
+    border: 1px solid black;
+    text-align: left;
+    vertical-align: text-top;
+}
