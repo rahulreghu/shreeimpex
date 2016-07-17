@@ -44,7 +44,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">i. Name of entity in whose name IEC is required<span class="required">*</span></td>
-			<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of entity" name="entity[name]" id="entity_name" ></td>
+			<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of entity" name="entity[name]" id="entity_name"></td>
 		</tr>
 		<tr>
 			<td rowspan="4" width="225px">ii. Address:</td>
@@ -182,12 +182,17 @@
 		<tr>
 			<td colspan="4">i. Enter number of Branches/Divisions/Units/Facories in India and abroad:<span class="required">*</span></td>
 			
-			<td><input class="input-block-level" type="text" placeholder="Number of branches" name="entity[total_branches]" id="branch_total" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box"></td>
+			<td style="text-align: right;">
+				<input class="input-block-level" type="text" value = "0" placeholder="Number of branches" name="entity[total_branches]" id="branch_total" readonly="readonly">
+				<input class="input-block-level" type="hidden" value = "0" placeholder="Number of branches" name="branch_count" id="branch_count" >
+				<button class="btn btn-mini btn-success" type="button" id="add_branch" >Add Branch</button>
+			</td>
 		</tr>
-		<tr>
+		<tr id="hide_tr" style="display: none;">
 			<td  colspan="5">
-				<div id="branch_container0"> 
-					<table class="table table-bordered">
+				<div id="branch_details"></div>
+				<!--<div id="branch_container0"> 
+				 	<table class="table table-bordered">
 						<tr>
 							<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
 							<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
@@ -224,9 +229,8 @@
 							<td>Pincode:<span class="required">*</span></td>
 							<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[0][pincode]" id="branch0_pincode"></td>
 						</tr>
-					</table>
-				</div>	
-				<div id="branch_details"></div>
+					</table> 
+				</div>	-->
 			</td>	
 		</tr>
 	</table>
@@ -305,15 +309,19 @@
 				<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[pan_entity]" id="partner_pan_entity"></td>
 			</tr>
 			<tr>
-				<td colspan="2">2. Enter the number of partners in the Partnership Firm:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Number of partners" name="entity_partnership[total_partners]" id="partner_total" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box"></td>
+				<td colspan="3">2. Enter the number of partners in the Partnership Firm:<span class="required">*</span></td>
+				<td colspan="2" style="text-align: right;">
+				<input class="input-block-level" type="text" placeholder="Number of partners" value = "0" name="entity_partnership[total_partners]" id="partner_total" readonly="readonly">
+				<input class="input-block-level" type="hidden" value = "0" placeholder="Number of Partners" name="partner_count" id="partner_count" >
+				<button class="btn btn-mini btn-success" type="button" id="add_partner" >Add Partner</button>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="5">3. Fill the following details for each partner: </td>
 			</tr>
 			<tr>
 				<td  colspan="5">
-					<div id="partner_container0"> 
+					<!--<div id="partner_container0"> 
 						<table class="table table-bordered" >
 							<tr>
 								<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
@@ -377,7 +385,7 @@
 								<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners][0][aadhaar_number]" id="partner0_aadhaarno"></td>
 							</tr>
 						</table>
-					</div>	
+					</div>-->
 					<div id="partner_details"></div>
 				</td>	
 			</tr>	
@@ -411,14 +419,19 @@
 			</tr>
 			<tr>
 				<td colspan="2">4. Enter the number of Partners/Director in the Firm/Company:<span class="required">*</span></td>
-				<td colspan="3"><input class="input-block-level" type="text" placeholder="Number of partners" name="entity_privateltd[total_partners]" id="privateltd_partner_total"></td>
+				<td colspan="3" style="text-align: right;">
+					<input class="input-block-level" type="text" placeholder="Number of partners" name="entity_privateltd[total_partners]" id="privateltd_total" value="0" readonly="readonly">
+					<input class="input-block-level" type="hidden" value="0" placeholder="Number of partners" name="privateltd_count" id="privateltd_count" >
+					<button class="btn btn-mini btn-success" type="button" id="add_privateltd" >Add Partner</button>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="5">5. Fill in the following details for each Partner/Director:</td>
 			</tr>
 			<tr> 
 				<td colspan="5">
-					<div id="privateltd_container0"> 
+					<div id="privateltd_details"></div>
+					<!-- <div id="privateltd_container0"> 
 						<table  class="table table-bordered">
 							<tr>
 								<td width="285px;">a. Name:<span class="required">*</span></td>
@@ -437,8 +450,8 @@
 								<td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners][0][aadhaar_number]" id="privateltd0_aadhaarno"></td>
 							</tr>
 						</table>
-					</div>
-					<div id="privateltd_details"></div>
+					</div> -->
+				
 				</td>
 			</tr>
 		</table>
@@ -703,10 +716,9 @@
 				<td colspan="2">Annual Export Turnover(Rs.Lakhs)</td>
 			</tr>
 			<tr id="rowCount1">
-				<td colspan="1"><select name="turnover_details[0][financial_year]" id="financial_year_0">
-				</select></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[0][domestic_turnover]" id="domestic_turnover_0"></td>
-				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="turnover_details[0][export_turnover]" id="export_turnover_0"></td>
+				<td colspan="1"><select name="turnover_details[1][financial_year]" id="financial_year_1"></select></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[1][domestic_turnover]" id="domestic_turnover_1"></td>
+				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="turnover_details[1][export_turnover]" id="export_turnover_1"></td>
 				<td colspan="1"><a href="javascript:void(0);" onclick="addMoreRows(this.form);"><i class="icon-plus"></i></a></td>
 			</tr>
 			
@@ -771,8 +783,8 @@
 		<button type="reset" class="btn btn-danger">Reset</button>
 		<span style="padding-right: 25px"></span> 
 		<a href="iec/index" type="button" class="btn btn-inverse">Back</a>
-		<span style="padding-right: 25px"></span> 
-		<a href="#" type="button" class="btn btn-warning" onclick="return printpage();">Print</a>
+		<!-- <span style="padding-right: 25px"></span> 
+		<a href="#" type="button" class="btn btn-warning" onclick="return printpage();">Print</a> -->
 	</div>
 </form>
 <script>
@@ -804,7 +816,7 @@ $(function(){
 	$('#partner0_dob').datepicker({format: "dd/mm/yyyy"});
 
 	//financial year
-	$("#financial_year_0").html(options);
+	$("#financial_year_1").html(options);
 
 	//start rating
 	$('.rb-rating').rating({
@@ -838,7 +850,7 @@ function addMoreRows(frm) {
 	rowCount ++;
 	count++;
 	
-	var recRow = '<tr id="rowCount'+rowCount+'"><td colspan="1"><select name="finance[year]" id="financial_year">'+options+'</select></td><td colspan="2"><input class="input-block-level" type="text" placeholder="" name="finance[domestic_turnover]" id="domestic_turnover"></td><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[export_turnover]" id="export_turnover"></td><td colspan="1"><a href="javascript:void(0);" onclick="removeRow('+rowCount+');"><i class="icon-minus"></i></a></td></tr>';
+	var recRow = '<tr id="rowCount'+rowCount+'"><td colspan="1"><select name="turnover_details['+rowCount+'][financial_year]" id="financial_year_'+rowCount+'">'+options+'</select></td><td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details['+rowCount+'][domestic_turnover]" id="domestic_turnover_'+rowCount+'"></td><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="turnover_details['+rowCount+'][export_turnover]" id="export_turnover_'+rowCount+'"></td><td colspan="1"><a href="javascript:void(0);" onclick="removeRow('+rowCount+');"><i class="icon-minus"></i></a></td></tr>';
 	jQuery('#finance_data').append(recRow);
 }
 

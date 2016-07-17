@@ -43,7 +43,7 @@ class IecController extends Zend_Controller_Action
 		if((isset($_POST['submitform']) && $_POST['submitform'] == 'Submit Form') || ( isset($_POST['saveform']) && $_POST['saveform'] == 'Save Form')){
 			//$this->validationForm($_POST);
 			//echo '<pre>';
-			//print_r($_POST);exit();
+			print_r($_POST);exit();
 			$entity_iec_info = array();
 			$bank_details = array();
 			$branch_details = array();

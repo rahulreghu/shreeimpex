@@ -27,16 +27,17 @@ $('#iec_form').find('.input').keypress(function(e){
 //generate the box for enterning branch details
 $(function(){
 	$("#branch_total").on( "focusout", function() {
-		if(this.value >=1){
+		var count = this.value - 1;
+		//if(this.value > 1){
 			var type = 'branch';
 			var branch_total = 0;
-			var count = 0;
+			/*var count = this.value - 1;
 			if($("#dummy_branch_total").val()){
 				branch_total = $("#dummy_branch_total").val();
 				count = (this.value - branch_total);
 			}else{
-				count = this.value - 1;
-			}
+				count = this.value;
+			}*/
 			if(count >= 1){
 				var branch = generateRequiredBox(count,type); 
 				$('#branch_details').empty();
@@ -44,7 +45,7 @@ $(function(){
 			}else{
 				$('#branch_details').empty();
 			}
-		}
+		//}
 	});
 });
 
@@ -96,26 +97,60 @@ $(function(){
 	});
 });
 
+
+//generate the box when clicking add new button for branches
+$( "#add_branch" ).on('click',function() {
+	var total_branches = parseInt($("#branch_total").val()) + parseInt(1);
+	$("#branch_total").val(total_branches);
+	var branch_count = parseInt($("#branch_count").val()) + parseInt(1);
+	$("#branch_count").val(branch_count);
+	var branch = generateRequiredBox(branch_count,'branch'); 
+	$('#branch_details').append(branch);
+	$("#hide_tr").show();
+});
+
+//generate the box when clicking add new button for partners
+$( "#add_partner" ).on('click',function() {
+	var total_partners = parseInt($("#partner_total").val()) + parseInt(1);
+	$("#partner_total").val(total_partners);
+	var partner_count = parseInt($("#partner_count").val()) + parseInt(1);
+	$("#partner_count").val(partner_count);
+	var partner = generateRequiredBox(partner_count,'partner'); 
+	$('#partner_details').append(partner);
+	$("#hide_tr").show();
+});
+
+//generate the box when clicking add new button for privateltd
+$( "#add_privateltd" ).on('click',function() {
+	var total_privateltd = parseInt($("#privateltd_total").val()) + parseInt(1);
+	$("#privateltd_total").val(total_privateltd);
+	var privateltd_count = parseInt($("#privateltd_count").val()) + parseInt(1);
+	$("#privateltd_count").val(privateltd_count);
+	var privateltd = generateRequiredBox(privateltd_count,'privateltd'); 
+	$('#privateltd_details').append(privateltd);
+	$("#hide_tr").show();
+});
+
 //function for generating required box
-//count =  no of sets, type = set type, set = the set numbering
-function generateRequiredBox(count,type){
-	alert("count: "+count+" type: "+type);
+//count =  set id, type = set type
+function generateRequiredBox(i,type){
 	var box = "";
 	var jsscript = "";
 	if(type == 'branch'){
-		for(i=1; i<=count; i++){
+		//for(i=1; i<=count; i++){
 			box += '<div id="branch_container'+i+'"> <table class="table table-bordered"><tr><td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>';
 			box += '<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch['+i+'][address1]" id="branch'+i+'_address1"></td></tr>';
 			box += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch['+i+'][address2]" id="branch'+i+'_address2"></td></tr>';
 			box += '<tr><td>State:<span class="required">*</span></td><td><select name="branch['+i+'][state]" id="branch'+i+'_state" class="state_dymselectbox">'+$('#state_template').html()+'</select></td>';
 			box += '<td>District:<span class="required">*</span></td><td><select name="branch['+i+'][district]" id="branch'+i+'_district" class="district_dymselectbox"><option value="0">--Select--</option></select></td></tr>';
 			box += '<tr><td>City:<span class="required">*</span></td><td><select name="branch['+i+'][city]" id="branch'+i+'_city" class="city_dymselectbox"><option value="0">--Select--</option></select></td>';
-			box += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="branch['+i+'][pincode]" id="branch'+i+'_pincode"></td></tr></table></div>';
-		}
+			box += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="branch['+i+'][pincode]" id="branch'+i+'_pincode"></td></tr>';
+			box += '<tr><td colspan="6" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_branch_'+i+'">Remove</button></td></tr></table></div>';
+		//}
 	}
 	if(type == 'partner'){
-		for(i=1; i<=count; i++){
-			box += '<table class="table table-bordered">'
+		//for(i=1; i<=count; i++){
+			box += '<div id="partner_container'+i+'"> <table class="table table-bordered">'
 			box += '<tr><td colspan="2">a. Name as in PAN:<span class="required">*</span> </td><td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners]['+i+'][name]" id="partner'+i+'_name"></td></tr>';
 			box += '<tr><td colspan="2">b. Father\'s Name:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Father\'s name" name="entity_partnership[partners]['+i+'][surname]" id="partner'+i+'_surname"></td></tr>';
 			box += '<tr><td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership[partners]['+i+'][dob]" id="partner'+i+'_dob"></td></tr>';
@@ -127,18 +162,21 @@ function generateRequiredBox(count,type){
 			box += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership[partners]['+i+'][pincode]" id="partner'+i+'_pincode"></td></tr>';
 			box += '<tr><td colspan="2">e. Mobile No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership[partners]['+i+'][mobile]" id="partner'+i+'_mobile"></td></tr>';
 			box += '<tr><td colspan="2">f. PAN:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[partners]['+i+'][pan]" id="partner'+i+'_pan"></td></tr>';
-			box += '<tr><td colspan="2">g. Aadhaar Card Number, if available:</td><td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners]['+i+'][aadhaar_number]" id="partner'+i+'_aadhaarno"></td></tr></table>';
+			box += '<tr><td colspan="2">g. Aadhaar Card Number, if available:</td><td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners]['+i+'][aadhaar_number]" id="partner'+i+'_aadhaarno"></td></tr>';
+			box += '<tr><td colspan="6" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_partner_'+i+'">Remove</button></td></tr></table>';
 			jsscript += "$('#partner"+i+"_dob').datepicker({format: 'dd/mm/yyyy'});";
-		}
-		box += "<script>"+jsscript+"</script>";
+			box += '<script>'+jsscript+'</script></div>';
+		//}
+		
 	}
 	if(type == 'privateltd'){
-		for(i=1; i<count; i++){
-			box += '<table  class="table table-bordered"><tr><td width="285px;">a. Name:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners]['+i+'][name]" id="privateltd'+i+'_name"></td></tr>';
+		//for(i=1; i<count; i++){
+			box += '<div id="privateltd_container'+i+'"><table  class="table table-bordered"><tr><td width="285px;">a. Name:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners]['+i+'][name]" id="privateltd'+i+'_name"></td></tr>';
 			box += '<tr><tr><td>b. PAN:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners]['+i+'][pan]" id="privateltd'+i+'_pan"></td></tr>';
 			box += '<tr><td>c. Director Identity Number:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners]['+i+'][director_id_number]" id="privateltd'+i+'_director_id"></td></tr>';
-			box += '<tr><td >d. Aadhaar Card Number, if available:</td><td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners]['+i+'][aadhaar_number]" id="privateltd'+i+'_aadhaarno"></td></tr></table>';		
-		}
+			box += '<tr><td >d. Aadhaar Card Number, if available:</td><td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners]['+i+'][aadhaar_number]" id="privateltd'+i+'_aadhaarno"></td></tr>';	
+			box += '<tr><td colspan="6" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_privateltd_'+i+'">Remove</button></td></tr></table>';
+		//}
 	}
 	return box;
 }
@@ -790,24 +828,49 @@ $(function() {
 	});
 });
 
-//remove button on edit iec
+//remove button on editing
 $( "[id^=remove_]" ).on('click',function(){
+	alert('1');
 	var idname =  $(this).attr('id');
 	var id = idname.split("_");
 	var total_branches = $('#'+id[1]+'_total').val();
-	var dummy_total_branches = $('#dummy_'+id[1]+'_total').val();
-	var parent_div = id[1]+'_container_'+id[2];
+//	var dummy_total_branches = $('#dummy_'+id[1]+'_total').val();
+	var parent_div = id[1]+'_container'+id[2];
 	bootbox.confirm("Are you sure you want to delete?",'No','Yes',function(result) {
 		if (result) { 
 			alert(parent_div);
 			$("#"+parent_div).remove();
-			$('#dummy_'+id[1]+'_total').val(dummy_total_branches-1);
+	//		$('#dummy_'+id[1]+'_total').val(dummy_total_branches-1);
 			if(total_branches > 1){
 				$('#'+id[1]+'_total').val(total_branches-1);
 			}else{
 				//$('#default_'+id[1]+'_container').show();
 				$('#'+id[1]+'_total').val('');
 			}
+		}
+	});
+	return false;
+});
+
+//remove button on adding
+$( "#branch_details, #partner_details, #privateltd_details" ).on('click', "[id^=remove_]",function(){
+	alert('2');
+	var idname =  $(this).attr('id');
+	var id = idname.split("_");
+	var total_branches = $('#'+id[1]+'_total').val();
+//	var dummy_total_branches = $('#dummy_'+id[1]+'_total').val();
+	var parent_div = id[1]+'_container'+id[2];
+	bootbox.confirm("Are you sure you want to delete?",'No','Yes',function(result) {
+		if (result) { 
+	//		alert(parent_div);
+			$("#"+parent_div).remove();
+	//		$('#dummy_'+id[1]+'_total').val(dummy_total_branches-1);
+			if(total_branches >= 1){
+				$('#'+id[1]+'_total').val(total_branches-1);
+			}/*else{
+				//$('#default_'+id[1]+'_container').show();
+				$('#'+id[1]+'_total').val('');
+			}*/
 		}
 	});
 	return false;
