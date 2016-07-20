@@ -16,7 +16,7 @@ class IndexController extends Zend_Controller_Action
     public function indexAction()
     {
     	if(isset($this->_session->user)){
-        	$this->_redirect("home/");
+        	$this->redirect("home/");
      	}
      	
      	if(isset($_POST['submit']) && $_POST['submit'] == "SIGN IN"){
@@ -25,7 +25,7 @@ class IndexController extends Zend_Controller_Action
      		if(!empty($user['user_name']) && $user['user_password'] == $login_data['password'] ){
      			Zend_Session::regenerateId();
      			$this->_session->user = $user;
-     			$this->_redirect('home');
+     			$this->redirect('home');
      		}else{
 				$errors['invalid_credentials'] = 'Invalid Credentials!!';
 			}

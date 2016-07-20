@@ -39,11 +39,11 @@ class IecController extends Zend_Controller_Action
 		
 		$states = Model_States::getAllStates();
 		$this->view->states = $states;
-		
+			
 		if((isset($_POST['submitform']) && $_POST['submitform'] == 'Submit Form') || ( isset($_POST['saveform']) && $_POST['saveform'] == 'Save Form')){
 			//$this->validationForm($_POST);
 			//echo '<pre>';
-			print_r($_POST);exit();
+			//print_r($_POST);exit();
 			$entity_iec_info = array();
 			$bank_details = array();
 			$branch_details = array();
@@ -65,7 +65,7 @@ class IecController extends Zend_Controller_Action
 			//if entity is proprietor firm
 			if(isset($_POST['prop']) && !empty($_POST['prop'])){
 				$_POST['prop']['entity_category_id'] = $_POST['entity']['category'];
-				$entity_details[] = $_POST['prop'];
+				$entity_details = $_POST['prop'];
 			}
 			//if entity is partnership firm;
 			if(isset($_POST['entity_partnership']) && !empty($_POST['entity_partnership'])){
@@ -96,7 +96,7 @@ class IecController extends Zend_Controller_Action
 				$_POST['entity']['pan_entity'] = $_POST['entity_society']['pan_entity'];
 				$_POST['entity']['registration_cert_number'] = $_POST['entity_society']['registration_cert_number'];
 				if(!empty($_POST['entity_society']['trustee'])){
-					$entity_details[] = $_POST['entity_society']['trustee'];
+					$entity_details = $_POST['entity_society']['trustee'];
 				}
 			}
 			//if entity is huf
@@ -105,11 +105,18 @@ class IecController extends Zend_Controller_Action
 				$_POST['entity']['incorporation_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity_huf']['incorporation_date']}")->format('Y-m-d');
 				$_POST['entity']['pan_entity'] = $_POST['entity_huf']['pan_entity'];
 				if(!empty($_POST['entity_huf']['karta'])){
-					$entity_details[] = $_POST['entity_huf']['karta'];
+					$entity_details = $_POST['entity_huf']['karta'];
 				}
 			}
+			
+			//turnover details
+			/*
+			if(isset($_POST['turnover_details']) && !empty($_POST['turnover_details'])){
+			//	$_POST['prop']['entity_category_id'] = $_POST['entity']['category'];
+			//	$entity_details[] = $_POST['prop'];
+			}*/
 			//print_r($branch_details);
-			//print_r($entity_details);
+			
 			
 			!empty($_POST['entity']['proof_of_accept']) && $_POST['entity']['proof_of_accept'] == 'on' ? $_POST['entity']['proof_of_accept'] = 1 : $_POST['entity']['proof_of_accept'] = 0;
 			$_POST['entity']['created_on'] = date("Y-m-d H:i:s");
@@ -126,7 +133,8 @@ class IecController extends Zend_Controller_Action
 			!empty($_POST['entity']['shd_doi']) ? $_POST['entity']['shd_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_doi']}")->format('Y-m-d'):'0000-00-00';
 			!empty($_POST['entity']['shd_validity']) ? $_POST['entity']['shd_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_validity']}")->format('Y-m-d'):'0000-00-00';
 			
-			//print_r($_POST['entity']);
+			//print_r($entity_details);
+			//print_r($branch_details);
 			try{
 				//insert in entity_iec_info table
 				$iec_id = Model_EntityIecInfo::addIecForm($_POST['entity']);
@@ -140,6 +148,9 @@ class IecController extends Zend_Controller_Action
 					}
 					if(!empty($entity_details)){
 						Model_EntityDetails::addEntityDetails($entity_details,$_POST['entity']['category'],$iec_id);
+					}
+					if(!empty($_POST['turnover_details'])){
+						Model_FinancialDetails::addFinancialDetails($_POST['turnover_details'],$iec_id);
 					}
 					if(isset($_FILES['user_image_file']) && !empty($_FILES['user_image_file']['name'])){
 						$target_filename = $iec_id.basename($_FILES["user_image_file"]["name"]);
@@ -162,11 +173,11 @@ class IecController extends Zend_Controller_Action
 				$response['status'] = 1;
 				$response['message'] = 'Success';
 			}
-			print_r($response);
+			//print_r($response); exit();
 			if($response['status']){
 				//$this->renderScript('epcg/index.phtml');
 				$this->view->response = $response;
-				$this->_redirect('/iec/index');
+				$this->redirect('/iec/index');
 			}
 			$this->view->response = $response;
 		}
