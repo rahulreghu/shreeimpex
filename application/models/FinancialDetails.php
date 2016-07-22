@@ -10,4 +10,8 @@ class Model_FinancialDetails{
 	public static function addFinancialDetails($data,$iec_id){
 		return self::getTableInstance()->addFinancialDetails($data,$iec_id);
 	}
+	
+	public static function getFinancialDetailsByIecId($iec_id){
+		return self::getTableInstance()->getFinancialDetailsByIecId($iec_id);
+	}
 }

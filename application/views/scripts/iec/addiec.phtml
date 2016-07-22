@@ -35,6 +35,7 @@
 			</td>
 		</tr>
 	</table>
+	<!-- Applicant Details Section -->
 	<table class="table table-bordered" style="width: 950px">
 		<caption style="height: 30px">
 			<strong>Applicant Details</strong>
@@ -145,6 +146,7 @@
 			<td colspan="2">vii. (b) Others: (please specify)</td>
 			<td colspan="3"><input class="input-xlarge" type="text" placeholder="Others" name="entity[other_activities]" id="entity_other_activities"></td>
 		</tr>
+		<!-- Bank Details -->
 		<tr>
 			<td colspan="5">viii. Bank Account Details of the Applicant's entity:</td>
 		</tr>
@@ -175,6 +177,7 @@
 			<td><input class="input-block-level" type="text" placeholder="Registration code" name="entity[registration_code]" id="registration_code"></td>
 		</tr>
 	</table>
+	<!-- Branch Details -->
 	<table class="table table-bordered" style="width: 950px">
 		<tr class="info">
 			<td colspan="5">Part B: Branch Details:</td>
@@ -239,7 +242,8 @@
 			<td>Part C: Please fill in the following details:</td>
 		</tr>
 	</table>
-	<div id="firm_proprietorship"> 
+	<!-- Proprietorship Section -->
+	<div id="firm_proprietorship" style="display: none;"> 
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
 				<td colspan="5">Part C1: In case the entity is a Proprietor firm:</td>
@@ -290,7 +294,8 @@
 			</tr>
 		</table>
 	</div>
-	<div id="firm_partnership">
+	<!-- Partnership Section -->
+	<div id="firm_partnership" style="display: none;">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
 				<td colspan="5">Part C2: In case he entity is a Partnership firm:</td>
@@ -391,7 +396,8 @@
 			</tr>	
 		</table>
 	</div>
-	<div id="firm_privateltd">
+	<!-- Private Limited Section -->
+	<div id="firm_privateltd" style="display: none;">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
 				<td colspan="5" >Part C3: In case the entity is a Limited liability Partnership/Private/Public/Govt.Underaking/Secion 25 Company:</td>
@@ -456,7 +462,8 @@
 			</tr>
 		</table>
 	</div>
-	<div id="firm_society">
+	<!-- Society Section -->
+	<div id="firm_society" style="display: none;">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
 				<td colspan="5">Part C4: In case the enity is a Registred Society/Trust**:</td>
@@ -528,7 +535,8 @@
 			</tr>
 		</table>
 	</div>
-	<div id="firm_huf">
+	<!-- HUF Section -->
+	<div id="firm_huf" style="display: none;">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
 				<td colspan="5">Part C5: In case the enity is a HUF:</td>
@@ -596,6 +604,7 @@
 			</tr>
 		</table>
 	</div>
+	<!-- Industrial registration Details Section -->
 	<div id="ind_reg_details">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
@@ -621,6 +630,7 @@
 			</tr>
 		</table>
 	</div>
+	<!-- Service Tax Registration Details Section -->
 	<div id="ser_tax_reg_details">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
@@ -638,6 +648,7 @@
 			</tr>
 		</table>
 	</div>
+	<!-- RCMC Details Section -->
 	<div id="rcmc_details">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
@@ -660,6 +671,7 @@
 			</tr>
 		</table>
 	</div>
+	<!-- Status House Details Section -->
 	<div id="stat_house_details">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
@@ -679,6 +691,7 @@
 			</tr>
 		</table>	
 	</div>
+	<!-- Central Excise Registration Details Section -->
 	<div id="cent_exc_details">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
@@ -692,6 +705,7 @@
 			</tr>
 		</table>
 	</div>
+	<!-- VAT Registration Section -->
 	<div id="cent_exc_details">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
@@ -705,6 +719,7 @@
 			</tr>
 		</table>
 	</div>
+	<!-- Turnover Details Section -->
 	<div id="financial_details">
 		<table class="table table-bordered" style="width: 950px" id="finance_data">
 			<tr class="info">
@@ -716,7 +731,7 @@
 				<td colspan="2">Annual Export Turnover(Rs.Lakhs)</td>
 			</tr>
 			<tr id="rowCount1">
-				<td colspan="1"><select name="turnover_details[1][financial_year]" id="financial_year_1"></select></td>
+				<td colspan="1" width="225px"><select name="turnover_details[1][financial_year]" id="financial_year_1"></select></td>
 				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[1][domestic_turnover]" id="domestic_turnover_1"></td>
 				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="turnover_details[1][export_turnover]" id="export_turnover_1"></td>
 				<td colspan="1"><a href="javascript:void(0);" onclick="addMoreRows(this.form);"><i class="icon-plus"></i></a></td>

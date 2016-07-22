@@ -202,6 +202,18 @@ class IecController extends Zend_Controller_Action
 			if(!empty($iec_bank_details)){
 				$this->view->iec_bank_details = $iec_bank_details->toArray();
 			}
+			$iec_financial_details =  Model_FinancialDetails::getFinancialDetailsByIecId($_GET['id']);
+			if(!empty($iec_financial_details)){
+				$iec_turnover_details = array();
+				$i = 0;
+				foreach($iec_financial_details as $iec_finance_detail){
+					$iec_turnover_details[$i]['financial_year'] = $iec_finance_detail['financial_year'];
+					$iec_turnover_details[$i]['domestic_turnover'] = $iec_finance_detail['domestic_turnover'];
+					$iec_turnover_details[$i]['export_turnover'] = $iec_finance_detail['export_turnover'];
+					$i++;
+				}
+				$this->view->iec_turnover_details = $iec_turnover_details;
+			}
 			$iec_details =  Model_EntityDetails::getIecDetailsByIecId($_GET['id']);
 			if(!empty($iec_details)){
 				$iec_branches = array();
@@ -225,15 +237,14 @@ class IecController extends Zend_Controller_Action
 						$j++;
 					}
 				}
-				print_r($iec_info);
-				$this->view->iec_info = $iec_info;
 				$this->view->iec_branches = $iec_branches;
 				$this->view->iec_category_details = $iec_category_details;
 			}
+			$this->view->iec_info = $iec_info;
+			print_r($iec_info);
 			
 			$districts = Model_Districts::getByStateId($iec_info['state']);
 			$this->view->districts = $districts;
-				
 			$cities = Model_Cities::getByDistrictId($iec_info['district']);
 			$this->view->cities = $cities;
 			

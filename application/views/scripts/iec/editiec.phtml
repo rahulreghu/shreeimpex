@@ -216,6 +216,7 @@
 			<td><input class="input-block-level" type="text" placeholder="Registration code" name="entity[registration_code]" id="registration_code" value="<?php echo !empty($this->iec_info['registration_code'])? $this->iec_info['registration_code'] : ""?>"></td>
 		</tr>
 	</table>
+	<!-- Branch Details -->
 	<table class="table table-bordered" style="width: 950px">
 		<tr class="info">
 			<td colspan="5">Part B: Branch Details:</td>
@@ -896,21 +897,21 @@
 			</tr>
 			<tr>
 				<td colspan="1">1. SSI/IEM/LOI or IL Registration No/any other to prove a manufacturer status:</td>
-				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registration No" name="entity[imr_reg_num]" id="imr_reg_num"></td>
+				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registration No" name="entity[imr_reg_num]" id="imr_reg_num" value="<?php echo !empty($this->iec_info['imr_reg_num'])? $this->iec_info['imr_reg_num'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td rowspan="2">2. Date of issue and Validity / Issuing Authority</td>
 				<td colspan="2">
 				From:<span class="required">*</span>
-					<input class="input-block-level" type="text" placeholder="From Date" name="entity[imr_doi]" id="imr_doi"></td>
+					<input class="input-block-level" type="text" placeholder="From Date" name="entity[imr_doi]" id="imr_doi" value="<?php echo !empty($this->iec_info['imr_doi'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['imr_doi']}")->format('d/m/Y') : ""?>"></td>
 				<td colspan="2">To:<span class="required">*</span>
-					<input class="input-block-level" type="text" placeholder="To Date" name="entity[imr_validity]" id="imr_validity"></td>
+					<input class="input-block-level" type="text" placeholder="To Date" name="entity[imr_validity]" id="imr_validity" value="<?php echo !empty($this->iec_info['imr_validity'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['imr_validity']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
-			<tr><td colspan="4"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[imr_ia]" id="imr_ia"></td></tr>
+			<tr><td colspan="4"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[imr_ia]" id="imr_ia" value="<?php echo !empty($this->iec_info['imr_ia'])? $this->iec_info['imr_ia'] : ""?>"></td></tr>
 				
 			<tr>
 				<td colspan="1">3. Products for which registered</td>
-				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="entity[imr_reg_prods]" id="imr_reg_prods"></td>
+				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="entity[imr_reg_prods]" id="imr_reg_prods" value="<?php echo !empty($this->iec_info['imr_reg_prods'])? $this->iec_info['imr_reg_prods'] : ""?>"></td>
 			</tr>
 		</table>
 	</div>
@@ -921,13 +922,13 @@
 			</tr>
 			<tr>
 				<td colspan="1">1. Service Tax Registration No / Issuing Authority</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration No" name="entity[str_reg_num]" id="str_reg_num"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[str_ia]" id="str_ia">
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration No" name="entity[str_reg_num]" id="str_reg_num" value="<?php echo !empty($this->iec_info['str_reg_num'])? $this->iec_info['str_reg_num'] : ""?>"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[str_ia]" id="str_ia" value="<?php echo !empty($this->iec_info['str_ia'])? $this->iec_info['str_ia'] : ""?>">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="1">2. Services for which registered</td>
-				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registered Services" name="entity[str_reg_items]" id="str_reg_items"></td>
+				<td colspan="4"><input class="input-block-level" type="text" placeholder="Registered Services" name="entity[str_reg_items]" id="str_reg_items" value="<?php echo !empty($this->iec_info['str_reg_items'])? $this->iec_info['str_reg_items'] : ""?>"></td>
 			</tr>
 		</table>
 	</div>
@@ -938,18 +939,18 @@
 			</tr>
 			<tr>
 				<td colspan="1">1. RCMC No / Issuing Authority</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="RCMC No" name="entity[rcmc_num]" id="rcmc_num"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[rcmc_ia]" id="rcmc_ia">
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="RCMC No" name="entity[rcmc_num]" id="rcmc_num" value="<?php echo !empty($this->iec_info['rcmc_num'])? $this->iec_info['rcmc_num'] : ""?>"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[rcmc_ia]" id="rcmc_ia" value="<?php echo !empty($this->iec_info['rcmc_ia'])? $this->iec_info['rcmc_ia'] : ""?>">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="1">2. Date of issue and Validity:</td>
-				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[rcmc_doi]" id="rcmc_doi"></td>
-				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[rcmc_validity]" id="rcmc_validity"></td>
+				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[rcmc_doi]" id="rcmc_doi" value="<?php echo !empty($this->iec_info['rcmc_doi'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['rcmc_doi']}")->format('d/m/Y') : ""?>"></td>
+				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[rcmc_validity]" id="rcmc_validity" value="<?php echo !empty($this->iec_info['rcmc_validity'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['rcmc_validity']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="1">3. Products for which registered</td>
-				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="entity[rcmc_reg_prods]" id="rcmc_reg_prods"></td>
+				<td colspan="4" ><input class="input-block-level" type="text" placeholder="Registered Products" name="entity[rcmc_reg_prods]" id="rcmc_reg_prods" value="<?php echo !empty($this->iec_info['rcmc_reg_prods'])? $this->iec_info['rcmc_reg_prods'] : ""?>"></td>
 			</tr>
 		</table>
 	</div>
@@ -957,18 +958,18 @@
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
 				<td colspan="2">Status House Details(Please select)
-				<td colspan="3"><input type="text" class="rb-rating" name="entity[shd_rating]" id="shd_rating" value="0"></td>
+				<td colspan="3"><input type="text" class="rb-rating" name="entity[shd_rating]" id="shd_rating" value="0" value="<?php echo !empty($this->iec_info['shd_rating'])? $this->iec_info['shd_rating'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="1">1. Certificate number / Issuing Authority:</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Certificate number" name="entity[shd_cert_num]" id="shd_cert_num"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[shd_ia]" id="shd_ia">
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Certificate number" name="entity[shd_cert_num]" id="shd_cert_num" value="<?php echo !empty($this->iec_info['shd_cert_num'])? $this->iec_info['shd_cert_num'] : ""?>"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[shd_ia]" id="shd_ia" value="<?php echo !empty($this->iec_info['shd_ia'])? $this->iec_info['shd_ia'] : ""?>">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="1">2. Date of issue and Validity:</td>
-				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[shd_doi]" id="shd_doi"></td>
-				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[shd_validity]" id="shd_validity"></td>
+				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[shd_doi]" id="shd_doi" value="<?php echo !empty($this->iec_info['shd_doi'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['shd_doi']}")->format('d/m/Y') : ""?>"></td>
+				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[shd_validity]" id="shd_validity" value="<?php echo !empty($this->iec_info['shd_validity'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['shd_validity']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
 		</table>	
 	</div>
@@ -979,9 +980,8 @@
 			</tr>
 			<tr>
 				<td colspan="1">Central Excise Registration No./ Issuing Authority</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="entity[cer_reg_num]" id="cer_reg_num"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[cer_ia]" id="cer_ia">
-				</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="entity[cer_reg_num]" id="cer_reg_num" value="<?php echo !empty($this->iec_info['cer_reg_num'])? $this->iec_info['cer_reg_num'] : ""?>"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[cer_ia]" id="cer_ia" value="<?php echo !empty($this->iec_info['cer_ia'])? $this->iec_info['cer_ia'] : ""?>"></td>
 			</tr>
 		</table>
 	</div>
@@ -992,12 +992,12 @@
 			</tr>
 			<tr>
 				<td colspan="1">VAT Registration No./ Issuing Authority</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="entity[vat_reg_num]" id="vat_reg_num"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[vat_ia]" id="vat_ia">
-				</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="entity[vat_reg_num]" id="vat_reg_num" value="<?php echo !empty($this->iec_info['vat_reg_num'])? $this->iec_info['vat_reg_num'] : ""?>"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[vat_ia]" id="vat_ia" value="<?php echo !empty($this->iec_info['vat_ia'])? $this->iec_info['vat_ia'] : ""?>"></td>
 			</tr>
 		</table>
 	</div>
+	<!-- Turnover Details Section -->
 	<div id="financial_details">
 		<table class="table table-bordered" style="width: 950px" id="finance_data">
 			<tr class="info">
@@ -1008,9 +1008,22 @@
 				<td colspan="2">Annual Domestic Turnover(Rs.Lakhs)</td>
 				<td colspan="2">Annual Export Turnover(Rs.Lakhs)</td>
 			</tr>
-			<tr id="rowCount1">
-				<td colspan="1"><select name="turnover_details[0][financial_year]" id="financial_year_0">
-				</select></td>
+				<?php  
+					foreach ($this->iec_turnover_details as $id => $turnover_details){
+				?>
+			<tr id="rows<?php echo $id?>">
+				<td colspan="1" width="225px">
+					<input class="input-block-level" type="hidden" value = "<?php echo $id?>" name="finance_row_count" id="finance_row_count" >
+					<input class="input-block-level" type="text" placeholder="" name="turnover_details[<?php echo $id?>][financial_year]" id="financial_year_<?php echo $id?>" value="<?php echo $turnover_details['financial_year']; ?>">
+				</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[<?php echo $id?>][domestic_turnover]" id="domestic_turnover_<?php echo $id?>" value="<?php echo $turnover_details['domestic_turnover']; ?>"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[<?php echo $id?>][export_turnover]" id="export_turnover_<?php echo $id?>" value="<?php echo $turnover_details['export_turnover'];?>"></td>
+			</tr>
+				<?php }	?>
+			<tr id="rowCount1">	
+				<td colspan="1">
+					<select name="turnover_details[0][financial_year]" id="financial_year_0" ></select>
+				</td>
 				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[0][domestic_turnover]" id="domestic_turnover_0"></td>
 				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="turnover_details[0][export_turnover]" id="export_turnover_0"></td>
 				<td colspan="1"><a href="javascript:void(0);" onclick="addMoreRows(this.form);"><i class="icon-plus"></i></a></td>
@@ -1072,7 +1085,7 @@
 	<div style="text-align: center;">
 		<button type="submit" class="btn btn-primary" name="submitform" value="Submit Form" id="submit_iecform">Submit</button> 
 		<?php if(!empty($this->iec_info['status']) &&  $this->iec_info['status'] == '6'){?>
-		<span style="padding-right: 25px"></span>
+		<span style="padding-right: 25px"> </span>
 		<button type="submit" class="btn btn-warning" name="saveform" value="Save Form"  id="save_iecform">Save</button>
 		<?php }?>
 		<span style="padding-right: 25px"></span> 
@@ -1100,12 +1113,12 @@ $(function(){
         }
     });
 
-    $('#imr_doi').datepicker({});
-	$('#imr_validity').datepicker({});
-	$('#rcmc_doi').datepicker({});
-	$('#rcmc_validity').datepicker({});
-	$('#shd_doi').datepicker({});
-	$('#shd_validity').datepicker({});
+    $('#imr_doi').datepicker({format: "dd/mm/yyyy"});
+	$('#imr_validity').datepicker({format: "dd/mm/yyyy"});
+	$('#rcmc_doi').datepicker({format: "dd/mm/yyyy"});
+	$('#rcmc_validity').datepicker({format: "dd/mm/yyyy"});
+	$('#shd_doi').datepicker({format: "dd/mm/yyyy"});
+	$('#shd_validity').datepicker({format: "dd/mm/yyyy"});
 });
 
 //disply only the selected category while editing
@@ -1124,7 +1137,7 @@ $(window).load(function() {
 var rowCount = 1;
 function addMoreRows(frm) {
 rowCount ++;
-var recRow = '<tr id="rowCount'+rowCount+'"><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[year]" id="financial_year"></td><td colspan="2"><input class="input-block-level" type="text" placeholder="" name="finance[domestic_turnover]" id="domestic_turnover"></td><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[export_turnover]" id="export_turnover"></td><td colspan="1"><a href="javascript:void(0);" onclick="removeRow('+rowCount+');">Delete</a></td></tr>';
+var recRow = '<tr id="rowCount'+rowCount+'"><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[year]" id="financial_year"></td><td colspan="2"><input class="input-block-level" type="text" placeholder="" name="finance[domestic_turnover]" id="domestic_turnover"></td><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[export_turnover]" id="export_turnover"></td><td colspan="1"><a href="javascript:void(0);" onclick="removeRow('+rowCount+');"><i class="icon-minus"></i></a></td></tr>';
 jQuery('#finance_data').append(recRow);
 }
 

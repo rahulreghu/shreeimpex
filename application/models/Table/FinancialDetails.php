@@ -12,5 +12,7 @@ class Model_Table_FinancialDetails extends Zend_Db_Table_Abstract{
 		return $affectedRows;
 	}
 		
-	
+	public function getFinancialDetailsByIecId($iec_id){
+		return $this->fetchAll("entity_iec_id = '".$iec_id."' AND epcg_export_id = 0");
+	}
 }
