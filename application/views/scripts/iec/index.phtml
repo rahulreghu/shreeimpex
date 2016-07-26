@@ -1,4 +1,15 @@
-<div id="error_message" class="alert alert-error" style="display: none;" <?php echo !empty($this->response['status']) && $this->response['status'] == 1 ? "" : "style='display: none;'"?>>Successfully Created</div>
+<!-- <div id="error_message" class="alert alert-error" style="display: none;" <?php echo !empty($this->response['status']) && $this->response['status'] == 1 ? "" : "style='display: none;'"?>>Successfully Created</div> -->
+<?php if(!empty($this->messages)){
+		if($this->messages[0]['status']){
+			$class = "alert alert-success";
+		}else{
+			$class = "alert alert-error";
+		}
+?>
+<div class="<?php echo $class; ?>">
+    <?php echo $this->messages[0]['message'] ;?>
+</div>    
+<?php }?>
 <div style="height: 50px; float: right;">
 	<a href="iec/addiec" class="btn btn-success" type="button">Add New IEC</a>
 	<span style="padding-right: 15px"></span> 
@@ -14,20 +25,21 @@
 </div>
 <div id="iec_lists">
 	<table class="table table-hover table-bordered table-striped" <?php echo !empty($this->allentities) ? " id='displayIec'" : ''; ?>>  
-		<thead>
+		
+		<?php if(!empty($this->allentities)){?>
+			<thead>
 			<tr>
-				<th width="10px" style="text-align: center;"></th>
-				<th width="10px" style="text-align: center;">&nbsp;</th>	
-				 <!-- <th width="40px" style="text-align: center;">Sl No</th> -->	
-				<th width="230px" style="text-align: center;">IEC Number</th>	
-				<th width="235px" style="text-align: center;">Entity Name</th>	
-				<th width="50px" style="text-align: center;">Status</th>	
-				<th width="100px" style="text-align: center;" >Action</th>	
+			<th width="10px" style="text-align: center;"></th>
+			<th width="10px" style="text-align: center;">&nbsp;</th>
+			<!-- <th width="40px" style="text-align: center;">Sl No</th> -->
+			<th width="230px" style="text-align: center;">IEC Number</th>
+			<th width="235px" style="text-align: center;">Entity Name</th>
+			<th width="50px" style="text-align: center;">Status</th>
+			<th width="100px" style="text-align: center;" >Action</th>
 			</tr>
-		</thead>
+			</thead>
 		<tbody>
-		<?php if(!empty($this->allentities)){
-				$i = 1;
+		<?php 	$i = 1;
 				foreach ($this->allentities as $entity_details){
 			?>
 			
@@ -39,7 +51,7 @@
 			 	<div style="max-width: 291px;word-wrap:break-word" id="iecnumber_<?php echo $entity_details['id']?>"><?php echo empty($entity_details['iec_number'])? 'Not Generated' : $entity_details['iec_number']?></div>
 				<input class="input-block-level-sm" id="iectextbox_<?php echo $entity_details['id']?>" type="text" style="display:none; margin: 0px 0px; padding: 4px 5px; height: 12px; width: 250px;" />
 			</td>
-			<td><?php echo mb_strimwidth($entity_details['name'], 0, 10, "...");?></td>
+			<td><?php echo mb_strimwidth($entity_details['name'], 0, 20, "...");//substr($entity_details['name'], 0,20)//?></td>
 			<td><select  name="entity_status" id="entity_status_<?php echo $entity_details['id']?>" style="width: 100px; margin: 0px 0px; padding:0px 4px; height: 22px;">
 					<?php foreach($this->allstatus as $status) {
 						$selected = "";

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 22, 2016 at 10:51 AM
+-- Generation Time: Jul 26, 2016 at 09:39 AM
 -- Server version: 5.7.13-log
 -- PHP Version: 5.6.23
 
@@ -6454,62 +6454,9 @@ CREATE TABLE `entity_bank_details` (
 --
 
 INSERT INTO `entity_bank_details` (`id`, `account_name`, `account_number`, `name`, `address`, `ifsc`, `entity_iec_id`) VALUES
-(1, '1', '32213', '32231', '3123', '3123', 29),
-(2, '1', '32213', '32231', '3123', '3123', 30),
-(3, '1', '32213', '32231', '3123', '3123', 31),
-(4, '1', '32213', '32231', '3123', '3123', 32),
-(5, '1', '32213', '32231', '3123', '3123', 33),
-(6, '1', '32213', '32231', '3123', '3123', 34),
-(7, '1', '32213', '32231', '3123', '3123', 35),
-(8, '1', '32213', '32231', '3123', '3123', 36),
-(9, '1', '32213', '32231', '3123', '3123', 37),
-(10, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 38),
-(11, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 39),
-(12, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 40),
-(13, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 41),
-(14, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 42),
-(15, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 43),
-(16, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 44),
-(17, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 45),
-(18, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 46),
-(19, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 47),
-(20, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 48),
-(21, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 49),
-(22, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 50),
-(23, 'Rahul R', '1234566987888', 'AXIS BANK', 'Karamana', 'IFC6584665', 51),
-(24, '', '', '', '', '', 1000),
-(25, '', '', '', '', '', 1001),
-(26, 'Rahul', '00451254858858', 'HSBC', 'Bangalore', 'HSD0041325', 1002),
-(27, 'Vodafone', '12654565658', 'RBS', 'RBS, Mumbai', 'RBS26545554', 1003),
-(28, 'dasdas', 'fdsafads', 'fdasf', 'fdsfdas', 'fdsfds', 1004),
-(29, 'Cera India', '7896545555', 'ABC', 'ABC, Delhi', 'IFC12665545', 1005),
-(30, 'nike foundation', '45686669696', 'SBT', 'Fort', 'SBT4563322', 1006),
-(31, 'nike foundation', '45686669696', 'SBT', 'Fort', 'SBT4563322', 1007),
-(32, 'abc', '7978959564', 'ABC 1234', 'Branch', 'IBC 79898595', 1008),
-(33, 'rahul', '435435432', 'ffdskkNK', 'NJKnknn', 'njknkn', 1009),
-(34, 'abc', '324342', 'abc', 'abc', '2345555', 1010),
-(35, 'dsadsad', '43243242', 'dasdasdas', 'dasdasd', 'dasdasdfdsa', 1011),
-(36, 'fdsafdfdsf', 'fdsfdsfdsf', 'fdsfdsf', 'fsdfdsf', 'fsdfdsf', 1012),
-(37, 'fdsafdfdsf', 'fdsfdsfdsf', 'fdsfdsf', 'fsdfdsf', 'fsdfdsf', 1013),
-(38, 'fdsafdfdsf', 'fdsfdsfdsf', 'fdsfdsf', 'fsdfdsf', 'fsdfdsf', 1014),
-(39, 'dasdasd', 'dasdasd', 'dasdasd', 'dadad', 'dasdasd', 1015),
-(40, 'rewrfewf', 'fsdfsdf', 'fsfs', 'fsfsfs', 'fsfsf', 1016),
-(41, 'fdsfsdfdsf', 'vbdfbdfgbdf', 'vdvdgvdfgv', 'vdvdfd', 'vdvdvdfvd', 1017),
-(42, 'abc', '122324343', 'axis', 'axis branch', 'IFC1213232', 1018),
-(43, 'abc', '545435', 'fdsfdsf', 'fsdfdsfds', 'fdsfdsg', 1019),
-(44, 'abc', 'dasdasd', 'dasdasd', 'dadad', 'ffdsfdsf', 1020),
-(45, 'abc', 'dasdasd', 'dasdasd', 'dadad', 'ffdsfdsf', 1021),
-(46, 'abc', 'dasdasd', 'dasdasd', 'dadad', 'ffdsfdsf', 1022),
-(47, 'abc', 'dasdasd', 'dasdasd', 'dadad', 'ffdsfdsf', 1023),
-(48, 'abc', 'dasdasd', 'dasdasd', 'dadad', 'ffdsfdsf', 1024),
-(49, 'abc', 'dasdasd', 'dasdasd', 'dadad', 'ffdsfdsf', 1025),
-(50, 'abc', 'dasdasd', 'dasdasd', 'dadad', 'ffdsfdsf', 1026),
-(51, 'abc', 'dasdasd', 'dasdasd', 'dadad', 'ffdsfdsf', 1027),
-(52, 'abc', 'dasdasd', 'dasdasd', 'dadad', 'ffdsfdsf', 1028),
-(53, 'abc', 'dasdasd', 'dasdasd', 'dadad', 'ffdsfdsf', 1029),
-(54, 'abc', 'dasdasd', 'dasdasd', 'dadad', 'ffdsfdsf', 1030),
-(55, 'w434324324', '4234324324', '4324324', '432424', '432424', 1031),
-(56, 'AC1', 'AC2', 'AC3', 'AC4', 'AC5', 1032);
+(87, 'AC1', 'AB2', 'AB3', 'AB4', 'IFS', 1037),
+(92, 'AC1', 'AB2', 'AB3', 'dadad', 'IFS', 1038),
+(95, 'AC2', 'AB2', 'AB3', 'AB4', 'IFS', 1039);
 
 -- --------------------------------------------------------
 
@@ -6570,109 +6517,13 @@ CREATE TABLE `entity_details` (
 --
 
 INSERT INTO `entity_details` (`id`, `name`, `surname`, `dob`, `address1`, `address2`, `state`, `district`, `city`, `pincode`, `mobile`, `aadhaar_number`, `pan`, `director_id_number`, `entity_iec_id`, `entity_category_id`) VALUES
-(1, NULL, NULL, NULL, '1', '1', '18', '295', '2074', '1', NULL, NULL, NULL, NULL, 34, 0),
-(2, NULL, NULL, NULL, '1', '1', '18', '295', '2074', '1', NULL, NULL, NULL, NULL, 37, 0),
-(3, '1', NULL, NULL, '1', '1', '18', '294', '2069', '111', NULL, '111', NULL, NULL, 37, 1),
-(4, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 38, 0),
-(5, NULL, NULL, NULL, 'Address2', 'Address3', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 38, 0),
-(6, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 39, 0),
-(7, NULL, NULL, NULL, 'Address2', 'Address3', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 39, 0),
-(8, 'Rahul R', 'Reghuvaran R', '1984-07-10', 'Address1', 'Address2', '18', '286', '2036', '695008', '9986167495', '', 'avdsdsf33f', NULL, 39, 2),
-(9, 'RR', 'RR', '1984-07-10', 'Address2', 'Address3', '18', '294', '2071', '6950008', '9981674955', '', 'avd11323ss', NULL, 39, 2),
-(10, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 40, 0),
-(11, 'a', NULL, NULL, 'Address1', 'Adddress2', '1', '2', '5', '695008', NULL, 'd', 'b', 'c', 40, 0),
-(12, 'e', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'h', 'f', 'g', 40, 3),
-(13, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 41, 0),
-(14, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 42, 0),
-(15, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 43, 0),
-(16, 'Rahul', NULL, NULL, 'Address1', 'Address2', '18', '294', '2071', '695008', NULL, '43fdsfs343243242', NULL, NULL, 43, 8),
-(17, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 44, 0),
-(18, 'Rahul', NULL, NULL, 'Address1', 'Address2', '18', '294', '2071', '695008', NULL, '43fdsfs343243242', NULL, NULL, 44, 8),
-(19, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2071', '6950808', NULL, NULL, NULL, NULL, 45, 0),
-(20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 45, 10),
-(21, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2071', '6950808', NULL, NULL, NULL, NULL, 46, 0),
-(22, 'Rahul HUF', NULL, NULL, 'Address HUF', 'Address HUF', '18', '294', '2071', '695008', NULL, 'sfsdfds', NULL, NULL, 46, 10),
-(23, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2070', '695008', NULL, NULL, NULL, NULL, 47, 0),
-(24, NULL, NULL, NULL, 'Address2', 'Address3', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 47, 0),
-(25, 'Rahul R', 'Reghuvaran R', '1984-07-10', 'Address1', 'Address2', '1', '2', '5', '695008', '9986167495', 'adasd', 'avdsdsf33f', NULL, 47, 2),
-(26, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2070', '695008', NULL, NULL, NULL, NULL, 48, 0),
-(27, NULL, NULL, NULL, 'Address2', 'Address3', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 48, 0),
-(28, 'Rahul R', 'Reghuvaran R', '1984-07-10', 'Address1', 'Address2', '1', '2', '5', '695008', '9986167495', 'adasd', 'avdsdsf33f', NULL, 48, 2),
-(29, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2070', '695008', NULL, NULL, NULL, NULL, 49, 0),
-(30, NULL, NULL, NULL, 'Address2', 'Address3', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 49, 0),
-(31, 'Rahul R', 'Reghuvaran R', '1984-07-10', 'Address1', 'Address2', '1', '2', '5', '695008', '9986167495', 'adasd', 'avdsdsf33f', NULL, 49, 2),
-(32, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2070', '695008', NULL, NULL, NULL, NULL, 50, 0),
-(33, NULL, NULL, NULL, 'Address2', 'Address3', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 50, 0),
-(34, 'Rahul R', 'Reghuvaran R', '1984-07-10', 'Address1', 'Address2', '1', '2', '5', '695008', '9986167495', 'adasd', 'avdsdsf33f', NULL, 50, 2),
-(35, NULL, NULL, NULL, 'Address1', 'Adddress2', '18', '294', '2070', '695008', NULL, NULL, NULL, NULL, 51, 0),
-(36, NULL, NULL, NULL, 'Address2', 'Address3', '18', '294', '2071', '695008', NULL, NULL, NULL, NULL, 51, 0),
-(37, 'Rahul R', 'Reghuvaran R', '1984-07-10', 'Address1', 'Address2', '1', '2', '5', '695008', '9986167495', 'adasd', 'avdsdsf33f', NULL, 51, 2),
-(38, '', NULL, NULL, '', '', '0', '0', '0', '', NULL, '', NULL, NULL, 1000, 1),
-(39, '', NULL, NULL, '', '', '0', '0', '0', '', NULL, '', NULL, NULL, 1001, 1),
-(40, NULL, NULL, NULL, 'Address3', 'Address4', '17', '254', '1850', '6985558', NULL, NULL, NULL, NULL, 1002, 0),
-(41, NULL, NULL, NULL, 'Address5', 'Address6', '17', '255', '1855', '758698', NULL, NULL, NULL, NULL, 1002, 0),
-(42, 'Rahul R', NULL, NULL, 'Address7', 'Address8', '18', '294', '2071', '695008', NULL, 'ADF1234', NULL, NULL, 1002, 1),
-(43, NULL, NULL, NULL, 'Address5', 'Address6', '17', '279', '1996', '6950088', NULL, NULL, NULL, NULL, 1003, 0),
-(44, NULL, NULL, NULL, 'Address7', 'Address8', '10', '130', '1057', '4765455', NULL, NULL, NULL, NULL, 1003, 0),
-(45, 'partner1', 'partner1 father', '1984-07-10', 'Address9', 'Address10', '18', '294', '2071', '695008', '9986167495', 'ABCD1234', 'AVQPR654844', NULL, 1003, 2),
-(46, 'partner2', 'partner2 father', '0085-07-10', 'Address11', 'Address12', '17', '255', '1852', '456987', '98787469655', '12324353555', 'ABCS1235544', NULL, 1003, 2),
-(47, NULL, NULL, NULL, 'faf', 'fdsfs', '18', '283', '2022', '43432532', NULL, NULL, NULL, NULL, 1004, 0),
-(48, 'dfasfsa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'fdsfds', 'fdfs', 'fdsfs', 1004, 3),
-(49, NULL, NULL, NULL, 'Address3', 'Address4', '7', '106', '929', '6955558', NULL, NULL, NULL, NULL, 1005, 0),
-(50, NULL, NULL, NULL, 'Address5', 'Address8', '16', '244', '1755', '6955557', NULL, NULL, NULL, NULL, 1005, 0),
-(51, 'name1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'E001', 'pan1', '1234', 1005, 3),
-(52, 'name2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'E002', 'pan2', '5678', 1005, 3),
-(53, NULL, NULL, NULL, 'Address3', 'Address4', '3', '17', '13', '799665555', NULL, NULL, NULL, NULL, 1006, 0),
-(54, 'Nike', NULL, NULL, 'Address6', 'Address7', '10', '132', '1064', '695008', NULL, '32432432afdf', NULL, NULL, 1006, 8),
-(55, NULL, NULL, NULL, 'Address3', 'Address4', '3', '17', '13', '799665555', NULL, NULL, NULL, NULL, 1007, 0),
-(56, 'Nike', NULL, NULL, 'Address6', 'Address7', '10', '132', '1064', '695008', NULL, '32432432afdf', NULL, NULL, 1007, 8),
-(57, NULL, NULL, NULL, 'asdd1', 'asss2', '18', '296', '2078', '46454555', NULL, NULL, NULL, NULL, 1008, 0),
-(58, 'Kartha1', NULL, NULL, 'A1', 'A2', '13', '174', '1321', '695008', NULL, 'adscvv 12344', NULL, NULL, 1008, 10),
-(59, NULL, NULL, NULL, 'fdsafdsfds', 'fdsfdsfdsf', '17', '270', '1946', '534534', NULL, NULL, NULL, NULL, 1009, 0),
-(60, 'xfdfgds', NULL, NULL, 'fdsfdsfsd', 'fsdfdsfds', '17', '270', '1942', '5345435', NULL, '', NULL, NULL, 1009, 1),
-(61, NULL, NULL, NULL, 'a', 'c', '1', '1', '1', '234555', NULL, NULL, NULL, NULL, 1010, 0),
-(62, NULL, NULL, NULL, 'd', 'e', '17', '266', '1917', '4555555', NULL, NULL, NULL, NULL, 1010, 0),
-(63, '2222', 'dsadasda', '2016-06-22', 'assdasdas', 'fasfsdfds', '17', '269', '1940', '4324324', '3234324', 'fdsfdsfds', 'dsafadsf', NULL, 1010, 2),
-(64, 'fsdfdsf', 'dsadfasdasdf', '2016-06-22', 'fasfd', 'fdsfs', '1', '2', '4', '43432432', 'fdsfdsfsd', 'cvsfvdsfsdf', '32432432', NULL, 1010, 2),
-(65, NULL, NULL, NULL, '32432', '4324324', '9', '128', '1055', '324324324', NULL, NULL, NULL, NULL, 1011, 0),
-(66, NULL, NULL, NULL, '432423', 'dasdfasd', '10', '131', '1060', '432432432', NULL, NULL, NULL, NULL, 1011, 0),
-(67, 'dsaddasdsa', NULL, NULL, 'dasdasd', 'dasdasda', '8', '127', '1054', '32324', NULL, 'dasdsadas', NULL, NULL, 1011, 1),
-(68, NULL, NULL, NULL, 'fdsfdsf', 'fsdfdsf', '11', '139', '1085', '3432432', NULL, NULL, NULL, NULL, 1012, 0),
-(69, NULL, NULL, NULL, 'dasdasdf', 'fdsfsf', '17', '255', '1854', '432432', NULL, NULL, NULL, NULL, 1012, 0),
-(70, 'fsdfsf', NULL, NULL, 'fdsfsd', 'fsdfdsf', '15', '208', '1518', '432432', NULL, '324324', NULL, NULL, 1012, 1),
-(71, 'fsdfsf', NULL, NULL, 'fdsfsd', 'fsdfdsf', '15', '208', '1518', '432432', NULL, '324324', NULL, NULL, 1012, 1),
-(72, NULL, NULL, NULL, 'fdsfdsf', 'fsdfdsf', '11', '139', '1085', '3432432', NULL, NULL, NULL, NULL, 1013, 0),
-(73, NULL, NULL, NULL, 'dasdasdf', 'fdsfsf', '17', '255', '1854', '432432', NULL, NULL, NULL, NULL, 1013, 0),
-(74, 'fsdfsf', NULL, NULL, 'fdsfsd', 'fsdfdsf', '15', '208', '1518', '432432', NULL, '324324', NULL, NULL, 1013, 1),
-(75, 'fsdfsf', NULL, NULL, 'fdsfsd', 'fsdfdsf', '15', '208', '1518', '432432', NULL, '324324', NULL, NULL, 1013, 1),
-(76, NULL, NULL, NULL, 'fdsfdsf', 'fsdfdsf', '11', '139', '1085', '3432432', NULL, NULL, NULL, NULL, 1014, 0),
-(77, NULL, NULL, NULL, 'dasdasdf', 'fdsfsf', '17', '255', '1854', '432432', NULL, NULL, NULL, NULL, 1014, 0),
-(78, 'fsdfsf', NULL, NULL, 'fdsfsd', 'fsdfdsf', '15', '208', '1518', '432432', NULL, '324324', NULL, NULL, 1014, 1),
-(79, 'fsdfsf', NULL, NULL, 'fdsfsd', 'fsdfdsf', '15', '208', '1518', '432432', NULL, '324324', NULL, NULL, 1014, 1),
-(80, NULL, NULL, NULL, 'dasdasd', 'dasdasd', '1', '1', '1', '3234213', NULL, NULL, NULL, NULL, 1015, 0),
-(81, 'adasd', NULL, NULL, 'dasda', 'dasda', '3', '18', '32', '323432', NULL, 'dasdasfdas', NULL, NULL, 1015, 1),
-(82, 'adasd', NULL, NULL, 'dasda', 'dasda', '3', '18', '32', '323432', NULL, 'dasdasfdas', NULL, NULL, 1015, 1),
-(83, NULL, NULL, NULL, 'fsfsffsf', 'fsfsfsfsf', '11', '140', '1094', '43535', NULL, NULL, NULL, NULL, 1016, 0),
-(84, 'fsfsf', NULL, NULL, 'fsfsf', 'fsfsf', '1', '1', '1', '342432432', NULL, '', NULL, NULL, 1016, 1),
-(85, 'fsfsf', NULL, NULL, 'fsfsf', 'fsfsf', '1', '1', '1', '342432432', NULL, '', NULL, NULL, 1016, 1),
-(86, NULL, NULL, NULL, 'vsvfvbgfbsdfz', 'vbdfbdfgd', '17', '254', '1849', '432432', NULL, NULL, NULL, NULL, 1017, 0),
-(87, NULL, NULL, NULL, ' vxvdvdvd', 'vfdgdfhfdgd', '18', '286', '2035', '443432', NULL, NULL, NULL, NULL, 1017, 0),
-(88, 'fsdfdsfsf', 'fdsfdsfsf', '2016-07-19', 'fsdfdsfsd', 'fsfsfsfs', '17', '264', '1906', '43243242', '4324324242', '4324324fsdf', '32432432', NULL, 1017, 2),
-(89, 'fdsfsdfds', 'fsfsdfdsfew', '2016-07-21', 'fsdfdsfds', 'fdsfdsfwrew', '18', '294', '2072', '432324324', '4324324324', '43242', '4324242', NULL, 1017, 2),
-(90, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1017, 2),
-(91, NULL, NULL, NULL, 'ancdjnfdj', 'fdfodsfndsn', '1', '1', '1', '435435432', NULL, NULL, NULL, NULL, 1018, 0),
-(92, NULL, NULL, NULL, 'abcd12213', 'fdfdfndfn', '5', '62', '392', '4324322', NULL, NULL, NULL, NULL, 1018, 0),
-(93, 'asfdsfdsaf', 'cdsfdsfdsf', '2016-07-21', 'dfdsfdsf', 'fdsfdsfdsf', '13', '187', '1370', '432432424', '434324324', '3424324', '4324324324', NULL, 1018, 2),
-(94, '324324234', 'fwsdfdsfdsf', '2016-07-07', 'sdfsfs', 'fdsfdsf', '18', '294', '2070', '43453243243', '4324242', 'rfewrewrw', '43243243', NULL, 1018, 2),
-(95, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1018, 2),
-(96, NULL, NULL, NULL, '42342', '42342', '10', '131', '1060', '423432424', NULL, NULL, NULL, NULL, 1031, 0),
-(97, NULL, NULL, NULL, '4234324', '4324324', '16', '245', '1758', '34243242', NULL, NULL, NULL, NULL, 1031, 0),
-(98, '4234324', '432432', '2016-07-21', '4324324', '34324324', '3', '18', '32', '43424324', '4324324324', '4324242', '43243224', NULL, 1031, 2),
-(99, '432432432', '432432424', '2016-07-21', '42343242', '43242', '1', '1', '1', '43243242', '432432424', '4324324', '432424', NULL, 1031, 2),
-(100, NULL, NULL, NULL, 'A2', 'B2', '11', '139', '1087', 'P2', NULL, NULL, NULL, NULL, 1032, 0),
-(101, NULL, NULL, NULL, 'A3', 'B3', '12', '141', '1104', 'P3', NULL, NULL, NULL, NULL, 1032, 0),
-(102, 'NAME1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'AADH1', 'PAN1', 'DIR1', 1032, 3),
-(103, 'NAME2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'AADH2', 'PAN2', 'DIR2', 1032, 3);
+(246, NULL, NULL, NULL, 'B-ADD', '42342', '12', '143', '1124', '3234213', NULL, NULL, NULL, NULL, 1038, 0),
+(247, NULL, NULL, NULL, 'fdsfdsfds', 'B2-Street', '16', '230', '1606', '432432432', NULL, NULL, NULL, NULL, 1038, 0),
+(248, 'PROP', NULL, NULL, 'PROP-ADD', 'PROP-Street', '1', '1', '1', '323432', NULL, '', NULL, NULL, 1038, 1),
+(257, NULL, NULL, NULL, 'B-ADD', 'B2', '15', '207', '1512', '3234213', NULL, NULL, NULL, NULL, 1039, 0),
+(258, NULL, NULL, NULL, 'A3', 'B2-Street', '17', '270', '1943', '123456', NULL, NULL, NULL, NULL, 1039, 0),
+(259, 'PAN1', 'Farther', '2016-07-20', 'f1', 's1', '18', '296', '2078', '233232', '4324324242', '3424324', '43243224', NULL, 1039, 2),
+(260, 'p2', 'f2', '2016-07-27', 'f1', 's1', '5', '63', '402', '2121312', '432432424', '', '43243243', NULL, 1039, 2);
 
 -- --------------------------------------------------------
 
@@ -6746,84 +6597,9 @@ CREATE TABLE `entity_iec_info` (
 --
 
 INSERT INTO `entity_iec_info` (`id`, `iec_number`, `iec_doi`, `iec_ia`, `name`, `address1`, `address2`, `state`, `district`, `city`, `pincode`, `telephone`, `mobile1`, `mobile2`, `email1`, `email2`, `website`, `fax`, `category`, `activities`, `other_activities`, `registration_code`, `total_branches`, `pan_name_entity`, `incorporation_date`, `pan_entity`, `total_partners`, `llpin_cin`, `registration_cert_number`, `imr_reg_num`, `imr_doi`, `imr_validity`, `imr_ia`, `imr_reg_prods`, `str_reg_num`, `str_ia`, `str_reg_items`, `rcmc_num`, `rcmc_ia`, `rcmc_doi`, `rcmc_validity`, `rcmc_reg_prods`, `shd_rating`, `shd_cert_num`, `shd_ia`, `shd_doi`, `shd_validity`, `cer_reg_num`, `cer_ia`, `vat_reg_num`, `vat_ia`, `image`, `proof_of_accept`, `status`, `created_on`, `created_by`, `updated_on`, `last_updated_by`) VALUES
-(1, 'dsdas', NULL, NULL, '1', '1', '1', '18', '293', '2067', '2', '2', '2', '2', '2', '2', '2', '2', '1', '1', '', '', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(2, NULL, NULL, NULL, 'a', 'd', 'a', '18', '294', '2072', '1111', '1111111', '1111111', '', 'test@test.com', 'test@test.com', '', '111111', '1', '1', '', '', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(3, NULL, NULL, NULL, '1', '2', '3', '1', '1', '1', '333', '', '1111111111', '', 'test@test.com', '', '', '', '1', '3', '', '', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(4, NULL, NULL, NULL, 'a', 'd', 'a', '5', '61', '386', '1111', '', '111111111', '', 'test@test.com', '', '', '', '1', '1', '', '', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(5, NULL, NULL, NULL, 'a', 'd', 'a', '5', '61', '386', '1111', '', '111111111', '', 'test@test.com', '', '', '', '1', '1', '', '', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(6, NULL, NULL, NULL, 'a', 'd', 'a', '5', '61', '386', '1111', '', '111111111', '', 'test@test.com', '', '', '', '1', '1', '', '', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(7, NULL, NULL, NULL, 'a', 'd', 'a', '1', '2', '4', '1111111', '', '11111111', '', 'test@test.com', '', '', '', '1', '1', '', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(14, NULL, NULL, NULL, 'sasas', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(15, NULL, NULL, NULL, 'sasasa', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(16, NULL, NULL, NULL, 'sasasas', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(17, NULL, NULL, NULL, 'sadssadasdasd', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(18, NULL, NULL, NULL, 'dsadsadadasdsda', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(19, NULL, NULL, NULL, 'dsdasdad', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(20, NULL, NULL, NULL, 'dsdasdasda', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(21, NULL, NULL, NULL, 'dasdasdfsad', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(22, NULL, NULL, NULL, 'dasdasdfsad', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(23, NULL, NULL, NULL, 'dsdasdasda', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(24, NULL, NULL, NULL, 'dadadas', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(25, NULL, NULL, NULL, 'sdsadadasda', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(26, NULL, NULL, NULL, 'dsdsadadavfdsgfdsgsfgsfgdsfgsfg gsdgfdsfgdsfg', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(27, NULL, NULL, NULL, 'dasdasdasdggdf gfgdf', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(28, NULL, NULL, NULL, 'dsadas', 'dsada', 'dasdas', '17', '264', '1907', 'dadasd', '', '213123123', '131313', 'test@test.com', '', '', '331232131', '1', '1', '3123213', '31231', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(29, NULL, NULL, NULL, 'dsadas', 'dsada', 'dasdas', '17', '264', '1907', 'dadasd', '', '213123123', '131313', 'test@test.com', '', '', '331232131', '1', '1', '3123213', '31231', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(30, NULL, NULL, NULL, 'dsadas', 'dsada', 'dasdas', '17', '264', '1907', 'dadasd', '', '213123123', '131313', 'test@test.com', '', '', '331232131', '1', '1', '3123213', '31231', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(31, NULL, NULL, NULL, 'dsadas', 'dsada', 'dasdas', '17', '264', '1907', 'dadasd', '', '213123123', '131313', 'test@test.com', '', '', '331232131', '1', '1', '3123213', '31231', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(32, NULL, NULL, NULL, 'dsadas', 'dsada', 'dasdas', '17', '264', '1907', 'dadasd', '', '213123123', '131313', 'test@test.com', '', '', '331232131', '1', '1', '3123213', '31231', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(33, NULL, NULL, NULL, 'dsadas', 'dsada', 'dasdas', '17', '264', '1907', 'dadasd', '', '213123123', '131313', 'test@test.com', '', '', '331232131', '1', '1', '3123213', '31231', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(34, NULL, NULL, NULL, 'dsadas', 'dsada', 'dasdas', '17', '264', '1907', 'dadasd', '', '213123123', '131313', 'test@test.com', '', '', '331232131', '1', '1', '3123213', '31231', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(35, NULL, NULL, NULL, 'dsadas', 'dsada', 'dasdas', '17', '264', '1907', 'dadasd', '', '213123123', '131313', 'test@test.com', '', '', '331232131', '1', '1', '3123213', '31231', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(36, NULL, NULL, NULL, 'dsadas', 'dsada', 'dasdas', '17', '264', '1907', 'dadasd', '', '213123123', '131313', 'test@test.com', '', '', '331232131', '1', '1', '3123213', '31231', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(37, NULL, NULL, NULL, 'dsadas', 'dsada', 'dasdas', '17', '264', '1907', 'dadasd', '', '213123123', '131313', 'test@test.com', '', '', '331232131', '1', '1', '3123213', '31231', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(38, NULL, NULL, NULL, 'Inturelabs Pvt Ltd', 'AGRA', 'Perunthanni', '18', '294', '2071', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '2', '3,2', '', '', '2', 'INTURELABS', '1984-07-10', 'AVQPR6454E', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(39, NULL, NULL, NULL, 'Inturelabs Pvt Ltd', 'AGRA', 'Perunthanni', '18', '294', '2071', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'INTURELABS', '1984-07-10', 'AVQPR6454E', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(40, NULL, NULL, NULL, 'Inturelabs Pvt Ltd', 'AGRA', 'Perunthanni', '18', '294', '2071', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '3', '3', '', '', '2', 'Rahul', '1984-07-10', '1254555', '2', '1254555', '1254555', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(41, NULL, NULL, NULL, 'Inturelabs Pvt Ltd', 'AGRA', 'Perunthanni', '18', '294', '2071', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '8', '3', '', '', '1', 'Inturelabs Trus', '2015-07-10', 'asd213232', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(42, NULL, NULL, NULL, 'Inturelabs Pvt Ltd', 'AGRA', 'Perunthanni', '18', '294', '2071', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '8', '3', '', '', '1', 'Inturelabs Trus', '2015-07-10', 'asd213232', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(43, '233unn  dffds', NULL, NULL, 'Inturelabs Pvt Ltd', 'AGRA', 'Perunthanni', '18', '294', '2071', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '8', '3', '', '', '1', 'Inturelabs Trus', '2015-07-10', 'asd213232', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(44, NULL, NULL, NULL, 'Inturelabs Pvt Ltd', 'AGRA', 'Perunthanni', '18', '294', '2071', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '8', '3', '', '', '1', 'Inturelabs Trus', '2015-07-10', 'asd213232', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(45, NULL, NULL, NULL, 'Inturelabs Pvt Ltd', 'AGRA', 'Perunthanni', '18', '294', '2071', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '10', '3', '', '', '1', 'Rahul R', '1984-07-10', 'dsdsafa1952', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(46, NULL, NULL, NULL, 'Inturelabs Pvt Ltd', 'AGRA', 'Perunthanni', '18', '294', '2071', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '10', '3', '', '', '1', 'Rahul R', '1984-07-10', 'dsdsafa1952', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(47, 'IEC 233565', NULL, NULL, 'sadssadasdasd', 's', 's', '18', '284', '2028', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '2', '1,2', '', '', '2', 'INTURELABS', '1984-07-10', 'AVQPR6454E', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(48, NULL, NULL, NULL, 'sadssadasdasd', 's', 's', '18', '284', '2028', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '2', '1,2', '', '', '2', 'INTURELABS', '1984-07-10', 'AVQPR6454E', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(49, NULL, NULL, NULL, 'sadssadasdasd', 's', 's', '18', '284', '2028', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '2', '1,2', '', '', '2', 'INTURELABS', '1984-07-10', 'AVQPR6454E', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(50, 'Not Generated', NULL, NULL, 'sadssadasdasd', 's', 's', '18', '284', '2028', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '2', '1,2', '', '', '2', 'INTURELABS', '1984-07-10', 'AVQPR6454E', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(51, NULL, NULL, NULL, 'sadssadasdasd', 's', 's', '18', '284', '2028', '695008', '', '9986167495', '', 'rahulreghu@gmail.com', '', '', '', '2', '1,2', '', '', '2', 'INTURELABS', '1984-07-10', 'AVQPR6454E', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(1000, '43543543 5t r gsfgtre', NULL, NULL, 'Hello', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(1001, '324324 43 545 42', NULL, NULL, 'Hello', '', '', '0', '0', '0', '', '', '', '', '', '', '', '', '1', NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(1002, NULL, NULL, NULL, 'ABC Pvt Ltf', 'Address1', 'Address2', '17', '255', '1853', '560855', '080245466555', '09866545898', '9866586569', 'abc1@abc.com', 'abc2@abc.coom', 'www.abc.com', '04842458585', '1', '3', '', '7878958262662', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(1003, NULL, NULL, NULL, 'Vodafone Pvt Ltd', 'Address2', 'Address3', '21', '379', '2749', '865999', '048521452222', '98656655641', '98545645542', 'voda1@vf.com', 'voda2@vf.com', 'www.vodafone.com', '254854856565', '2', '2,3', '', '1254866245', '2', 'Vodafone', '1984-07-10', 'AVQI96465', '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(1004, NULL, NULL, NULL, 'dadsas', 'dasd', 'dasdfas', '16', '244', '1752', '4325432', '', '3123123213', '', 'abc1@abc.com', '', '', '', '3', '1', '', 'fdsfa', '1', 'afdsf', '1984-07-10', 'fdsfs', '1', 'dsadfds', 'fdsf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(1005, NULL, NULL, NULL, 'Cera India', 'Address1', 'Address2', '10', '130', '1057', '969855', '1324345435643', '98665666641', '98646464454', 'cera-india@cera.com', 'cera-india1@cera.com', 'www.cera.com', '78554555', '3', '1', 'hardware', '3221445555', '2', 'Cera India', '2000-01-01', 'ABC12345', '2', '1236554', '78554555', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(1006, NULL, NULL, NULL, 'Nike India', 'Address1', 'Address2', '17', '273', '1958', '986655', '4587541745', '986566551', '986566551', 'nike@nike.com', 'nike1@nike.com', 'www.nike.com', '7896541122', '8', NULL, 'Society', '748965566', '1', 'Nike Foun', '1984-07-10', 'E566696C', NULL, NULL, '7896547895', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(1007, NULL, NULL, NULL, 'Nike India', 'Address1', 'Address2', '17', '273', '1958', '986655', '4587541745', '986566551', '986566551', 'nike@nike.com', 'nike1@nike.com', 'www.nike.com', '7896541122', '8', NULL, 'Society', '748965566', '1', 'Nike Foun', '1984-07-10', 'E566696C', NULL, NULL, '7896547895', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(1008, NULL, NULL, NULL, 'HUF name', 'HUF add1', 'HUF add2', '17', '271', '1949', '8965555', '56545555', '9898998989', '9898989898', 'huf@huf.com', 'huf2@huf.com', 'www.huf.cm', '7996545888', '10', NULL, 'huf', '78794654544', '1', 'HUF', '2000-07-10', 'abc14256', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '0000-00-00 00:00:00', 0, NULL, NULL),
-(1009, NULL, NULL, NULL, 'fdsfdsfdsf', 'fdsfdsfdsfd', 'fdsfdsfdsf', '4', '35', '213', '54534534', '', '34325324534534', '', 'rahulreghu@gmail.com', '', '', '', '1', '1', '', 'nknknkn', '1', NULL, NULL, NULL, NULL, NULL, NULL, 'fdsfdsfdsf', '2016-06-07', '2016-06-07', 'fdsfdsfdsf', 'fdsfdsfdsfds', 'fdsfdsfs', 'fdsfsdf', 'fdsfdsfs', 'fsdfdsf', 'fsdfdsf', '2016-06-08', '2016-06-08', 'fsdfdsfdsfs', NULL, 'fdsfdsfds', 'fdsfdsf', '2016-06-07', '2016-06-08', 'fdsfsdf', 'fsdfsdf', 'fsdfs', 'fsfsdf', NULL, 1, 1, '2016-06-06 07:42:13', 1, NULL, NULL),
-(1010, NULL, NULL, NULL, 'A', 'B', 'C', '17', '271', '1949', '464646', '', '464646464', '', 'rahulreghu@gmail.com', '', '', '', '2', '1', '', 'adfcdcd', '2', 'advvc12332', '2016-06-21', '34343', '2', NULL, NULL, 'dfsfdsfds', '2016-06-22', '2016-06-24', '43243242', 'fdsfdsfds', 'fdsfdsfds', 'fsdfsdfsd', 'fsdfsd', 'fsfsdf', 'fsfs', '2016-06-09', '2016-06-23', 'fdsfdsf', 0, 'fsdfds', 'fsdfsdf', '2016-06-22', '2016-06-22', 'fdsfdsf', 'fsdf', 'fsdfs', 'fdsf', NULL, 1, 1, '2016-06-20 09:36:36', 1, NULL, NULL),
-(1011, NULL, NULL, NULL, 'dsadsad', 'dasdasd', 'dasdasd', '1', '2', '4', '43432432', '3213123', '324321432', '443432', 'rahulreghu@gmail.com', 'rahul@a.com', '', '', '1', '1', '', 'fdsfdsfddsf', '2', NULL, NULL, NULL, NULL, NULL, NULL, '324342', '2016-07-04', '2016-07-18', 'dasdasd', 'dadasdasd,dasdasd, dasdasd', '323232', 'dasdsad', 'dasdasd', 'dasdasd', 'dada', '2016-07-11', '2016-07-19', 'dadasda', 2, 'ccdsadasd', 'dasdasd', '2016-07-05', '2016-07-19', '432431242', '234324', '4324324', '43242', NULL, 1, 1, '2016-07-18 05:42:21', 1, NULL, NULL),
-(1012, NULL, NULL, NULL, 'dasdasd', 'dasdas', 'dasdasd', '11', '140', '1092', '432432432', '', '334324324', '4234324', 'rahulreghu@gmail.com', 'rahul@a.com', '', '', '1', '1', '', 'fsdfdsf', '2', NULL, NULL, NULL, NULL, NULL, NULL, 'fsdfdsfs', '2016-07-05', '2016-07-20', 'fdsfdsfs', 'fdsf,fsdfdsf,fsdfsd', '4324324', '4234324', '242334324', '4324324', '432432', '2016-07-12', '2016-07-22', 'sfdsf,fdsfdsfs,fsdfs', 2, 'dsadasdf', 'sfdsfsf', '2016-07-12', '2016-07-22', 'fdsfsdfds', 'fdsfs', 'fdsfdsfs', 'fdsfdsf', NULL, 1, 1, '2016-07-18 06:44:59', 1, NULL, NULL),
-(1013, NULL, NULL, NULL, 'dasdasd', 'dasdas', 'dasdasd', '11', '140', '1092', '432432432', '', '334324324', '4234324', 'rahulreghu@gmail.com', 'rahul@a.com', '', '', '1', '1', '', 'fsdfdsf', '2', NULL, NULL, NULL, NULL, NULL, NULL, 'fsdfdsfs', '2016-07-05', '2016-07-20', 'fdsfdsfs', 'fdsf,fsdfdsf,fsdfsd', '4324324', '4234324', '242334324', '4324324', '432432', '2016-07-12', '2016-07-22', 'sfdsf,fdsfdsfs,fsdfs', 2, 'dsadasdf', 'sfdsfsf', '2016-07-12', '2016-07-22', 'fdsfsdfds', 'fdsfs', 'fdsfdsfs', 'fdsfdsf', NULL, 1, 1, '2016-07-18 06:45:45', 1, NULL, NULL),
-(1014, NULL, NULL, NULL, 'dasdasd', 'dasdas', 'dasdasd', '11', '140', '1092', '432432432', '', '334324324', '4234324', 'rahulreghu@gmail.com', 'rahul@a.com', '', '', '1', '1', '', 'fsdfdsf', '2', NULL, NULL, NULL, NULL, NULL, NULL, 'fsdfdsfs', '2016-07-05', '2016-07-20', 'fdsfdsfs', 'fdsf,fsdfdsf,fsdfsd', '4324324', '4234324', '242334324', '4324324', '432432', '2016-07-12', '2016-07-22', 'sfdsf,fdsfdsfs,fsdfs', 2, 'dsadasdf', 'sfdsfsf', '2016-07-12', '2016-07-22', 'fdsfsdfds', 'fdsfs', 'fdsfdsfs', 'fdsfdsf', NULL, 1, 1, '2016-07-18 06:49:45', 1, NULL, NULL),
-(1015, NULL, NULL, NULL, 'asdasdsad', 'dasdasdas', 'dasdasdas', '1', '1', '1', '3123424', '324324324324', '33234124', '432432432', 'rahulreghu@gmail.com', 'rahul@a.com', 'fdsfsdf', '', '1', '1', '', 'dasdsad', '1', NULL, NULL, NULL, NULL, NULL, NULL, 'dada', '2016-07-19', '2016-07-22', 'dasdasd', 'dsada', 'dasdas', 'dasda', 'dasda', 'dasda', 'dasdsa', '2016-07-13', '2016-07-20', 'dasda', 0, 'dasda', 'dada', '2016-07-14', '2016-07-21', 'dasdas', 'dasd', 'dad', 'dada', NULL, 1, 1, '2016-07-18 09:56:01', 1, NULL, NULL),
-(1016, NULL, NULL, NULL, 'dasdasd', 'dasdasd', 'dasdasdas', '10', '131', '1062', '3124324', '4234324324', '434234234', '', 'rahulreghu@gmail.com', 'rahul@a.com', '', '', '1', '1', '', 'fsfsf', '1', NULL, NULL, NULL, NULL, NULL, NULL, 'fsfsfsdf', '2016-07-12', '2016-07-20', 'fsfsfsfsf', 'fsfsfs', 'fsfsf', 'fsfsf', 'fsfsfsf', '423424', 'fsfsdf', '2016-07-12', '2016-07-20', 'fsfsdfs,fdsfsdfs', 0, 'fsfsf', 'fsf', '2016-07-06', '2016-07-21', 'fsfsf', 'fdsfsf', 'fsfs', 'fsfs', NULL, 1, 1, '2016-07-18 10:00:22', 1, NULL, NULL),
-(1017, NULL, NULL, NULL, 'new partnership with 2 branches and 2 partners and 2 turnover', 'fdsfdsf', 'fdsfds', '16', '229', '1601', 'e43432432', '34342432', '432432432', '43243242', 'rahulreghu@gmail.com', 'rahul@a.com', '', '', '2', '1', '', 'vdvdvdv', '2', 'sfsfsdfs', '2016-07-28', 'fsfsfsfs', '2', NULL, NULL, 'fdsfsdfsf', '2016-07-06', '2016-07-21', 'fsfsfsfsf', 'dadasdasd,dasdasd, dasdasd', 'fsfsf', 'fsfsf', 'dasda,gdfgdfg', '423424', 'dasdsa', '2016-07-14', '2016-07-22', 'fgdsgdgdg', 2, 'fdsfdsfgdg', 'gdfgd', '2016-06-03', '2016-07-21', 'fdsfgdfgdf', 'ggdfgdg', 'gdgdg', 'gdgdg', NULL, 1, 1, '2016-07-18 10:38:58', 1, NULL, NULL),
-(1018, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'abc', 'abc', '8', '127', '1054', '5748379', '', '98964646464', '464464646', 'rahulreghu@gmail.com', '', '', '', '2', '1', '', '2432342', '2', 'fdsfdsfds', '2016-07-13', '4324324324', '2', NULL, NULL, 'safdsfds', '2016-07-12', '2016-07-14', '432432432', 'fdsfdsfds', '4324324', '432424', 'fsdfsdfds', '3214324', '432432', '2016-07-21', '2016-07-21', '434324324', 2, '31234124', '43432', '2016-07-20', '2016-07-20', '3424324', '432424', '4324324', '4324324', NULL, 1, 1, '2016-07-20 09:47:13', 1, NULL, NULL),
-(1019, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'asnjv', 'nfkdsnf', '1', '2', '4', '543543', '', '98964646464', '', 'rahulreghu@gmail.com', 'rahul@a.com', '', '', '2', '1', '', '', '2', 'dsfsfdsf', '2016-07-18', 'fdsfdsfs', '2', NULL, NULL, 'fdsfdsfdsfd', '2016-07-21', '2016-07-22', 'fdsfdsfsf', 'fsdfsdfsdf', 'fdsfdsfdsf', 'fdsfdsfsf', 'dasda,gdfgdfg', 'fdsfdsfdsf', 'fdsfdsfs', '2016-07-21', '2016-07-22', 'fsfdsfds', 2, 'sfdsfsdf', 'fdsfdsf', '2016-07-21', '2016-07-21', 'fdsfdsfds', 'fsdfsd', 'fdsfds', 'fsdfdsf', NULL, 1, 1, '2016-07-20 10:16:41', 1, NULL, NULL),
-(1020, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dsadsadf', 'fdsfdsfs', '17', '268', '1928', '4324324', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'fdsfdsfs', '2016-07-21', '43243242', '2', NULL, NULL, 'fsdfsdfs', '2016-07-19', '2016-07-22', '432432432', '432432424', '423432', '43242', '42342', '432432', '4423424', '2016-07-21', '2016-07-21', '', 1, 'srfewrewr', 'rwrewr', '2016-07-20', '2016-07-21', 'rwerewr', 'rewre', 'rrwerewr', 'rewrw', NULL, 1, 1, '2016-07-20 10:19:44', 1, NULL, NULL),
-(1021, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dsadsadf', 'fdsfdsfs', '17', '268', '1928', '4324324', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'fdsfdsfs', '2016-07-21', '43243242', '2', NULL, NULL, 'fsdfsdfs', '2016-07-19', '2016-07-22', '432432432', '432432424', '423432', '43242', '42342', '432432', '4423424', '2016-07-21', '2016-07-21', '', 1, 'srfewrewr', 'rwrewr', '2016-07-20', '2016-07-21', 'rwerewr', 'rewre', 'rrwerewr', 'rewrw', NULL, 1, 1, '2016-07-20 10:21:33', 1, NULL, NULL),
-(1022, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dsadsadf', 'fdsfdsfs', '17', '268', '1928', '4324324', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'fdsfdsfs', '2016-07-21', '43243242', '2', NULL, NULL, 'fsdfsdfs', '2016-07-19', '2016-07-22', '432432432', '432432424', '423432', '43242', '42342', '432432', '4423424', '2016-07-21', '2016-07-21', '', 1, 'srfewrewr', 'rwrewr', '2016-07-20', '2016-07-21', 'rwerewr', 'rewre', 'rrwerewr', 'rewrw', NULL, 1, 1, '2016-07-20 10:24:59', 1, NULL, NULL),
-(1023, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dsadsadf', 'fdsfdsfs', '17', '268', '1928', '4324324', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'fdsfdsfs', '2016-07-21', '43243242', '2', NULL, NULL, 'fsdfsdfs', '2016-07-19', '2016-07-22', '432432432', '432432424', '423432', '43242', '42342', '432432', '4423424', '2016-07-21', '2016-07-21', '', 1, 'srfewrewr', 'rwrewr', '2016-07-20', '2016-07-21', 'rwerewr', 'rewre', 'rrwerewr', 'rewrw', NULL, 1, 1, '2016-07-20 10:25:29', 1, NULL, NULL),
-(1024, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dsadsadf', 'fdsfdsfs', '17', '268', '1928', '4324324', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'fdsfdsfs', '2016-07-21', '43243242', '2', NULL, NULL, 'fsdfsdfs', '2016-07-19', '2016-07-22', '432432432', '432432424', '423432', '43242', '42342', '432432', '4423424', '2016-07-21', '2016-07-21', '', 1, 'srfewrewr', 'rwrewr', '2016-07-20', '2016-07-21', 'rwerewr', 'rewre', 'rrwerewr', 'rewrw', NULL, 1, 1, '2016-07-20 10:25:42', 1, NULL, NULL),
-(1025, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dsadsadf', 'fdsfdsfs', '17', '268', '1928', '4324324', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'fdsfdsfs', '2016-07-21', '43243242', '2', NULL, NULL, 'fsdfsdfs', '2016-07-19', '2016-07-22', '432432432', '432432424', '423432', '43242', '42342', '432432', '4423424', '2016-07-21', '2016-07-21', '', 1, 'srfewrewr', 'rwrewr', '2016-07-20', '2016-07-21', 'rwerewr', 'rewre', 'rrwerewr', 'rewrw', NULL, 1, 1, '2016-07-20 10:28:07', 1, NULL, NULL),
-(1026, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dsadsadf', 'fdsfdsfs', '17', '268', '1928', '4324324', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'fdsfdsfs', '2016-07-21', '43243242', '2', NULL, NULL, 'fsdfsdfs', '2016-07-19', '2016-07-22', '432432432', '432432424', '423432', '43242', '42342', '432432', '4423424', '2016-07-21', '2016-07-21', '', 1, 'srfewrewr', 'rwrewr', '2016-07-20', '2016-07-21', 'rwerewr', 'rewre', 'rrwerewr', 'rewrw', NULL, 1, 1, '2016-07-20 10:28:50', 1, NULL, NULL),
-(1027, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dsadsadf', 'fdsfdsfs', '17', '268', '1928', '4324324', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'fdsfdsfs', '2016-07-21', '43243242', '2', NULL, NULL, 'fsdfsdfs', '2016-07-19', '2016-07-22', '432432432', '432432424', '423432', '43242', '42342', '432432', '4423424', '2016-07-21', '2016-07-21', '', 1, 'srfewrewr', 'rwrewr', '2016-07-20', '2016-07-21', 'rwerewr', 'rewre', 'rrwerewr', 'rewrw', NULL, 1, 1, '2016-07-20 10:40:11', 1, NULL, NULL),
-(1028, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dsadsadf', 'fdsfdsfs', '17', '268', '1928', '4324324', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'fdsfdsfs', '2016-07-21', '43243242', '2', NULL, NULL, 'fsdfsdfs', '2016-07-19', '2016-07-22', '432432432', '432432424', '423432', '43242', '42342', '432432', '4423424', '2016-07-21', '2016-07-21', '', 1, 'srfewrewr', 'rwrewr', '2016-07-20', '2016-07-21', 'rwerewr', 'rewre', 'rrwerewr', 'rewrw', NULL, 1, 1, '2016-07-20 10:41:09', 1, NULL, NULL),
-(1029, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dsadsadf', 'fdsfdsfs', '17', '268', '1928', '4324324', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'fdsfdsfs', '2016-07-21', '43243242', '2', NULL, NULL, 'fsdfsdfs', '2016-07-19', '2016-07-22', '432432432', '432432424', '423432', '43242', '42342', '432432', '4423424', '2016-07-21', '2016-07-21', '', 1, 'srfewrewr', 'rwrewr', '2016-07-20', '2016-07-21', 'rwerewr', 'rewre', 'rrwerewr', 'rewrw', NULL, 1, 1, '2016-07-20 10:41:42', 1, NULL, NULL),
-(1030, NULL, NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dsadsadf', 'fdsfdsfs', '17', '268', '1928', '4324324', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '2', '3', '', '', '2', 'fdsfdsfs', '2016-07-21', '43243242', '2', NULL, NULL, 'fsdfsdfs', '2016-07-19', '2016-07-22', '432432432', '432432424', '423432', '43242', '42342', '432432', '4423424', '2016-07-21', '2016-07-21', '', 1, 'srfewrewr', 'rwrewr', '2016-07-20', '2016-07-21', 'rwerewr', 'rewre', 'rrwerewr', 'rewrw', NULL, 1, 1, '2016-07-20 10:43:23', 1, NULL, NULL),
-(1031, '2345', NULL, NULL, 'new partnership with 1 branch and 2 partners and 2 turnover', 'dasdasd', 'dasdasdas', '1', '1', '1', '432424324', '', '4324324324324', '', 'rahulreghu@gmail.com', '', '', '', '2', '1', '', '432432', '2', '4234324', '2016-07-21', '432424', '2', NULL, NULL, '42342', '2016-07-21', '2016-07-22', '4234324', '434324', '434324', '43243', 'dasda,gdfgdfg', '4324324', '4324324', '2016-07-21', '2016-07-23', '43432423', 2, 'rewrewrewr', 'rwerewrw', '2016-07-21', '2016-07-22', 'rwerwer', 'rewrewr', 'rewrw', 'rewrwr', NULL, 1, 1, '2016-07-20 10:46:16', 1, NULL, NULL),
-(1032, '1234', NULL, NULL, 'Limited Liabiliy with 2 branches and 2 partners', 'A1', 'B2', '1', '1', '1', 'P1', '', '98964646464', '', 'rahulreghu@gmail.com', '', '', '', '3', '1', '', '', '2', 'PAN NAME1', '2016-07-21', 'PAN1', '2', '434324324', '43424242', 'IRD1', '2016-07-21', '2016-07-22', 'IRD2', 'A,B,C,D', 'STR1', 'STR2', 'A,B,C,D', 'RCMC1', 'RCMC2', '2016-07-21', '2016-07-22', 'A,B,C,D', 5, 'SHD1', 'SHD2', '2016-07-25', '2016-07-27', 'CERD1', 'CERD2', 'VAT1', 'VAT2', NULL, 1, 1, '2016-07-21 08:37:19', 1, NULL, NULL);
+(1037, NULL, NULL, NULL, 'IEC for 1 branch and 1 Proprietorship', 'FLAT', 'STEET', '1', '1', '3', '123455', '', '98964646464', '', 'rahulreghu@gmail.com', '', 'www.test.com', '1234', '1', '1', '', 'dasdsad', '1', NULL, NULL, NULL, NULL, NULL, NULL, 'IRD-SSL', '2016-07-01', '2016-07-26', 'IA', 'dadasdasd,dasdasd, dasdasd', 'STR', 'IA', 'dasda,gdfgdfg', 'RCMC-111', 'IA', '2016-07-01', '2016-07-26', 'fsfsdfs,fdsfsdfs', 2, 'SHD1', 'DEF5678', '2016-07-01', '2016-07-26', 'CERD', 'IA', 'VAT 10', 'IA', NULL, 1, 7, '2016-07-26 01:03:04', 1, NULL, NULL),
+(1038, NULL, NULL, NULL, 'IEC for 1 branch and 1 Proprietorship', 'FLAT', 'STEET', '1', '1', '1', '3123424', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '1', '1', 'dadfasda', 'dasdsad', '2', NULL, NULL, NULL, NULL, NULL, NULL, 'IRD-SSL', '2016-07-11', '2016-07-20', 'dasdasd', 'dadasdasd,dasdasd, dasdasd', 'dasdas', 'IA', 'dasda,gdfgdfg', 'RCMC-111', 'IA', '2016-07-12', '2016-07-28', 'fsfsdfs,fdsfsdfs', 0, 'dasda', 'DEF5678', '2016-07-04', '2016-07-20', 'dasdas', 'IA', 'VAT 10', 'IA', NULL, 1, 1, '2016-07-26 01:12:39', 1, '2016-07-26 01:43:43', 1),
+(1039, NULL, NULL, NULL, 'IEC for 1 branch and 2 Partnership', 'FLAT', 'STEET', '1', '1', '1', '32323', '', '98964646464', '', 'rahulreghu@gmail.com', '', '', '', '2', '1', '', '', '2', 'PAN', '2016-07-28', 'asdf1234', '2', NULL, NULL, '21323234', '2016-07-26', '2016-07-28', 'IA', 'dsada', 'STR', 'IA', 'dasda', 'RCMC-111', 'IA', '2016-07-27', '2016-07-27', 'fsfsdfs,fdsfsdfs', 0, 'dasda', 'DEF5678', '2016-07-19', '2016-07-27', 'dasdas', 'IA', 'VAT 10', 'IA', NULL, 1, 1, '2016-07-26 01:48:42', 1, '2016-07-26 01:49:44', 1);
 
 -- --------------------------------------------------------
 
@@ -6910,14 +6686,9 @@ CREATE TABLE `financial_details` (
 --
 
 INSERT INTO `financial_details` (`id`, `financial_year`, `domestic_turnover`, `export_turnover`, `total_fob`, `entity_iec_id`, `epcg_export_id`) VALUES
-(1, '2015 - 2016', '432242', '4242342', NULL, 1016, 0),
-(2, '2015 - 2016', '4354353454', '5345435', NULL, 1017, 0),
-(3, '2014 - 2015', '5345345', '53454353', NULL, 1017, 0),
-(4, '2015 - 2016', '3214324', '4324324', NULL, 1018, 0),
-(5, '2014 - 2015', '34324324', '434324', NULL, 1018, 0),
-(6, '2015 - 2016', '324324', '4324324', NULL, 1031, 0),
-(7, '2015 - 2016', '100000', '200000', NULL, 1032, 0),
-(8, '2014 - 2015', '300000', '400000', NULL, 1032, 0);
+(11, '2015 - 2016', '200000', '200000', NULL, 1038, 0),
+(12, '2015 - 2016', '200000', '200000', NULL, 1038, 0),
+(15, '2015 - 2016', '300000', '20000', NULL, 1039, 0);
 
 -- --------------------------------------------------------
 
@@ -7181,7 +6952,7 @@ ALTER TABLE `entity_activities`
 -- AUTO_INCREMENT for table `entity_bank_details`
 --
 ALTER TABLE `entity_bank_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 --
 -- AUTO_INCREMENT for table `entity_categories`
 --
@@ -7191,17 +6962,17 @@ ALTER TABLE `entity_categories`
 -- AUTO_INCREMENT for table `entity_details`
 --
 ALTER TABLE `entity_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
 --
 -- AUTO_INCREMENT for table `entity_iec_info`
 --
 ALTER TABLE `entity_iec_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1033;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1040;
 --
 -- AUTO_INCREMENT for table `financial_details`
 --
 ALTER TABLE `financial_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `options`
 --

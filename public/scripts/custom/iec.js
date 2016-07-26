@@ -25,19 +25,20 @@ $('#iec_form').find('.input').keypress(function(e){
 });
 
 //generate the box for enterning branch details
+/*
 $(function(){
 	$("#branch_total").on( "focusout", function() {
 		var count = this.value - 1;
 		//if(this.value > 1){
 			var type = 'branch';
 			var branch_total = 0;
-			/*var count = this.value - 1;
-			if($("#dummy_branch_total").val()){
-				branch_total = $("#dummy_branch_total").val();
-				count = (this.value - branch_total);
-			}else{
-				count = this.value;
-			}*/
+			//var count = this.value - 1;
+			//if($("#dummy_branch_total").val()){
+			//	branch_total = $("#dummy_branch_total").val();
+			//	count = (this.value - branch_total);
+			//}else{
+			//	count = this.value;
+			//}
 			if(count >= 1){
 				var branch = generateRequiredBox(count,type); 
 				$('#branch_details').empty();
@@ -96,11 +97,12 @@ $(function(){
 		}	
 	});
 });
-
+*/
 
 //generate the box when clicking add new button for branches
 $( "#add_branch" ).on('click',function() {
-	var total_branches = parseInt($("#branch_total").val()) + parseInt(1);
+	var total_bch = $.isNumeric(parseInt($("#branch_total").val())) ? parseInt($("#branch_total").val()) : 0;
+	var total_branches = total_bch + parseInt(1);
 	$("#branch_total").val(total_branches);
 	var branch_count = parseInt($("#branch_count").val()) + parseInt(1);
 	$("#branch_count").val(branch_count);
@@ -111,7 +113,8 @@ $( "#add_branch" ).on('click',function() {
 
 //generate the box when clicking add new button for partners
 $( "#add_partner" ).on('click',function() {
-	var total_partners = parseInt($("#partner_total").val()) + parseInt(1);
+	var total_ptr = $.isNumeric(parseInt($("#partner_total").val())) ? parseInt($("#partner_total").val()) : 0;
+	var total_partners = total_ptr + parseInt(1);
 	$("#partner_total").val(total_partners);
 	var partner_count = parseInt($("#partner_count").val()) + parseInt(1);
 	$("#partner_count").val(partner_count);
@@ -122,7 +125,8 @@ $( "#add_partner" ).on('click',function() {
 
 //generate the box when clicking add new button for privateltd
 $( "#add_privateltd" ).on('click',function() {
-	var total_privateltd = parseInt($("#privateltd_total").val()) + parseInt(1);
+	var total_ptd = $.isNumeric(parseInt($("#privateltd_total").val())) ? parseInt($("#privateltd_total").val()) : 0;
+	var total_privateltd = total_ptd + parseInt(1);
 	$("#privateltd_total").val(total_privateltd);
 	var privateltd_count = parseInt($("#privateltd_count").val()) + parseInt(1);
 	$("#privateltd_count").val(privateltd_count);
@@ -132,12 +136,10 @@ $( "#add_privateltd" ).on('click',function() {
 });
 
 //function for generating required box
-//count =  set id, type = set type
 function generateRequiredBox(i,type){
 	var box = "";
 	var jsscript = "";
 	if(type == 'branch'){
-		//for(i=1; i<=count; i++){
 			box += '<div id="branch_container'+i+'"> <table class="table table-bordered"><tr><td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>';
 			box += '<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch['+i+'][address1]" id="branch'+i+'_address1"></td></tr>';
 			box += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch['+i+'][address2]" id="branch'+i+'_address2"></td></tr>';
@@ -146,10 +148,8 @@ function generateRequiredBox(i,type){
 			box += '<tr><td>City:<span class="required">*</span></td><td><select name="branch['+i+'][city]" id="branch'+i+'_city" class="city_dymselectbox"><option value="0">--Select--</option></select></td>';
 			box += '<td>Pincode:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Pincode" name="branch['+i+'][pincode]" id="branch'+i+'_pincode"></td></tr>';
 			box += '<tr><td colspan="6" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_branch_'+i+'">Remove</button></td></tr></table></div>';
-		//}
 	}
 	if(type == 'partner'){
-		//for(i=1; i<=count; i++){
 			box += '<div id="partner_container'+i+'"> <table class="table table-bordered">'
 			box += '<tr><td colspan="2">a. Name as in PAN:<span class="required">*</span> </td><td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners]['+i+'][name]" id="partner'+i+'_name"></td></tr>';
 			box += '<tr><td colspan="2">b. Father\'s Name:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Father\'s name" name="entity_partnership[partners]['+i+'][surname]" id="partner'+i+'_surname"></td></tr>';
@@ -166,17 +166,14 @@ function generateRequiredBox(i,type){
 			box += '<tr><td colspan="6" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_partner_'+i+'">Remove</button></td></tr></table>';
 			jsscript += "$('#partner"+i+"_dob').datepicker({format: 'dd/mm/yyyy'});";
 			box += '<script>'+jsscript+'</script></div>';
-		//}
 		
 	}
 	if(type == 'privateltd'){
-		//for(i=1; i<count; i++){
 			box += '<div id="privateltd_container'+i+'"><table  class="table table-bordered"><tr><td width="285px;">a. Name:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners]['+i+'][name]" id="privateltd'+i+'_name"></td></tr>';
 			box += '<tr><tr><td>b. PAN:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners]['+i+'][pan]" id="privateltd'+i+'_pan"></td></tr>';
 			box += '<tr><td>c. Director Identity Number:<span class="required">*</span></td><td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners]['+i+'][director_id_number]" id="privateltd'+i+'_director_id"></td></tr>';
 			box += '<tr><td >d. Aadhaar Card Number, if available:</td><td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners]['+i+'][aadhaar_number]" id="privateltd'+i+'_aadhaarno"></td></tr>';	
 			box += '<tr><td colspan="6" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_privateltd_'+i+'">Remove</button></td></tr></table>';
-		//}
 	}
 	return box;
 }
@@ -771,8 +768,8 @@ $("#save_iecform").on('click',function() {
 	}
 });
 
-//delete epcg
-$( "[id^=deleteIec]" ).on('click',function() {
+//delete epcg iec_lists
+$("#iec_lists").on('click','[id^=deleteIec_]',function() {
 	var id = $(this).val();
 	var table = $('table#displayIec').DataTable();
 	var trParent =  $(this).parents('tr');
@@ -830,21 +827,16 @@ $(function() {
 
 //remove button on editing
 $( "[id^=remove_]" ).on('click',function(){
-	alert('1');
 	var idname =  $(this).attr('id');
 	var id = idname.split("_");
 	var total_branches = $('#'+id[1]+'_total').val();
-//	var dummy_total_branches = $('#dummy_'+id[1]+'_total').val();
 	var parent_div = id[1]+'_container'+id[2];
 	bootbox.confirm("Are you sure you want to delete?",'No','Yes',function(result) {
 		if (result) { 
-			alert(parent_div);
 			$("#"+parent_div).remove();
-	//		$('#dummy_'+id[1]+'_total').val(dummy_total_branches-1);
 			if(total_branches > 1){
 				$('#'+id[1]+'_total').val(total_branches-1);
 			}else{
-				//$('#default_'+id[1]+'_container').show();
 				$('#'+id[1]+'_total').val('');
 			}
 		}
@@ -852,25 +844,20 @@ $( "[id^=remove_]" ).on('click',function(){
 	return false;
 });
 
-//remove button on adding
+//remove button on adding; dynamic table
 $( "#branch_details, #partner_details, #privateltd_details" ).on('click', "[id^=remove_]",function(){
-	alert('2');
 	var idname =  $(this).attr('id');
 	var id = idname.split("_");
 	var total_branches = $('#'+id[1]+'_total').val();
-//	var dummy_total_branches = $('#dummy_'+id[1]+'_total').val();
 	var parent_div = id[1]+'_container'+id[2];
 	bootbox.confirm("Are you sure you want to delete?",'No','Yes',function(result) {
 		if (result) { 
-	//		alert(parent_div);
 			$("#"+parent_div).remove();
-	//		$('#dummy_'+id[1]+'_total').val(dummy_total_branches-1);
-			if(total_branches >= 1){
+			if(total_branches > 1){
 				$('#'+id[1]+'_total').val(total_branches-1);
-			}/*else{
-				//$('#default_'+id[1]+'_container').show();
+			}else{
 				$('#'+id[1]+'_total').val('');
-			}*/
+			}
 		}
 	});
 	return false;
@@ -901,6 +888,7 @@ $( "#sendemailnotification" ).on('click',function(){
 	}
 	
 });
+
 /*
 $( "#sendemailnotification" ).on('click',function(){
 	var selected = [];

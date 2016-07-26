@@ -11,6 +11,10 @@ class Model_FinancialDetails{
 		return self::getTableInstance()->addFinancialDetails($data,$iec_id);
 	}
 	
+	public static function updateFinancialDetails($data,$iec_id){
+		return self::getTableInstance()->updateFinancialDetails($data,$iec_id);
+	}
+	
 	public static function getFinancialDetailsByIecId($iec_id){
 		return self::getTableInstance()->getFinancialDetailsByIecId($iec_id);
 	}

@@ -15,4 +15,8 @@ class Model_EntityBankDetails{
 	public static function getBankDetailsByIecId($id){
 		return self::getTableInstance()->getBankDetailsByIecId($id);
 	}
+
+	public static function updateBankDetails($value,$iec_id){
+		return self::getTableInstance()->updateBankDetails($value,$iec_id);
+	}
 }

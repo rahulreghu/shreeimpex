@@ -8,12 +8,15 @@ class Model_EntityDetails{
 		return self::$_table;
 	}
 	
-	public static function addEntityDetails($data,$cat_id,$id){
-		return self::getTableInstance()->addEntityDetails($data,$cat_id,$id);
+	public static function addEntityDetails($data,$cat_id,$iec_id){
+		return self::getTableInstance()->addEntityDetails($data,$cat_id,$iec_id);
 	}
 	
 	 public static function getIecDetailsByIecId($id){
 	 	return self::getTableInstance()->getIecDetailsByIecId($id);
 	 }
 	 
+	 public static function updateEntityDetails($data,$cat_id,$iec_id){
+	 	return self::getTableInstance()->updateEntityDetails($data,$cat_id,$iec_id);
+	 } 
 }

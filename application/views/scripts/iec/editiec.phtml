@@ -1,4 +1,5 @@
 <div id="error_message" class="alert alert-error" <?php echo !empty($this->response['status']) && $this->response['status'] == 0 ? "" : "style='display: none;'"?>></div>
+<!-- templates -->
 <div style="display: none;">
 	<select name="state" id="state_template" >
 		<option value="0">--Select--</option>
@@ -7,6 +8,7 @@
 	  	<?php }?>
 	</select>
 </div>
+<!-- templates -->
 <form action="iec/editiec" method="post" name="iec_form" id="iec_form" enctype="multipart/form-data"> 
 	<table class="table table-bordered" style="width: 950px">
 		<caption style="height: 30px">
@@ -40,7 +42,11 @@
 			<strong>Applicant Details <input class="input-block-level" type="hidden"  name="iec_id" id="iec_id" value="<?php echo !empty($_GET['id'])? $_GET['id'] : ""?>" ></strong>
 		</caption>
 		<tr class="info">
-			<td colspan="5">Part A:</td>
+			<td colspan="5">Part A:  </td>
+		</tr>
+		<tr>
+			<td colspan="2">IEC Number</td>
+			<td colspan="3"><input type="text" class="input-block-level" value="<?php echo !empty($this->iec_info['iec_number'])? $this->iec_info['iec_number'] : ""?>" /></td>
 		</tr>
 		<tr>
 			<td colspan="2">i. Name of entity in whose name IEC is required<span class="required">*</span></td>
@@ -117,7 +123,7 @@
 			<td colspan="2"><input class="input-block-level" type="text"	placeholder="Other Mobile No" name="entity[mobile2]" id="entity_mobile2" value="<?php echo !empty($this->iec_info['mobile2'])? $this->iec_info['mobile2'] : ""?>"></td>
 		</tr>
 		<tr>
-			<td rowspan="3" colspan="2">v. Email ID/Website Address:</td>
+			<td rowspan="4" colspan="2">v. Email ID/Website Address:</td>
 			<td>Primary Email ID:<span class="required">*</span></td>
 			<td colspan="2"><input class="input-block-level" type="text" placeholder="Primary Email ID" name="entity[email1]" id="entity_email1" value="<?php echo !empty($this->iec_info['email1'])? $this->iec_info['email1'] : ""?>"></td>
 		</tr>
@@ -130,8 +136,8 @@
 			<td colspan="2"><input class="input-block-level" type="text" placeholder="Website" name="entity[website]" id="entity_website" value="<?php echo !empty($this->iec_info['website'])? $this->iec_info['website'] : ""?>"></td>
 		</tr>
 		<tr>
-			<td colspan="2">FAX No:(if any, with area code)</td>
-			<td colspan="3"><input class="input-xlarge" type="text" placeholder="FAX No" name="entity[fax]" id="entity_fax" value="<?php echo !empty($this->iec_info['fax'])? $this->iec_info['fax'] : ""?>"></td>
+			<td>FAX No:(if any, with area code)</td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="FAX No" name="entity[fax]" id="entity_fax" value="<?php echo !empty($this->iec_info['fax'])? $this->iec_info['fax'] : ""?>"></td>
 		</tr>
 		<tr>
 			<td colspan="2">vi. Nature of concern/entity:<span class="required">*</span></td>
@@ -225,11 +231,13 @@
 			<td colspan="4">i. Enter number of Branches/Divisions/Units/Facories in India and abroad:<span class="required">*</span></td>
 			
 			<td style="text-align: right;">
+				<!-- show the total number of branches -->
 				<input class="input-block-level" type="text" placeholder="Number of branches" name="entity[total_branches]" id="branch_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" readonly="readonly">
-				<!-- <input class="input-block-level" type="hidden"  name="dummy_branch_total" id="dummy_branch_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" > -->
+				<!-- existing total number of branches -->
 				<input class="input-block-level" type="hidden"  name="edit_branch_total" id="edit_branch_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" >
-				<input class="input-block-level" type="hidden" value = "<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : 0?>" placeholder="Number of branches" name="branch_count" id="branch_count" >
-				<button class="btn btn-mini btn-success" type="button" id="add_branch" >Add Branch</button>
+				<!-- for assigning the container number for the auto generated form -->
+				<input class="input-block-level" type="hidden" value = "<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches']-1 : 0?>" name="branch_count" id="branch_count" >
+				<button class="btn btn-mini btn-success" type="button" id="add_branch" >Add</button>
 			</td>
 		</tr>
 		<tr>
@@ -238,23 +246,25 @@
 		<?php if(!empty($this->iec_info['total_branches'])){
 				foreach($this->iec_branches as $id => $branch){
 					$select_branch_id = $id;
-					$default_branch_display = "style='display:none'";
 			?>
 				<div id="branch_container<?=$id?>"> 
 					<table class="table table-bordered">
 						<tr>
 							<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
 							<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch_[<?=$id?>][address1]" id="branch_<?=$id?>_address1" value="<?php echo !empty($branch['address1'])? $branch['address1'] : ""?>"></td>
+							<td colspan="3">
+								<!-- <input class="input-block-level" type="hidden" name="branch[<?=$id?>][id]" value="<?php echo $branch['id']?>"> -->
+								<input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch[<?=$id?>][address1]" id="branch<?=$id?>_address1" value="<?php echo !empty($branch['address1'])? $branch['address1'] : ""?>">
+							</td>
 						</tr>
 						<tr>
 							<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch_[<?=$id?>][address2]" id="branch_<?=$id?>_address2" value="<?php echo !empty($branch['address2'])? $branch['address2'] : ""?>"></td>
+							<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch[<?=$id?>][address2]" id="branch<?=$id?>_address2" value="<?php echo !empty($branch['address2'])? $branch['address2'] : ""?>"></td>
 						</tr>
 						<tr>
 							<td>State:<span class="required">*</span></td>
 							<td>
-								<select name="branch_[<?=$id?>][state]" id="branch_<?=$id?>_state"  class="state_selectbox">
+								<select name="branch[<?=$id?>][state]" id="branch<?=$id?>_state"  class="state_selectbox">
 									<option value="0">--Select--</option>
 									<?php foreach ($this->states as $state){
 										$state_selected_select_branch_id =  "";
@@ -268,7 +278,7 @@
 							</td>
 							<td>District:<span class="required">*</span></td>
 							<td>
-								<select name="branch_[<?=$id?>][district]" id="branch_<?=$id?>_district" class="district_selectbox">
+								<select name="branch[<?=$id?>][district]" id="branch<?=$id?>_district" class="district_selectbox">
 									<option value="0">--Select--</option>
 									<?php foreach ($branch['districts'] as $district){
 											$district_selected_select_branch_id =  "";
@@ -284,7 +294,7 @@
 						<tr>
 							<td>City:<span class="required">*</span></td>
 							<td>
-								<select name="branch_[<?=$id?>][city]" id="branch_<?=$id?>_city" class="city_selectbox">
+								<select name="branch[<?=$id?>][city]" id="branch<?=$id?>_city" class="city_selectbox">
 									<option value="0">--Select--</option>
 									<?php foreach ($branch['cities'] as $city){
 											$city_selected_select_branch_id =  "";
@@ -297,53 +307,12 @@
 								</select>
 							</td>
 							<td>Pincode:<span class="required">*</span></td>
-							<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch_[<?=$id?>][pincode]" id="branch_<?=$id?>_pincode" value="<?php echo !empty($branch['pincode'])? $branch['pincode'] : ""?>"></td>
+							<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[<?=$id?>][pincode]" id="branch<?=$id?>_pincode" value="<?php echo !empty($branch['pincode'])? $branch['pincode'] : ""?>"></td>
 						</tr>
 						<tr><td colspan="5" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_branch_<?=$id?>" >Remove</button></td></tr>
 					</table>
 				</div>
 		<?php  }}?>
-		<!-- 
-				<div id="default_branch_container" <?php echo !empty($default_branch_display)? $default_branch_display : ""?>>
-					<table class="table table-bordered">
-						<tr>
-							<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
-							<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch[0][address1]" id="branch0_address1" ></td>
-						</tr>
-						<tr>
-							<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch[0][address2]" id="branch0_address2" ></td>
-						</tr>
-						<tr>
-							<td>State:<span class="required">*</span></td>
-							<td>
-								<select name="branch[0][state]" id="branch0_state"  class="state_selectbox">
-									<option value="0">--Select--</option>
-									<?php foreach ($this->states as $state){?>
-								  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
-								  	<?php }?>
-								</select>
-							</td>
-							<td>District:<span class="required">*</span></td>
-							<td>
-								<select name="branch[0][district]" id="branch0_district" class="district_selectbox">
-									<option value="0">--Select--</option>
-								</select>
-							</td>	
-						</tr>
-						<tr>
-							<td>City:<span class="required">*</span></td>
-							<td>
-								<select name="branch[0][city]" id="branch0_city" class="city_selectbox">
-									<option value="0">--Select--</option>
-								</select>
-							</td>
-							<td>Pincode:<span class="required">*</span></td>
-							<td><input class="input-block-level" type="text" placeholder="Pincode" name="branch[0][pincode]" id="branch0_pincode" ></td>
-						</tr>
-					</table>
-				</div> -->
 				<div id="branch_details"></div>
 			</td>	
 		</tr>
@@ -353,6 +322,7 @@
 			<td>Part C: Please fill in the following details:</td>
 		</tr>
 	</table>
+	<!-- Proprietorship Section -->
 	<div id="firm_proprietorship"> 
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
@@ -425,14 +395,15 @@
 			</tr>
 		</table>
 	</div>
+	<!-- Partnership Section -->
 	<div id="firm_partnership">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
 				<td colspan="5">Part C2: In case he entity is a Partnership firm:</td>
 			</tr>
 			<tr>
-				<td colspan="1" rowspan="3">1. PAN details in the entity:</td>
-				<td colspan="2">Name as in PAN:<span class="required">*</span></td>
+				<td colspan="1" rowspan="3" >1. PAN details in the entity:</td>
+				<td colspan="2" width="300px">Name as in PAN:<span class="required">*</span></td>
 				<td colspan="2" width="300px;"><input class="input-block-level" type="text"	placeholder="Name as in PAN" name="entity_partnership[pan_name_entity]" id="partner_pan_name_entity" value="<?php echo !empty($this->iec_info['pan_name_entity'])? $this->iec_info['pan_name_entity'] : ""?>"></td>
 			</tr>
 			<tr>
@@ -445,9 +416,15 @@
 			</tr>
 			<tr>
 				<td colspan="2">2. Enter the number of partners in the Partnership Firm:<span class="required">*</span></td>
-				<td colspan="3">
-					<input class="input-block-level" type="text" placeholder="Number of partners" name="entity_partnership[total_partners]" value="<?php echo !empty($this->iec_info['total_partners'])? $this->iec_info['total_partners'] : ""?>" id="partner_total" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit here to generate the number of address box">
-					<input class="input-block-level" type="hidden"  name="dummy_partner_total" id="dummy_partner_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" >
+				<td colspan="3" style="text-align: right;">
+					<!-- show the total number of partners -->
+					<input class="input-block-level" type="text" placeholder="Number of partners" name="entity_partnership[total_partners]" id="partner_total" value="<?php echo !empty($this->iec_info['total_partners'])? $this->iec_info['total_partners'] : ""?>" readonly="readonly">
+					<!-- existing total number of partners -->
+					<input class="input-block-level" type="hidden"  name="edit_partner_total" id="edit_partner_total" value="<?php echo !empty($this->iec_info['total_partners'])? $this->iec_info['total_partners'] : ""?>" >
+					<!-- for assigning the container number for the auto generated partners -->
+					<input class="input-block-level" type="hidden" value = "<?php echo !empty($this->iec_info['total_partners'])? $this->iec_info['total_partners']-1 : 0?>" name="partner_count" id="partner_count" >
+					<button class="btn btn-mini btn-success" type="button" id="add_partner" >Add</button>
+				
 				</td>	
 			</tr>
 			<tr>
@@ -458,36 +435,35 @@
 				<?php if(!empty($this->iec_info['total_partners'])){
 				foreach($this->iec_category_details['partnership'] as $id => $partner){
 					$select_id = $id;
-					$default_partner_display = "style='display:none'";
 				?>
-					<div id="partner_container_<?=$id?>"> 
+					<div id="partner_container<?=$id?>"> 
 						<table class="table table-bordered" >
 							<tr>
 								<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
-								<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership_[partners][<?=$id?>][name]" id="partner_<?=$id?>_name" value="<?php echo !empty($partner['name'])? $partner['name'] : ""?>"></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners][<?=$id?>][name]" id="partner<?=$id?>_name" value="<?php echo !empty($partner['name'])? $partner['name'] : ""?>"></td>
 							</tr>
 							<tr>
 								<td colspan="2">b. Father's Name:<span class="required">*</span></td>
-								<td colspan="3"><input class="input-block-level" type="text" placeholder="Father's name" name="entity_partnership_[partners][<?=$id?>][surname]" id="partner_<?=$id?>_surname" value="<?php echo !empty($partner['surname'])? $partner['surname'] : ""?>"></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Father's name" name="entity_partnership[partners][<?=$id?>][surname]" id="partner<?=$id?>_surname" value="<?php echo !empty($partner['surname'])? $partner['surname'] : ""?>"></td>
 							</tr>
 							<tr>
 								<td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td>
-								<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership_[partners][<?=$id?>][dob]" id="partner_<?=$id?>_dob" value="<?php echo !empty($partner['dob'])? DateTime::createFromFormat("Y-m-d", "{$partner['dob']}")->format('d/m/Y') : ""?>"></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership[partners][<?=$id?>][dob]" id="partner<?=$id?>_dob" value="<?php echo !empty($partner['dob'])? DateTime::createFromFormat("Y-m-d", "{$partner['dob']}")->format('d/m/Y') : ""?>"></td>
 							</tr>
 							<tr>
 								<td rowspan="4" width="225px">d. Residential Address:
 								</td>
 								<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-								<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_partnership_[partners][<?=$id?>][address1]" id="partner_<?=$id?>_address1" value="<?php echo !empty($partner['address1'])? $partner['address1']: ""?>"></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_partnership[partners][<?=$id?>][address1]" id="partner<?=$id?>_address1" value="<?php echo !empty($partner['address1'])? $partner['address1']: ""?>"></td>
 							</tr>
 							<tr>
 								<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-								<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_partnership_[partners][<?=$id?>][address2]" id="partner_<?=$id?>_address2" value="<?php echo !empty($partner['address2'])? $partner['address2']: ""?>"></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_partnership[partners][<?=$id?>][address2]" id="partner<?=$id?>_address2" value="<?php echo !empty($partner['address2'])? $partner['address2']: ""?>"></td>
 							</tr>
 							<tr>
 								<td>State:<span class="required">*</span></td>
 								<td>
-									<select name="entity_partnership_[partners][<?=$id?>][state]" id="partner_<?=$id?>_state"  class="state_selectbox">
+									<select name="entity_partnership[partners][<?=$id?>][state]" id="partner<?=$id?>_state"  class="state_selectbox">
 										<option value="0">--Select--</option>
 										<?php foreach ($this->states as $state){
 											$state_selected_partner_select_id =  "";
@@ -501,7 +477,7 @@
 								</td>
 								<td>District:<span class="required">*</span></td>
 								<td>
-									<select name="entity_partnership_[partners][<?=$id?>][district]" id="partner_<?=$id?>_district" class="district_selectbox">
+									<select name="entity_partnership[partners][<?=$id?>][district]" id="partner<?=$id?>_district" class="district_selectbox">
 										<option value="0">--Select--</option>
 										<?php foreach ($partner['districts'] as $district){
 												$district_selected_partner_select_id =  "";
@@ -517,7 +493,7 @@
 							<tr>
 								<td>City:<span class="required">*</span></td>
 								<td>
-									<select name="entity_partnership_[partners][<?=$id?>][city]" id="partner_<?=$id?>_city" class="city_selectbox">
+									<select name="entity_partnership[partners][<?=$id?>][city]" id="partner<?=$id?>_city" class="city_selectbox">
 										<option value="0">--Select--</option>
 										<?php foreach ($partner['cities'] as $city){
 												$district_selected_partner_select_id =  "";
@@ -530,94 +506,30 @@
 									</select>
 								</td>
 								<td>Pincode:<span class="required">*</span></td>
-								<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership_[partners][<?=$id?>][pincode]" id="partner_<?=$id?>_pincode" value="<?php echo !empty($partner['pincode'])? $partner['pincode']: ""?>"></td>
+								<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership[partners][<?=$id?>][pincode]" id="partner<?=$id?>_pincode" value="<?php echo !empty($partner['pincode'])? $partner['pincode']: ""?>"></td>
 							</tr>
 							<tr>
 								<td colspan="2">e. Mobile No:<span class="required">*</span></td>
-								<td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership_[partners][<?=$id?>][mobile]" id="partner_<?=$id?>_mobile" value="<?php echo !empty($partner['mobile'])? $partner['mobile']: ""?>"></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership[partners][<?=$id?>][mobile]" id="partner<?=$id?>_mobile" value="<?php echo !empty($partner['mobile'])? $partner['mobile']: ""?>"></td>
 							</tr>
 							<tr>
 								<td colspan="2">f. PAN:<span class="required">*</span></td>
-								<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership_[partners][<?=$id?>][pan]" id="partner_<?=$id?>_pan" value="<?php echo !empty($partner['pan'])? $partner['pan']: ""?>"></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[partners][<?=$id?>][pan]" id="partner<?=$id?>_pan" value="<?php echo !empty($partner['pan'])? $partner['pan']: ""?>"></td>
 							</tr>
 							<tr>
 								<td colspan="2">g. Aadhaar Card Number, if available:</td>
-								<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership_[partners][<?=$id?>][aadhaar_number]" id="partner_<?=$id?>_aadhaarno" value="<?php echo !empty($partner['aadhaar_number'])? $partner['aadhaar_number']: ""?>"></td>
+								<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners][<?=$id?>][aadhaar_number]" id="partner<?=$id?>_aadhaarno" value="<?php echo !empty($partner['aadhaar_number'])? $partner['aadhaar_number']: ""?>"></td>
 							</tr>
 							<tr><td colspan="5" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_partner_<?=$id?>" >Remove</button></td></tr>
 						</table>
 					</div>
 					<?php }}?>
-			   <!-- <div id="default_partner_container" <?php echo !empty($default_partner_display)? $default_partner_display : ""?>>
-						<table class="table table-bordered" >
-							<tr>
-								<td colspan="2">a. Name as in PAN:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Name as in PAN" name="entity_partnership[partners][0][name]" id="partner0_name"></td>
-							</tr>
-							<tr>
-								<td colspan="2">b. Father's Name:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Father's name" name="entity_partnership[partners][0][surname]" id="partner0_surname"></td>
-							</tr>
-							<tr>
-								<td colspan="2">c. Date of Birth (DD/MM/YYYY):<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Date of birth" name="entity_partnership[partners][0][dob]" id="partner0_dob"></td>
-							</tr>
-							<tr>
-								<td rowspan="4" width="225px">d. Residential Address:
-								</td>
-								<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="entity_partnership[partners][0][address1]" id="partner0_address1"></td>
-							</tr>
-							<tr>
-								<td colspan="1">Street/Area/Locality:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="entity_partnership[partners][0][address2]" id="partner0_address2"></td>
-							</tr>
-							<tr>
-								<td>State:<span class="required">*</span></td>
-								<td>
-								<select name="entity_partnership[partners][0][state]" id="partner0_state"  class="state_selectbox">
-										<option value="0">--Select--</option>
-										<?php foreach ($this->states as $state){?>
-									  	<option value="<?php echo $state['id']?>"><?php echo $state['name']?></option>
-									  	<?php }?>
-									</select>
-								</td>
-								<td>District:<span class="required">*</span></td>
-								<td>
-								<select name="entity_partnership[partners][0][district]" id="partner0_district" class="district_selectbox">
-										<option value="0">--Select--</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td>City:<span class="required">*</span></td>
-								<td>
-								<select name="entity_partnership[partners][0][city]" id="partner0_city" class="city_selectbox">
-										<option value="0">--Select--</option>
-									</select>
-								</td>
-								<td>Pincode:<span class="required">*</span></td>
-							<td><input class="input-block-level" type="text" placeholder="Pincode" name="entity_partnership[partners][0][pincode]" id="partner0_pincode"></td>
-							</tr>
-							<tr>
-								<td colspan="2">e. Mobile No:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Mobile no" name="entity_partnership[partners][0][mobile]" id="partner0_mobile"></td>
-							</tr>
-							<tr>
-								<td colspan="2">f. PAN:<span class="required">*</span></td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="PAN" name="entity_partnership[partners][0][pan]" id="partner0_pan"></td>
-							</tr>
-							<tr>
-								<td colspan="2">g. Aadhaar Card Number, if available:</td>
-							<td colspan="3"><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_partnership[partners][0][aadhaar_number]" id="partner0_aadhaarno"></td>
-							</tr>
-						</table>
-					</div> -->
 					<div id="partner_details"></div>
 				</td>	
 			</tr>	
 		</table>
 	</div>
+	<!--Private Ltd Section -->
 	<div id="firm_privateltd">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
@@ -646,9 +558,15 @@
 			</tr>
 			<tr>
 				<td colspan="2">4. Enter the number of Partners/Director in the Firm/Company:<span class="required">*</span></td>
-				<td colspan="3">
-					<input class="input-block-level" type="text" placeholder="Number of partners" name="entity_privateltd[total_partners]" id="privateltd_total" value="<?php echo !empty($this->iec_info['total_partners'])? $this->iec_info['total_partners'] : ""?>">
-					<input class="input-block-level" type="hidden"  name="dummy_privateltd_total" id="dummy_privateltd_total" value="<?php echo !empty($this->iec_info['total_branches'])? $this->iec_info['total_branches'] : ""?>" >
+				<td colspan="3"  style="text-align: right;">
+					<!-- show the total number of partners -->
+					<input class="input-block-level" type="text" placeholder="Number of partners" name="entity_privateltd[total_partners]" id="privateltd_total" value="<?php echo !empty($this->iec_info['total_partners'])? $this->iec_info['total_partners'] : ""?>" readonly="readonly">
+					<!-- existing total number of partners -->
+					<input class="input-block-level" type="hidden"  name="edit_privateltd_total" id="edit_privateltd_total" value="<?php echo !empty($this->iec_info['total_partners'])? $this->iec_info['total_partners'] : ""?>" >
+					<!-- for assigning the container number for the auto generated partners -->
+					<input class="input-block-level" type="hidden" value = "<?php echo !empty($this->iec_info['total_partners'])? $this->iec_info['total_partners']-1 : 0?>" name="privateltd_count" id="privateltd_count" >
+					<button class="btn btn-mini btn-success" type="button" id="add_privateltd" >Add</button>
+					
 				</td>
 			</tr>
 			<tr>
@@ -661,53 +579,37 @@
 								$select_id = $id;
 								$default_privateltd_display = "style='display:none'";
 					?>
-					<div id="privateltd_container_<?=$id?>"> 
+					<div id="privateltd_container<?=$id?>"> 
 						<table  class="table table-bordered">
 							<tr>
 								<td width="285px;">a. Name:<span class="required">*</span></td>
-								<td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners][<?=$id?>][name]" id="privateltd_<?=$id?>_name" value="<?php echo !empty($privateltd['name'])? $privateltd['name'] : ""?>"></td>
+								<td>
+									<!-- <input class="input-block-level" type="hidden" name="entity_privateltd[partners][<?=$id?>][id]" value="<?php echo $branch['id']?>"> -->
+									<input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners][<?=$id?>][name]" id="privateltd<?=$id?>_name" value="<?php echo !empty($privateltd['name'])? $privateltd['name'] : ""?>">
+								</td>
 							</tr>
 							<tr>
 								<td>b. PAN:<span class="required">*</span></td>
-								<td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners][<?=$id?>][pan]" id="privateltd_<?=$id?>_pan" value="<?php echo !empty($privateltd['pan'])? $privateltd['pan'] : ""?>"></td>
+								<td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners][<?=$id?>][pan]" id="privateltd<?=$id?>_pan" value="<?php echo !empty($privateltd['pan'])? $privateltd['pan'] : ""?>"></td>
 							</tr>
 							<tr>
 								<td>c. Director Identity Number:<span class="required">*</span></td>
-								<td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners][<?=$id?>][director_id_number]" id="privateltd_<?=$id?>_director_id" value="<?php echo !empty($privateltd['director_id_number'])? $privateltd['director_id_number'] : ""?>"></td>
+								<td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners][<?=$id?>][director_id_number]" id="privateltd<?=$id?>_director_id" value="<?php echo !empty($privateltd['director_id_number'])? $privateltd['director_id_number'] : ""?>"></td>
 							</tr>
 							<tr>
 								<td >d. Aadhaar Card Number, if available:</td>
-								<td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners][<?=$id?>][aadhaar_number]" id="privateltd_<?=$id?>_aadhaarno" value="<?php echo !empty($privateltd['aadhaar_number'])? $privateltd['aadhaar_number'] : ""?>"></td>
+								<td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners][<?=$id?>][aadhaar_number]" id="privateltd<?=$id?>_aadhaarno" value="<?php echo !empty($privateltd['aadhaar_number'])? $privateltd['aadhaar_number'] : ""?>"></td>
 							</tr>
 							<tr><td colspan="5" style="text-align: right;"><button class="btn btn-mini btn-danger" type="button" id="remove_privateltd_<?=$id?>" >Remove</button></td></tr>
 						</table>
 					</div>
 					<?php }}?>
-					<div id="default_privateltd_container" <?php echo !empty($default_privateltd_display)? $default_privateltd_display : ""?>>
-						<table  class="table table-bordered">
-							<tr>
-								<td width="285px;">a. Name:<span class="required">*</span></td>
-								<td><input class="input-block-level" type="text" placeholder="Name of the partner/director" name="entity_privateltd[partners][0][name]" id="privateltd0_name" ></td>
-							</tr>
-							<tr>
-								<td>b. PAN:<span class="required">*</span></td>
-								<td><input class="input-block-level" type="text" placeholder="PAN" name="entity_privateltd[partners][0][pan]" id="privateltd0_pan" ></td>
-							</tr>
-							<tr>
-								<td>c. Director Identity Number:<span class="required">*</span></td>
-								<td><input class="input-block-level" type="text" placeholder="Director identity number"  name="entity_privateltd[partners][0][director_id_number]" id="privateltd0_director_id" ></td>
-							</tr>
-							<tr>
-								<td >d. Aadhaar Card Number, if available:</td>
-								<td ><input class="input-block-level" type="text" placeholder="Aadhaar card number" name="entity_privateltd[partners][0][aadhaar_number]" id="privateltd0_aadhaarno" ></td>
-							</tr>
-						</table>
-					</div>
 					<div id="privateltd_details"></div>
 				</td>
 			</tr>
 		</table>
 	</div>
+	<!-- Society Section -->
 	<div id="firm_society">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
@@ -801,6 +703,7 @@
 			</tr>
 		</table>
 	</div>
+	<!-- HUF section -->
 	<div id="firm_huf">
 		<table class="table table-bordered" style="width: 950px">
 			<tr class="info">
@@ -999,6 +902,7 @@
 	</div>
 	<!-- Turnover Details Section -->
 	<div id="financial_details">
+		<input class="input-block-level" type="hidden" value = "<?php echo count($this->iec_turnover_details)?>" name="finance_row_count" id="finance_row_count" >
 		<table class="table table-bordered" style="width: 950px" id="finance_data">
 			<tr class="info">
 				<td colspan="5">Turnover Details for the preceeding three final years: </td>
@@ -1007,28 +911,40 @@
 				<td colspan="1">Financial Year</td>
 				<td colspan="2">Annual Domestic Turnover(Rs.Lakhs)</td>
 				<td colspan="2">Annual Export Turnover(Rs.Lakhs)</td>
+				
 			</tr>
-				<?php  
-					foreach ($this->iec_turnover_details as $id => $turnover_details){
-				?>
-			<tr id="rows<?php echo $id?>">
+			<?php  
+				foreach ($this->iec_turnover_details as $to_id => $turnover_details){
+			?>
+			<tr id="turnover_details<?php echo $to_id?>">
 				<td colspan="1" width="225px">
-					<input class="input-block-level" type="hidden" value = "<?php echo $id?>" name="finance_row_count" id="finance_row_count" >
-					<input class="input-block-level" type="text" placeholder="" name="turnover_details[<?php echo $id?>][financial_year]" id="financial_year_<?php echo $id?>" value="<?php echo $turnover_details['financial_year']; ?>">
+					<!-- <input class="input-block-level" type="hidden" value = "<?php echo $turnover_details['id']; ?>" name="turnover_details[<?php echo $to_id?>][id]"> -->
+					<select name="turnover_details[<?php echo $to_id?>][financial_year]" id="financial_year<?php echo $to_id?>">
+						<?php foreach ($this->financial_years as $financial_year){
+							$financial_year_selected =  "";
+							if (!empty($turnover_details['financial_year']) && $turnover_details['financial_year'] == $financial_year){
+								$financial_year_selected =  "selected = selected";
+							}
+						?>
+					  	<option value="<?php echo $financial_year;?>" <?php echo $financial_year_selected;?>><?php echo $financial_year;?></option>
+					  	<?php }?>
+					</select>
 				</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[<?php echo $id?>][domestic_turnover]" id="domestic_turnover_<?php echo $id?>" value="<?php echo $turnover_details['domestic_turnover']; ?>"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[<?php echo $id?>][export_turnover]" id="export_turnover_<?php echo $id?>" value="<?php echo $turnover_details['export_turnover'];?>"></td>
-			</tr>
-				<?php }	?>
-			<tr id="rowCount1">	
-				<td colspan="1">
-					<select name="turnover_details[0][financial_year]" id="financial_year_0" ></select>
-				</td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[0][domestic_turnover]" id="domestic_turnover_0"></td>
-				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="turnover_details[0][export_turnover]" id="export_turnover_0"></td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[<?php echo $to_id?>][domestic_turnover]" id="domestic_turnover_<?php echo $to_id?>" value="<?php echo $turnover_details['domestic_turnover']; ?>"></td>
+				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="turnover_details[<?php echo $to_id?>][export_turnover]" id="export_turnover_<?php echo $to_id?>" value="<?php echo $turnover_details['export_turnover'];?>"></td>
 				<td colspan="1"><a href="javascript:void(0);" onclick="addMoreRows(this.form);"><i class="icon-plus"></i></a></td>
 			</tr>
-			
+			<?php $to_id++; }	?>
+			<!--  
+			<tr id="rowCount<?php echo $to_id;?>">	
+				<td colspan="1">
+					<select name="turnover_details[<?php echo $to_id;?>][financial_year]" id="financial_year_<?php echo $to_id;?>" ></select>
+				</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details[<?php echo $to_id;?>][domestic_turnover]" id="domestic_turnover_<?php echo $to_id;?>"></td>
+				<td colspan="1"><input class="input-block-level" type="text" placeholder="" name="turnover_details[<?php echo $to_id;?>][export_turnover]" id="export_turnover_<?php echo $to_id;?>"></td>
+				<td colspan="1"><a href="javascript:void(0);" onclick="addMoreRows(this.form);"><i class="icon-plus"></i></a></td>
+			</tr>
+			-->
 		</table>
 	</div>
 	<table class="table table-bordered" style="width: 950px">
@@ -1119,6 +1035,9 @@ $(function(){
 	$('#rcmc_validity').datepicker({format: "dd/mm/yyyy"});
 	$('#shd_doi').datepicker({format: "dd/mm/yyyy"});
 	$('#shd_validity').datepicker({format: "dd/mm/yyyy"});
+
+	//financial year
+	$("#financial_year_0").html(options);
 });
 
 //disply only the selected category while editing
@@ -1133,16 +1052,32 @@ $(window).load(function() {
 	$("#"+classname+" :input").removeAttr("disabled");
   });
 
-//Financial year
-var rowCount = 1;
+//financial year
+var rowCount = $('#finance_row_count').val();
+var count = 1; //for validation
+var start = new Date().getFullYear();
+var end = start-2;
+var options = "";
+for(var year = start ; year >=end; year--){
+	prvyr = year-1;
+	options += "<option>"+ prvyr + ' - '+ year +"</option>";
+}
+
 function addMoreRows(frm) {
-rowCount ++;
-var recRow = '<tr id="rowCount'+rowCount+'"><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[year]" id="financial_year"></td><td colspan="2"><input class="input-block-level" type="text" placeholder="" name="finance[domestic_turnover]" id="domestic_turnover"></td><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="finance[export_turnover]" id="export_turnover"></td><td colspan="1"><a href="javascript:void(0);" onclick="removeRow('+rowCount+');"><i class="icon-minus"></i></a></td></tr>';
-jQuery('#finance_data').append(recRow);
+	if(count == 3)
+	{
+		alert("You can only select upto last three financial years");
+		return false;
+	}
+	rowCount ++;
+	count++;
+	
+	var recRow = '<tr id="rowCount'+rowCount+'"><td colspan="1"><select name="turnover_details['+rowCount+'][financial_year]" id="financial_year_'+rowCount+'">'+options+'</select></td><td colspan="2"><input class="input-block-level" type="text" placeholder="" name="turnover_details['+rowCount+'][domestic_turnover]" id="domestic_turnover_'+rowCount+'"></td><td colspan="1"><input class="input-block-level" type="text" placeholder="" name="turnover_details['+rowCount+'][export_turnover]" id="export_turnover_'+rowCount+'"></td><td colspan="1"><a href="javascript:void(0);" onclick="removeRow('+rowCount+');"><i class="icon-minus"></i></a></td></tr>';
+	jQuery('#finance_data').append(recRow);
 }
 
 function removeRow(removeNum) {
 	jQuery('#rowCount'+removeNum).remove();
-	rowCount --;
+	count--;
 }
 </script>

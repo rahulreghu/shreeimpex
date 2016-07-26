@@ -13,13 +13,13 @@ class Model_Table_EntityDetails extends Zend_Db_Table_Abstract{
 		return $affectedRows;
 	}
 	*/
-	public function addEntityDetails($data,$cat_id,$id){
+	public function addEntityDetails($data,$cat_id,$iec_id){
 		foreach($data as $row){
 			if(!empty($row['dob'])){
 				$row['dob'] = DateTime::createFromFormat("d/m/Y", "{$row['dob']}")->format('Y-m-d');
 			}
 			$row['entity_category_id'] = $cat_id;
-			$row['entity_iec_id'] = $id;
+			$row['entity_iec_id'] = $iec_id;
 			$affectedRows =  $this->insert($row);
 		}
 		return $affectedRows;
@@ -27,5 +27,23 @@ class Model_Table_EntityDetails extends Zend_Db_Table_Abstract{
 	
 	public function getIecDetailsByIecId($id){
 		return $this->fetchAll("entity_iec_id = '".$id."'");
+	}
+	
+	public function updateEntityDetails($data,$cat_id,$iec_id){
+		$this->deleteEntityDetailsByCatIdIecId($cat_id,$iec_id);
+		foreach($data as $row){
+			if(!empty($row['dob'])){
+				$row['dob'] = DateTime::createFromFormat("d/m/Y", "{$row['dob']}")->format('Y-m-d');
+			}
+			$row['entity_category_id'] = $cat_id;
+			$row['entity_iec_id'] = $iec_id;
+			$affectedRows =  $this->insert($row);
+		}
+		return $affectedRows;
+	}
+	
+	public function deleteEntityDetailsByCatIdIecId($cat_id,$iec_id){
+		//delete branch details
+		$this->delete("entity_iec_id = '".$iec_id."' AND entity_category_id = '".$cat_id."'");
 	}
 }

@@ -36,4 +36,8 @@ class Model_Table_EntityIecInfo extends Zend_Db_Table_Abstract{
 	public function updateIecNumber($id,$iec_no){
 		$this->update(array('iec_number'=>$iec_no),'id = '.$id);
 	}
+	
+	public function updateIecForm($value,$iec_no){
+		$this->update($value,'id = '.$iec_no);
+	}
 }
