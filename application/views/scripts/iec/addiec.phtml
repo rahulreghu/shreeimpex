@@ -595,8 +595,10 @@
 			<tr>
 				<td colspan="1">Central Excise Registration No./ Issuing Authority</td>
 				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="entity[cer_reg_num]" id="cer_reg_num"></td>
-				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[cer_ia]" id="cer_ia">
-				</td>
+				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[cer_ia]" id="cer_ia"></td>
+			</tr>
+			<tr>
+				<td colspan="1">Date of registration</td><td colspan="4"><input class="input-medium" type="text" placeholder="Date of Registration" name="entity[cer_reg_date]" id="cer_reg_date"></td>
 			</tr>
 		</table>
 	</div>
@@ -722,7 +724,8 @@ $(function(){
 	$('#rcmc_validity').datepicker({format: "dd/mm/yyyy"});
 	$('#shd_doi').datepicker({format: "dd/mm/yyyy"});
 	$('#shd_validity').datepicker({format: "dd/mm/yyyy"});
-
+	$('#cer_reg_date').datepicker({format: "dd/mm/yyyy"});
+	
 	$('#partner0_dob').datepicker({format: "dd/mm/yyyy"});
 
 	//financial year

@@ -139,6 +139,7 @@ class IecController extends Zend_Controller_Action
 			!empty($_POST['entity']['rcmc_validity']) ? $_POST['entity']['rcmc_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['rcmc_validity']}")->format('Y-m-d'):'0000-00-00';
 			!empty($_POST['entity']['shd_doi']) ? $_POST['entity']['shd_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_doi']}")->format('Y-m-d'):'0000-00-00';
 			!empty($_POST['entity']['shd_validity']) ? $_POST['entity']['shd_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_validity']}")->format('Y-m-d'):'0000-00-00';
+			!empty($_POST['entity']['cer_reg_date']) ? $_POST['entity']['cer_reg_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['cer_reg_date']}")->format('Y-m-d'):'0000-00-00';
 			
 			//print_r($branch_details);
 			//print_r($entity_details);exit;
@@ -539,6 +540,9 @@ class IecController extends Zend_Controller_Action
 	
 	public function printiecAction()
 	{
+		if($this->getRequest()->getParam('iec_id')){
+			$this->view->iec_details = $this->getIecDetailsByIecId($this->getRequest()->getParam('iec_id'));
+		}
 		$this->_helper->layout->disableLayout();
 	}
 	
@@ -548,5 +552,29 @@ class IecController extends Zend_Controller_Action
 			$financial_years[] = (date("Y") - ($i)).' - '.(date("Y") - ($i-1));
 		}
 		return $financial_years;
+	}
+	
+	public function getIecDetailsByIecId($iec_id){
+		$iec_info =  Model_EntityIecinfo::getEntityInfobyId($iec_id)->toArray();
+		$iec_info['state'] = Model_States::getById($iec_info['state'])->toArray()['name'];
+		$iec_info['district'] = Model_States::getById($iec_info['district'])->toArray()['name'];
+		$iec_info['city'] = Model_States::getById($iec_info['city'])->toArray()['name'];
+		$category = Model_EntityCategories::getCategoryById($iec_info['category'])->toArray();
+		$iec_info['category_name'] =  $category['name'];
+		$iec_info['bank_details'] =  Model_EntityBankDetails::getBankDetailsByIecId($iec_id)->toArray();;
+		$iec_details =  Model_EntityDetails::getIecDetailsByIecId($iec_id)->toArray();
+		$iec_info['finance_details'] =  Model_FinancialDetails::getFinancialDetailsByIecId($iec_id)->toArray();
+		foreach($iec_details as $detail){
+			$detail['state'] =  Model_States::getById($detail['state'])->toArray()['name'];
+			$detail['district'] =  Model_Districts::getById($detail['district'])->toArray()['name'];
+			$detail['city'] =  Model_Cities::getById($detail['city'])->toArray()['name'];
+			if($detail['entity_category_id'] == 0){
+					$iec_info['branch_details'][] = $detail;
+			}else{
+				$iec_info['partner_details'][] = $detail;
+			}
+		}
+		print_r($iec_info);
+		return $iec_info;
 	}
 }

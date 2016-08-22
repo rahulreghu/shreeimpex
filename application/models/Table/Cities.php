@@ -8,4 +8,8 @@ class Model_Table_Cities extends Zend_Db_Table_Abstract{
 		$sql->order('name ASC');
 		return $this->fetchAll($sql);
 	}
+	
+	public function getById($id){
+		return $this->fetchRow("id = '".$id."'");
+	}
 }

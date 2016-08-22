@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 26, 2016 at 09:39 AM
+-- Generation Time: Aug 22, 2016 at 09:00 AM
 -- Server version: 5.7.13-log
 -- PHP Version: 5.6.23
 
@@ -6581,6 +6581,7 @@ CREATE TABLE `entity_iec_info` (
   `shd_validity` date DEFAULT NULL,
   `cer_reg_num` varchar(100) DEFAULT NULL,
   `cer_ia` varchar(100) DEFAULT NULL,
+  `cer_reg_date` date DEFAULT NULL,
   `vat_reg_num` varchar(100) DEFAULT NULL,
   `vat_ia` varchar(100) DEFAULT NULL,
   `image` varchar(100) DEFAULT NULL,
@@ -6596,10 +6597,10 @@ CREATE TABLE `entity_iec_info` (
 -- Dumping data for table `entity_iec_info`
 --
 
-INSERT INTO `entity_iec_info` (`id`, `iec_number`, `iec_doi`, `iec_ia`, `name`, `address1`, `address2`, `state`, `district`, `city`, `pincode`, `telephone`, `mobile1`, `mobile2`, `email1`, `email2`, `website`, `fax`, `category`, `activities`, `other_activities`, `registration_code`, `total_branches`, `pan_name_entity`, `incorporation_date`, `pan_entity`, `total_partners`, `llpin_cin`, `registration_cert_number`, `imr_reg_num`, `imr_doi`, `imr_validity`, `imr_ia`, `imr_reg_prods`, `str_reg_num`, `str_ia`, `str_reg_items`, `rcmc_num`, `rcmc_ia`, `rcmc_doi`, `rcmc_validity`, `rcmc_reg_prods`, `shd_rating`, `shd_cert_num`, `shd_ia`, `shd_doi`, `shd_validity`, `cer_reg_num`, `cer_ia`, `vat_reg_num`, `vat_ia`, `image`, `proof_of_accept`, `status`, `created_on`, `created_by`, `updated_on`, `last_updated_by`) VALUES
-(1037, NULL, NULL, NULL, 'IEC for 1 branch and 1 Proprietorship', 'FLAT', 'STEET', '1', '1', '3', '123455', '', '98964646464', '', 'rahulreghu@gmail.com', '', 'www.test.com', '1234', '1', '1', '', 'dasdsad', '1', NULL, NULL, NULL, NULL, NULL, NULL, 'IRD-SSL', '2016-07-01', '2016-07-26', 'IA', 'dadasdasd,dasdasd, dasdasd', 'STR', 'IA', 'dasda,gdfgdfg', 'RCMC-111', 'IA', '2016-07-01', '2016-07-26', 'fsfsdfs,fdsfsdfs', 2, 'SHD1', 'DEF5678', '2016-07-01', '2016-07-26', 'CERD', 'IA', 'VAT 10', 'IA', NULL, 1, 7, '2016-07-26 01:03:04', 1, NULL, NULL),
-(1038, NULL, NULL, NULL, 'IEC for 1 branch and 1 Proprietorship', 'FLAT', 'STEET', '1', '1', '1', '3123424', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '1', '1', 'dadfasda', 'dasdsad', '2', NULL, NULL, NULL, NULL, NULL, NULL, 'IRD-SSL', '2016-07-11', '2016-07-20', 'dasdasd', 'dadasdasd,dasdasd, dasdasd', 'dasdas', 'IA', 'dasda,gdfgdfg', 'RCMC-111', 'IA', '2016-07-12', '2016-07-28', 'fsfsdfs,fdsfsdfs', 0, 'dasda', 'DEF5678', '2016-07-04', '2016-07-20', 'dasdas', 'IA', 'VAT 10', 'IA', NULL, 1, 1, '2016-07-26 01:12:39', 1, '2016-07-26 01:43:43', 1),
-(1039, NULL, NULL, NULL, 'IEC for 1 branch and 2 Partnership', 'FLAT', 'STEET', '1', '1', '1', '32323', '', '98964646464', '', 'rahulreghu@gmail.com', '', '', '', '2', '1', '', '', '2', 'PAN', '2016-07-28', 'asdf1234', '2', NULL, NULL, '21323234', '2016-07-26', '2016-07-28', 'IA', 'dsada', 'STR', 'IA', 'dasda', 'RCMC-111', 'IA', '2016-07-27', '2016-07-27', 'fsfsdfs,fdsfsdfs', 0, 'dasda', 'DEF5678', '2016-07-19', '2016-07-27', 'dasdas', 'IA', 'VAT 10', 'IA', NULL, 1, 1, '2016-07-26 01:48:42', 1, '2016-07-26 01:49:44', 1);
+INSERT INTO `entity_iec_info` (`id`, `iec_number`, `iec_doi`, `iec_ia`, `name`, `address1`, `address2`, `state`, `district`, `city`, `pincode`, `telephone`, `mobile1`, `mobile2`, `email1`, `email2`, `website`, `fax`, `category`, `activities`, `other_activities`, `registration_code`, `total_branches`, `pan_name_entity`, `incorporation_date`, `pan_entity`, `total_partners`, `llpin_cin`, `registration_cert_number`, `imr_reg_num`, `imr_doi`, `imr_validity`, `imr_ia`, `imr_reg_prods`, `str_reg_num`, `str_ia`, `str_reg_items`, `rcmc_num`, `rcmc_ia`, `rcmc_doi`, `rcmc_validity`, `rcmc_reg_prods`, `shd_rating`, `shd_cert_num`, `shd_ia`, `shd_doi`, `shd_validity`, `cer_reg_num`, `cer_ia`, `cer_reg_date`, `vat_reg_num`, `vat_ia`, `image`, `proof_of_accept`, `status`, `created_on`, `created_by`, `updated_on`, `last_updated_by`) VALUES
+(1037, NULL, NULL, NULL, 'IEC for 1 branch and 1 Proprietorship', 'FLAT', 'STEET', '1', '1', '3', '123455', '', '98964646464', '', 'rahulreghu@gmail.com', '', 'www.test.com', '1234', '1', '1', '', 'dasdsad', '1', NULL, NULL, NULL, NULL, NULL, NULL, 'IRD-SSL', '2016-07-01', '2016-07-26', 'IA', 'dadasdasd,dasdasd, dasdasd', 'STR', 'IA', 'dasda,gdfgdfg', 'RCMC-111', 'IA', '2016-07-01', '2016-07-26', 'fsfsdfs,fdsfsdfs', 2, 'SHD1', 'DEF5678', '2016-07-01', '2016-07-26', 'CERD', 'IA', NULL, 'VAT 10', 'IA', NULL, 1, 7, '2016-07-26 01:03:04', 1, NULL, NULL),
+(1038, 'A2345HJ0005', NULL, NULL, 'IEC for 1 branch and 1 Proprietorship', 'FLAT', 'STEET', '1', '1', '1', '3123424', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '1', '1', 'dadfasda', 'dasdsad', '2', NULL, NULL, NULL, NULL, NULL, NULL, 'IRD-SSL', '2016-07-11', '2016-07-20', 'dasdasd', 'dadasdasd,dasdasd, dasdasd', 'dasdas', 'IA', 'dasda,gdfgdfg', 'RCMC-111', 'IA', '2016-07-12', '2016-07-28', 'fsfsdfs,fdsfsdfs', 0, 'dasda', 'DEF5678', '2016-07-04', '2016-07-20', 'dasdas', 'IA', '2016-07-26', 'VAT 10', 'IA', NULL, 1, 1, '2016-07-26 01:12:39', 1, '2016-07-26 01:43:43', 1),
+(1039, 'A2345HJ0001', NULL, NULL, 'IEC for 1 branch and 2 Partnership', 'FLAT', 'STEET', '1', '1', '1', '32323', '', '98964646464', '', 'rahulreghu@gmail.com', '', '', '', '2', '1', '', '', '2', 'PAN', '2016-07-28', 'asdf1234', '2', NULL, NULL, '21323234', '2016-07-26', '2016-07-28', 'IA', 'dsada', 'STR', 'IA', 'dasda', 'RCMC-111', 'IA', '2016-07-27', '2016-07-27', 'fsfsdfs,fdsfsdfs', 0, 'dasda', 'DEF5678', '2016-07-19', '2016-07-27', 'dasdas', 'IA', '2016-07-29', 'VAT 10', 'IA', NULL, 1, 1, '2016-07-26 01:48:42', 1, '2016-07-26 01:49:44', 1);
 
 -- --------------------------------------------------------
 
@@ -6721,6 +6722,18 @@ INSERT INTO `options` (`id`, `option_id`, `option_value`, `option_name`, `enable
 (10, 1, 'Administrator', 'user_role', 1),
 (11, 2, 'Users', 'user_role', 1),
 (12, 7, 'Deleted', 'entity_iec_info', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ports`
+--
+
+CREATE TABLE `ports` (
+  `id` int(11) NOT NULL,
+  `name` varchar(500) NOT NULL,
+  `code` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -6906,6 +6919,12 @@ ALTER TABLE `options`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `ports`
+--
+ALTER TABLE `ports`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `states`
 --
 ALTER TABLE `states`
@@ -6978,6 +6997,11 @@ ALTER TABLE `financial_details`
 --
 ALTER TABLE `options`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `ports`
+--
+ALTER TABLE `ports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 --
 -- AUTO_INCREMENT for table `states`
 --

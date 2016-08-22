@@ -886,6 +886,9 @@
 				<td colspan="2"><input class="input-block-level" type="text" placeholder="Registration number" name="entity[cer_reg_num]" id="cer_reg_num" value="<?php echo !empty($this->iec_info['cer_reg_num'])? $this->iec_info['cer_reg_num'] : ""?>"></td>
 				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[cer_ia]" id="cer_ia" value="<?php echo !empty($this->iec_info['cer_ia'])? $this->iec_info['cer_ia'] : ""?>"></td>
 			</tr>
+			<tr>
+				<td colspan="1">Date of registration</td><td colspan="4"><input class="input-medium" type="text" placeholder="Date of Registration" name="entity[cer_reg_date]" id="cer_reg_date" value="<?php echo !empty($this->iec_info['cer_reg_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['cer_reg_date']}")->format('d/m/Y') : ""?>"></td>
+			</tr>
 		</table>
 	</div>
 	<div id="cent_exc_details">
@@ -1029,13 +1032,18 @@ $(function(){
         }
     });
 
+    $('#partner_incorporation_date').datepicker({format: "dd/mm/yyyy"});
+    $('#privateltd_incorporation_date').datepicker({format: "dd/mm/yyyy"});
+    $('#society_incorporation_date').datepicker({format: "dd/mm/yyyy"});
+    $('#huf_incorporation_date').datepicker({format: "dd/mm/yyyy"});
     $('#imr_doi').datepicker({format: "dd/mm/yyyy"});
 	$('#imr_validity').datepicker({format: "dd/mm/yyyy"});
 	$('#rcmc_doi').datepicker({format: "dd/mm/yyyy"});
 	$('#rcmc_validity').datepicker({format: "dd/mm/yyyy"});
 	$('#shd_doi').datepicker({format: "dd/mm/yyyy"});
 	$('#shd_validity').datepicker({format: "dd/mm/yyyy"});
-
+	$('#cer_reg_date').datepicker({format: "dd/mm/yyyy"});
+	
 	//financial year
 	$("#financial_year_0").html(options);
 });

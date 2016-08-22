@@ -11,5 +11,9 @@ class Model_Districts{
 	public static function getByStateId($id){
 		return self::getTableInstance()->getByStateId($id);
 	}
+	
+	public static function getById($id){
+		return self::getTableInstance()->getById($id);
+	}
 
 }

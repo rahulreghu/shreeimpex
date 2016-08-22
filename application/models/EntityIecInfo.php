@@ -38,4 +38,8 @@ class Model_EntityIecinfo{
 	public static function updateIecForm($value, $iec_id){
 		return self::getTableInstance()->updateIecForm($value, $iec_id);
 	}
+	
+	public static function getAllIecInfobyId($id){
+		return self::getTableInstance()->getAllIecInfobyId($id);
+	}
 }

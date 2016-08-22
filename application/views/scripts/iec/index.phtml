@@ -165,9 +165,9 @@ function getDetails(callback,rowId) {
         	//var data = JSON.parse(response.responseText);
         	var thead = '';
         	var tbody = '';
-        	alert(response.status);
+        	//alert(response.status);
             if (response.status == 2){
-            	var tbody = '<tr><td>No EPCG Found</td><td><a href="epcg/addepcg" class="btn btn-warning" type="button">Add New EPCG</a></td></tr>';
+            	var tbody = '<tr><td>No EPCG Found</td><td><a href="epcg/addepcg?iec_id='+rowId+'" class="btn btn-warning" type="button">Add New EPCG</a></td></tr>';
             }
         /*  var tbody = '';
             $.each(data, function (i, d) {
@@ -208,7 +208,7 @@ function getDetails(callback,rowId) {
 
 function printPopup(id)
 {
-    var url = 'iec/printiec?id='+id;
+    var url = 'iec/printiec?iec_id='+id;
     popupWindow = window.open(url,'popUpWindow','height=750,width=950,left=100,top=100,resizable=yes,scrollbars=yes');
 }
 </script>

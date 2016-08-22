@@ -1,3 +1,10 @@
+<?php 
+if(!empty($this->iec_details)){
+	$readyonly = 'readonly = readonly';	
+}else{
+	$readyonly = "";
+}
+?>
 <form action="chapterv/index" method="post" name="epcg_form" id="epcg_form" enctype="multipart/form-data">
 	<div style="text-align: center;">
 		<caption style="height: 60px">
@@ -29,27 +36,35 @@
 		<tr>
 			<td width="20px">2.</td>
 			<td>IEC No.</td>
-			<td><input class="input-block-level" type="text" placeholder="IEC No" name="iec_no" id="iec_no" ></td>
+			<td><input class="input-block-level" type="text" placeholder="IEC No" name="iec_no" id="iec_no" value="<?php echo $this->iec_details['iec_number']; ?>" <?php echo $readyonly;?>></td>
 			<td>Branch Code</td>
-			<td><input class="input-block-level" type="text" placeholder="Branch Code" name="branch_code" id="branch_code" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Branch Code" name="branch_code" id="branch_code" value="<?php echo isset($this->iec_details['branch_details']['primary'])? $this->iec_details['branch_details']['primary']['id'] :  $this->iec_details['branch_details'][0]['id'] ?>" <?php echo $readyonly;?>></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td colspan="2">Declaration: I/We have updated my/our profile in ANF - 1</td>
-			<td colspan="2"><input class="input-block-level" type="text" placeholder="Declaration" name="declaration" id="declaration" ></td>
+			<td colspan="2"><!-- <input class="input-block-level" type="text" placeholder="Declaration" name="declaration" id="declaration" > --> Attached</td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
 			<td width="20px">3.</td>
-			<td>Address of the factory/premises of he applican where the capital goods to be imported are proposed to be installed</td>
+			<td>Address of the factory/premises of the applicant where the capital goods to be imported are proposed to be installed</td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>	
-				<select name="factory_address" id="factory_address">
-					<option value="0">--Select--</option>
+				<?php if(!empty($this->iec_details['branch_details'])){?>
+				<select name="factory_address" id="factory_address"  multiple="multiple" class="span6">
+					<?php
+						foreach($this->iec_details['branch_details'] as $detail){
+							echo "<option value='{$detail['id']}'>{$detail['address1']}, {$detail['address2']}, {$detail['state']}, {$detail['district']}, {$detail['city']}, {$detail['pincode']}</option>";
+						}			
+					?>
 				</select>
+				<?php }else{
+					echo 'No address found';
+				}?>
 			</td>
 		</tr>
 	</table>
@@ -62,19 +77,19 @@
 			<td></td>
 			<td width="20px">a.</td>
 			<td width="350px">Excise Registration Number</td>
-			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="excise[registration_num]" id="excise_registration_num]" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="excise[registration_num]" id="excise_registration_num" value="<?php echo $this->iec_details['cer_reg_num']; ?> " <?php echo $readyonly;?>></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
 			<td>Date of registration</td>
-			<td><input class="input-block-level" type="text" placeholder="Date of Registration" name="excise[dor]" id="excise_dor" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Date of Registration" name="excise[dor]" id="excise_dor" value="<?php echo !empty($this->iec_details['cer_reg_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_details['cer_reg_date']}")->format('d/m/Y') : ""?>" <?php echo $readyonly;?>></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>c.</td>
 			<td>Address of the Jurisdictional Central Excise Auhority<br/>(whether registered with central excise or not)</td>
-			<td><input class="input-block-level" type="text" placeholder="Address" name="excise[address]" id="excise_address" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Address" name="excise[address]" id="excise_address" value="<?php echo $this->iec_details['cer_ia'];?>" <?php echo $readyonly;?>></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
@@ -503,7 +518,7 @@
 </form>
 <script>
 $(function(){
-    $('#excise_dor').datepicker({});
+   /* $('#excise_dor').datepicker({});*/
 	$('#app_fee_payment_date').datepicker({});
 	$('#service_tax_dor').datepicker({});
 	$('#epcg_auth_date_1').datepicker({});

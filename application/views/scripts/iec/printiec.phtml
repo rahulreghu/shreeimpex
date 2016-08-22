@@ -1,119 +1,308 @@
+<?php 
+if(!empty($this->iec_details)){
+	
+}
+?>
 <!DOCTYPE html>
-	<head>
-	<link href="../styles/print.css" rel="stylesheet">
-	</head>
-	<body>
-		<div id="heading1">ANF 1</div>
-		<div id="heading2">PROFILE OF EXPORTER AND IMPORTER</div>
-		<p id="note">Note: Please state 'Not Applicable' wherever the information/data is not applicable to you.</p>
-		<table>
-			<tr><td colspan="2"><b>1. IEC Details</b></td></tr>
-			<tr><td width="300px">i. IEC Number</td><td></td></tr>
-			<tr><td>ii. Date of issue Issuing Authority<td></td></tr>
-		</table>
-		<table>
-			<tr><td colspan="2"><b>2. Applicant Firm Details</b></td></tr>
-			<tr><td width="350px">i. Name of the entity :</td><td></td></tr>
-			<tr><td>ii. Address (Registered Office in case of Companies and Head Office in case of Others</td><td></td></tr>
-			<tr><td>iii. Landline no .if any:</td><td></td></tr>
-			<tr><td>iv. Mobile number</td><td></td></tr>
-			<tr><td>v. e-mail id/website address</td><td></td></tr>
-			<tr><td>vi. Nature of the Conern: Proprietorship / Partnership / Limited Liability Partnership / Private Limited / Public Limited / Govt.undertaking / Section 25 company / Registered Society / Trust / HUF</td><td></td></tr>
-			<tr><td>vii. Preferred Activities: Merchant Exporter / Manufacturer Exporter / Service Provider / other</td><td></td></tr>
-			<tr><td>viii. Bank Account Details of the applicant's entity:</td><td></td></tr>
-			<tr><td>ix. PAN Details of the Entity:</td><td></td></tr>
-			<tr><td>x. LLPIN/CIN/Registration no.(if applicable):</td><td></td></tr>
-			<tr><td colspan="2"><b>Part B: Branch details:</b></td></tr>
-			<tr><td>i. Number of Branches</td><td></td></tr>
-			<tr><td>ii. Address of Branches, Divisions, units, factories:</td><td></td></tr>
-		</table>
-		<table>
-			<tr><td colspan="2"><b>3</b>. Details of Proprietor/Partners/<b>Directors</b>/Karta/Trustee of the applicant firm:</td></tr>
-			<tr><td width="275px">i. Name as in PAN ( Mr.Mrs)</td><td></td></tr>
-			<tr><td>ii. Father's Name</td><td></td></tr>
-			<tr><td>iii. Residential Address</td><td></td></tr>
-			<tr><td>iv. Date Of Birth</td></tr>
-			<tr><td>v. Mobile Number</td><td></td></tr>
-			<tr><td>vi. PAN</td><td></td></tr>
-			<tr><td>vii. DIN(if applicable):</td><td></td></tr>
-			<tr><td>viii. Aadhar Card Number</td><td></td></tr>
-		</table>
-		<table>
-			<tr><td colspan="2"><b>4. Industrial Registration Details      NA</b></td></tr>
-			<tr><td width="350px">i. SSI/IEM/LOI or IL Registration No/any other to prove a manufacturer status:</td><td></td></tr>
-			<tr><td>ii. Date of Issue and Validity / Issuing Authority<td></td></tr>
-			<tr><td>iii. Products for which registered<td></td></tr>
-		</table>
-		<table>
-			<tr><td colspan="2"><b>5. Service Tax Registration Details (in case of Service providers)</b></td></tr>
-			<tr><td width="350px">i. Service Tax Registration No / Issuing Authority</td><td></td></tr>
-			<tr><td>iii. Services for which registered<td></td></tr>
-		</table>
-		<table>
-			<tr><td colspan="2"><b>6. RCMC Details</b></td></tr>
-			<tr><td width="350px">i. RCMC No / Issuing Authority</td><td></td></tr>
-			<tr><td>ii. Date of Issue and Validity:<td></td></tr>
-			<tr><td>v. Products for which registered<td></td></tr>
-		</table>
-		<table>
-			<tr><td colspan="2"><b>7. Status House Details</b></td></tr>
-			<tr><td width="350px">i. Certificate No / Issuing Authority</td><td></td></tr>
-			<tr><td>ii. Date of Issue and Validity:<td></td></tr>
-		</table>
-		<table>
-			<tr><td colspan="2"><b>8. Excise Details </b> Registration No / Issuing Authority</td></tr>
-		</table>
-		<table>
-			<tr><td colspan="2"><b>9. VAT Details </b> Registration No / Issuing Authority</td></tr>
-		</table>
-		<table>
-			<tr><td colspan="3"><b>10. Turnover Details for the preceding three financial years:</b></td></tr>
-			<tr><td width="150px"><b>Financial Year</b></td><td width="200px"><b>Annual Domestic Turnover(Rs.Lakhs)</b></td><td width="200px"><b>Annual Export Turnover(Rs.Lakhs)</b></td></tr>
-			<tr><td></td><td></td><td></td></tr>
-			<tr><td></td><td></td><td></td></tr>
-			<tr><td></td><td></td><td></td></tr>
-		</table>
-		<div id="heading1">DECLARATION</div>
-		<table>
-			<tr><td width="50px">1</td>
-				<td>I / We hereby Certify that: 
-					<ol type="A">
-						<li>the Entity for whom the application has been made have not been penalized under any of the following Acts (as amended from time to time).</li>
-						<ol type="i">
+<html>
+<head>
+<link href="../styles/print.css" rel="stylesheet">
+</head>
+<body>
+	<div id="heading1">ANF 1</div>
+	<div id="heading2">PROFILE OF EXPORTER AND IMPORTER</div>
+	<p id="note">Note: Please state 'Not Applicable' wherever the
+		information/data is not applicable to you.</p>
+	<table>
+		<tr>
+			<td colspan="2"><b>1. IEC Details</b></td>
+		</tr>
+		<tr>
+			<td width="300px">i. IEC Number</td>
+			<td><?php echo $this->iec_details['iec_number']; ?></td>
+		</tr>
+		<tr>
+			<td>ii. Date of issue and Issuing Authority
+			
+			<td></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td colspan="2"><b>2. Applicant Firm Details</b></td>
+		</tr>
+		<tr>
+			<td width="350px">i. Name of the entity :</td>
+			<td><?php echo $this->iec_details['name']; ?></td>
+		</tr>
+		<tr>
+			<td>ii. Address (Registered Office in case of Companies and Head
+				Office in case of Others</td>
+			<td><?php echo $this->iec_details['iec_number']; ?></td>
+		</tr>
+		<tr>
+			<td>iii. Landline no .if any:</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>iv. Mobile number</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>v. e-mail id/website address</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>vi. Nature of the Conern: Proprietorship / Partnership / Limited
+				Liability Partnership / Private Limited / Public Limited /
+				Govt.undertaking / Section 25 company / Registered Society / Trust /
+				HUF</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>vii. Preferred Activities: Merchant Exporter / Manufacturer
+				Exporter / Service Provider / other</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>viii. Bank Account Details of the applicant's entity:</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ix. PAN Details of the Entity:</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>x. LLPIN/CIN/Registration no.(if applicable):</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td colspan="2"><b>Part B: Branch details:</b></td>
+		</tr>
+		<tr>
+			<td>i. Number of Branches</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ii. Address of Branches, Divisions, units, factories:</td>
+			<td></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td colspan="2"><b>3</b>. Details of Proprietor/Partners/<b>Directors</b>/Karta/Trustee
+				of the applicant firm:</td>
+		</tr>
+		<tr>
+			<td width="275px">i. Name as in PAN ( Mr.Mrs)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ii. Father's Name</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>iii. Residential Address</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>iv. Date Of Birth</td>
+		</tr>
+		<tr>
+			<td>v. Mobile Number</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>vi. PAN</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>vii. DIN(if applicable):</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>viii. Aadhar Card Number</td>
+			<td></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td colspan="2"><b>4. Industrial Registration Details NA</b></td>
+		</tr>
+		<tr>
+			<td width="350px">i. SSI/IEM/LOI or IL Registration No/any other to
+				prove a manufacturer status:</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ii. Date of Issue and Validity / Issuing Authority
+			
+			<td></td>
+		</tr>
+		<tr>
+			<td>iii. Products for which registered
+			
+			<td></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td colspan="2"><b>5. Service Tax Registration Details (in case of
+					Service providers)</b></td>
+		</tr>
+		<tr>
+			<td width="350px">i. Service Tax Registration No / Issuing Authority</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>iii. Services for which registered
+			
+			<td></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td colspan="2"><b>6. RCMC Details</b></td>
+		</tr>
+		<tr>
+			<td width="350px">i. RCMC No / Issuing Authority</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ii. Date of Issue and Validity:
+			
+			<td></td>
+		</tr>
+		<tr>
+			<td>v. Products for which registered
+			
+			<td></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td colspan="2"><b>7. Status House Details</b></td>
+		</tr>
+		<tr>
+			<td width="350px">i. Certificate No / Issuing Authority</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ii. Date of Issue and Validity:
+			
+			<td></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td colspan="2"><b>8. Excise Details </b> Registration No / Issuing
+				Authority</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td colspan="2"><b>9. VAT Details </b> Registration No / Issuing
+				Authority</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td colspan="3"><b>10. Turnover Details for the preceding three
+					financial years:</b></td>
+		</tr>
+		<tr>
+			<td width="150px"><b>Financial Year</b></td>
+			<td width="200px"><b>Annual Domestic Turnover(Rs.Lakhs)</b></td>
+			<td width="200px"><b>Annual Export Turnover(Rs.Lakhs)</b></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<div id="heading1">DECLARATION</div>
+	<table>
+		<tr>
+			<td width="50px">1</td>
+			<td>I / We hereby Certify that:
+				<ol>
+					<li>the Entity for whom the application has been made have not been
+						penalized under any of the following Acts (as amended from time to
+						time).
+						<ol>
 							<li>The Customs Act, 1962</li>
 							<li>The Center Excise Act1944,
-							<li>Foreign Trade (Development & Regulation) Act 1992, and</li>
+							
+							<li>Foreign Trade (Development &amp; Regulation) Act 1992, and</li>
 							<li>The Foreign Exchange Management Act, 1999;</li>
-							<li>The Conversation of Foreign Exchange, Prevention of Smuggling Activities Act, 1947</li>
+							<li>The Conversation of Foreign Exchange, Prevention of Smuggling
+								Activities Act, 1947</li>
 						</ol>
-						<li>non of the Directors /Partners /Proprietor /Karta /Trustee of the company /firm /HUF /Trust, (as the case may be) is/are a Director(s) /Partners(s) /proprietor /karta /Trustee in any other Company / firm /entity which is on the Denied Entity List (DEL) of DGFT;</li>
-						<li>neither the Registered Office of the company /Head Office of the firm /nor any of its Branch Office(s) /Unit(s) /Division(s) has been declared a defaulter and has otherwise been made ineligible for undertaking import/export under any of the provisions of the Policy;</li>
-						<li>we have not obtained nor applied for issuance of an Importer Exporter Code Number in the name of our Registered /Head Office to any other Licensing Authority</li>
-					</ol>
-				</td>
-			</tr>
-			<tr><td width="50px">2</td>
-				<td> I/We undertake to abide by the provisions of the Foreign Trade(Development and Regulation) Act,1992, as amended from time to time, the Rules and Orders Framed there under,the Foreign Trade Policy, the Handbook of Procedures and the ITC(HS) Classification of Export & Import Items.</td>
-			</tr>
-			<tr><td width="50px">3</td>
-				<td>I/We fully understand that if any information furnished in the application is found incorrect or false will render me/us liable for any penal action or other consequences as may be prescribed in law or otherwise warranted</td>
-			</tr>
-			<tr><td width="50px">4</td>
-				<td> I/We hereby declare that the particulars and the statements made in this application atr true and correct to the best of my/our knowledge and belief and nothing has been concealed or withheld therfrom.</td>
-			</tr>
-			<tr><td width="50px">5</td>	
-				<td>I here by certify that I am authorized to verify and sign this declaration as per Paragraph 9.06 of the Foreign Trade Policy.</td>
-			</tr>
-			
-		</table>
-		<div id="print" style="text-align:center;">
-			<a href="javascript:void(0);" onclick="return printpage();">Print</a>
-		</div>
-	</body>
-	<script type="text/javascript">
+					</li>
+					<li>non of the Directors /Partners /Proprietor /Karta /Trustee of
+						the company /firm /HUF /Trust, (as the case may be) is/are a
+						Director(s) /Partners(s) /proprietor /karta /Trustee in any other
+						Company / firm /entity which is on the Denied Entity List (DEL) of
+						DGFT;</li>
+					<li>neither the Registered Office of the company /Head Office of
+						the firm /nor any of its Branch Office(s) /Unit(s) /Division(s)
+						has been declared a defaulter and has otherwise been made
+						ineligible for undertaking import/export under any of the
+						provisions of the Policy;</li>
+					<li>we have not obtained nor applied for issuance of an Importer
+						Exporter Code Number in the name of our Registered /Head Office to
+						any other Licensing Authority</li>
+				</ol>
+			</td>
+		</tr>
+		<tr>
+			<td width="50px">2</td>
+			<td>I/We undertake to abide by the provisions of the Foreign
+				Trade(Development and Regulation) Act,1992, as amended from time to
+				time, the Rules and Orders Framed there under,the Foreign Trade
+				Policy, the Handbook of Procedures and the ITC(HS) Classification of
+				Export &amp; Import Items.</td>
+		</tr>
+		<tr>
+			<td width="50px">3</td>
+			<td>I/We fully understand that if any information furnished in the
+				application is found incorrect or false will render me/us liable for
+				any penal action or other consequences as may be prescribed in law
+				or otherwise warranted</td>
+		</tr>
+		<tr>
+			<td width="50px">4</td>
+			<td>I/We hereby declare that the particulars and the statements made
+				in this application atr true and correct to the best of my/our
+				knowledge and belief and nothing has been concealed or withheld
+				therfrom.</td>
+		</tr>
+		<tr>
+			<td width="50px">5</td>
+			<td>I here by certify that I am authorized to verify and sign this
+				declaration as per Paragraph 9.06 of the Foreign Trade Policy.</td>
+		</tr>
+
+	</table>
+	<div id="print" style="text-align: center;">
+		<a href="javascript:void(0);" onclick="return printpage();">Print</a>
+	</div>
+	<script>
 		function printpage()
 		{
 		    window.print();
 		}
 	</script>
+</body>
 </html>

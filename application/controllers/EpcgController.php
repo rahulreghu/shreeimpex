@@ -10,7 +10,7 @@ class EpcgController extends Zend_Controller_Action
     	$this->_helper->layout()->setLayout('layout');
     	$this->view->session = $session;
     	if(!isset($this->_session->user)){
-    		$this->_redirect('.');
+    		$this->redirect('.');
     	}
 	}
 	
@@ -21,8 +21,37 @@ class EpcgController extends Zend_Controller_Action
 	
 	public function addepcgAction()
 	{
-		//print_r($this->_session->user);
-		//echo 'hai';
+		if($this->getRequest()->getParam('iec_id')){
+			$this->view->iec_details = $this->getIecDetailsByIecId($this->getRequest()->getParam('iec_id'));
+		}
+		
+	}
+	
+	public function getIecDetailsByIecId($iec_id){
+		$iec_info =  Model_EntityIecinfo::getEntityInfobyId($iec_id)->toArray();
+		$category = Model_EntityCategories::getCategoryById($iec_info['category'])->toArray();
+		$iec_info['category_name'] =  $category['name'];
+		$iec_info['bank_details'] =  Model_EntityBankDetails::getBankDetailsByIecId($iec_id)->toArray();;
+		$iec_details =  Model_EntityDetails::getIecDetailsByIecId($iec_id)->toArray();
+		$primary_branch_flag = false;
+		foreach($iec_details as $detail){
+			$detail['state'] =  Model_States::getById($detail['state'])->toArray()['name'];
+			$detail['district'] =  Model_Districts::getById($detail['district'])->toArray()['name'];
+			$detail['city'] =  Model_Cities::getById($detail['city'])->toArray()['name'];
+			if($detail['entity_category_id'] == 0){
+				
+				if(!$primary_branch_flag && ($detail['district'] == 254 || $detail['district'] == 255)){
+					$iec_info['branch_details']['primary'] = $detail;
+					$primary_branch_flag = true;
+				}else{
+					$iec_info['branch_details'][] = $detail;
+				}
+			}else{
+				$iec_info['partner_details'][] = $detail;
+			}
+		}
+		print_r($iec_info);
+		return $iec_info;
 	}
 	
 	public function contactusAction(){

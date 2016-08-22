@@ -7,4 +7,8 @@ class Model_Table_States extends Zend_Db_Table_Abstract{
 		$sql->order('name ASC');
 		return $this->fetchAll($sql)->toArray();
 	}
+	
+	public function getById($id){
+		return $this->fetchRow("id = '".$id."'");
+	}
 }

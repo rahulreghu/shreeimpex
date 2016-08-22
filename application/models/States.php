@@ -12,4 +12,8 @@ class Model_States{
 		return self::getTableInstance()->getAllStates();
 	}
 	
+	public static function getById($id){
+		return self::getTableInstance()->getById($id);
+	}
+	
 }
