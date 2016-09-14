@@ -140,8 +140,9 @@ function generateRequiredBox(i,type){
 	var box = "";
 	var jsscript = "";
 	if(type == 'branch'){
-			box += '<div id="branch_container'+i+'"> <table class="table table-bordered"><tr><td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>';
-			box += '<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch['+i+'][address1]" id="branch'+i+'_address1"></td></tr>';
+			box += '<div id="branch_container'+i+'"> <table class="table table-bordered"><tr><td rowspan="5"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>';
+			box += '<td colspan="1"  width="230px">Branch Code<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Branch Code" name="branch['+i+'][code]" id="branch'+i+'_code"></td></tr>';
+			box += '<td colspan="1" >Flat/Plot/Block No:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Flat/Plot/Block No" name="branch['+i+'][address1]" id="branch'+i+'_address1"></td></tr>';
 			box += '<tr><td colspan="1">Street/Area/Locality:<span class="required">*</span></td><td colspan="3"><input class="input-block-level" type="text" placeholder="Street/Area/Locality" name="branch['+i+'][address2]" id="branch'+i+'_address2"></td></tr>';
 			box += '<tr><td>State:<span class="required">*</span></td><td><select name="branch['+i+'][state]" id="branch'+i+'_state" class="state_dymselectbox">'+$('#state_template').html()+'</select></td>';
 			box += '<td>District:<span class="required">*</span></td><td><select name="branch['+i+'][district]" id="branch'+i+'_district" class="district_dymselectbox"><option value="0">--Select--</option></select></td></tr>';

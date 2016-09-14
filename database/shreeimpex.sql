@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 22, 2016 at 09:00 AM
+-- Generation Time: Sep 14, 2016 at 10:26 AM
 -- Server version: 5.7.13-log
 -- PHP Version: 5.6.23
 
@@ -6498,6 +6498,7 @@ CREATE TABLE `entity_details` (
   `name` varchar(100) DEFAULT NULL,
   `surname` varchar(100) DEFAULT NULL,
   `dob` date DEFAULT NULL,
+  `code` int(11) DEFAULT NULL,
   `address1` varchar(500) DEFAULT NULL,
   `address2` varchar(500) DEFAULT NULL,
   `state` varchar(5) DEFAULT NULL,
@@ -6516,14 +6517,14 @@ CREATE TABLE `entity_details` (
 -- Dumping data for table `entity_details`
 --
 
-INSERT INTO `entity_details` (`id`, `name`, `surname`, `dob`, `address1`, `address2`, `state`, `district`, `city`, `pincode`, `mobile`, `aadhaar_number`, `pan`, `director_id_number`, `entity_iec_id`, `entity_category_id`) VALUES
-(246, NULL, NULL, NULL, 'B-ADD', '42342', '12', '143', '1124', '3234213', NULL, NULL, NULL, NULL, 1038, 0),
-(247, NULL, NULL, NULL, 'fdsfdsfds', 'B2-Street', '16', '230', '1606', '432432432', NULL, NULL, NULL, NULL, 1038, 0),
-(248, 'PROP', NULL, NULL, 'PROP-ADD', 'PROP-Street', '1', '1', '1', '323432', NULL, '', NULL, NULL, 1038, 1),
-(257, NULL, NULL, NULL, 'B-ADD', 'B2', '15', '207', '1512', '3234213', NULL, NULL, NULL, NULL, 1039, 0),
-(258, NULL, NULL, NULL, 'A3', 'B2-Street', '17', '270', '1943', '123456', NULL, NULL, NULL, NULL, 1039, 0),
-(259, 'PAN1', 'Farther', '2016-07-20', 'f1', 's1', '18', '296', '2078', '233232', '4324324242', '3424324', '43243224', NULL, 1039, 2),
-(260, 'p2', 'f2', '2016-07-27', 'f1', 's1', '5', '63', '402', '2121312', '432432424', '', '43243243', NULL, 1039, 2);
+INSERT INTO `entity_details` (`id`, `name`, `surname`, `dob`, `code`, `address1`, `address2`, `state`, `district`, `city`, `pincode`, `mobile`, `aadhaar_number`, `pan`, `director_id_number`, `entity_iec_id`, `entity_category_id`) VALUES
+(246, NULL, NULL, NULL, 0, 'B-ADD', '42342', '12', '143', '1124', '3234213', NULL, NULL, NULL, NULL, 1038, 0),
+(247, NULL, NULL, NULL, 0, 'fdsfdsfds', 'B2-Street', '16', '230', '1606', '432432432', NULL, NULL, NULL, NULL, 1038, 0),
+(248, 'PROP', NULL, NULL, 0, 'PROP-ADD', 'PROP-Street', '1', '1', '1', '323432', NULL, '', NULL, NULL, 1038, 1),
+(257, NULL, NULL, NULL, 0, 'B-ADD', 'B2', '15', '207', '1512', '3234213', NULL, NULL, NULL, NULL, 1039, 0),
+(258, NULL, NULL, NULL, 0, 'A3', 'B2-Street', '17', '270', '1943', '123456', NULL, NULL, NULL, NULL, 1039, 0),
+(259, 'PAN1', 'Farther', '2016-07-20', 0, 'f1', 's1', '18', '296', '2078', '233232', '4324324242', '3424324', '43243224', NULL, 1039, 2),
+(260, 'p2', 'f2', '2016-07-27', 0, 'f1', 's1', '5', '63', '402', '2121312', '432432424', '', '43243243', NULL, 1039, 2);
 
 -- --------------------------------------------------------
 
@@ -7001,7 +7002,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `ports`
 --
 ALTER TABLE `ports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `states`
 --
