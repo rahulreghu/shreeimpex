@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 14, 2016 at 10:26 AM
+-- Generation Time: Sep 15, 2016 at 11:09 AM
 -- Server version: 5.7.13-log
 -- PHP Version: 5.6.23
 
@@ -6518,11 +6518,11 @@ CREATE TABLE `entity_details` (
 --
 
 INSERT INTO `entity_details` (`id`, `name`, `surname`, `dob`, `code`, `address1`, `address2`, `state`, `district`, `city`, `pincode`, `mobile`, `aadhaar_number`, `pan`, `director_id_number`, `entity_iec_id`, `entity_category_id`) VALUES
-(246, NULL, NULL, NULL, 0, 'B-ADD', '42342', '12', '143', '1124', '3234213', NULL, NULL, NULL, NULL, 1038, 0),
-(247, NULL, NULL, NULL, 0, 'fdsfdsfds', 'B2-Street', '16', '230', '1606', '432432432', NULL, NULL, NULL, NULL, 1038, 0),
+(246, NULL, NULL, NULL, 1, 'B-ADD', '42342', '12', '143', '1124', '3234213', NULL, NULL, NULL, NULL, 1038, 0),
+(247, NULL, NULL, NULL, 2, 'fdsfdsfds', 'B2-Street', '16', '230', '1606', '432432432', NULL, NULL, NULL, NULL, 1038, 0),
 (248, 'PROP', NULL, NULL, 0, 'PROP-ADD', 'PROP-Street', '1', '1', '1', '323432', NULL, '', NULL, NULL, 1038, 1),
-(257, NULL, NULL, NULL, 0, 'B-ADD', 'B2', '15', '207', '1512', '3234213', NULL, NULL, NULL, NULL, 1039, 0),
-(258, NULL, NULL, NULL, 0, 'A3', 'B2-Street', '17', '270', '1943', '123456', NULL, NULL, NULL, NULL, 1039, 0),
+(257, NULL, NULL, NULL, 1, 'B-ADD', 'B2', '15', '207', '1512', '3234213', NULL, NULL, NULL, NULL, 1039, 0),
+(258, NULL, NULL, NULL, 2, 'A3', 'B2-Street', '17', '270', '1943', '123456', NULL, NULL, NULL, NULL, 1039, 0),
 (259, 'PAN1', 'Farther', '2016-07-20', 0, 'f1', 's1', '18', '296', '2078', '233232', '4324324242', '3424324', '43243224', NULL, 1039, 2),
 (260, 'p2', 'f2', '2016-07-27', 0, 'f1', 's1', '5', '63', '402', '2121312', '432432424', '', '43243243', NULL, 1039, 2);
 
@@ -6569,6 +6569,7 @@ CREATE TABLE `entity_iec_info` (
   `imr_reg_prods` varchar(500) DEFAULT NULL,
   `str_reg_num` varchar(100) DEFAULT NULL,
   `str_ia` varchar(100) DEFAULT NULL,
+  `str_reg_date` date DEFAULT NULL,
   `str_reg_items` varchar(500) DEFAULT NULL,
   `rcmc_num` varchar(100) DEFAULT NULL,
   `rcmc_ia` varchar(100) DEFAULT NULL,
@@ -6598,10 +6599,10 @@ CREATE TABLE `entity_iec_info` (
 -- Dumping data for table `entity_iec_info`
 --
 
-INSERT INTO `entity_iec_info` (`id`, `iec_number`, `iec_doi`, `iec_ia`, `name`, `address1`, `address2`, `state`, `district`, `city`, `pincode`, `telephone`, `mobile1`, `mobile2`, `email1`, `email2`, `website`, `fax`, `category`, `activities`, `other_activities`, `registration_code`, `total_branches`, `pan_name_entity`, `incorporation_date`, `pan_entity`, `total_partners`, `llpin_cin`, `registration_cert_number`, `imr_reg_num`, `imr_doi`, `imr_validity`, `imr_ia`, `imr_reg_prods`, `str_reg_num`, `str_ia`, `str_reg_items`, `rcmc_num`, `rcmc_ia`, `rcmc_doi`, `rcmc_validity`, `rcmc_reg_prods`, `shd_rating`, `shd_cert_num`, `shd_ia`, `shd_doi`, `shd_validity`, `cer_reg_num`, `cer_ia`, `cer_reg_date`, `vat_reg_num`, `vat_ia`, `image`, `proof_of_accept`, `status`, `created_on`, `created_by`, `updated_on`, `last_updated_by`) VALUES
-(1037, NULL, NULL, NULL, 'IEC for 1 branch and 1 Proprietorship', 'FLAT', 'STEET', '1', '1', '3', '123455', '', '98964646464', '', 'rahulreghu@gmail.com', '', 'www.test.com', '1234', '1', '1', '', 'dasdsad', '1', NULL, NULL, NULL, NULL, NULL, NULL, 'IRD-SSL', '2016-07-01', '2016-07-26', 'IA', 'dadasdasd,dasdasd, dasdasd', 'STR', 'IA', 'dasda,gdfgdfg', 'RCMC-111', 'IA', '2016-07-01', '2016-07-26', 'fsfsdfs,fdsfsdfs', 2, 'SHD1', 'DEF5678', '2016-07-01', '2016-07-26', 'CERD', 'IA', NULL, 'VAT 10', 'IA', NULL, 1, 7, '2016-07-26 01:03:04', 1, NULL, NULL),
-(1038, 'A2345HJ0005', NULL, NULL, 'IEC for 1 branch and 1 Proprietorship', 'FLAT', 'STEET', '1', '1', '1', '3123424', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '1', '1', 'dadfasda', 'dasdsad', '2', NULL, NULL, NULL, NULL, NULL, NULL, 'IRD-SSL', '2016-07-11', '2016-07-20', 'dasdasd', 'dadasdasd,dasdasd, dasdasd', 'dasdas', 'IA', 'dasda,gdfgdfg', 'RCMC-111', 'IA', '2016-07-12', '2016-07-28', 'fsfsdfs,fdsfsdfs', 0, 'dasda', 'DEF5678', '2016-07-04', '2016-07-20', 'dasdas', 'IA', '2016-07-26', 'VAT 10', 'IA', NULL, 1, 1, '2016-07-26 01:12:39', 1, '2016-07-26 01:43:43', 1),
-(1039, 'A2345HJ0001', NULL, NULL, 'IEC for 1 branch and 2 Partnership', 'FLAT', 'STEET', '1', '1', '1', '32323', '', '98964646464', '', 'rahulreghu@gmail.com', '', '', '', '2', '1', '', '', '2', 'PAN', '2016-07-28', 'asdf1234', '2', NULL, NULL, '21323234', '2016-07-26', '2016-07-28', 'IA', 'dsada', 'STR', 'IA', 'dasda', 'RCMC-111', 'IA', '2016-07-27', '2016-07-27', 'fsfsdfs,fdsfsdfs', 0, 'dasda', 'DEF5678', '2016-07-19', '2016-07-27', 'dasdas', 'IA', '2016-07-29', 'VAT 10', 'IA', NULL, 1, 1, '2016-07-26 01:48:42', 1, '2016-07-26 01:49:44', 1);
+INSERT INTO `entity_iec_info` (`id`, `iec_number`, `iec_doi`, `iec_ia`, `name`, `address1`, `address2`, `state`, `district`, `city`, `pincode`, `telephone`, `mobile1`, `mobile2`, `email1`, `email2`, `website`, `fax`, `category`, `activities`, `other_activities`, `registration_code`, `total_branches`, `pan_name_entity`, `incorporation_date`, `pan_entity`, `total_partners`, `llpin_cin`, `registration_cert_number`, `imr_reg_num`, `imr_doi`, `imr_validity`, `imr_ia`, `imr_reg_prods`, `str_reg_num`, `str_ia`, `str_reg_date`, `str_reg_items`, `rcmc_num`, `rcmc_ia`, `rcmc_doi`, `rcmc_validity`, `rcmc_reg_prods`, `shd_rating`, `shd_cert_num`, `shd_ia`, `shd_doi`, `shd_validity`, `cer_reg_num`, `cer_ia`, `cer_reg_date`, `vat_reg_num`, `vat_ia`, `image`, `proof_of_accept`, `status`, `created_on`, `created_by`, `updated_on`, `last_updated_by`) VALUES
+(1037, NULL, NULL, NULL, 'IEC for 1 branch and 1 Proprietorship', 'FLAT', 'STEET', '1', '1', '3', '123455', '', '98964646464', '', 'rahulreghu@gmail.com', '', 'www.test.com', '1234', '1', '1', '', 'dasdsad', '1', NULL, NULL, NULL, NULL, NULL, NULL, 'IRD-SSL', '2016-07-01', '2016-07-26', 'IA', 'dadasdasd,dasdasd, dasdasd', 'STR', 'IA', NULL, 'dasda,gdfgdfg', 'RCMC-111', 'IA', '2016-07-01', '2016-07-26', 'fsfsdfs,fdsfsdfs', 2, 'SHD1', 'DEF5678', '2016-07-01', '2016-07-26', 'CERD', 'IA', NULL, 'VAT 10', 'IA', NULL, 1, 7, '2016-07-26 01:03:04', 1, NULL, NULL),
+(1038, 'A2345HJ0005', NULL, NULL, 'IEC for 1 branch and 1 Proprietorship', 'FLAT', 'STEET', '1', '1', '1', '3123424', '', '33234124', '', 'rahulreghu@gmail.com', '', '', '', '1', '1', 'dadfasda', 'dasdsad', '2', NULL, NULL, NULL, NULL, NULL, NULL, 'IRD-SSL', '2016-07-11', '2016-07-20', 'dasdasd', 'dadasdasd,dasdasd, dasdasd', 'dasdas', 'IA', NULL, 'dasda,gdfgdfg', 'RCMC-111', 'IA', '2016-07-12', '2016-07-28', 'fsfsdfs,fdsfsdfs', 0, 'dasda', 'DEF5678', '2016-07-04', '2016-07-20', 'dasdas', 'IA', '2016-07-26', 'VAT 10', 'IA', NULL, 1, 1, '2016-07-26 01:12:39', 1, '2016-07-26 01:43:43', 1),
+(1039, 'A2345HJ0001', NULL, NULL, 'IEC for 1 branch and 2 Partnership', 'FLAT', 'STEET', '1', '1', '1', '32323', '', '98964646464', '', 'rahulreghu@gmail.com', '', '', '', '2', '1', '', '', '2', 'PAN', '2016-07-28', 'asdf1234', '2', NULL, NULL, '21323234', '2016-07-26', '2016-07-28', 'IA', 'dsada', 'STR', 'IA', '2016-09-01', 'dasda', 'RCMC-111', 'IA', '2016-07-27', '2016-07-27', 'fsfsdfs,fdsfsdfs', 0, 'dasda', 'DEF5678', '2016-07-19', '2016-07-27', 'dasdas', 'IA', '2016-07-29', 'VAT 10', 'IA', NULL, 1, 1, '2016-07-26 01:48:42', 1, '2016-07-26 01:49:44', 1);
 
 -- --------------------------------------------------------
 
@@ -6630,7 +6631,7 @@ CREATE TABLE `epcg_export_info` (
   `epcg_scheme` int(11) NOT NULL,
   `factory_address` varchar(50) DEFAULT NULL,
   `reg_port` varchar(50) DEFAULT NULL,
-  `app_fee_amt` varchar(50) DEFAULT NULL,
+  `amount` varchar(50) DEFAULT NULL,
   `mode_of_payment` varchar(50) DEFAULT NULL,
   `payment_details` varchar(50) DEFAULT NULL,
   `payment_date` date DEFAULT NULL,
@@ -6649,6 +6650,17 @@ CREATE TABLE `epcg_goods_sector` (
   `id` int(11) NOT NULL,
   `sector_name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `epcg_goods_sector`
+--
+
+INSERT INTO `epcg_goods_sector` (`id`, `sector_name`) VALUES
+(1, 'Industrial Sector'),
+(2, 'Agriculural Sector'),
+(3, 'Service Sector'),
+(4, 'Green Technology Sector'),
+(5, 'Units in North Eastern Region/Sikkim/J&K');
 
 -- --------------------------------------------------------
 
@@ -6735,6 +6747,14 @@ CREATE TABLE `ports` (
   `name` varchar(500) NOT NULL,
   `code` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ports`
+--
+
+INSERT INTO `ports` (`id`, `name`, `code`) VALUES
+(1, 'Chennai', 'CHN'),
+(2, 'Vizag', 'VIZ');
 
 -- --------------------------------------------------------
 
@@ -6989,6 +7009,11 @@ ALTER TABLE `entity_details`
 ALTER TABLE `entity_iec_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1040;
 --
+-- AUTO_INCREMENT for table `epcg_goods_sector`
+--
+ALTER TABLE `epcg_goods_sector`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `financial_details`
 --
 ALTER TABLE `financial_details`
@@ -7002,7 +7027,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT for table `ports`
 --
 ALTER TABLE `ports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `states`
 --

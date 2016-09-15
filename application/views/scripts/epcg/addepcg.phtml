@@ -23,22 +23,34 @@ if(!empty($this->iec_details)){
 			<td></td>
 			<td width="20px">a.</td>
 			<td>EPCG Scheme</td>
-			<td><input type="checkbox"	name="epcg[app_scheme]" value="1"></td>
+			<td><input type="radio"	name="epcg_export[app_scheme]" value="1"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
 			<td>Post Export EPCG Scheme</td>
-			<td><input type="checkbox"	name="epcg[app_scheme]" value="2"></td>
+			<td><input type="radio"	name="epcg_export[app_scheme]" value="2"></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
 			<td width="20px">2.</td>
 			<td>IEC No.</td>
-			<td><input class="input-block-level" type="text" placeholder="IEC No" name="iec_no" id="iec_no" value="<?php echo $this->iec_details['iec_number']; ?>" <?php echo $readyonly;?>></td>
+			<td><input class="input-block-level" type="text" placeholder="IEC No" name="iec_number" id="iec_number" value="<?php echo $this->iec_details['iec_number']; ?>" <?php echo $readyonly;?>></td>
 			<td>Branch Code</td>
-			<td><input class="input-block-level" type="text" placeholder="Branch Code" name="branch_code" id="branch_code" value="<?php echo isset($this->iec_details['branch_details']['primary'])? $this->iec_details['branch_details']['primary']['id'] :  $this->iec_details['branch_details'][0]['id'] ?>" <?php echo $readyonly;?>></td>
+			<td>
+				<select name="branch_code" id="branch_code" >
+					<?php
+						if(!empty($this->iec_details['branch_details_primary'])){
+							foreach($this->iec_details['branch_details_primary'] as $branch_detail){
+								echo "<option value='{$branch_detail['id']}'>{$branch_detail['code']}</option>";
+							}
+						}else{
+							echo "<option value='0'>Select</option>";
+						}
+					?>
+				</select>				
+			</td>
 		</tr>
 		<tr>
 			<td></td>
@@ -55,7 +67,7 @@ if(!empty($this->iec_details)){
 			<td></td>
 			<td>	
 				<?php if(!empty($this->iec_details['branch_details'])){?>
-				<select name="factory_address" id="factory_address"  multiple="multiple" class="span6">
+				<select name="epcg_export[factory_address]" id="factory_address"  multiple="multiple" class="span6">
 					<?php
 						foreach($this->iec_details['branch_details'] as $detail){
 							echo "<option value='{$detail['id']}'>{$detail['address1']}, {$detail['address2']}, {$detail['state']}, {$detail['district']}, {$detail['city']}, {$detail['pincode']}</option>";
@@ -77,19 +89,19 @@ if(!empty($this->iec_details)){
 			<td></td>
 			<td width="20px">a.</td>
 			<td width="350px">Excise Registration Number</td>
-			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="excise[registration_num]" id="excise_registration_num" value="<?php echo $this->iec_details['cer_reg_num']; ?> " <?php echo $readyonly;?>></td>
+			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="iec[cer_reg_num]" id="cer_reg_num" value="<?php echo $this->iec_details['cer_reg_num']; ?> " <?php echo $readyonly;?>></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
 			<td>Date of registration</td>
-			<td><input class="input-block-level" type="text" placeholder="Date of Registration" name="excise[dor]" id="excise_dor" value="<?php echo !empty($this->iec_details['cer_reg_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_details['cer_reg_date']}")->format('d/m/Y') : ""?>" <?php echo $readyonly;?>></td>
+			<td><input class="input-block-level" type="text" placeholder="Date of Registration" name="iec[cer_reg_date]" id="cer_reg_date" value="<?php echo !empty($this->iec_details['cer_reg_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_details['cer_reg_date']}")->format('d/m/Y') : ""?>" <?php echo $readyonly;?>></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>c.</td>
 			<td>Address of the Jurisdictional Central Excise Auhority<br/>(whether registered with central excise or not)</td>
-			<td><input class="input-block-level" type="text" placeholder="Address" name="excise[address]" id="excise_address" value="<?php echo $this->iec_details['cer_ia'];?>" <?php echo $readyonly;?>></td>
+			<td><input class="input-block-level" type="text" placeholder="Address" name="iec[cer_ia]" id="iec[cer_ia]" value="<?php echo $this->iec_details['cer_ia'];?>" <?php echo $readyonly;?>></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
@@ -97,9 +109,17 @@ if(!empty($this->iec_details)){
 			<td  width="20px">5.</td>
 			<td width="387px">Port of Registration (for the purpose of imports)</td>
 			<td>
-				<select name="registered_port" id="registered_port">
-					<option value="0">--Select--</option>
-				</select>
+				<select name="epcg_export[registered_port]" id="registered_port" multiple="multiple" class="span4">
+					<?php
+						if(!empty($this->iec_details['ports'])){
+							foreach($this->iec_details['ports'] as $port){
+								echo "<option value='{$port['id']}'>{$port['name']}</option>";
+							}
+						}else{
+							echo "<option value='0'>Select</option>";
+						}
+					?>
+				</select>		
 			</td>
 		</tr>
 	</table>
@@ -112,7 +132,7 @@ if(!empty($this->iec_details)){
 			<td></td>
 			<td width="20px">a.</td>
 			<td style="width: 350px">Amount (in Rs.)</td>
-			<td colspan="2"><input class="input-block-level" type="text" placeholder="Amount" name="app_fee[amount]" id="app_fee_amount" ></td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Amount" name="epcg_export[amount]" id="amount" ></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -121,7 +141,7 @@ if(!empty($this->iec_details)){
 				Mode of Payment<br/>
 			   (TR Challan/Electronic Fund Transfer/Credit Cart)
 			</td>
-			<td colspan="2"><input class="input-block-level" type="text" placeholder="Mode of Payment" name="app_fee[payment_mode]" id="app_fee_payment_mode" ></td>
+			<td colspan="2"><input class="input-block-level" type="text" placeholder="Mode of Payment" name="epcg_export[mode_of_payment]" id="mode_of_payment" ></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -129,8 +149,8 @@ if(!empty($this->iec_details)){
 			<td>
 				Serial No. of TR challan/EFT no./credit card details and Date of Payment
 			</td>
-			<td><input class="input-block-level" type="text" placeholder="Payment Details" name="app_fee[payment_details]" id="app_fee_payment_details" ></td>
-			<td><input class="input-block-level" type="text" placeholder="Date of Payment" name="app_fee[payment_date]" id="app_fee_payment_date" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Payment Details" name="epcg_export[payment_details]" id="payment_details" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Date of Payment" name="epcg_export[payment_date]" id="payment_date" ></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
@@ -142,25 +162,25 @@ if(!empty($this->iec_details)){
 			<td></td>
 			<td width="20px">a.</td>
 			<td style="width: 350px">Service Tax Registration Number</td>
-			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="service_tax[registraion_num]" id="service_tax_registration_num" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="iec[str_reg_num]" id="str_reg_num" value="<?php echo !empty($this->iec_info['str_reg_num'])? $this->iec_info['str_reg_num'] : ""?>"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
 			<td>Date of registration</td>
-			<td><input class="input-block-level" type="text" placeholder="Date of Registration" name="service_tax[dor]" id="service_tax_dor" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Date of Registration" name="iec[str_reg_date]" id="str_reg_date" value="<?php echo !empty($this->iec_info['str_reg_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['str_reg_date']}")->format('d/m/Y') : ""?>"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>c.</td>
 			<td>Address of Jurisdictional Service Tax Authoriy</td>
-			<td><input class="input-block-level" type="text" placeholder="Address" name="service_tax[auth_address]" id="service_tax_auth_address" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Address" name="iec[str_ia]" id="str_ia" value="<?php echo !empty($this->iec_info['str_ia'])? $this->iec_info['str_ia'] : ""?>"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>d.</td>
 			<td>Services for which registered</td>
-			<td><input class="input-block-level" type="text" placeholder="Registered Services" name="service_tax[reg_services]" id="service_tax_reg_services" ></td>
+			<td><input class="input-block-level" type="text" placeholder="Registered Services" name="iec[str_reg_items]" id="str_reg_items" value="<?php echo !empty($this->iec_info['str_reg_items'])? $this->iec_info['str_reg_items'] : ""?>"></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
@@ -168,36 +188,17 @@ if(!empty($this->iec_details)){
 			<td width="20px">8.</td>
 			<td colspan="3">Sector Classification of Capital Gods sought to be imported under the Scheme</td>
 		</tr>
-		<tr>
-			<td></td>
-			<td width="20px">a.</td>
-			<td width="350px;">Industrial Sector</td>
-			<td><input type="checkbox"	name="sector" value="1"></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>b.</td>
-			<td>Agricultural Sector</td>
-			<td><input type="checkbox"	name="sector" value="2"></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>c.</td>
-			<td>Service Sector</td>
-			<td><input type="checkbox"	name="sector" value="3"></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>d.</td>
-			<td>Green Technology Sector</td>
-			<td><input type="checkbox"	name="sector" value="4"></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>e.</td>
-			<td>Units in North Eastern Region/Sikkim/J&amp;K</td>
-			<td><input type="checkbox"	name="sector" value="5"></td>
-		</tr>
+		<?php
+			$x = 'a';
+			foreach($this->iec_details['capital_goods'] as $capial_good){
+		?>
+			<tr>
+				<td></td>
+				<td width="20px"><?php echo $x;?>.</td>
+				<td width="350px;"><?php echo $capial_good['sector_name']; ?></td>
+				<td><input type="radio"	name="epcg_export[goods_sector_id]" value="<?php echo $capial_good['id']; ?>"></td>
+			</tr>
+		<?php $x++; }?>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
@@ -207,8 +208,13 @@ if(!empty($this->iec_details)){
 		</tr>	
 		<tr>
 			<td></td>
-			<td><input class="input-block-level" type="text" placeholder="Product List" name="product_list" id="product_list" ></td>
-			<td><input class="input-block-level" type="text" placeholder="ITC(HS)/Service Code" name="itc_code" id="itc_code" ></td>
+			<td>
+				<!-- <input class="input-block-level" type="text" placeholder="Product List" name="product_list" id="product_list" > -->
+				<textarea rows="3" cols="" name="product_list" id="product_list" <?php echo $readyonly;?>>
+					<?php echo $this->iec_details['rcmc_reg_prods'];?>
+				</textarea>
+			</td>
+			<td><input class="input-block-level" type="text" placeholder="ITC(HS)/Service Code" name="epcg_export[itc_code]" id="itc_code" ></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
