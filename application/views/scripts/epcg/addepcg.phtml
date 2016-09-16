@@ -5,7 +5,7 @@ if(!empty($this->iec_details)){
 	$readyonly = "";
 }
 ?>
-<form action="chapterv/index" method="post" name="epcg_form" id="epcg_form" enctype="multipart/form-data">
+<form action="epcg/addepcg" method="post" name="epcg_form" id="epcg_form" enctype="multipart/form-data">
 	<div style="text-align: center;">
 		<caption style="height: 60px">
 				<strong>ANF - 5A</strong><br/>
@@ -23,23 +23,23 @@ if(!empty($this->iec_details)){
 			<td></td>
 			<td width="20px">a.</td>
 			<td>EPCG Scheme</td>
-			<td><input type="radio"	name="epcg_export[app_scheme]" value="1"></td>
+			<td><input type="checkbox"	name="epcg_export[epcg_scheme]" value="1"></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
 			<td>Post Export EPCG Scheme</td>
-			<td><input type="radio"	name="epcg_export[app_scheme]" value="2"></td>
+			<td><input type="checkbox"	name="epcg_export[epcg_scheme]" value="2"></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
 		<tr>
 			<td width="20px">2.</td>
 			<td>IEC No.</td>
-			<td><input class="input-block-level" type="text" placeholder="IEC No" name="iec_number" id="iec_number" value="<?php echo $this->iec_details['iec_number']; ?>" <?php echo $readyonly;?>></td>
+			<td><input class="input-block-level" type="text" placeholder="IEC No" name="iec[iec_number]" id="iec_number" value="<?php echo !empty($this->iec_details['iec_number'])? $this->iec_details['iec_number'] : ""?>" <?php echo $readyonly;?>></td>
 			<td>Branch Code</td>
 			<td>
-				<select name="branch_code" id="branch_code" >
+				<select name="epcg_export[branch_code]" id="branch_code" >
 					<?php
 						if(!empty($this->iec_details['branch_details_primary'])){
 							foreach($this->iec_details['branch_details_primary'] as $branch_detail){
@@ -89,7 +89,7 @@ if(!empty($this->iec_details)){
 			<td></td>
 			<td width="20px">a.</td>
 			<td width="350px">Excise Registration Number</td>
-			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="iec[cer_reg_num]" id="cer_reg_num" value="<?php echo $this->iec_details['cer_reg_num']; ?> " <?php echo $readyonly;?>></td>
+			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="iec[cer_reg_num]" id="cer_reg_num" value="<?php echo !empty($this->iec_details['cer_reg_num'])? $this->iec_details['cer_reg_num'] : ""?>" <?php echo $readyonly;?>></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -101,7 +101,7 @@ if(!empty($this->iec_details)){
 			<td></td>
 			<td>c.</td>
 			<td>Address of the Jurisdictional Central Excise Auhority<br/>(whether registered with central excise or not)</td>
-			<td><input class="input-block-level" type="text" placeholder="Address" name="iec[cer_ia]" id="iec[cer_ia]" value="<?php echo $this->iec_details['cer_ia'];?>" <?php echo $readyonly;?>></td>
+			<td><input class="input-block-level" type="text" placeholder="Address" name="iec[cer_ia]" id="iec[cer_ia]" value="<?php echo !empty($this->iec_details['cer_ia'])? $this->iec_details['cer_ia'] : ""?>" <?php echo $readyonly;?>></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
@@ -109,7 +109,7 @@ if(!empty($this->iec_details)){
 			<td  width="20px">5.</td>
 			<td width="387px">Port of Registration (for the purpose of imports)</td>
 			<td>
-				<select name="epcg_export[registered_port]" id="registered_port" multiple="multiple" class="span4">
+				<select name="epcg_export[reg_port]" id="registered_port" multiple="multiple" class="span4">
 					<?php
 						if(!empty($this->iec_details['ports'])){
 							foreach($this->iec_details['ports'] as $port){
@@ -162,25 +162,25 @@ if(!empty($this->iec_details)){
 			<td></td>
 			<td width="20px">a.</td>
 			<td style="width: 350px">Service Tax Registration Number</td>
-			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="iec[str_reg_num]" id="str_reg_num" value="<?php echo !empty($this->iec_info['str_reg_num'])? $this->iec_info['str_reg_num'] : ""?>"></td>
+			<td><input class="input-block-level" type="text" placeholder="Registration Number" name="iec[str_reg_num]" id="str_reg_num" value="<?php echo !empty($this->iec_details['str_reg_num'])? $this->iec_details['str_reg_num'] : ""?>" <?php echo $readyonly;?> ></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>b.</td>
 			<td>Date of registration</td>
-			<td><input class="input-block-level" type="text" placeholder="Date of Registration" name="iec[str_reg_date]" id="str_reg_date" value="<?php echo !empty($this->iec_info['str_reg_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['str_reg_date']}")->format('d/m/Y') : ""?>"></td>
+			<td><input class="input-block-level" type="text" placeholder="Date of Registration" name="iec[str_reg_date]" id="str_reg_date" value="<?php echo !empty($this->iec_details['str_reg_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_details['str_reg_date']}")->format('d/m/Y') : ""?>" <?php echo $readyonly;?>></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>c.</td>
 			<td>Address of Jurisdictional Service Tax Authoriy</td>
-			<td><input class="input-block-level" type="text" placeholder="Address" name="iec[str_ia]" id="str_ia" value="<?php echo !empty($this->iec_info['str_ia'])? $this->iec_info['str_ia'] : ""?>"></td>
+			<td><input class="input-block-level" type="text" placeholder="Address" name="iec[str_ia]" id="str_ia" value="<?php echo !empty($this->iec_details['str_ia'])? $this->iec_details['str_ia'] : ""?>" <?php echo $readyonly;?>></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>d.</td>
 			<td>Services for which registered</td>
-			<td><input class="input-block-level" type="text" placeholder="Registered Services" name="iec[str_reg_items]" id="str_reg_items" value="<?php echo !empty($this->iec_info['str_reg_items'])? $this->iec_info['str_reg_items'] : ""?>"></td>
+			<td><input class="input-block-level" type="text" placeholder="Registered Services" name="iec[str_reg_items]" id="str_reg_items" value="<?php echo !empty($this->iec_details['str_reg_items'])? $this->iec_details['str_reg_items'] : ""?>" <?php echo $readyonly;?>></td>
 		</tr>
 	</table>
 	<table class="table table-bordered" style="width: 950px">
@@ -196,7 +196,7 @@ if(!empty($this->iec_details)){
 				<td></td>
 				<td width="20px"><?php echo $x;?>.</td>
 				<td width="350px;"><?php echo $capial_good['sector_name']; ?></td>
-				<td><input type="radio"	name="epcg_export[goods_sector_id]" value="<?php echo $capial_good['id']; ?>"></td>
+				<td><input type="checkbox"	name="epcg_export[goods_sector_id]" value="<?php echo $capial_good['id']; ?>"></td>
 			</tr>
 		<?php $x++; }?>
 	</table>
@@ -211,7 +211,7 @@ if(!empty($this->iec_details)){
 			<td>
 				<!-- <input class="input-block-level" type="text" placeholder="Product List" name="product_list" id="product_list" > -->
 				<textarea rows="3" cols="" name="product_list" id="product_list" <?php echo $readyonly;?>>
-					<?php echo $this->iec_details['rcmc_reg_prods'];?>
+					<?php echo !empty($this->iec_details['rcmc_reg_prods'])? $this->iec_details['rcmc_reg_prods'] : ""?>
 				</textarea>
 			</td>
 			<td><input class="input-block-level" type="text" placeholder="ITC(HS)/Service Code" name="epcg_export[itc_code]" id="itc_code" ></td>
@@ -475,7 +475,7 @@ if(!empty($this->iec_details)){
 		<tr>
 			<td width="20px">21.</td>
 			<td>
-				Postal address f the jurisdictional Central Excise Authoriy in whose jurisdiction factory/premises of the<br/>
+				Postal address of the jurisdictional Central Excise Authoriy in whose jurisdiction factory/premises of the<br/>
 				applicant/supporting manufacurer where the capital goods to be imported are proposed to be installed.
 			
 			</td>	
@@ -524,11 +524,25 @@ if(!empty($this->iec_details)){
 </form>
 <script>
 $(function(){
-   /* $('#excise_dor').datepicker({});*/
-	$('#app_fee_payment_date').datepicker({});
-	$('#service_tax_dor').datepicker({});
+	$('#payment_date').datepicker({format: "dd/mm/yyyy"});
 	$('#epcg_auth_date_1').datepicker({});
 	$('#epcg_auth_eo_expiry_date_1').datepicker({});
 	
 });
+
+$("input:checkbox").on('click', function() {
+	  // in the handler, 'this' refers to the box clicked on
+	  var $box = $(this);
+	  if ($box.is(":checked")) {
+	    // the name of the box is retrieved using the .attr() method
+	    // as it is assumed and expected to be immutable
+	    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+	    // the checked state of the group/box on the other hand will change
+	    // and the current value is retrieved using .prop() method
+	    $(group).prop("checked", false);
+	    $box.prop("checked", true);
+	  } else {
+	    $box.prop("checked", false);
+	  }
+	});
 </script>

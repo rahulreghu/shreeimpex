@@ -24,7 +24,9 @@ class EpcgController extends Zend_Controller_Action
 		if($this->getRequest()->getParam('iec_id')){
 			$this->view->iec_details = $this->getIecDetailsByIecId($this->getRequest()->getParam('iec_id'));
 		}
-		
+		if(isset($_POST['submitform']) && $_POST['submitform'] == "Submit Form"){
+			print_r($_POST);
+		}
 	}
 	
 	public function getIecDetailsByIecId($iec_id){
