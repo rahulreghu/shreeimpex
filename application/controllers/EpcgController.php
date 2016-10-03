@@ -25,8 +25,22 @@ class EpcgController extends Zend_Controller_Action
 			$this->view->iec_details = $this->getIecDetailsByIecId($this->getRequest()->getParam('iec_id'));
 		}
 		if(isset($_POST['submitform']) && $_POST['submitform'] == "Submit Form"){
-			print_r($_POST);
+			print_r($_POST['epcg_export']);
+			//echo $_POST['epcg_export']['payment_date'];exit();
+			$_POST['epcg_export']['payment_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['epcg_export']['payment_date']}")->format('Y-m-d');
+			try{
+			Model_EpcgExportInfo::addEpcgForm($_POST['epcg_export']);
+			}catch(Exception $e){
+				echo $e->getMessage();
+			}
 		}
+	}
+	
+	
+	public function editepcgAction()
+	{
+		
+		
 	}
 	
 	public function getIecDetailsByIecId($iec_id){

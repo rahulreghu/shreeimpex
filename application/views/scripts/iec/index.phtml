@@ -166,20 +166,18 @@ function getDetails(callback,rowId) {
         	var thead = '';
         	var tbody = '';
         	//alert(response.status);
-            if (response.status == 2){
+            if (response.status == 1){
+                $.each(response.message, function (i, d) {
+                        tbody += '<tr><td>' + d.id + '</td><td>' + 
+                        '<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-mini btn-primary" type="button" id="" href="epcg/editepcg?id='+d.id+'"><i class="icon-edit"></i> </a>&nbsp;'+
+            			'<button data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" class="btn btn-mini btn-danger" type="button" id="deleteEpcg" value=""><i class="icon-trash"></i></button>&nbsp;'+
+            			'<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Print" class="btn btn-mini btn-info" type="button" id="editEpcg_" href="epcg/editepcg?id="><i class="icon-print"></i></a>'+
+                        '</td></tr>';
+                });
+            }else{
             	var tbody = '<tr><td>No EPCG Found</td><td><a href="epcg/addepcg?iec_id='+rowId+'" class="btn btn-warning" type="button">Add New EPCG</a></td></tr>';
-            }
-        /*  var tbody = '';
-            $.each(data, function (i, d) {
-                for (var x = 0; x < d.length ; x++)
-                {
-                    tbody += '<tr><td>' + x + '</td><td>' + 
-                    '<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" class="btn btn-mini btn-primary" type="button" id="" href=""><i class="icon-edit"></i> </a>&nbsp;'+
-        			'<button data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" class="btn btn-mini btn-danger" type="button" id="deleteEpcg" value=""><i class="icon-trash"></i></button>&nbsp;'+
-        			'<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Print" class="btn btn-mini btn-info" type="button" id="editEpcg_" href="epcg/editepcg?id="><i class="icon-print"></i></a>'+
-                    '</td></tr>';
-                }
-            });*/
+             }
+        
             callback($('<table class="table table-hover table-bordered table-striped">'+ thead  + tbody + '</table>')).show();
           
         },

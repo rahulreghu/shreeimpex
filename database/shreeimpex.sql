@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 15, 2016 at 11:09 AM
+-- Generation Time: Oct 03, 2016 at 07:50 AM
 -- Server version: 5.7.13-log
 -- PHP Version: 5.6.23
 
@@ -6629,6 +6629,7 @@ CREATE TABLE `epcg_export_info` (
   `id` int(11) NOT NULL,
   `type` varchar(50) DEFAULT NULL,
   `epcg_scheme` int(11) NOT NULL,
+  `branch_code` int(11) DEFAULT NULL,
   `factory_address` varchar(50) DEFAULT NULL,
   `reg_port` varchar(50) DEFAULT NULL,
   `amount` varchar(50) DEFAULT NULL,
@@ -6639,6 +6640,14 @@ CREATE TABLE `epcg_export_info` (
   `itc_code` varchar(50) DEFAULT NULL,
   `entity_iec_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `epcg_export_info`
+--
+
+INSERT INTO `epcg_export_info` (`id`, `type`, `epcg_scheme`, `branch_code`, `factory_address`, `reg_port`, `amount`, `mode_of_payment`, `payment_details`, `payment_date`, `goods_sector_id`, `itc_code`, `entity_iec_id`) VALUES
+(1, NULL, 1, 258, '258', '2', '12222', '212313`', '323124', '2016-09-22', 1, '22112312321', 1039),
+(2, NULL, 2, 258, '257', '2', '23123', 'eweqwe', 'dasdasd', '2016-09-14', 1, '3232343214', 1039);
 
 -- --------------------------------------------------------
 
@@ -7008,6 +7017,11 @@ ALTER TABLE `entity_details`
 --
 ALTER TABLE `entity_iec_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1040;
+--
+-- AUTO_INCREMENT for table `epcg_export_info`
+--
+ALTER TABLE `epcg_export_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `epcg_goods_sector`
 --

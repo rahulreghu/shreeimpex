@@ -10,4 +10,8 @@ class Model_EpcgExportInfo{
 	public static function getAllEpcgByIecNo($id){
 		return self::getTableInstance()->getAllEpcgByIecNo($id);
 	}
+	
+	public static function addEpcgForm($data){
+		return self::getTableInstance()->addEpcgForm($data);
+	}
 }

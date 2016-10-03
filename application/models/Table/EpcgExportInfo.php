@@ -7,6 +7,9 @@ class Model_Table_EpcgExportInfo  extends Zend_Db_Table_Abstract{
 		$sql->where('entity_iec_id = '.$id);
 		$sql->order('id DESC');
 		return $this->fetchAll($sql)->toArray();
-		//return $this->fetchAll($sql)->toArray();;
+	}
+	
+	public function addEpcgForm($data){
+		return $this->insert($data);
 	}
 }
