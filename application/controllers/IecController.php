@@ -133,18 +133,21 @@ class IecController extends Zend_Controller_Action
 			}else{
 				$_POST['entity']['status'] = '1';
 			}
-			!empty($_POST['entity']['imr_doi']) ? $_POST['entity']['imr_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['imr_doi']}")->format('Y-m-d'):'0000-00-00';
-			!empty($_POST['entity']['imr_validity']) ? $_POST['entity']['imr_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['imr_validity']}")->format('Y-m-d'):'0000-00-00';
-			!empty($_POST['entity']['rcmc_doi']) ? $_POST['entity']['rcmc_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['rcmc_doi']}")->format('Y-m-d'):'0000-00-00';
-			!empty($_POST['entity']['rcmc_validity']) ? $_POST['entity']['rcmc_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['rcmc_validity']}")->format('Y-m-d'):'0000-00-00';
-			!empty($_POST['entity']['shd_doi']) ? $_POST['entity']['shd_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_doi']}")->format('Y-m-d'):'0000-00-00';
-			!empty($_POST['entity']['shd_validity']) ? $_POST['entity']['shd_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_validity']}")->format('Y-m-d'):'0000-00-00';
-			!empty($_POST['entity']['cer_reg_date']) ? $_POST['entity']['cer_reg_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['cer_reg_date']}")->format('Y-m-d'):'0000-00-00';
+			!empty($_POST['entity']['imr_doi']) ? $_POST['entity']['imr_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['imr_doi']}")->format('Y-m-d'): $_POST['entity']['imr_doi'] = '0000-00-00';
+			!empty($_POST['entity']['imr_validity']) ? $_POST['entity']['imr_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['imr_validity']}")->format('Y-m-d'): $_POST['entity']['imr_validity'] = '0000-00-00';
+			!empty($_POST['entity']['rcmc_doi']) ? $_POST['entity']['rcmc_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['rcmc_doi']}")->format('Y-m-d'): $_POST['entity']['rcmc_doi'] = '0000-00-00';
+			!empty($_POST['entity']['rcmc_validity']) ? $_POST['entity']['rcmc_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['rcmc_validity']}")->format('Y-m-d'): $_POST['entity']['rcmc_validity'] = '0000-00-00';
+			!empty($_POST['entity']['shd_doi']) ? $_POST['entity']['shd_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_doi']}")->format('Y-m-d'): $_POST['entity']['shd_doi'] = '0000-00-00';
+			!empty($_POST['entity']['shd_validity']) ? $_POST['entity']['shd_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_validity']}")->format('Y-m-d'): $_POST['entity']['shd_validity'] = '0000-00-00';
+			!empty($_POST['entity']['cer_reg_date']) ? $_POST['entity']['cer_reg_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['cer_reg_date']}")->format('Y-m-d'): $_POST['entity']['cer_reg_date'] = '0000-00-00';
+			!empty($_POST['entity']['str_reg_date']) ? $_POST['entity']['str_reg_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['str_reg_date']}")->format('Y-m-d'): $_POST['entity']['str_reg_date'] = '0000-00-00';
+			
 			
 			//print_r($branch_details);
 			//print_r($entity_details);exit;
 			try{
 				//insert in entity_iec_info table
+				print_r($_POST['entity']);
 				$iec_id = Model_EntityIecInfo::addIecForm($_POST['entity']);
 				if(!empty($iec_id)){
 					if(!empty($_POST['bank'])){
@@ -242,7 +245,7 @@ class IecController extends Zend_Controller_Action
 			$this->view->iec_info = $iec_info;
 			$this->view->iec_branches = $iec_branches;
 			$this->view->iec_category_details = $iec_category_details;
-			/*
+			
 			echo '<pre>';
 			echo 'IEC INFO ';
 			print_r($iec_info);
@@ -252,7 +255,7 @@ class IecController extends Zend_Controller_Action
 			print_r($iec_category_details);
 			echo 'TURN OVER DETAILS ';
 			print_r($this->view->iec_turnover_details);
-			echo '</pre>';*/
+			echo '</pre>';
 			$districts = Model_Districts::getByStateId($iec_info['state']);
 			$this->view->districts = $districts;
 			$cities = Model_Cities::getByDistrictId($iec_info['district']);
@@ -344,6 +347,8 @@ class IecController extends Zend_Controller_Action
 			}else{
 				$_POST['entity']['status'] = '1';
 			}
+			
+			//empty($_POST['entity']['iec_number'])? $_POST['entity']['iec_number'] = '' : $_POST['entity']['iec_number'];
 			//print_r($_POST['turnover_details']);exit;
 			try{
 				//update the entity_iec_info table

@@ -334,6 +334,7 @@ function iecValidaion(){
 	var errorPartA = "";
 	var errorPartB = "";
 	var errorPartC1_C5 = "";
+	var branchCode = /[0-9]{1,3}$/;
 	var phoneRegex = /[0-9 -()+]+$/;
 	var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 	if($("#entity_name").val() == ""){
@@ -409,16 +410,25 @@ function iecValidaion(){
 		errorPartA += "Bank account details cannot be empty"+'<br/>';
 		response = false;
 	}
-	if($("#branch_total").val() == ""){
+	if($("#branch_total").val() == "" || $("#branch_total").val() == 0){
 		errorPartB += "Please enter total branches"+'<br/>';
 		response = false;
 	}else if($("#branch_total").val() != null && $.isNumeric($("#branch_total").val())){
 		var count = $("#branch_total").val();
-		var branch_address=branch_state=branch_pincode = '';
+		var branch_code=branch_address=branch_state=branch_pincode = '';
 		var count_edit_branch = $("#edit_branch_total").val();
 		if(count_edit_branch > 0){
-			for(j=0; j<count_edit_branch; j++){
+			for(j=0; j<=count_edit_branch; j++){
 				if($("#branch_container_"+j).length != 0){
+					if($("#branch_"+j+"_code").val() == ""){
+						branch_code = "Branch code cannot be empty"+'<br/>';
+						response = false;
+					}else{
+						if(!branchCode.test($("#branch_"+j+"_code").val())){
+							branch_code = "Branch code cannot be empty"+'<br/>';
+							response = false;
+						}
+					}
 					if($("#branch_"+j+"_address1").val() == "" || $("#branch_"+j+"_address2").val() == ""){
 						branch_address = "Address fields cannot be empty"+'<br/>';
 						response = false;
@@ -434,8 +444,17 @@ function iecValidaion(){
 				}
 			}
 		}
-		for(i=0; i<count; i++){
+		for(i=0; i<=count; i++){
 			if($("#branch_container"+i).length != 0){
+				if($("#branch"+i+"_code").val() == ""){
+					branch_code = "Branch code cannot be empty"+'<br/>';
+					response = false;
+				}else{
+					if(!branchCode.test($("#branch"+i+"_code").val())){
+						branch_code = "Please enter valid branch code"+'<br/>';
+						response = false;
+					}
+				}
 				if($("#branch"+i+"_address1").val() == "" || $("#branch"+i+"_address2").val() == ""){
 					branch_address = "Address fields cannot be empty"+'<br/>';
 					response = false;
@@ -450,7 +469,7 @@ function iecValidaion(){
 				}
 			}
 		}
-		errorPartB += branch_address+branch_state+branch_pincode;
+		errorPartB += branch_code+branch_address+branch_state+branch_pincode;
 	}else{
 		errorPartB += "Please enter valid number for total branches"+'<br/>';
 		response = false;

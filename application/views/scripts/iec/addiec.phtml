@@ -44,6 +44,10 @@
 			<td colspan="5">Part A:</td>
 		</tr>
 		<tr>
+			<td colspan="2">IEC Number</td>
+			<td colspan="3"><input type="text" class="input-block-level" type="text" placeholder="Name of entity" name="entity[iec_number]" id="entity_number" value=""/></td>
+		</tr>
+		<tr>
 			<td colspan="2">i. Name of entity in whose name IEC is required<span class="required">*</span></td>
 			<td colspan="3"><input class="input-block-level" type="text" placeholder="Name of entity" name="entity[name]" id="entity_name"></td>
 		</tr>
@@ -512,9 +516,9 @@
 			<tr>
 				<td rowspan="2">2. Date of issue and Validity / Issuing Authority</td>
 				<td colspan="2">
-				From:<span class="required">*</span>
+				From:
 					<input class="input-block-level" type="text" placeholder="From Date" name="entity[imr_doi]" id="imr_doi"></td>
-				<td colspan="2">To:<span class="required">*</span>
+				<td colspan="2">To:
 					<input class="input-block-level" type="text" placeholder="To Date" name="entity[imr_validity]" id="imr_validity"></td>
 			</tr>
 			<tr><td colspan="4"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[imr_ia]" id="imr_ia"></td></tr>
@@ -711,7 +715,7 @@ $(function(){
         if ($(this).scrollTop() >= target && !hasBeenTrigged) { // if scroll is greater/equal then 100 and hasBeenTrigged is set to false.
         	if(!$('input[name="entity[category]"]:checked').val()){
     			bootbox.alert("Please select the nature of concern/entity before proceeding.",function() {
-    				$("html, body").animate({ scrollTop: target }, "slow");
+    			//	$("html, body").animate({ scrollTop: target }, "slow");
     			});
     		}
             hasBeenTrigged = true;
