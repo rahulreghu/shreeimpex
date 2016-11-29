@@ -250,7 +250,10 @@
 				<div id="branch_container<?=$id?>"> 
 					<table class="table table-bordered">
 						<tr>
-							<td rowspan="4"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
+							<td rowspan="5"  width="225px">ii. Address of branches,<br /> divisions, units, <br />factories	located <br />in India and abroad:</td>
+							<td colspan="1" width="230px">Branch Code<span class="required">*</span></td>
+							<td colspan="3"><input id="branch<?=$id?>_code" class="input-block-level" placeholder="Branch Code" name="branch[<?=$id?>][code]" type="text" value="<?php echo !empty($branch['code'])? $branch['code'] : ""?>"></td></tr>
+						<tr>
 							<td colspan="1"  width="130px">Flat/Plot/Block No:<span class="required">*</span></td>
 							<td colspan="3">
 								<!-- <input class="input-block-level" type="hidden" name="branch[<?=$id?>][id]" value="<?php echo $branch['id']?>"> -->
@@ -806,9 +809,9 @@
 				<td rowspan="2">2. Date of issue and Validity / Issuing Authority</td>
 				<td colspan="2">
 				From:<span class="required">*</span>
-					<input class="input-block-level" type="text" placeholder="From Date" name="entity[imr_doi]" id="imr_doi" value="<?php echo !empty($this->iec_info['imr_doi'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['imr_doi']}")->format('d/m/Y') : ""?>"></td>
+					<input class="input-block-level" type="text" placeholder="From Date" name="entity[imr_doi]" id="imr_doi" value="<?php echo !empty($this->iec_info['imr_doi']) && $this->iec_info['imr_doi'] != '0000-00-00'? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['imr_doi']}")->format('d/m/Y') : ""?>"></td>
 				<td colspan="2">To:<span class="required">*</span>
-					<input class="input-block-level" type="text" placeholder="To Date" name="entity[imr_validity]" id="imr_validity" value="<?php echo !empty($this->iec_info['imr_validity'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['imr_validity']}")->format('d/m/Y') : ""?>"></td>
+					<input class="input-block-level" type="text" placeholder="To Date" name="entity[imr_validity]" id="imr_validity" value="<?php echo !empty($this->iec_info['imr_validity'])  && $this->iec_info['imr_validity'] != '0000-00-00' ? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['imr_validity']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
 			<tr><td colspan="4"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[imr_ia]" id="imr_ia" value="<?php echo !empty($this->iec_info['imr_ia'])? $this->iec_info['imr_ia'] : ""?>"></td></tr>
 				
@@ -831,7 +834,7 @@
 			</tr>
 			<tr>
 				<td colspan="1">2. Date of Registration</td>
-				<td colspan="4"><input class="input-block-level" type="text" placeholder="Date of Registration" name="entity[str_reg_date]" id="str_reg_date" value="<?php echo !empty($this->iec_info['str_reg_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['str_reg_date']}")->format('d/m/Y') : ""?>"></td>
+				<td colspan="4"><input class="input-block-level" type="text" placeholder="Date of Registration" name="entity[str_reg_date]" id="str_reg_date" value="<?php echo !empty($this->iec_info['str_reg_date']) && $this->iec_info['str_reg_date'] != '0000-00-00' ? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['str_reg_date']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="1">3. Services for which registered</td>
@@ -852,8 +855,8 @@
 			</tr>
 			<tr>
 				<td colspan="1">2. Date of issue and Validity:</td>
-				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[rcmc_doi]" id="rcmc_doi" value="<?php echo !empty($this->iec_info['rcmc_doi'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['rcmc_doi']}")->format('d/m/Y') : ""?>"></td>
-				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[rcmc_validity]" id="rcmc_validity" value="<?php echo !empty($this->iec_info['rcmc_validity'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['rcmc_validity']}")->format('d/m/Y') : ""?>"></td>
+				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[rcmc_doi]" id="rcmc_doi" value="<?php echo !empty($this->iec_info['rcmc_doi']) && $this->iec_info['rcmc_doi'] != '0000-00-00' ? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['rcmc_doi']}")->format('d/m/Y') : ""?>"></td>
+				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[rcmc_validity]" id="rcmc_validity" value="<?php echo !empty($this->iec_info['rcmc_validity']) && $this->iec_info['rcmc_validity'] != '0000-00-00' ? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['rcmc_validity']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
 			<tr>
 				<td colspan="1">3. Products for which registered</td>
@@ -875,8 +878,8 @@
 			</tr>
 			<tr>
 				<td colspan="1">2. Date of issue and Validity:</td>
-				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[shd_doi]" id="shd_doi" value="<?php echo !empty($this->iec_info['shd_doi'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['shd_doi']}")->format('d/m/Y') : ""?>"></td>
-				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[shd_validity]" id="shd_validity" value="<?php echo !empty($this->iec_info['shd_validity'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['shd_validity']}")->format('d/m/Y') : ""?>"></td>
+				<td colspan="2">From:<span class="required">*</span><input class="input-block-level" type="text" placeholder="From date" name="entity[shd_doi]" id="shd_doi" value="<?php echo !empty($this->iec_info['shd_doi']) && $this->iec_info['shd_doi'] != '0000-00-00'? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['shd_doi']}")->format('d/m/Y') : ""?>"></td>
+				<td colspan="2">To:<span class="required">*</span><input class="input-block-level" type="text" placeholder="To Date" name="entity[shd_validity]" id="shd_validity" value="<?php echo !empty($this->iec_info['shd_validity']) && $this->iec_info['shd_validity'] != '0000-00-00'? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['shd_validity']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
 		</table>	
 	</div>
@@ -891,7 +894,7 @@
 				<td colspan="2"><input class="input-block-level" type="text" placeholder="Issuing Authority" name="entity[cer_ia]" id="cer_ia" value="<?php echo !empty($this->iec_info['cer_ia'])? $this->iec_info['cer_ia'] : ""?>"></td>
 			</tr>
 			<tr>
-				<td colspan="1">Date of registration</td><td colspan="4"><input class="input-medium" type="text" placeholder="Date of Registration" name="entity[cer_reg_date]" id="cer_reg_date" value="<?php echo !empty($this->iec_info['cer_reg_date'])? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['cer_reg_date']}")->format('d/m/Y') : ""?>"></td>
+				<td colspan="1">Date of registration</td><td colspan="4"><input class="input-medium" type="text" placeholder="Date of Registration" name="entity[cer_reg_date]" id="cer_reg_date" value="<?php echo !empty($this->iec_info['cer_reg_date']) && $this->iec_info['cer_reg_date'] != '0000-00-00'? DateTime::createFromFormat("Y-m-d", "{$this->iec_info['cer_reg_date']}")->format('d/m/Y') : ""?>"></td>
 			</tr>
 		</table>
 	</div>

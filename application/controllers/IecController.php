@@ -331,12 +331,15 @@ class IecController extends Zend_Controller_Action
 				
 			}
 				
-			!empty($_POST['entity']['imr_doi']) ? $_POST['entity']['imr_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['imr_doi']}")->format('Y-m-d'):'0000-00-00';
-			!empty($_POST['entity']['imr_validity']) ? $_POST['entity']['imr_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['imr_validity']}")->format('Y-m-d'):'0000-00-00';
-			!empty($_POST['entity']['rcmc_doi']) ? $_POST['entity']['rcmc_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['rcmc_doi']}")->format('Y-m-d'):'0000-00-00';
-			!empty($_POST['entity']['rcmc_validity']) ? $_POST['entity']['rcmc_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['rcmc_validity']}")->format('Y-m-d'):'0000-00-00';
-			!empty($_POST['entity']['shd_doi']) ? $_POST['entity']['shd_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_doi']}")->format('Y-m-d'):'0000-00-00';
-			!empty($_POST['entity']['shd_validity']) ? $_POST['entity']['shd_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_validity']}")->format('Y-m-d'):'0000-00-00';
+			!empty($_POST['entity']['imr_doi']) ? $_POST['entity']['imr_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['imr_doi']}")->format('Y-m-d'): $_POST['entity']['imr_doi'] = '0000-00-00';
+			!empty($_POST['entity']['imr_validity']) ? $_POST['entity']['imr_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['imr_validity']}")->format('Y-m-d'): $_POST['entity']['imr_validity']= '0000-00-00';
+			!empty($_POST['entity']['rcmc_doi']) ? $_POST['entity']['rcmc_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['rcmc_doi']}")->format('Y-m-d'): $_POST['entity']['rcmc_doi'] = '0000-00-00';
+			!empty($_POST['entity']['rcmc_validity']) ? $_POST['entity']['rcmc_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['rcmc_validity']}")->format('Y-m-d'): $_POST['entity']['rcmc_validity'] = '0000-00-00';
+			!empty($_POST['entity']['shd_doi']) ? $_POST['entity']['shd_doi'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_doi']}")->format('Y-m-d'):  $_POST['entity']['shd_doi'] = '0000-00-00';
+			!empty($_POST['entity']['shd_validity']) ? $_POST['entity']['shd_validity'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['shd_validity']}")->format('Y-m-d'): $_POST['entity']['shd_validity'] = '0000-00-00';
+			!empty($_POST['entity']['cer_reg_date']) ? $_POST['entity']['cer_reg_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['cer_reg_date']}")->format('Y-m-d'): $_POST['entity']['cer_reg_date'] = '0000-00-00';
+			!empty($_POST['entity']['str_reg_date']) ? $_POST['entity']['str_reg_date'] = DateTime::createFromFormat("d/m/Y", "{$_POST['entity']['str_reg_date']}")->format('Y-m-d'): $_POST['entity']['str_reg_date'] = '0000-00-00';
+				
 			
 			!empty($_POST['entity']['proof_of_accept']) && $_POST['entity']['proof_of_accept'] == 'on' ? $_POST['entity']['proof_of_accept'] = 1 : $_POST['entity']['proof_of_accept'] = 0;
 			

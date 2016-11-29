@@ -57,7 +57,7 @@ class EpcgController extends Zend_Controller_Action
 			$detail['district'] =  Model_Districts::getById($detail['district'])->toArray()['name'];
 			$detail['city'] =  Model_Cities::getById($detail['city'])->toArray()['name'];
 			if($detail['entity_category_id'] == 0){
-				if($detail['state'] == 'Karnataka'){ //TO DO: Pick state Karnataka from database
+				if($detail['state'] == 'Karnataka'){ //TO DO: Pick state Karnataka from database from the configuration table
 					$iec_info['branch_details_primary'][] = $detail;
 					//$primary_branch_flag = true;
 				}
